@@ -66,7 +66,6 @@ function changeImageToKaihi1_3(){
 }
 
 
-
 function Car(){
 
     CAR_IMG = new createjs.Bitmap();

@@ -91,6 +91,7 @@ function drawCar(){
 }
 function drawHonoka(){
 	gameStage.addChild(honoka.image);
+
 }
 function drawGameElement(){
 	gameStage.addChild(BUTTON_LEFT);
