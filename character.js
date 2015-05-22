@@ -2,67 +2,69 @@
 function Honoka(){
 
     //ほのかちゃ
-    HONOKA_IMG = new createjs.Bitmap();
-
-    HONOKA_KIHON = new createjs.Bitmap(queue.getResult("HONOKA_KIHON"));
-    HONOKA_KAIHI1_1 = new createjs.Bitmap(queue.getResult("HONOKA_KAIHI1_1"));
-    HONOKA_KAIHI1_2 = new createjs.Bitmap(queue.getResult("HONOKA_KAIHI1_2"));
-    HONOKA_KAIHI1_3 = new createjs.Bitmap(queue.getResult("HONOKA_KAIHI1_3"));
-
-    HONOKA_IMG.image = HONOKA_KIHON.image;
-
+    honokaSpriteSheet = new createjs.SpriteSheet({
+        images: [ queue.getResult("HONOKA_SS") ],
+        frames: {
+            width:186,
+            height:267
+        },
+        animations: {
+            kihon: {
+                frames: [0,1],
+                next: true,
+                speed: 0.3
+            },
+            escapeR: {
+                frames:[2,3,4],
+                next: "kihon",
+                speed:0.5
+            },
+            escapeL: {
+                frames:[4,3,2],
+                next: "kihon",
+                speed:0.5
+            }
+        }
+    });
+    HONOKA_IMG = new createjs.Sprite(honokaSpriteSheet,"kihon");
+    HONOKA_IMG.x = (gameScrean.width/8)*3;
+    HONOKA_IMG.y = gameScrean.height/2
+    HONOKA_IMG.regX = 186/2;
+    HONOKA_IMG.regY = 267/2;
     HONOKA_IMG.scaleY = HONOKA_IMG.scaleX = gameScreenScale;
-    position(HONOKA_IMG, (gameScrean.width/8)*3, (gameScrean.height/2));
+    
+    //position(HONOKA_IMG, (gameScrean.width/8)*3, (gameScrean.height/2));
 
     this.alive = true;
-    this.image = HONOKA_IMG;
-    this.lane = new Lane(2);
+    this.lane = 2;
 
 }
 
 
 Honoka.prototype.moveRight = function(){
     rightButtonDisable();
+    this.lane ++;
+    createjs.Sound.play("KAIHI");
 
-    changeImageToKaihi1_1();
-    var tem_x = this.image.x;
-    createjs.Tween.get(this.image)
-        .to({x : tem_x+(gameScrean.width/8)},70)
-            .call(changeImageToKaihi1_2)
-                .to({x : tem_x+(gameScrean.width/6)},70)
-                    .call(changeImageToKaihi1_3)
-                        .to({x : tem_x+(gameScrean.width/4)},70)
-                            .call(changeImageToKihon)
-                                .call(rightButtonEnable);
-    this.lane.number ++;
+    HONOKA_IMG.gotoAndPlay("escapeR");
+
+    var tmp_x = HONOKA_IMG.x;
+    createjs.Tween.get(HONOKA_IMG)
+        .to({x : tmp_x + (gameScrean.width/4)},100)
+            .call(checkRightButton);
+
 }
 Honoka.prototype.moveLeft = function(){
     leftButtonDisable();
-    changeImageToKaihi1_3();
+    this.lane --;
+    playSound(SOUND_KAIHI);
 
-    var tem_x = this.image.x;
-    createjs.Tween.get(this.image)
-        .to({x : tem_x-(gameScrean.width/8)},70)
-            .call(changeImageToKaihi1_2)
-                .to({x : tem_x-(gameScrean.width/6)},70)
-                    .call(changeImageToKaihi1_1)
-                        .to({x : tem_x-(gameScrean.width/4)},70)
-                            .call(changeImageToKihon)
-                                .call(leftButtonEnable);
-    this.lane.number --;
-}
+    HONOKA_IMG.gotoAndPlay("escapeL");
 
-function changeImageToKihon(){
-    HONOKA_IMG.image = HONOKA_KIHON.image
-}
-function changeImageToKaihi1_1(){
-    HONOKA_IMG.image = HONOKA_KAIHI1_1.image;
-}
-function changeImageToKaihi1_2(){
-    HONOKA_IMG.image = HONOKA_KAIHI1_2.image;
-}
-function changeImageToKaihi1_3(){
-    HONOKA_IMG.image = HONOKA_KAIHI1_3.image;
+    var tmp_x = HONOKA_IMG.x;
+    createjs.Tween.get(HONOKA_IMG)
+        .to({x : tmp_x - (gameScrean.width/4)},100)
+            .call(checkLeftButton);
 }
 
 

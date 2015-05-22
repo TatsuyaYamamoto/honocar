@@ -1,5 +1,5 @@
 //定数----------------------------------------
-var FPS = 1000 / 40;
+var FPS = 1000 / 30;
 var GAMESCREAN_WIDTH = 640 ;
 var GAMESCREAN_HEIGHT = 896;
 
@@ -20,6 +20,7 @@ var screanState;
 var player;
 
 var honoka;
+var honokaSpriteSheet;
 var isHonokaEscape;
 
 var car =[];
@@ -78,11 +79,6 @@ function position(target, x, y){
 	target.y = y;
 	target.regX = target.image.width/2;
 	target.regY = target.image.height/2;
-}
-
-//キャラクターのレーン管理クラス-----------
-function Lane(i){
-	this.number = i; 
 }
 
 //ゲームスクリーンサイズ初期化用-----------------------

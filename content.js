@@ -31,6 +31,10 @@ function loadContent(){
             src: "img/BUTTON_RIGHT.png"
         },
         {
+            id : "HONOKA_SS",
+            src: "img/HONOKA_SS.png"
+        },
+        {
             id : "HONOKA_KIHON",
             src: "img/HONOKA_KIHON.png"
         },

@@ -9,31 +9,19 @@ function gameInit(){
     fc.y = gameScrean.height/1.05;
 
 	//イベント登録
-	BUTTON_LEFT.addEventListener("click", function(){    
-		playSound(SOUND_KAIHI);
+	BUTTON_LEFT.addEventListener("click", function(){ 
 		honoka.moveLeft();
-		if(honoka.lane.number == 1){
-			leftButtonDisable();
-		}
-		if(honoka.lane.number == 3){
-			rightButtonEnable();
-		}
 	});
 
 	BUTTON_RIGHT.addEventListener("click", function(){
-		playSound(SOUND_KAIHI);
 		honoka.moveRight();
-		if(honoka.lane.number == 4){
-			rightButtonDisable();
-		}
-		if(honoka.lane.number == 2){
-			leftButtonEnable();
-		}
 	});
 
 	//ゲーム内タイマーTickイベント
-	createjs.Ticker.addEventListener("tick",function(){});
-	createjs.Ticker.setFPS(FPS);
+    createjs.Ticker.setFPS(FPS);
+    createjs.Ticker.addEventListener("tick", function(){
+        gameStage.update();
+    });
 }
 //ゲーム処理-----------------------------------------
 function processGame(){
@@ -49,13 +37,11 @@ function processGame(){
 		//leftButtonEnable();	
 	}
 
-
-	processHonoka();
 }
 
 //描画処理-----------------------------------------
 function drawGameScrean(){
-    gameStage.removeAllChildren();
+    //gameStage.removeAllChildren();
 	//1.背景
 	drawBackGround();
 
@@ -90,7 +76,7 @@ function drawCar(){
 
 }
 function drawHonoka(){
-	gameStage.addChild(honoka.image);
+    gameStage.addChild(HONOKA_IMG);
 
 }
 function drawGameElement(){
@@ -113,4 +99,21 @@ function leftButtonEnable(){
 function leftButtonDisable(){
 	BUTTON_LEFT.mouseEnabled = false;
     BUTTON_LEFT.alpha=0.2;
+}
+function checkLeftButton(){
+    if(honoka.lane !== 1){
+        leftButtonEnable();
+    };
+    if(honoka.lane == 3){
+        rightButtonEnable();
+    };
+}
+
+function checkRightButton(){
+    if(honoka.lane !== 4){
+        rightButtonEnable();
+    }
+    if(honoka.lane == 2){
+        leftButtonEnable();
+    }
 }
