@@ -1,12 +1,12 @@
 //ほのかちゃ------------------------------------------------
 function Honoka(){
 
-    //ほのかちゃ
-    honokaSpriteSheet = new createjs.SpriteSheet({
+    //ほのかちゃんスプライトシート読み込み
+    var honokaSpriteSheet = new createjs.SpriteSheet({
         images: [ queue.getResult("HONOKA_SS") ],
         frames: {
-            width:186,
-            height:267
+            width:HONOKA_IMG_WIDTH,
+            height:HONOKA_IMG_HEIGHT
         },
         animations: {
             kihon: {
@@ -26,45 +26,53 @@ function Honoka(){
             }
         }
     });
-    HONOKA_IMG = new createjs.Sprite(honokaSpriteSheet,"kihon");
-    HONOKA_IMG.x = (gameScrean.width/8)*3;
-    HONOKA_IMG.y = gameScrean.height/2
-    HONOKA_IMG.regX = 186/2;
-    HONOKA_IMG.regY = 267/2;
-    HONOKA_IMG.scaleY = HONOKA_IMG.scaleX = gameScreenScale;
-    
-    //position(HONOKA_IMG, (gameScrean.width/8)*3, (gameScrean.height/2));
 
+    //画像初期化
+    this.img = new createjs.Sprite(honokaSpriteSheet,"kihon");
+    this.img.y = gameScrean.height/2
+    this.img.regX = HONOKA_IMG_WIDTH/2;
+    this.img.regY = HONOKA_IMG_HEIGHT/2;
+    this.img.scaleY = this.img.scaleX = gameScreenScale;
+
+    //生存ステータス  
     this.alive = true;
+
+    //レーンナンバー
     this.lane = 2;
+    this.img.x = this.checkLane();
 
 }
+Honoka.prototype.checkLane = function(){
 
+    switch(this.lane){
+        case 1:
+            return (gameScrean.width/8);
+            break;
+        case 2:
+            return (gameScrean.width/8)*3;
+            break;
+        case 3:
+            return (gameScrean.width/8)*5;
+            break;
+        case 4:
+            return (gameScrean.width/8)*7;
+            break;
+    }
+}
 
 Honoka.prototype.moveRight = function(){
-    rightButtonDisable();
     this.lane ++;
     createjs.Sound.play("KAIHI");
-
-    HONOKA_IMG.gotoAndPlay("escapeR");
-
-    var tmp_x = HONOKA_IMG.x;
-    createjs.Tween.get(HONOKA_IMG)
-        .to({x : tmp_x + (gameScrean.width/4)},100)
-            .call(checkRightButton);
-
+    this.img.gotoAndPlay("escapeR");
+    createjs.Tween.get(this.img)
+        .to({x : this.checkLane()}, 100);
 }
 Honoka.prototype.moveLeft = function(){
-    leftButtonDisable();
     this.lane --;
     playSound(SOUND_KAIHI);
-
-    HONOKA_IMG.gotoAndPlay("escapeL");
-
-    var tmp_x = HONOKA_IMG.x;
-    createjs.Tween.get(HONOKA_IMG)
-        .to({x : tmp_x - (gameScrean.width/4)},100)
-            .call(checkLeftButton);
+    this.img.gotoAndPlay("escapeL");
+    createjs.Tween.get(this.img)
+        .to({x : this.checkLane()}, 100);
 }
 
 

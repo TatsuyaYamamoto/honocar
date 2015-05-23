@@ -9,13 +9,15 @@ function gameInit(){
     fc.y = gameScrean.height/1.05;
 
 	//イベント登録
-	BUTTON_LEFT.addEventListener("click", function(){ 
-		honoka.moveLeft();
-	});
-
 	BUTTON_RIGHT.addEventListener("click", function(){
 		honoka.moveRight();
+		checkButton();
 	});
+	BUTTON_LEFT.addEventListener("click", function(){
+		honoka.moveLeft();
+		checkButton();
+	});
+
 
 	//ゲーム内タイマーTickイベント
     createjs.Ticker.setFPS(FPS);
@@ -76,7 +78,7 @@ function drawCar(){
 
 }
 function drawHonoka(){
-    gameStage.addChild(HONOKA_IMG);
+    gameStage.addChild(honoka.img);
 
 }
 function drawGameElement(){
@@ -84,36 +86,42 @@ function drawGameElement(){
 	gameStage.addChild(BUTTON_RIGHT);
 }
 
+
+//操作ボタンの状態操作系---------------------------
+
+//有効化
 function rightButtonEnable(){
 	BUTTON_RIGHT.mouseEnabled = true;
     BUTTON_RIGHT.alpha=0.5;
-}
-function rightButtonDisable(){
-	BUTTON_RIGHT.mouseEnabled = false;
-    BUTTON_RIGHT.alpha=0.2;
 }
 function leftButtonEnable(){
 	BUTTON_LEFT.mouseEnabled = true;
     BUTTON_LEFT.alpha=0.5;
 }
+
+//無効化
+function rightButtonDisable(){
+	BUTTON_RIGHT.mouseEnabled = false;
+    BUTTON_RIGHT.alpha=0.2;
+}
 function leftButtonDisable(){
 	BUTTON_LEFT.mouseEnabled = false;
     BUTTON_LEFT.alpha=0.2;
 }
-function checkLeftButton(){
-    if(honoka.lane !== 1){
-        leftButtonEnable();
+
+
+
+function checkButton(){
+    if(honoka.lane == 1){
+        leftButtonDisable();
     };
+	if(honoka.lane == 2){
+        leftButtonEnable();
+    }
     if(honoka.lane == 3){
         rightButtonEnable();
-    };
-}
-
-function checkRightButton(){
-    if(honoka.lane !== 4){
-        rightButtonEnable();
     }
-    if(honoka.lane == 2){
-        leftButtonEnable();
+    if(honoka.lane == 4){
+        rightButtonDisable();
     }
 }

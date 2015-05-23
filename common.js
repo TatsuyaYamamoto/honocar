@@ -3,6 +3,10 @@ var FPS = 1000 / 30;
 var GAMESCREAN_WIDTH = 640 ;
 var GAMESCREAN_HEIGHT = 896;
 
+
+var HONOKA_IMG_WIDTH = 186;
+var HONOKA_IMG_HEIGHT = 267;
+
 var CAR_SPEED = 10;
 
 //変数宣言----------------------------------------
@@ -20,7 +24,6 @@ var screanState;
 var player;
 
 var honoka;
-var honokaSpriteSheet;
 var isHonokaEscape;
 
 var car =[];
@@ -81,6 +84,15 @@ function position(target, x, y){
 	target.regY = target.image.height/2;
 }
 
+//ゲーム内レーン管理クラス---------------------------
+
+function Lane(num){
+	this.number = num;
+}
+
+
+
+
 //ゲームスクリーンサイズ初期化用-----------------------
 function initGameScreenScale(){
 
@@ -92,4 +104,6 @@ function initGameScreenScale(){
 
 	gameScrean.height = GAMESCREAN_HEIGHT*gameScreenScale;
 	gameScrean.width = GAMESCREAN_WIDTH*gameScreenScale;
+
 }
+
