@@ -2,10 +2,6 @@
 function gameInit(){
 	honoka = new Honoka();
 
-	//ゲーム開発用
-    fc = new createjs.Text("","20px Impact", "");
-    fc.x = gameScrean.width/1.6;
-    fc.y = gameScrean.height/1.05;
 
 	//イベント登録
 	BUTTON_RIGHT.addEventListener("click", function(){
@@ -23,9 +19,7 @@ function gameInit(){
 
 	//ゲーム内タイマーTickイベント
     createjs.Ticker.setFPS(FPS);
-    createjs.Ticker.addEventListener("tick", function(){
-        processGame();
-    });
+    createjs.Ticker.addEventListener("tick", processGame);
 }
 
 //ゲーム処理-----------------------------------------
@@ -34,13 +28,13 @@ function processGame(){
 
     if(1800 < createjs.Ticker.getTime() && createjs.Ticker.getTime() < 2000){
     	car.push(new Car(1));
-    	alert("point");
     }
 
     for (i = 0; i < car.length; i++){
-	    if(checkDistance(car[i]) > 1000){
+	    if(checkDistance(car[i]) < 100){
 	    	honoka.alive = false;
-	    	alert(honoka.alive);
+		    createjs.Sound.play("CRASH");
+	    	createjs.Ticker.removeEventListener("tick", processGame);
 	    }
     }
 }
@@ -50,12 +44,7 @@ function drawGameScrean(){
 
 	drawBackGround();
 	drawHonoka();
-	drawHonoka();
 	drawGameElement();
-
-	//ゲーム開発用
-    fc.text = "game timer:" + createjs.Ticker.getTime();
-    gameStage.addChild(fc);
 
 }
 //process用関数-----------------------------------------

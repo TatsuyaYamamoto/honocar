@@ -16,8 +16,6 @@ var CAR_SPEED = 10;
 var gameStage;
 var gameScrean;
 var gameScreenScale;
-var fc;
-
 
 var queue;
 var loadStatusRatio = 0;

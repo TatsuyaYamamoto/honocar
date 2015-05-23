@@ -114,7 +114,7 @@ Car.prototype.init = function(number){
             break;
     }
 
-    gameStage.addChild(car.img);
+    gameStage.addChild(this.img);
     this.move();
 }
 Car.prototype.move = function(){
