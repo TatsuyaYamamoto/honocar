@@ -96,9 +96,7 @@ function gameState(){
             gameStage.update();
 
         	//繰り返し 
-            //setTimeout(arguments.callee, FPS);
-            //フレーム数増加
-            frameCount++;            
+            //setTimeout(arguments.callee, FPS);      
         }else{
             gameOverState();
         }

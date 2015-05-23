@@ -1,7 +1,6 @@
 //ゲーム初期化-----------------------------------------
 function gameInit(){
 	honoka = new Honoka();
-	frameCount = 0;
 
 	//ゲーム開発用
     fc = new createjs.Text("","20px Impact", "");
@@ -10,7 +9,11 @@ function gameInit(){
 
 	//イベント登録
 	BUTTON_RIGHT.addEventListener("click", function(){
+		rightButtonDisable();
+		leftButtonDisable();
 		honoka.moveRight();
+		rightButtonEnable();
+		leftButtonEnable();
 		checkButton();
 	});
 	BUTTON_LEFT.addEventListener("click", function(){
@@ -18,42 +21,36 @@ function gameInit(){
 		checkButton();
 	});
 
-
 	//ゲーム内タイマーTickイベント
     createjs.Ticker.setFPS(FPS);
     createjs.Ticker.addEventListener("tick", function(){
-        gameStage.update();
+        processGame();
     });
 }
+
 //ゲーム処理-----------------------------------------
 function processGame(){
+    gameStage.update();
 
-	if(honoka.lane.number >= 4){
-		rightButtonDisable();
-	}else{
-		//rightButtonEnable();
-	}
-	if(honoka.lane.number == 1){
-		leftButtonDisable();
-	}else{
-		//leftButtonEnable();	
-	}
+    if(1800 < createjs.Ticker.getTime() && createjs.Ticker.getTime() < 2000){
+    	car.push(new Car(1));
+    	alert("point");
+    }
 
+    for (i = 0; i < car.length; i++){
+	    if(checkDistance(car[i]) > 1000){
+	    	honoka.alive = false;
+	    	alert(honoka.alive);
+	    }
+    }
 }
 
 //描画処理-----------------------------------------
 function drawGameScrean(){
-    //gameStage.removeAllChildren();
-	//1.背景
+
 	drawBackGround();
-
-	//2.くるま
-	drawCar();
-
-	//3.ほのかちゃ
 	drawHonoka();
-
-	//4.ゲームパーツ
+	drawHonoka();
 	drawGameElement();
 
 	//ゲーム開発用
@@ -110,7 +107,7 @@ function leftButtonDisable(){
 }
 
 
-
+//ボタン状態の確認
 function checkButton(){
     if(honoka.lane == 1){
         leftButtonDisable();
@@ -125,3 +122,14 @@ function checkButton(){
         rightButtonDisable();
     }
 }
+
+//オブジェクト間の距離計算---------------------
+function checkDistance(target){
+	var x = honoka.img.x - target.img.x;
+	var y = honoka.img.y - target.img.y;
+
+	var length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	return length;
+}
+
+

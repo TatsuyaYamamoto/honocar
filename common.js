@@ -7,6 +7,9 @@ var GAMESCREAN_HEIGHT = 896;
 var HONOKA_IMG_WIDTH = 186;
 var HONOKA_IMG_HEIGHT = 267;
 
+var CAR1_IMG_WIDTH = 174;
+var CAR1_IMG_HEIGHT = 103;
+
 var CAR_SPEED = 10;
 
 //変数宣言----------------------------------------
