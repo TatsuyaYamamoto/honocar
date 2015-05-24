@@ -34,9 +34,6 @@ function Honoka(){
     this.img.regY = HONOKA_IMG_HEIGHT/2;
     this.img.scaleY = this.img.scaleX = gameScreenScale;
 
-    //生存ステータス  
-    this.alive = true;
-
     //レーンナンバー
     this.lane = 2;
     this.img.x = this.checkLane();

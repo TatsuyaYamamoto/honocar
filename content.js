@@ -23,6 +23,10 @@ function loadContent(){
             src: "img/TITLE_LOGO.png"
         },
         {
+            id : "GAMEOVER",
+            src: "img/GAMEOVER.png"
+        },
+        {
             id : "BUTTON_LEFT",
             src: "img/BUTTON_LEFT.png"
         },
@@ -33,26 +37,6 @@ function loadContent(){
         {
             id : "HONOKA_SS",
             src: "img/HONOKA_SS.png"
-        },
-        {
-            id : "HONOKA_KIHON",
-            src: "img/HONOKA_KIHON.png"
-        },
-        {
-            id : "HONOKA_KIHON2",
-            src: "img/HONOKA_KIHON2.png"
-        },
-        {
-            id : "HONOKA_KAIHI1_1",
-            src: "img/HONOKA_KAIHI1_1.png"
-        },
-        {
-            id : "HONOKA_KAIHI1_2",
-            src: "img/HONOKA_KAIHI1_2.png"
-        },
-        {
-            id : "HONOKA_KAIHI1_3",
-            src: "img/HONOKA_KAIHI1_3.png"
         },
         {
             id : "CAR1",
@@ -124,6 +108,11 @@ function setImageContent(){
         TITLE_LOGO = new createjs.Bitmap(queue.getResult("TITLE_LOGO"));
         position(TITLE_LOGO, gameScrean.width/2, (gameScrean.height/5));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
+
+        //GAMEOVERロゴ
+        GAMEOVER = new createjs.Bitmap(queue.getResult("GAMEOVER"));
+        position(GAMEOVER, gameScrean.width/2, gameScrean.height/2);
+        GAMEOVER.scaleY = GAMEOVER.scaleX = gameScreenScale;
 
 
         //ボタン

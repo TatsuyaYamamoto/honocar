@@ -2,24 +2,22 @@
 function gameInit(){
 	honoka = new Honoka();
 
+	//ボタン有効化
+    rightButtonEnable();
+    leftButtonEnable();
+
 
 	//イベント登録
-	BUTTON_RIGHT.addEventListener("click", function(){
-		rightButtonDisable();
-		leftButtonDisable();
-		honoka.moveRight();
-		rightButtonEnable();
-		leftButtonEnable();
-		checkButton();
-	});
-	BUTTON_LEFT.addEventListener("click", function(){
-		honoka.moveLeft();
-		checkButton();
-	});
+	BUTTON_RIGHT.addEventListener("click", clickButtonRight);
+	BUTTON_LEFT.addEventListener("click", clickButtonLeft);
 
 	//ゲーム内タイマーTickイベント
-    createjs.Ticker.setFPS(FPS);
-    createjs.Ticker.addEventListener("tick", processGame);
+
+	gameTick = createjs.Ticker;
+    gameTick.setFPS(FPS);
+	gameTick.timingMode = createjs.Ticker.RAF_SYNCHED;
+    gameTick.addEventListener("tick", processGame);
+
 }
 
 //ゲーム処理-----------------------------------------
@@ -32,9 +30,7 @@ function processGame(){
 
     for (i = 0; i < car.length; i++){
 	    if(checkDistance(car[i]) < 100){
-	    	honoka.alive = false;
-		    createjs.Sound.play("CRASH");
-	    	createjs.Ticker.removeEventListener("tick", processGame);
+	    	crash();
 	    }
     }
 }
@@ -120,5 +116,30 @@ function checkDistance(target){
 	var length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	return length;
 }
+//イベント処理-------------------------------------
 
+function clickButtonRight(){
+	rightButtonDisable();
+	leftButtonDisable();
+	honoka.moveRight();
+	rightButtonEnable();
+	leftButtonEnable();
+	checkButton();
+}
 
+function clickButtonLeft(){
+	honoka.moveLeft();
+	checkButton();
+}
+//クラッシュ関数-------------------------------------
+function crash(){
+    createjs.Sound.play("CRASH");
+    BUTTON_RIGHT.removeEventListener("click", clickButtonRight);
+	BUTTON_LEFT.removeEventListener("click", clickButtonLeft);
+	// gameTick.reset();
+    gameTick.removeEventListener("tick", processGame);
+	
+
+	//stateマシン内、ゲームオーバー状態に遷移
+	gameOverState();
+}

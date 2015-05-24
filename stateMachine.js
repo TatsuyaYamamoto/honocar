@@ -45,26 +45,6 @@ function howToPlayState(){
     gameStage.addChild(TEXT_HOW_TO);
 
 
-    //ほのかちゃ
-    honokaSpriteSheet = new createjs.SpriteSheet({
-        images: [ queue.getResult("HONOKA_KIHON") ],
-        frames: { width:186, height:267 },
-        animations:
-            {
-                kihon: { // animationsをより細かく指定します
-                    frames: [0,1], // 0から3ではなく、フレーム番号を指定出来ます
-                    //next: 'walk', // アニメーション完了後の動きを指定します、未設定、またはtrueの場合はループします
-                    frequency : 2 // 5フレームに1度画像を変更する
-                }
-            }
-        }
-    );
-
-    HONOKA_IMG = new createjs.Sprite(honokaSpriteSheet);
-    HONOKA_IMG.gotoAndPlay("kihon");
-
-    gameStage.addChild(HONOKA_IMG);
-
     gameStage.update();
     BUTTON_TMP_3.addEventListener( 'click', function() {
         playSound(SOUND_BACK);
@@ -83,29 +63,25 @@ function gameState(){
     gameStage.removeAllChildren();
 
     gameInit();
-
-    //アニメーションMachine
-    (function(){
-
-        if(true){
-        	//内側・ゲーム処理
-        	processGame();
-        	//外側・描画処理
-        	drawGameScrean();
-
-            gameStage.update();
-
-        	//繰り返し 
-            //setTimeout(arguments.callee, FPS);      
-        }else{
-            gameOverState();
-        }
-
-    })();
+    drawGameScrean();
 
 }
 //GAMEOVER画面------------------------------------------
 function gameOverState(){
+
 	screanState = "gameOverState";
+    gameStage.removeAllChildren();
+
+
+    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(GAMEOVER);
+    gameStage.addChild(BUTTON_TMP_3);
+
+    gameStage.update();
+
+    BUTTON_TMP_3.addEventListener( 'click', function() {
+        playSound(SOUND_BACK);
+        topState();
+    } );
 }
 

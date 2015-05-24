@@ -21,6 +21,7 @@ var queue;
 var loadStatusRatio = 0;
 
 var screanState;
+var gameTick
 
 var player;
 
@@ -40,25 +41,14 @@ var ctAnchor;
 //player = new Position();
 
 
-//画像系プリロード
-//TOP用
-var TOP_BACKGROUND;
-
+//画像系--------------
+//背景
+var TITLE_LOGO;
+var GAMEOVER;
 var GAME_BACKGROUND;
 
-//ほのか画像
-var HONOKA_IMG;
-var HONOKA_KIHON;
-var HONOKA_KAIHI1_1;
-var HONOKA_KAIHI1_2;
 
-//車
-var CAR_IMG;
-var CAR1;
-
-
-
-//音声系プリロード
+//音声系------------
 
 var SOUND_OK;
 var SOUND_BACK;
@@ -66,9 +56,7 @@ var SOUND_KAIHI;
 
 //ボタン
 var BUTTON_TMP_1;
-
 var BUTTON_TMP_2;
-
 var BUTTON_TMP_3;
 
 
