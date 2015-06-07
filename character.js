@@ -23,6 +23,11 @@ function Honoka(){
                 frames:[4,3,2],
                 next: "kihon",
                 speed:0.5
+            },
+            down: {
+                frames:[2],
+                next: "down",
+                speed:0.5
             }
         }
     });
@@ -99,6 +104,7 @@ Car.prototype.init = function(number){
             this.img.regY = CAR1_IMG_HEIGHT/2;
             this.img.scaleY = this.img.scaleX = gameScreenScale;
             this.lane = 0;
+            this.passed = false;
             break;
         case 1:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
@@ -108,6 +114,7 @@ Car.prototype.init = function(number){
             this.img.regY = CAR1_IMG_HEIGHT/2;
             this.img.scaleY = this.img.scaleX = gameScreenScale;
             this.lane = 1;
+            this.passed = false;
             break;
         case 2:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
@@ -117,6 +124,7 @@ Car.prototype.init = function(number){
             this.img.regY = CAR1_IMG_HEIGHT/2;
             this.img.scaleY = this.img.scaleX = gameScreenScale;
             this.lane = 2;
+            this.passed = false;
             break;
         case 3:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
@@ -126,6 +134,7 @@ Car.prototype.init = function(number){
             this.img.regY = CAR1_IMG_HEIGHT/2;
             this.img.scaleY = this.img.scaleX = gameScreenScale;
             this.lane = 3;
+            this.passed = false;
             break;
     }
 
@@ -137,19 +146,31 @@ Car.prototype.move = function(){
     switch(this.lane){
         case 0:
             createjs.Tween.get(this.img)
-                .to({y : -CAR1_IMG_HEIGHT}, 2000);
+                .to({y : -CAR1_IMG_HEIGHT}, 2000)
+                    .call(function(){
+                        passCarCount ++;
+                    });
             break;
         case 1:
             createjs.Tween.get(this.img)
-                .to({y : -CAR1_IMG_HEIGHT}, 1700);
+                .to({y : -CAR1_IMG_HEIGHT}, 1700)
+                    .call(function(){
+                        passCarCount ++;
+                    });
             break;
         case 2:
         createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 1700);
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 1700)
+                .call(function(){
+                    passCarCount ++;
+                });
             break;
         case 3:
         createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 2000);
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 2000)
+                .call(function(){
+                    passCarCount ++;
+                });
             break;
     }
 }

@@ -67,6 +67,9 @@ function gameOverState(){
     gameStage.addChild(GAMEOVER);
     gameStage.addChild(BUTTON_TMP_3);
     gameStage.addChild(BUTTON_TMP_5);
+    gameStage.addChild(BUTTON_TWITTER);
+    gameStage.addChild(TEXT_GAME_TIME);
+    gameStage.addChild(honoka.img);
 
     gameStage.update();
 

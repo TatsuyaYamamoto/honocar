@@ -45,6 +45,10 @@ function loadContent(){
         {
             id : "CHUN",
             src: "img/CHUN.png"
+        },
+        {
+            id : "TWITTER",
+            src: "img/TWITTER.png"
         }
     ];
     //音声------------------------------------------
@@ -115,7 +119,7 @@ function setImageContent(){
 
         //GAMEOVERロゴ
         GAMEOVER = new createjs.Bitmap(queue.getResult("GAMEOVER"));
-        position(GAMEOVER, gameScrean.width/2, gameScrean.height/2);
+        position(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
         GAMEOVER.scaleY = GAMEOVER.scaleX = gameScreenScale;
 
 
@@ -129,7 +133,7 @@ function setImageContent(){
         BUTTON_TMP_2.scaleY = BUTTON_TMP_2.scaleX = gameScreenScale;
 
         BUTTON_TMP_3 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        position(BUTTON_TMP_3, gameScrean.width/2, (gameScrean.height/1.3));
+        position(BUTTON_TMP_3, gameScrean.width*0.3, (gameScrean.height*0.8));
         BUTTON_TMP_3.scaleY = BUTTON_TMP_3.scaleX = gameScreenScale;
 
         BUTTON_TMP_4 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
@@ -137,8 +141,12 @@ function setImageContent(){
         BUTTON_TMP_4.scaleY = BUTTON_TMP_4.scaleX = gameScreenScale;
 
         BUTTON_TMP_5 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        position(BUTTON_TMP_5, gameScrean.width*0.2, (gameScrean.height*0.1));
+        position(BUTTON_TMP_5, gameScrean.width*0.7, (gameScrean.height*0.8));
         BUTTON_TMP_5.scaleY = BUTTON_TMP_5.scaleX = gameScreenScale;
+
+        BUTTON_TWITTER = new createjs.Bitmap(queue.getResult("TWITTER"));
+        position(BUTTON_TWITTER, gameScrean.width*0.1, (gameScrean.height*0.1));
+        BUTTON_TWITTER.scaleY = BUTTON_TWITTER.scaleX = gameScreenScale;
 
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
         position(BUTTON_LEFT, (gameScrean.width)*0.2, (gameScrean.height/1.2));
@@ -161,15 +169,15 @@ function setSoundContent(){
 }
 
 function setTextContent(){
-    TEXT_HOW_TO = new createjs.Text("","20px Impact", "");
-    TEXT_HOW_TO.x = gameScrean.width/2;
-    TEXT_HOW_TO.y = gameScrean.height/4;
-    TEXT_HOW_TO.textAlign = "center";
-    TEXT_HOW_TO.text = "穂乃果ちゃんが避ける！\rなかなか始まらないススメ→トゥモロウをバックに\r車をひたすらかわせ！";
+    TEXT_HOW_TO = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
+    TEXT_HOW_TO.x = gameScrean.width*0.05;
+    TEXT_HOW_TO.y = gameScrean.height*0.2;
+    TEXT_HOW_TO.textAlign = "left";
+    TEXT_HOW_TO.text = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車からひたすら逃げよう！";
 
-    TEXT_GAME_TIME = new createjs.Text("","20px Impact", "");
-    TEXT_GAME_TIME.x = gameScrean.width*0.8;
-    TEXT_GAME_TIME.y = gameScrean.height*0.1;
+    TEXT_GAME_TIME = new createjs.Text("",gameScrean.width*0.06+"1000px Impact", "");
+    TEXT_GAME_TIME.x = gameScrean.width*0.75;
+    TEXT_GAME_TIME.y = gameScrean.height*0.05;
     TEXT_GAME_TIME.textAlign = "center";
 }
 

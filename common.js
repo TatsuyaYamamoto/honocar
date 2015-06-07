@@ -1,5 +1,5 @@
 //定数----------------------------------------
-var FPS = 1000 / 30;
+var FPS = 30;
 var GAMESCREAN_WIDTH = 640 ;
 var GAMESCREAN_HEIGHT = 896;
 
@@ -21,8 +21,10 @@ var queue;
 var loadStatusRatio = 0;
 
 var screanState;
-var gameTick
-var gameFrame
+var gameTick;
+var gameFrame;
+var gameTimeCount;
+var passCarCount;
 
 var player;
 
@@ -62,6 +64,7 @@ var BUTTON_TMP_3;
 var BUTTON_TMP_4;
 var BUTTON_TMP_5;
 
+var BUTTON_TWITTER;
 
 //テキスト
 

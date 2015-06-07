@@ -10,6 +10,8 @@ function gameInit(){
 
     //フレーム数リセット
 	gameFrame = 0;
+	passCarCount = 0;
+	car = [];
 
 	//ボタン有効化
     rightButtonEnable();
@@ -31,13 +33,10 @@ function gameInit(){
 
 //ゲーム処理-----------------------------------------
 function processGame(){
-	// gameFrame = Math.floor(createjs.Ticker.getTime());
-	if(gameFrame == 100){
-		gameFrame = 0;
-	}
 
 	gameFrame ++;
-	TEXT_GAME_TIME.text = "TIME : " + gameFrame;
+
+	TEXT_GAME_TIME.text = "よけったー : " + passCarCount + "台";
 	gameStage.update();
 
 
@@ -47,6 +46,7 @@ function processGame(){
 
 
     for (i = 0; i < car.length; i++){
+
 	    if(checkDistance(car[i]) < 100){
 	    	crash();
 	    }
@@ -166,7 +166,7 @@ function crash(){
 	BUTTON_LEFT.removeEventListener("click", clickButtonLeft);
 	// gameTick.reset();
     gameTick.removeEventListener("tick", processGame);
-	
+	honoka.img.gotoAndPlay("escapeR");
 
 	//stateマシン内、ゲームオーバー状態に遷移
 	gameOverState();
