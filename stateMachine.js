@@ -40,16 +40,7 @@ function howToPlayState(){
 	screanState = "howToPlayState";
     gameStage.removeAllChildren();
 
-    gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_TMP_3);
-    gameStage.addChild(TEXT_HOW_TO);
-
-
-    gameStage.update();
-    BUTTON_TMP_3.addEventListener( 'click', function() {
-        playSound(SOUND_BACK);
-        topState();
-    } );
+    howToPlayInit();
 
 }
 //クレジット画面------------------------------------------
@@ -63,7 +54,6 @@ function gameState(){
     gameStage.removeAllChildren();
 
     gameInit();
-    drawGameScrean();
 
 }
 //GAMEOVER画面------------------------------------------
@@ -76,12 +66,17 @@ function gameOverState(){
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(GAMEOVER);
     gameStage.addChild(BUTTON_TMP_3);
+    gameStage.addChild(BUTTON_TMP_5);
 
     gameStage.update();
 
     BUTTON_TMP_3.addEventListener( 'click', function() {
         playSound(SOUND_BACK);
         topState();
-    } );
+    });
+    BUTTON_TMP_5.addEventListener( 'click', function() {
+        playSound(SOUND_BACK);
+        gameState();
+    });
 }
 

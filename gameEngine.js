@@ -1,6 +1,15 @@
 //ゲーム初期化-----------------------------------------
 function gameInit(){
+
+	//ゲーム画面要素をステージに追加
+	drawGameScrean();
+
+	//ほのかちゃを作成
 	honoka = new Honoka();
+    gameStage.addChild(honoka.img);
+
+    //フレーム数リセット
+	gameFrame = 0;
 
 	//ボタン有効化
     rightButtonEnable();
@@ -22,11 +31,20 @@ function gameInit(){
 
 //ゲーム処理-----------------------------------------
 function processGame(){
-    gameStage.update();
+	// gameFrame = Math.floor(createjs.Ticker.getTime());
+	if(gameFrame == 100){
+		gameFrame = 0;
+	}
 
-    if(1800 < createjs.Ticker.getTime() && createjs.Ticker.getTime() < 2000){
-    	car.push(new Car(1));
-    }
+	gameFrame ++;
+	TEXT_GAME_TIME.text = "TIME : " + gameFrame;
+	gameStage.update();
+
+
+	if (gameFrame % 20 ==0){
+		enemyAppeare();
+	}
+
 
     for (i = 0; i < car.length; i++){
 	    if(checkDistance(car[i]) < 100){
@@ -38,9 +56,10 @@ function processGame(){
 //描画処理-----------------------------------------
 function drawGameScrean(){
 
-	drawBackGround();
-	drawHonoka();
-	drawGameElement();
+	gameStage.addChild(GAME_BACKGROUND);
+	gameStage.addChild(BUTTON_LEFT);
+	gameStage.addChild(BUTTON_RIGHT);
+	gameStage.addChild(TEXT_GAME_TIME);
 
 }
 //process用関数-----------------------------------------
@@ -51,25 +70,53 @@ function processHonoka(){
 function makeCar(){
 
 }
-//draw用関数-----------------------------------------
-function drawBackGround(){
-	gameStage.addChild(GAME_BACKGROUND);
 
-}
-function drawCar(){
 
-}
-function drawHonoka(){
-    gameStage.addChild(honoka.img);
+//敵出現---------------------------------------
+function enemyAppeare(){
 
+	var enemyNumber = Math.floor(Math.random() * 5);
+
+	switch(enemyNumber){
+		case 0:
+			car.push(new Car(0));
+			break;
+		case 1:
+			car.push(new Car(1));
+			break;
+		case 2:
+			car.push(new Car(2));
+			break;
+		case 3:
+			car.push(new Car(3));
+			break;
+		case 4:
+			//なにもおきない
+			break;
+	}
 }
-function drawGameElement(){
-	gameStage.addChild(BUTTON_LEFT);
-	gameStage.addChild(BUTTON_RIGHT);
-}
+
+
 
 
 //操作ボタンの状態操作系---------------------------
+
+//ボタン状態の確認
+function checkButton(){
+    if(honoka.lane == 0){
+        leftButtonDisable();
+    };
+	if(honoka.lane == 1){
+        leftButtonEnable();
+    }
+    if(honoka.lane == 2){
+        rightButtonEnable();
+    }
+    if(honoka.lane == 3){
+        rightButtonDisable();
+    }
+}
+
 
 //有効化
 function rightButtonEnable(){
@@ -92,21 +139,6 @@ function leftButtonDisable(){
 }
 
 
-//ボタン状態の確認
-function checkButton(){
-    if(honoka.lane == 1){
-        leftButtonDisable();
-    };
-	if(honoka.lane == 2){
-        leftButtonEnable();
-    }
-    if(honoka.lane == 3){
-        rightButtonEnable();
-    }
-    if(honoka.lane == 4){
-        rightButtonDisable();
-    }
-}
 
 //オブジェクト間の距離計算---------------------
 function checkDistance(target){
@@ -119,11 +151,7 @@ function checkDistance(target){
 //イベント処理-------------------------------------
 
 function clickButtonRight(){
-	rightButtonDisable();
-	leftButtonDisable();
 	honoka.moveRight();
-	rightButtonEnable();
-	leftButtonEnable();
 	checkButton();
 }
 

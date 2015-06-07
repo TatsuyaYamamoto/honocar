@@ -35,23 +35,23 @@ function Honoka(){
     this.img.scaleY = this.img.scaleX = gameScreenScale;
 
     //レーンナンバー
-    this.lane = 2;
+    this.lane = 1;
     this.img.x = this.checkLane();
 
 }
 Honoka.prototype.checkLane = function(){
 
     switch(this.lane){
-        case 1:
+        case 0:
             return (gameScrean.width/8);
             break;
-        case 2:
+        case 1:
             return (gameScrean.width/8)*3;
             break;
-        case 3:
+        case 2:
             return (gameScrean.width/8)*5;
             break;
-        case 4:
+        case 3:
             return (gameScrean.width/8)*7;
             break;
     }
@@ -60,18 +60,28 @@ Honoka.prototype.checkLane = function(){
 Honoka.prototype.moveRight = function(){
     this.lane ++;
     createjs.Sound.play("KAIHI");
-    this.img.gotoAndPlay("escapeR");
     createjs.Tween.get(this.img)
-        .to({x : this.checkLane()}, 100);
+        .call(this.img.gotoAndPlay, ["escapeR"])
+            .to({x : this.checkLane()}, 100);
 }
 Honoka.prototype.moveLeft = function(){
     this.lane --;
     playSound(SOUND_KAIHI);
-    this.img.gotoAndPlay("escapeL");
     createjs.Tween.get(this.img)
-        .to({x : this.checkLane()}, 100);
+        .call(this.img.gotoAndPlay, ["escapeL"])
+            .to({x : this.checkLane()}, 100);
 }
 
+Honoka.prototype.howToMove =function(){
+
+    createjs.Tween.get(this.img, {loop:true})
+        .call(this.img.gotoAndPlay, ["escapeR"])
+            .to({x : (gameScrean.width/8)*5}, 100)
+                .wait(500)
+                    .call(this.img.gotoAndPlay, ["escapeL"])
+                        .to({x : (gameScrean.width/8)*3}, 100)
+                            .wait(500);
+}
 
 function Car(number){
     this.init(number);
@@ -81,33 +91,41 @@ Car.prototype.init = function(number){
 
 
     switch(number){
-        case 1:
+        case 0:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
             this.img.x = gameScrean.width/8;
-            this.img.y = -CAR1_IMG_HEIGHT/2;
+            this.img.y = gameScrean.height + CAR1_IMG_HEIGHT/2;
             this.img.regX = CAR1_IMG_WIDTH/2;
             this.img.regY = CAR1_IMG_HEIGHT/2;
             this.img.scaleY = this.img.scaleX = gameScreenScale;
-
+            this.lane = 0;
+            break;
+        case 1:
+            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
+            this.img.x = (gameScrean.width/8)*3;
+            this.img.y = gameScrean.height + CAR1_IMG_HEIGHT/2;
+            this.img.regX = CAR1_IMG_WIDTH/2;
+            this.img.regY = CAR1_IMG_HEIGHT/2;
+            this.img.scaleY = this.img.scaleX = gameScreenScale;
             this.lane = 1;
             break;
         case 2:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
-            this.img.x = (gameScrean.width/8)*3;
-            this.img.y = 0;
-            this.lane = 1;
+            this.img.x = (gameScrean.width/8)*5;
+            this.img.y = -CAR1_IMG_HEIGHT/2;
+            this.img.regX = CAR1_IMG_WIDTH/2;
+            this.img.regY = CAR1_IMG_HEIGHT/2;
+            this.img.scaleY = this.img.scaleX = gameScreenScale;
+            this.lane = 2;
             break;
         case 3:
             this.img = new createjs.Bitmap(queue.getResult("CAR1"));
-            this.img.x = (gameScrean.width/8)*5;
-            this.img.y = 0;
-            this.lane = 3;
-            break;
-        case 4:
-            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
             this.img.x = (gameScrean.width/8)*7;
-            this.img.y = 0;
-            this.lane = 4;
+            this.img.y = -CAR1_IMG_HEIGHT/2;
+            this.img.regX = CAR1_IMG_WIDTH/2;
+            this.img.regY = CAR1_IMG_HEIGHT/2;
+            this.img.scaleY = this.img.scaleX = gameScreenScale;
+            this.lane = 3;
             break;
     }
 
@@ -115,8 +133,25 @@ Car.prototype.init = function(number){
     this.move();
 }
 Car.prototype.move = function(){
-    createjs.Tween.get(this.img)
-        .to({y : gameScrean.height}, 2000);
+
+    switch(this.lane){
+        case 0:
+            createjs.Tween.get(this.img)
+                .to({y : -CAR1_IMG_HEIGHT}, 2000);
+            break;
+        case 1:
+            createjs.Tween.get(this.img)
+                .to({y : -CAR1_IMG_HEIGHT}, 1700);
+            break;
+        case 2:
+        createjs.Tween.get(this.img)
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 1700);
+            break;
+        case 3:
+        createjs.Tween.get(this.img)
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 2000);
+            break;
+    }
 }
 
 

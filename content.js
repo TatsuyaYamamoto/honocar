@@ -41,6 +41,10 @@ function loadContent(){
         {
             id : "CAR1",
             src: "img/CAR1.png"
+        },
+        {
+            id : "CHUN",
+            src: "img/CHUN.png"
         }
     ];
     //音声------------------------------------------
@@ -128,6 +132,14 @@ function setImageContent(){
         position(BUTTON_TMP_3, gameScrean.width/2, (gameScrean.height/1.3));
         BUTTON_TMP_3.scaleY = BUTTON_TMP_3.scaleX = gameScreenScale;
 
+        BUTTON_TMP_4 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
+        position(BUTTON_TMP_4, gameScrean.width*0.2, (gameScrean.height*0.1));
+        BUTTON_TMP_4.scaleY = BUTTON_TMP_4.scaleX = gameScreenScale;
+
+        BUTTON_TMP_5 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
+        position(BUTTON_TMP_5, gameScrean.width*0.2, (gameScrean.height*0.1));
+        BUTTON_TMP_5.scaleY = BUTTON_TMP_5.scaleX = gameScreenScale;
+
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
         position(BUTTON_LEFT, (gameScrean.width)*0.2, (gameScrean.height/1.2));
         BUTTON_LEFT.scaleY = BUTTON_LEFT.scaleX = gameScreenScale;
@@ -154,6 +166,11 @@ function setTextContent(){
     TEXT_HOW_TO.y = gameScrean.height/4;
     TEXT_HOW_TO.textAlign = "center";
     TEXT_HOW_TO.text = "穂乃果ちゃんが避ける！\rなかなか始まらないススメ→トゥモロウをバックに\r車をひたすらかわせ！";
+
+    TEXT_GAME_TIME = new createjs.Text("","20px Impact", "");
+    TEXT_GAME_TIME.x = gameScrean.width*0.8;
+    TEXT_GAME_TIME.y = gameScrean.height*0.1;
+    TEXT_GAME_TIME.textAlign = "center";
 }
 
 

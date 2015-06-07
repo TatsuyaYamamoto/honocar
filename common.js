@@ -22,6 +22,7 @@ var loadStatusRatio = 0;
 
 var screanState;
 var gameTick
+var gameFrame
 
 var player;
 
@@ -58,12 +59,15 @@ var SOUND_KAIHI;
 var BUTTON_TMP_1;
 var BUTTON_TMP_2;
 var BUTTON_TMP_3;
-
+var BUTTON_TMP_4;
+var BUTTON_TMP_5;
 
 
 //テキスト
 
 var TEXT_HOW_TO;
+var TEXT_GAME_TIME;
+
 
 //座標管理用-----------------------
 function position(target, x, y){
