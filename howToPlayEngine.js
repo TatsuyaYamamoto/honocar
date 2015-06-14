@@ -22,7 +22,7 @@ function howToPlayInit(){
 
 	//イベント登録
     BUTTON_TMP_4.addEventListener( 'click', function() {
-        playSound(SOUND_BACK);
+        SOUND_BACK.play();
 		gameTick.removeEventListener("tick", processHowToPlay);
         topState();
     } );

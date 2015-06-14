@@ -10,7 +10,9 @@ var HONOKA_IMG_HEIGHT = 267;
 var CAR1_IMG_WIDTH = 174;
 var CAR1_IMG_HEIGHT = 103;
 
-var CAR_SPEED = 10;
+var CAR_SPEED_FAST = 1600;
+var CAR_SPEED_SLOW = 2000;
+
 
 //変数宣言----------------------------------------
 var gameStage;
@@ -21,17 +23,19 @@ var queue;
 var loadStatusRatio = 0;
 
 var screanState;
-var gameTick;
 var gameFrame;
 var gameTimeCount;
 var passCarCount;
+var gameScore;
 
 var player;
+
+var playerTouchedX;
 
 var honoka;
 var isHonokaEscape;
 
-var car =[];
+var car;
 
 var frameCount;
 
@@ -41,7 +45,7 @@ var ctAnchor;
 
 //初期化----------------------------------------
 //ゲームプレイヤーの操作座標(これいらんな)
-//player = new Position();
+//player = new setCoordinates();
 
 
 //画像系--------------
@@ -56,6 +60,7 @@ var GAME_BACKGROUND;
 var SOUND_OK;
 var SOUND_BACK;
 var SOUND_KAIHI;
+var SOUND_TWITTER;
 
 //ボタン
 var BUTTON_TMP_1;
@@ -64,16 +69,24 @@ var BUTTON_TMP_3;
 var BUTTON_TMP_4;
 var BUTTON_TMP_5;
 
-var BUTTON_TWITTER;
+var BUTTON_TWITTER_TOP;
+var BUTTON_TWITTER_GAMEOVER;
+
+
 
 //テキスト
 
 var TEXT_HOW_TO;
-var TEXT_GAME_TIME;
+var TEXT_GAME_COUNT;
 
+
+var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車からひたすら逃げよう！"
+var text_game_count_L = "よけったー : "
+var text_game_count_R = "台"
 
 //座標管理用-----------------------
-function position(target, x, y){
+
+function setCoordinates(target, x, y){
 	target.x = x;
 	target.y = y;
 	target.regX = target.image.width/2;
@@ -102,4 +115,5 @@ function initGameScreenScale(){
 	gameScrean.width = GAMESCREAN_WIDTH*gameScreenScale;
 
 }
+
 

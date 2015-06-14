@@ -72,6 +72,30 @@ function loadContent(){
         {
             id : "DOWN",
             src: "sound/DOWN.mp3"
+        },
+        {
+            id : "TWEET",
+            src: "sound/TWEET.mp3"
+        },
+        {
+            id : "PI1",
+            src: "sound/PI1.mp3"
+        },
+        {
+            id : "PI2",
+            src: "sound/PI2.mp3"
+        },
+        {
+            id : "SUSUME_LOOP",
+            src: "sound/SUSUME_LOOP.mp3"
+        },
+        {
+            id : "SUSUME_END",
+            src: "sound/SUSUME_END.mp3"
+        },
+        {
+            id : "ZENKAI",
+            src: "sound/ZENKAI.mp3"
         }
     ];
 
@@ -102,6 +126,7 @@ function loadContent(){
         setImageContent();
         setSoundContent();
         setTextContent();
+        SOUND_ZENKAI.play("none",0,0,-1,1,0);
         topState();
     }
 }
@@ -114,47 +139,61 @@ function setImageContent(){
 
         //タイトルロゴ
         TITLE_LOGO = new createjs.Bitmap(queue.getResult("TITLE_LOGO"));
-        position(TITLE_LOGO, gameScrean.width/2, (gameScrean.height/5));
+        setCoordinates(TITLE_LOGO, gameScrean.width/2, (gameScrean.height/5));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
 
         //GAMEOVERロゴ
         GAMEOVER = new createjs.Bitmap(queue.getResult("GAMEOVER"));
-        position(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
+        setCoordinates(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
         GAMEOVER.scaleY = GAMEOVER.scaleX = gameScreenScale;
 
 
         //ボタン
         BUTTON_TMP_1 = new createjs.Bitmap(queue.getResult("BUTTON_TMP"));
-        position(BUTTON_TMP_1, gameScrean.width/2, (gameScrean.height/2));
+        setCoordinates(BUTTON_TMP_1, gameScrean.width/2, (gameScrean.height/2));
         BUTTON_TMP_1.scaleY = BUTTON_TMP_1.scaleX = gameScreenScale;
 
         BUTTON_TMP_2 = new createjs.Bitmap(queue.getResult("BUTTON_TMP"));
-        position(BUTTON_TMP_2, gameScrean.width/2, (gameScrean.height/1.5));
+        setCoordinates(BUTTON_TMP_2, gameScrean.width/2, (gameScrean.height/1.5));
         BUTTON_TMP_2.scaleY = BUTTON_TMP_2.scaleX = gameScreenScale;
 
         BUTTON_TMP_3 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        position(BUTTON_TMP_3, gameScrean.width*0.3, (gameScrean.height*0.8));
+        setCoordinates(BUTTON_TMP_3, gameScrean.width*0.3, (gameScrean.height*0.8));
         BUTTON_TMP_3.scaleY = BUTTON_TMP_3.scaleX = gameScreenScale;
 
         BUTTON_TMP_4 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        position(BUTTON_TMP_4, gameScrean.width*0.2, (gameScrean.height*0.1));
+        setCoordinates(BUTTON_TMP_4, gameScrean.width*0.2, (gameScrean.height*0.1));
         BUTTON_TMP_4.scaleY = BUTTON_TMP_4.scaleX = gameScreenScale;
 
         BUTTON_TMP_5 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        position(BUTTON_TMP_5, gameScrean.width*0.7, (gameScrean.height*0.8));
+        setCoordinates(BUTTON_TMP_5, gameScrean.width*0.7, (gameScrean.height*0.8));
         BUTTON_TMP_5.scaleY = BUTTON_TMP_5.scaleX = gameScreenScale;
 
-        BUTTON_TWITTER = new createjs.Bitmap(queue.getResult("TWITTER"));
-        position(BUTTON_TWITTER, gameScrean.width*0.1, (gameScrean.height*0.1));
-        BUTTON_TWITTER.scaleY = BUTTON_TWITTER.scaleX = gameScreenScale;
+        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER"));
+        setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.1, gameScrean.height*0.1);
+        BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
+        BUTTON_TWITTER_TOP.addEventListener("click", function(){
+            createjs.Sound.play("TWEET");
+            window.open().location.href="https://twitter.com/t28_tatsuya"
+        });
+
+        BUTTON_TWITTER_GAMEOVER = new createjs.Bitmap(queue.getResult("TWITTER"));
+        setCoordinates(BUTTON_TWITTER_GAMEOVER, gameScrean.width*0.1, gameScrean.height*0.1);
+        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale;
+        BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
+            playSound(SOUND_TWEET);
+            window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCAR!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
+        });
+
+
 
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
-        position(BUTTON_LEFT, (gameScrean.width)*0.2, (gameScrean.height/1.2));
+        setCoordinates(BUTTON_LEFT, (gameScrean.width)*0.2, gameScrean.height*0.9);
         BUTTON_LEFT.scaleY = BUTTON_LEFT.scaleX = gameScreenScale;
         BUTTON_LEFT.alpha=0.5;
 
         BUTTON_RIGHT = new createjs.Bitmap(queue.getResult("BUTTON_RIGHT"));
-        position(BUTTON_RIGHT, (gameScrean.width)*0.8, (gameScrean.height/1.2));
+        setCoordinates(BUTTON_RIGHT, (gameScrean.width)*0.8, gameScrean.height*0.9);
         BUTTON_RIGHT.scaleY = BUTTON_RIGHT.scaleX = gameScreenScale;
         BUTTON_RIGHT.alpha=0.5;
 
@@ -166,22 +205,30 @@ function setSoundContent(){
         SOUND_KAIHI = createjs.Sound.createInstance("KAIHI");
         SOUND_CRASH = createjs.Sound.createInstance("CRASH");
         SOUND_DOWN = createjs.Sound.createInstance("DOWN");
+        SOUND_TWEET = createjs.Sound.createInstance("TWEET");
+        SOUND_PI1 = createjs.Sound.createInstance("PI1");
+        SOUND_PI2 = createjs.Sound.createInstance("PI2");
+        SOUND_SUSUME_LOOP = createjs.Sound.createInstance("SUSUME_LOOP");
+        SOUND_SUSUME_END = createjs.Sound.createInstance("SUSUME_END");
+        SOUND_ZENKAI = createjs.Sound.createInstance("ZENKAI");
 }
+
 
 function setTextContent(){
     TEXT_HOW_TO = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
     TEXT_HOW_TO.x = gameScrean.width*0.05;
-    TEXT_HOW_TO.y = gameScrean.height*0.2;
+    TEXT_HOW_TO.y = gameScrean.height*0.15;
     TEXT_HOW_TO.textAlign = "left";
-    TEXT_HOW_TO.text = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車からひたすら逃げよう！";
+    TEXT_HOW_TO.text = text_how_to;
 
-    TEXT_GAME_TIME = new createjs.Text("",gameScrean.width*0.06+"1000px Impact", "");
-    TEXT_GAME_TIME.x = gameScrean.width*0.75;
-    TEXT_GAME_TIME.y = gameScrean.height*0.05;
-    TEXT_GAME_TIME.textAlign = "center";
+    TEXT_GAME_COUNT = new createjs.Text("",gameScrean.width*0.06+"1000px Impact", "");
+    TEXT_GAME_COUNT.x = gameScrean.width*0.5;
+    TEXT_GAME_COUNT.y = gameScrean.height*0.05;
+    TEXT_GAME_COUNT.textAlign = "left";
+
+    TETX_GAMESTART_COUNT = new createjs.Text("", gameScrean.width*0.08+"100px Impact", "");
+    TETX_GAMESTART_COUNT.x = gameScrean.width*0.5;
+    TETX_GAMESTART_COUNT.y = gameScrean.height*0.7;
+    TETX_GAMESTART_COUNT.textAlign = "center";
 }
 
-
-function playSound(target){
-    target.play();
-}

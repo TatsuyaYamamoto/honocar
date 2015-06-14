@@ -34,7 +34,7 @@ function Honoka(){
 
     //画像初期化
     this.img = new createjs.Sprite(honokaSpriteSheet,"kihon");
-    this.img.y = gameScrean.height/2
+    this.img.y = gameScrean.height * 0.43;
     this.img.regX = HONOKA_IMG_WIDTH/2;
     this.img.regY = HONOKA_IMG_HEIGHT/2;
     this.img.scaleY = this.img.scaleX = gameScreenScale;
@@ -71,7 +71,7 @@ Honoka.prototype.moveRight = function(){
 }
 Honoka.prototype.moveLeft = function(){
     this.lane --;
-    playSound(SOUND_KAIHI);
+    SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeL"])
             .to({x : this.checkLane()}, 100);
@@ -139,6 +139,7 @@ Car.prototype.init = function(number){
     }
 
     gameStage.addChild(this.img);
+
     this.move();
 }
 Car.prototype.move = function(){
@@ -146,28 +147,28 @@ Car.prototype.move = function(){
     switch(this.lane){
         case 0:
             createjs.Tween.get(this.img)
-                .to({y : -CAR1_IMG_HEIGHT}, 2000)
+                .to({y : -CAR1_IMG_HEIGHT}, CAR_SPEED_SLOW)
                     .call(function(){
                         passCarCount ++;
                     });
             break;
         case 1:
             createjs.Tween.get(this.img)
-                .to({y : -CAR1_IMG_HEIGHT}, 1700)
+                .to({y : -CAR1_IMG_HEIGHT}, CAR_SPEED_FAST)
                     .call(function(){
                         passCarCount ++;
                     });
             break;
         case 2:
         createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 1700)
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_FAST)
                 .call(function(){
                     passCarCount ++;
                 });
             break;
         case 3:
         createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, 2000)
+            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_SLOW)
                 .call(function(){
                     passCarCount ++;
                 });

@@ -1,42 +1,79 @@
 //ゲーム初期化-----------------------------------------
 function gameInit(){
 
-	//ゲーム画面要素をステージに追加
-	drawGameScrean();
-
 	//ほのかちゃを作成
 	honoka = new Honoka();
-    gameStage.addChild(honoka.img);
 
     //フレーム数リセット
-	gameFrame = 0;
-	passCarCount = 0;
-	car = [];
+	gameStatusReset();
 
 	//ボタン有効化
     rightButtonEnable();
     leftButtonEnable();
-
 
 	//イベント登録
 	BUTTON_RIGHT.addEventListener("click", clickButtonRight);
 	BUTTON_LEFT.addEventListener("click", clickButtonLeft);
 
 	//ゲーム内タイマーTickイベント
+    createjs.Ticker.setFPS(FPS);
+	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+    createjs.Ticker.addEventListener("tick", gameReady);
 
-	gameTick = createjs.Ticker;
-    gameTick.setFPS(FPS);
-	gameTick.timingMode = createjs.Ticker.RAF_SYNCHED;
-    gameTick.addEventListener("tick", processGame);
-
+	//ゲーム画面要素をステージに追加
 }
+
+function gameStatusReset(){
+	gameFrame = 0;
+	passCarCount = 0;
+	car = [];
+}
+
+//ゲームスタートカウント-----------------------------------------
+function gameReady(){
+	gameFrame ++;
+
+	switch(gameFrame){
+		case 1:
+		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(honoka.img);
+			gameStage.update();
+			break;	
+		case 10:
+		    createjs.Sound.play("PI1");
+	        TETX_GAMESTART_COUNT.text = "-1-";
+		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(TETX_GAMESTART_COUNT);
+		    gameStage.addChild(honoka.img);
+			gameStage.update();
+			break;
+		case 30:
+		    createjs.Sound.play("PI1");
+	        TETX_GAMESTART_COUNT.text = "-2-";
+		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(TETX_GAMESTART_COUNT);
+		    gameStage.addChild(honoka.img);
+			gameStage.update();
+			break;
+		case 50:
+		    createjs.Sound.play("PI1");
+		    gameStage.removeAllChildren();
+	    	gameStatusReset();
+			drawGameScrean();
+		    createjs.Ticker.removeEventListener("tick", gameReady);
+			createjs.Ticker.addEventListener("tick", processGame);
+		    createjs.Sound.play("SUSUME_LOOP", {loop:-1});
+			break;
+	}
+}
+
 
 //ゲーム処理-----------------------------------------
 function processGame(){
 
 	gameFrame ++;
 
-	TEXT_GAME_TIME.text = "よけったー : " + passCarCount + "台";
+	TEXT_GAME_COUNT.text = text_game_count_L + passCarCount + text_game_count_R;
 	gameStage.update();
 
 
@@ -46,6 +83,10 @@ function processGame(){
 
 
     for (i = 0; i < car.length; i++){
+
+    	if(car[i].passed){
+            passCarCount ++;
+    	}
 
 	    if(checkDistance(car[i]) < 100){
 	    	crash();
@@ -59,7 +100,8 @@ function drawGameScrean(){
 	gameStage.addChild(GAME_BACKGROUND);
 	gameStage.addChild(BUTTON_LEFT);
 	gameStage.addChild(BUTTON_RIGHT);
-	gameStage.addChild(TEXT_GAME_TIME);
+	gameStage.addChild(TEXT_GAME_COUNT);
+    gameStage.addChild(honoka.img);
 
 }
 //process用関数-----------------------------------------
@@ -91,6 +133,9 @@ function enemyAppeare(){
 			car.push(new Car(3));
 			break;
 		case 4:
+			car.push(new Car(honoka.lane));
+			break;
+		case 5:
 			//なにもおきない
 			break;
 	}
@@ -161,11 +206,14 @@ function clickButtonLeft(){
 }
 //クラッシュ関数-------------------------------------
 function crash(){
+	gameScore = passCarCount;
+    createjs.Sound.stop();
     createjs.Sound.play("CRASH");
+    createjs.Sound.play("SUSUME_END");
     BUTTON_RIGHT.removeEventListener("click", clickButtonRight);
 	BUTTON_LEFT.removeEventListener("click", clickButtonLeft);
-	// gameTick.reset();
-    gameTick.removeEventListener("tick", processGame);
+	// createjs.Ticker.reset();
+    createjs.Ticker.removeEventListener("tick", processGame);
 	honoka.img.gotoAndPlay("escapeR");
 
 	//stateマシン内、ゲームオーバー状態に遷移

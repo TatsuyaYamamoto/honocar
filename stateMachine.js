@@ -23,15 +23,17 @@ function topState(){
     gameStage.addChild(TITLE_LOGO);
     gameStage.addChild(BUTTON_TMP_1);
     gameStage.addChild(BUTTON_TMP_2);
-
+    gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.update();
 
+
     BUTTON_TMP_1.addEventListener("click", function() {
-        playSound(SOUND_OK);
+        SOUND_ZENKAI.stop();
+        SOUND_OK.play();
         gameState();
     } );
     BUTTON_TMP_2.addEventListener("click", function() {
-        playSound(SOUND_OK);
+        SOUND_OK.play();
         howToPlayState();
     } );
 }
@@ -64,22 +66,24 @@ function gameOverState(){
 
 
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(GAMEOVER);
+    gameStage.addChild(honoka.img);
     gameStage.addChild(BUTTON_TMP_3);
     gameStage.addChild(BUTTON_TMP_5);
-    gameStage.addChild(BUTTON_TWITTER);
-    gameStage.addChild(TEXT_GAME_TIME);
-    gameStage.addChild(honoka.img);
+    gameStage.addChild(BUTTON_TWITTER_GAMEOVER);
+    gameStage.addChild(TEXT_GAME_COUNT);
+    gameStage.addChild(GAMEOVER);
 
     gameStage.update();
 
     BUTTON_TMP_3.addEventListener( 'click', function() {
-        playSound(SOUND_BACK);
+        SOUND_BACK.play();
         topState();
     });
     BUTTON_TMP_5.addEventListener( 'click', function() {
-        playSound(SOUND_BACK);
+        SOUND_BACK.play();
         gameState();
     });
+
+
 }
 
