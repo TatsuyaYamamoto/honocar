@@ -20,12 +20,6 @@ function howToPlayInit(){
 	gameFrame = 0;
 
 
-	//イベント登録
-    BUTTON_TMP_4.addEventListener( 'click', function() {
-        SOUND_BACK.play();
-		gameTick.removeEventListener("tick", processHowToPlay);
-        topState();
-    } );
 	//ゲーム内タイマーTickイベント
 
 	gameTick = createjs.Ticker;

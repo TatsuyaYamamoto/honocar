@@ -61,13 +61,18 @@ var SOUND_OK;
 var SOUND_BACK;
 var SOUND_KAIHI;
 var SOUND_TWITTER;
-
+var SOUND_CRASH;
+var SOUND_PI1;
+var SOUND_PI2;
+var SOUND_SUSUME_LOOP;
+var SOUND_SUSUME_END;
 //ボタン
 var BUTTON_TMP_1;
 var BUTTON_TMP_2;
 var BUTTON_TMP_3;
 var BUTTON_TMP_4;
 var BUTTON_TMP_5;
+var BUTTON_TMP_6;
 
 var BUTTON_TWITTER_TOP;
 var BUTTON_TWITTER_GAMEOVER;
@@ -80,7 +85,7 @@ var TEXT_HOW_TO;
 var TEXT_GAME_COUNT;
 
 
-var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車からひたすら逃げよう！"
+var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車から助けてあげよう！"
 var text_game_count_L = "よけったー : "
 var text_game_count_R = "台"
 
@@ -116,4 +121,54 @@ function initGameScreenScale(){
 
 }
 
+function addAllEventListener(){
+   //イベントリスナー登録--------------------------------
 
+    BUTTON_RIGHT.addEventListener("click", clickButtonRight);
+
+    BUTTON_LEFT.addEventListener("click", clickButtonLeft);
+
+    BUTTON_TMP_1.addEventListener("click", function() {
+        SOUND_ZENKAI.stop();
+        SOUND_OK.play();
+        gameState();
+    } );
+    BUTTON_TMP_2.addEventListener("click", function() {
+        SOUND_OK.play();
+        howToPlayState();
+    } );
+
+    BUTTON_TMP_3.addEventListener( 'click', function() {
+        SOUND_BACK.play();
+        topState();
+    });
+
+    BUTTON_TMP_4.addEventListener( 'click', function() {
+        SOUND_BACK.play();
+        gameTick.removeEventListener("tick", processHowToPlay);
+        topState();
+    } );
+
+    BUTTON_TMP_5.addEventListener( 'click', function() {
+        SOUND_BACK.play();
+        gameState();
+    });
+
+    BUTTON_TMP_6.addEventListener("click", function(){
+        if(createjs.Sound.muted){
+            soundTurnOn();
+        }else{
+            soundTurnOff();            
+        }
+    });
+
+    BUTTON_TWITTER_TOP.addEventListener("click", function(){
+        SOUND_TWEET.play();
+        window.open().location.href="https://twitter.com/t28_tatsuya"
+    });
+
+    BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
+        SOUND_TWEET.play();
+        window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCAR!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
+    });
+}

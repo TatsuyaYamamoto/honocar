@@ -11,9 +11,6 @@ function gameInit(){
     rightButtonEnable();
     leftButtonEnable();
 
-	//イベント登録
-	BUTTON_RIGHT.addEventListener("click", clickButtonRight);
-	BUTTON_LEFT.addEventListener("click", clickButtonLeft);
 
 	//ゲーム内タイマーTickイベント
     createjs.Ticker.setFPS(FPS);
@@ -40,7 +37,7 @@ function gameReady(){
 			gameStage.update();
 			break;	
 		case 10:
-		    createjs.Sound.play("PI1");
+		    SOUND_PI1.play();
 	        TETX_GAMESTART_COUNT.text = "-1-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
@@ -48,7 +45,7 @@ function gameReady(){
 			gameStage.update();
 			break;
 		case 30:
-		    createjs.Sound.play("PI1");
+		    SOUND_PI2.play();
 	        TETX_GAMESTART_COUNT.text = "-2-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
@@ -62,7 +59,7 @@ function gameReady(){
 			drawGameScrean();
 		    createjs.Ticker.removeEventListener("tick", gameReady);
 			createjs.Ticker.addEventListener("tick", processGame);
-		    createjs.Sound.play("SUSUME_LOOP", {loop:-1});
+		    SOUND_SUSUME_LOOP.play("late",0,0,-1,0.6,0);
 			break;
 	}
 }
@@ -207,11 +204,10 @@ function clickButtonLeft(){
 //クラッシュ関数-------------------------------------
 function crash(){
 	gameScore = passCarCount;
-    createjs.Sound.stop();
-    createjs.Sound.play("CRASH");
-    createjs.Sound.play("SUSUME_END");
-    BUTTON_RIGHT.removeEventListener("click", clickButtonRight);
-	BUTTON_LEFT.removeEventListener("click", clickButtonLeft);
+    SOUND_SUSUME_LOOP.stop();
+    SOUND_CRASH.play();
+	SOUND_SUSUME_END.play("late",0,0,0,0.6,0);
+
 	// createjs.Ticker.reset();
     createjs.Ticker.removeEventListener("tick", processGame);
 	honoka.img.gotoAndPlay("escapeR");

@@ -64,7 +64,7 @@ Honoka.prototype.checkLane = function(){
 
 Honoka.prototype.moveRight = function(){
     this.lane ++;
-    createjs.Sound.play("KAIHI");
+    SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : this.checkLane()}, 100);

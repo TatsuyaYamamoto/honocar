@@ -16,6 +16,7 @@ function loadState(){
 
 //TOP画面------------------------------------------
 function topState(){
+    SOUND_ZENKAI.play("late",0,0,-1,0.4,0);
     screanState = "topState";
     gameStage.removeAllChildren();
 
@@ -23,19 +24,10 @@ function topState(){
     gameStage.addChild(TITLE_LOGO);
     gameStage.addChild(BUTTON_TMP_1);
     gameStage.addChild(BUTTON_TMP_2);
+    gameStage.addChild(BUTTON_TMP_6);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.update();
 
-
-    BUTTON_TMP_1.addEventListener("click", function() {
-        SOUND_ZENKAI.stop();
-        SOUND_OK.play();
-        gameState();
-    } );
-    BUTTON_TMP_2.addEventListener("click", function() {
-        SOUND_OK.play();
-        howToPlayState();
-    } );
 }
 //操作説明画面------------------------------------------
 function howToPlayState(){  
@@ -74,15 +66,6 @@ function gameOverState(){
     gameStage.addChild(GAMEOVER);
 
     gameStage.update();
-
-    BUTTON_TMP_3.addEventListener( 'click', function() {
-        SOUND_BACK.play();
-        topState();
-    });
-    BUTTON_TMP_5.addEventListener( 'click', function() {
-        SOUND_BACK.play();
-        gameState();
-    });
 
 
 }
