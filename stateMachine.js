@@ -16,7 +16,7 @@ function loadState(){
 
 //TOP画面------------------------------------------
 function topState(){
-    SOUND_ZENKAI.play("late",0,0,-1,0.4,0);
+    SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     screanState = "topState";
     gameStage.removeAllChildren();
 
