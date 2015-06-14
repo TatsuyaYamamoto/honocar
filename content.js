@@ -7,12 +7,32 @@ function loadContent(){
     //画像------------------------------------------
     var imageManifest = [
         {
-            id : "BUTTON_TMP",
-            src: "img/BUTTON_TMP.png"
+            id : "BUTTON_START",
+            src: "img/BUTTON_START.png"
         },
         {
-            id : "BUTTON_TMP2",
-            src: "img/BUTTON_TMP2.png"
+            id : "BUTTON_RESTART",
+            src: "img/BUTTON_RESTART.png"
+        },
+        {
+            id : "BUTTON_HOW_TO",
+            src: "img/BUTTON_HOW_TO.png"
+        },
+        {
+            id : "BUTTON_CREDIT",
+            src: "img/BUTTON_CREDIT.png"
+        },
+        {
+            id : "BUTTON_BACK_TOP_FROM_HOW_TO",
+            src: "img/BUTTON_BACK_TOP_FROM_HOW_TO.png"
+        },
+        {
+            id : "BUTTON_BACK_TOP",
+            src: "img/BUTTON_BACK_TOP.png"
+        },
+        {
+            id : "BUTTON_TURN_SWITCH",
+            src: "img/BUTTON_TURN_SWITCH.png"
         },
         {
             id : "GAME_BACKGROUND",
@@ -96,6 +116,10 @@ function loadContent(){
         {
             id : "ZENKAI",
             src: "sound/ZENKAI.mp3"
+        },
+        {
+            id : "TURN_SWITCH",
+            src: "sound/TURN_SWITCH.mp3"
         }
     ];
 
@@ -139,7 +163,7 @@ function setImageContent(){
 
         //タイトルロゴ
         TITLE_LOGO = new createjs.Bitmap(queue.getResult("TITLE_LOGO"));
-        setCoordinates(TITLE_LOGO, gameScrean.width/2, (gameScrean.height/5));
+        setCoordinates(TITLE_LOGO, gameScrean.width*0.5, (gameScrean.height*0.4));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
 
         //GAMEOVERロゴ
@@ -149,29 +173,33 @@ function setImageContent(){
 
 
         //ボタン
-        BUTTON_TMP_1 = new createjs.Bitmap(queue.getResult("BUTTON_TMP"));
-        setCoordinates(BUTTON_TMP_1, gameScrean.width*0.5, gameScrean.height*0.7);
-        BUTTON_TMP_1.scaleY = BUTTON_TMP_1.scaleX = gameScreenScale;
+        BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
+        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.6);
+        BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale;
 
-        BUTTON_TMP_2 = new createjs.Bitmap(queue.getResult("BUTTON_TMP"));
-        setCoordinates(BUTTON_TMP_2, gameScrean.width*0.5, gameScrean.height*0.85);
-        BUTTON_TMP_2.scaleY = BUTTON_TMP_2.scaleX = gameScreenScale;
+        BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
+        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.75);
+        BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale;
 
-        BUTTON_TMP_3 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        setCoordinates(BUTTON_TMP_3, gameScrean.width*0.3, (gameScrean.height*0.8));
-        BUTTON_TMP_3.scaleY = BUTTON_TMP_3.scaleX = gameScreenScale;
+        BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
+        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.9);
+        BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale;
 
-        BUTTON_TMP_4 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        setCoordinates(BUTTON_TMP_4, gameScrean.width*0.2, (gameScrean.height*0.1));
-        BUTTON_TMP_4.scaleY = BUTTON_TMP_4.scaleX = gameScreenScale;
+        BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
+        setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.3, (gameScrean.height*0.8));
+        BUTTON_BACK_TOP.scaleY = BUTTON_BACK_TOP.scaleX = gameScreenScale;
 
-        BUTTON_TMP_5 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        setCoordinates(BUTTON_TMP_5, gameScrean.width*0.7, (gameScrean.height*0.8));
-        BUTTON_TMP_5.scaleY = BUTTON_TMP_5.scaleX = gameScreenScale;
+        BUTTON_BACK_TOP_FROM_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP_FROM_HOW_TO"));
+        setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.2, (gameScrean.height*0.1));
+        BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
-        BUTTON_TMP_6 = new createjs.Bitmap(queue.getResult("BUTTON_TMP2"));
-        setCoordinates(BUTTON_TMP_6, gameScrean.width*0.9, gameScrean.height*0.1);
-        BUTTON_TMP_6.scaleY = BUTTON_TMP_6.scaleX = gameScreenScale;
+        BUTTON_RESTART = new createjs.Bitmap(queue.getResult("BUTTON_RESTART"));
+        setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, (gameScrean.height*0.8));
+        BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
+
+        BUTTON_TURN_SWITCH = new createjs.Bitmap(queue.getResult("BUTTON_TURN_SWITCH"));
+        setCoordinates(BUTTON_TURN_SWITCH, gameScrean.width*0.9, gameScrean.height*0.1);
+        BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
 
         BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER"));
@@ -194,6 +222,17 @@ function setImageContent(){
         BUTTON_RIGHT.scaleY = BUTTON_RIGHT.scaleX = gameScreenScale;
         BUTTON_RIGHT.alpha=0.5;
 
+        BUTTON_LEFT_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
+        setCoordinates(BUTTON_LEFT_HOW_TO, (gameScrean.width)*0.2, gameScrean.height*0.9);
+        BUTTON_LEFT_HOW_TO.scaleY = BUTTON_LEFT_HOW_TO.scaleX = gameScreenScale;
+        BUTTON_LEFT_HOW_TO.alpha=0.5;
+
+        BUTTON_RIGHT_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_RIGHT"));
+        setCoordinates(BUTTON_RIGHT_HOW_TO, (gameScrean.width)*0.8, gameScrean.height*0.9);
+        BUTTON_RIGHT_HOW_TO.scaleY = BUTTON_RIGHT_HOW_TO.scaleX = gameScreenScale;
+        BUTTON_RIGHT_HOW_TO.alpha=0.5;
+
+
 }
 function setSoundContent(){
 
@@ -208,6 +247,7 @@ function setSoundContent(){
         SOUND_SUSUME_LOOP = createjs.Sound.createInstance("SUSUME_LOOP");
         SOUND_SUSUME_END = createjs.Sound.createInstance("SUSUME_END");
         SOUND_ZENKAI = createjs.Sound.createInstance("ZENKAI");
+        SOUND_TURN_SWITCH = createjs.Sound.createInstance("TURN_SWITCH");
 }
 
 
@@ -227,12 +267,51 @@ function setTextContent(){
     TETX_GAMESTART_COUNT.x = gameScrean.width*0.5;
     TETX_GAMESTART_COUNT.y = gameScrean.height*0.7;
     TETX_GAMESTART_COUNT.textAlign = "center";
+
+    TEXT_LINK_1 = new createjs.Text("","20px Impact", "");
+    TEXT_LINK_1.x = gameScrean.width*0.5;
+    TEXT_LINK_1.y = gameScrean.height*0.5;
+    TEXT_LINK_1.textAlign = "center";
+    TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/"
+
+    TEXT_LINK_2 = new createjs.Text("","20px Impact", "");
+    TEXT_LINK_2.x = gameScrean.width*0.5;
+    TEXT_LINK_2.y = gameScrean.height*0.7;
+    TEXT_LINK_2.textAlign = "center";
+    TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/"
+
+
 }
 
 function soundTurnOff(){
-createjs.Sound.muted = true;
+    isSoundMute = true;
+
+    SOUND_OK.muted = true;
+    SOUND_BACK.muted = true;
+    SOUND_KAIHI.muted = true;
+    SOUND_CRASH.muted = true;
+    SOUND_DOWN.muted = true;
+    SOUND_TWEET.muted = true;
+    SOUND_PI1.muted = true;
+    SOUND_PI2.muted = true;
+    SOUND_SUSUME_LOOP.muted = true;
+    SOUND_SUSUME_END.muted = true;
+    SOUND_ZENKAI.muted = true;
 }
 
 function soundTurnOn(){
-createjs.Sound.muted = false;
+    isSoundMute = false;
+
+    SOUND_OK.muted = false;
+    SOUND_BACK.muted = false;
+    SOUND_KAIHI.muted = false;
+    SOUND_CRASH.muted = false;
+    SOUND_DOWN.muted = false;
+    SOUND_TWEET.muted = false;
+    SOUND_PI1.muted = false;
+    SOUND_PI2.muted = false;
+    SOUND_SUSUME_LOOP.muted = false;
+    SOUND_SUSUME_END.muted = false;
+    SOUND_ZENKAI.muted = false;
+
 }

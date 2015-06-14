@@ -3,11 +3,11 @@ function howToPlayInit(){
 
 	//要素をステージに追加
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_TMP_4);
+    gameStage.addChild(BUTTON_BACK_TOP_FROM_HOW_TO);
     gameStage.addChild(TEXT_HOW_TO);
 
-	gameStage.addChild(BUTTON_LEFT);
-	gameStage.addChild(BUTTON_RIGHT);
+	gameStage.addChild(BUTTON_LEFT_HOW_TO);
+	gameStage.addChild(BUTTON_RIGHT_HOW_TO);
     rightButtonEnable();
     leftButtonEnable();
 

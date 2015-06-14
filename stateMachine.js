@@ -16,17 +16,18 @@ function loadState(){
 
 //TOP画面------------------------------------------
 function topState(){
-    SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     screanState = "topState";
     gameStage.removeAllChildren();
-
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(TITLE_LOGO);
-    gameStage.addChild(BUTTON_TMP_1);
-    gameStage.addChild(BUTTON_TMP_2);
-    gameStage.addChild(BUTTON_TMP_6);
+    gameStage.addChild(BUTTON_START);
+    gameStage.addChild(BUTTON_HOW_TO);
+    gameStage.addChild(BUTTON_CREDIT);
+    gameStage.addChild(BUTTON_TURN_SWITCH);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.update();
+
+    SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
 
 }
 //操作説明画面------------------------------------------
@@ -40,7 +41,15 @@ function howToPlayState(){
 //クレジット画面------------------------------------------
 function creditState(){
 	screanState = "creditState";
+    gameStage.removeAllChildren();
+    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(BUTTON_BACK_TOP);
+    gameStage.addChild(TEXT_LINK_1);
+    gameStage.addChild(TEXT_LINK_2);
 
+
+
+    gameStage.update();
 }
 //ゲーム画面------------------------------------------
 function gameState(){
@@ -59,8 +68,8 @@ function gameOverState(){
 
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(honoka.img);
-    gameStage.addChild(BUTTON_TMP_3);
-    gameStage.addChild(BUTTON_TMP_5);
+    gameStage.addChild(BUTTON_BACK_TOP);
+    gameStage.addChild(BUTTON_RESTART);
     gameStage.addChild(BUTTON_TWITTER_GAMEOVER);
     gameStage.addChild(TEXT_GAME_COUNT);
     gameStage.addChild(GAMEOVER);

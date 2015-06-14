@@ -45,7 +45,7 @@ function gameReady(){
 			gameStage.update();
 			break;
 		case 30:
-		    SOUND_PI2.play();
+		    SOUND_PI1.play();
 	        TETX_GAMESTART_COUNT.text = "-2-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
@@ -53,7 +53,7 @@ function gameReady(){
 			gameStage.update();
 			break;
 		case 50:
-		    createjs.Sound.play("PI1");
+		    SOUND_PI2.play();
 		    gameStage.removeAllChildren();
 	    	gameStatusReset();
 			drawGameScrean();
@@ -85,7 +85,7 @@ function processGame(){
             passCarCount ++;
     	}
 
-	    if(checkDistance(car[i]) < 100){
+	    if(checkDistance(car[i]) < 0 && honoka.lane == car[i].lane){
 	    	crash();
 	    }
     }
@@ -182,12 +182,11 @@ function leftButtonDisable(){
 
 
 
-//オブジェクト間の距離計算---------------------
+//オブジェクト間の距離計算(y軸方向のみ)---------------------
 function checkDistance(target){
-	var x = honoka.img.x - target.img.x;
 	var y = honoka.img.y - target.img.y;
 
-	var length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*0.4 - HONOKA_IMG_HEIGHT*gameScreenScale*0.4
 	return length;
 }
 //イベント処理-------------------------------------

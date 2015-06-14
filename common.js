@@ -28,12 +28,11 @@ var gameTimeCount;
 var passCarCount;
 var gameScore;
 
+var isSoundMute;
+
 var player;
 
-var playerTouchedX;
-
 var honoka;
-var isHonokaEscape;
 
 var car;
 
@@ -67,12 +66,18 @@ var SOUND_PI2;
 var SOUND_SUSUME_LOOP;
 var SOUND_SUSUME_END;
 //ボタン
-var BUTTON_TMP_1;
-var BUTTON_TMP_2;
-var BUTTON_TMP_3;
-var BUTTON_TMP_4;
-var BUTTON_TMP_5;
-var BUTTON_TMP_6;
+var BUTTON_START;
+var BUTTON_HOW_TO;
+var BUTTON_CREDIT;
+var BUTTON_BACK_TOP;
+var BUTTON_BACK_TOP_FROM_HOW_TO;
+var BUTTON_RESTART;
+var BUTTON_TURN_SWITCH;
+
+var BUTTON_LEFT;
+var BUTTON_RIGHT;
+var BUTTON_LEFT_HOW_TO;
+var BUTTON_RIGHT_HOW_TO;
 
 var BUTTON_TWITTER_TOP;
 var BUTTON_TWITTER_GAMEOVER;
@@ -84,6 +89,8 @@ var BUTTON_TWITTER_GAMEOVER;
 var TEXT_HOW_TO;
 var TEXT_GAME_COUNT;
 
+var TEXT_LINK_1;
+var TEXT_LINK_2;
 
 var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車から助けてあげよう！"
 var text_game_count_L = "よけったー : "
@@ -128,34 +135,40 @@ function addAllEventListener(){
 
     BUTTON_LEFT.addEventListener("click", clickButtonLeft);
 
-    BUTTON_TMP_1.addEventListener("click", function() {
+    BUTTON_START.addEventListener("click", function() {
         SOUND_ZENKAI.stop();
         SOUND_OK.play();
         gameState();
     } );
-    BUTTON_TMP_2.addEventListener("click", function() {
+    BUTTON_HOW_TO.addEventListener("click", function() {
         SOUND_OK.play();
         howToPlayState();
     } );
 
-    BUTTON_TMP_3.addEventListener( 'click', function() {
+	BUTTON_CREDIT.addEventListener("click",function(){
+        SOUND_OK.play();
+        creditState();		
+	})
+
+    BUTTON_BACK_TOP.addEventListener( 'click', function() {
         SOUND_BACK.play();
         topState();
     });
 
-    BUTTON_TMP_4.addEventListener( 'click', function() {
+    BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'click', function() {
         SOUND_BACK.play();
         gameTick.removeEventListener("tick", processHowToPlay);
         topState();
     } );
 
-    BUTTON_TMP_5.addEventListener( 'click', function() {
+    BUTTON_RESTART.addEventListener( 'click', function() {
         SOUND_BACK.play();
         gameState();
     });
 
-    BUTTON_TMP_6.addEventListener("click", function(){
-        if(createjs.Sound.muted){
+    BUTTON_TURN_SWITCH.addEventListener("click", function(){
+		SOUND_TURN_SWITCH.play();
+        if(isSoundMute){
             soundTurnOn();
         }else{
             soundTurnOff();            
@@ -171,4 +184,11 @@ function addAllEventListener(){
         SOUND_TWEET.play();
         window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCAR!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
     });
+    TEXT_LINK_1.addEventListener("click", function(){
+        window.open().location.href="http://soundeffect-lab.info/";
+    });
+    TEXT_LINK_2.addEventListener("click", function(){
+        window.open().location.href="http://on-jin.com/";
+    });
+
 }
