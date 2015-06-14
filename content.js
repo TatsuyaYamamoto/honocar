@@ -67,8 +67,12 @@ function loadContent(){
             src: "img/CHUN.png"
         },
         {
-            id : "TWITTER",
-            src: "img/TWITTER.png"
+            id : "TWITTER_TOP",
+            src: "img/TWITTER_TOP.png"
+        },
+        {
+            id : "TWITTER_GAMEOVER",
+            src: "img/TWITTER_GAMEOVER.png"
         }
     ];
     //音声------------------------------------------
@@ -202,12 +206,12 @@ function setImageContent(){
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
 
-        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER"));
+        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
         setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.1, gameScrean.height*0.1);
         BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
 
 
-        BUTTON_TWITTER_GAMEOVER = new createjs.Bitmap(queue.getResult("TWITTER"));
+        BUTTON_TWITTER_GAMEOVER = new createjs.Bitmap(queue.getResult("TWITTER_GAMEOVER"));
         setCoordinates(BUTTON_TWITTER_GAMEOVER, gameScrean.width*0.1, gameScrean.height*0.1);
         BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale;
 
@@ -272,13 +276,13 @@ function setTextContent(){
     TEXT_LINK_1.x = gameScrean.width*0.5;
     TEXT_LINK_1.y = gameScrean.height*0.5;
     TEXT_LINK_1.textAlign = "center";
-    TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/"
+    TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/";
 
     TEXT_LINK_2 = new createjs.Text("","20px Impact", "");
     TEXT_LINK_2.x = gameScrean.width*0.5;
     TEXT_LINK_2.y = gameScrean.height*0.7;
     TEXT_LINK_2.textAlign = "center";
-    TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/"
+    TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/";
 
 
 }
