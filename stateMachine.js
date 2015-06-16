@@ -27,7 +27,11 @@ function topState(){
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.update();
 
-    SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+    if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
+        SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+    }
+
+
 
 }
 //操作説明画面------------------------------------------
@@ -43,7 +47,10 @@ function creditState(){
 	screanState = "creditState";
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_BACK_TOP);
+    gameStage.addChild(BUTTON_BACK_TOP_FROM_CREDIT);
+    gameStage.addChild(TEXT_LINK_ME);
+    gameStage.addChild(TEXT_LINK_SAN);
+    gameStage.addChild(TEXT_LINK_LOVELIVE);
     gameStage.addChild(TEXT_LINK_1);
     gameStage.addChild(TEXT_LINK_2);
 

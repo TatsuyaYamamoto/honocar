@@ -193,6 +193,10 @@ function setImageContent(){
         setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.3, (gameScrean.height*0.8));
         BUTTON_BACK_TOP.scaleY = BUTTON_BACK_TOP.scaleX = gameScreenScale;
 
+        BUTTON_BACK_TOP_FROM_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
+        setCoordinates(BUTTON_BACK_TOP_FROM_CREDIT, gameScrean.width*0.3, (gameScrean.height*0.8));
+        BUTTON_BACK_TOP_FROM_CREDIT.scaleY = BUTTON_BACK_TOP_FROM_CREDIT.scaleX = gameScreenScale;
+
         BUTTON_BACK_TOP_FROM_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP_FROM_HOW_TO"));
         setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.2, (gameScrean.height*0.1));
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
@@ -272,18 +276,38 @@ function setTextContent(){
     TETX_GAMESTART_COUNT.y = gameScrean.height*0.7;
     TETX_GAMESTART_COUNT.textAlign = "center";
 
-    TEXT_LINK_1 = new createjs.Text("","20px Impact", "");
+    TEXT_LINK_ME = new createjs.Text("", gameScrean.width*0.05+"20px Impact", "");
+    TEXT_LINK_ME.x = gameScrean.width*0.5;
+    TEXT_LINK_ME.y = gameScrean.height*0.2;
+    TEXT_LINK_ME.textAlign = "center";
+    TEXT_LINK_ME.text = "いろいろ\rTatsuya Yamamoto\rhttp://sokontokoro-factory/";
+
+    TEXT_LINK_SAN = new createjs.Text("", gameScrean.width*0.05+"20px Impact", "");
+    TEXT_LINK_SAN.x = gameScrean.width*0.5;
+    TEXT_LINK_SAN.y = gameScrean.height*0.4;
+    TEXT_LINK_SAN.textAlign = "center";
+    TEXT_LINK_SAN.text = "イラスト\rさんざし";
+
+
+    TEXT_LINK_1 = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
     TEXT_LINK_1.x = gameScrean.width*0.5;
-    TEXT_LINK_1.y = gameScrean.height*0.5;
+    TEXT_LINK_1.y = gameScrean.height*0.6;
     TEXT_LINK_1.textAlign = "center";
     TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/";
 
-    TEXT_LINK_2 = new createjs.Text("","20px Impact", "");
+    TEXT_LINK_2 = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
     TEXT_LINK_2.x = gameScrean.width*0.5;
     TEXT_LINK_2.y = gameScrean.height*0.7;
     TEXT_LINK_2.textAlign = "center";
     TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/";
 
+
+
+    TEXT_LINK_LOVELIVE = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
+    TEXT_LINK_LOVELIVE.x = gameScrean.width*0.5;
+    TEXT_LINK_LOVELIVE.y = gameScrean.height*0.9;
+    TEXT_LINK_LOVELIVE.textAlign = "center";
+    TEXT_LINK_LOVELIVE.text = "プロジェクトラブライブ！\rhttp://www.lovelive-anime.jp";
 
 }
 

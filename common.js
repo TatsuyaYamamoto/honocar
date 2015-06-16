@@ -70,6 +70,7 @@ var BUTTON_START;
 var BUTTON_HOW_TO;
 var BUTTON_CREDIT;
 var BUTTON_BACK_TOP;
+var BUTTON_BACK_TOP_FROM_CREDIT;
 var BUTTON_BACK_TOP_FROM_HOW_TO;
 var BUTTON_RESTART;
 var BUTTON_TURN_SWITCH;
@@ -89,11 +90,14 @@ var BUTTON_TWITTER_GAMEOVER;
 var TEXT_HOW_TO;
 var TEXT_GAME_COUNT;
 
+var TEXT_LINK_LOVELIVE;
+var TEXT_LINK_ME;
+var TEXT_LINK_SAN;
 var TEXT_LINK_1;
 var TEXT_LINK_2;
 
 var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車から助けてあげよう！"
-var text_game_count_L = "よけったー : "
+var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 
 //座標管理用-----------------------
@@ -159,7 +163,13 @@ function addAllEventListener(){
         SOUND_BACK.play();
         gameTick.removeEventListener("tick", processHowToPlay);
         topState();
+
     } );
+
+	BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'click', function() {
+        SOUND_BACK.play();
+        topState();
+    });
 
     BUTTON_RESTART.addEventListener( 'click', function() {
         SOUND_BACK.play();
