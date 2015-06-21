@@ -25,7 +25,7 @@ function howToPlayInit(){
 	gameTick = createjs.Ticker;
     gameTick.setFPS(FPS);
 	gameTick.timingMode = createjs.Ticker.RAF_SYNCHED;
-    gameTick.addEventListener("tick", processHowToPlay);
+    tickListener = gameTick.addEventListener("tick", processHowToPlay);
 
 }
 

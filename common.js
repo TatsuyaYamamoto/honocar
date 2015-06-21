@@ -5,10 +5,10 @@ var GAMESCREAN_HEIGHT = 896;
 
 
 var HONOKA_IMG_WIDTH = 186;
-var HONOKA_IMG_HEIGHT = 267;
+var HONOKA_IMG_HEIGHT = 266;
 
-var CAR1_IMG_WIDTH = 174;
-var CAR1_IMG_HEIGHT = 103;
+var CAR1_IMG_WIDTH = 135;
+var CAR1_IMG_HEIGHT = 169;
 
 var CAR_SPEED_FAST = 1600;
 var CAR_SPEED_SLOW = 2000;
@@ -21,12 +21,15 @@ var gameScreenScale;
 
 var queue;
 var loadStatusRatio = 0;
+var contentsCount;
+
 
 var screanState;
 var gameFrame;
 var gameTimeCount;
 var passCarCount;
 var gameScore;
+var tickListener;
 
 var isSoundMute;
 
@@ -155,13 +158,14 @@ function addAllEventListener(){
 	})
 
     BUTTON_BACK_TOP.addEventListener( 'click', function() {
+        createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play();
         topState();
     });
 
     BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'click', function() {
         SOUND_BACK.play();
-        gameTick.removeEventListener("tick", processHowToPlay);
+        gameTick.removeEventListener("tick", tickListener);
         topState();
 
     } );
@@ -172,6 +176,7 @@ function addAllEventListener(){
     });
 
     BUTTON_RESTART.addEventListener( 'click', function() {
+        createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play();
         gameState();
     });
@@ -179,8 +184,13 @@ function addAllEventListener(){
     BUTTON_TURN_SWITCH.addEventListener("click", function(){
 		SOUND_TURN_SWITCH.play();
         if(isSoundMute){
+            // this.image = "aaa";
+            BUTTON_TURN_SWITCH.gotoAndPlay("on");
+            gameStage.update();
             soundTurnOn();
         }else{
+            BUTTON_TURN_SWITCH.gotoAndPlay("off");
+            gameStage.update();
             soundTurnOff();            
         }
     });
@@ -192,7 +202,7 @@ function addAllEventListener(){
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
         SOUND_TWEET.play();
-        window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCAR!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
+        window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
     });
     TEXT_LINK_1.addEventListener("click", function(){
         window.open().location.href="http://soundeffect-lab.info/";

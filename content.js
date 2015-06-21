@@ -5,6 +5,8 @@ function loadContent(){
     queue.setMaxConnections(6);
 
     //画像------------------------------------------
+
+
     var imageManifest = [
         {
             id : "BUTTON_START",
@@ -31,10 +33,6 @@ function loadContent(){
             src: "img/BUTTON_BACK_TOP.png"
         },
         {
-            id : "BUTTON_TURN_SWITCH",
-            src: "img/BUTTON_TURN_SWITCH.png"
-        },
-        {
             id : "GAME_BACKGROUND",
             src: "img/GAME_BACKGROUND.png"
         },
@@ -55,12 +53,20 @@ function loadContent(){
             src: "img/BUTTON_RIGHT.png"
         },
         {
+            id : "BUTTON_RADIO",
+            src: "img/BUTTON_RADIO.png"
+        },
+        {
             id : "HONOKA_SS",
             src: "img/HONOKA_SS.png"
         },
         {
-            id : "CAR1",
-            src: "img/CAR1.png"
+            id : "CAR1_FRONT",
+            src: "img/CAR1_FRONT.png"
+        },
+        {
+            id : "CAR1_BACK",
+            src: "img/CAR1_BACK.png"
         },
         {
             id : "CHUN",
@@ -127,6 +133,19 @@ function loadContent(){
         }
     ];
 
+
+    //ロードするコンテンツ数を数える----------
+    contentsCount = 0;
+
+    for(var j in imageManifest){
+        contentsCount　++;
+    }
+    for(var j in soundManifest){
+        contentsCount　++;
+    }
+
+
+    //画像、音声マニフェストファイルを読み込む----------     
     queue.loadManifest(imageManifest);
     queue.loadManifest(soundManifest);
 
@@ -147,10 +166,12 @@ function loadContent(){
         // 読み込んだファイル
         var result = event.result;
         loadStatusRatio ++;
-        TEXT_LOADING_STATUS.text = "loading..."+ loadStatusRatio + "files";
+        TEXT_LOADING_STATUS.text = "loading..."+ (loadStatusRatio/contentsCount)*100 + "%";
         gameStage.update();
     }
     function handleComplete() {
+        TEXT_LOADING_STATUS.text = "finish loading!!";
+        gameStage.update();
         setImageContent();
         setSoundContent();
         setTextContent();
@@ -202,13 +223,8 @@ function setImageContent(){
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
         BUTTON_RESTART = new createjs.Bitmap(queue.getResult("BUTTON_RESTART"));
-        setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, (gameScrean.height*0.8));
+        setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, gameScrean.height*0.8);
         BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
-
-        BUTTON_TURN_SWITCH = new createjs.Bitmap(queue.getResult("BUTTON_TURN_SWITCH"));
-        setCoordinates(BUTTON_TURN_SWITCH, gameScrean.width*0.9, gameScrean.height*0.1);
-        BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
-
 
         BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
         setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.1, gameScrean.height*0.1);
@@ -241,6 +257,28 @@ function setImageContent(){
         BUTTON_RIGHT_HOW_TO.alpha=0.5;
 
 
+        var radioSprite = new createjs.SpriteSheet({
+            images:[queue.getResult("BUTTON_RADIO")],
+            frames:{
+                width : 177,
+                height : 139
+            },
+            animations: {
+                on:{
+                    frames: 0
+                },
+                off: {
+                    frames: 1
+                }
+            }
+        });
+
+        BUTTON_TURN_SWITCH = new createjs.Sprite(radioSprite, "on");
+        BUTTON_TURN_SWITCH.x = gameScrean.width*0.8;
+        BUTTON_TURN_SWITCH.y = gameScrean.height*0.1;
+        BUTTON_TURN_SWITCH.regX = 177/2;
+        BUTTON_TURN_SWITCH.regY = 139/2;
+        BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 }
 function setSoundContent(){
 
@@ -258,55 +296,53 @@ function setSoundContent(){
         SOUND_TURN_SWITCH = createjs.Sound.createInstance("TURN_SWITCH");
 }
 
+function setTextProperties(target, x, y, size, family, align, height){
+    target.x = x;
+    target.y = y;
+    target.font = size + " " + family;
+    target.textAlign = align;
+    target.lineHeight = height;
+}
+
 
 function setTextContent(){
-    TEXT_HOW_TO = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
-    TEXT_HOW_TO.x = gameScrean.width*0.05;
-    TEXT_HOW_TO.y = gameScrean.height*0.6;
-    TEXT_HOW_TO.textAlign = "left";
+
+    TEXT_HOW_TO = new createjs.Text();
+    setTextProperties(TEXT_HOW_TO, gameScrean.width*0.05, gameScrean.height*0.6, gameScrean.width*0.04, "Courier", "left", gameScrean.width*0.04);
     TEXT_HOW_TO.text = text_how_to;
 
-    TEXT_GAME_COUNT = new createjs.Text("",gameScrean.width*0.06+"1000px Impact", "");
-    TEXT_GAME_COUNT.x = gameScrean.width*0.5;
-    TEXT_GAME_COUNT.y = gameScrean.height*0.05;
-    TEXT_GAME_COUNT.textAlign = "left";
 
-    TETX_GAMESTART_COUNT = new createjs.Text("", gameScrean.width*0.08+"100px Impact", "");
-    TETX_GAMESTART_COUNT.x = gameScrean.width*0.5;
-    TETX_GAMESTART_COUNT.y = gameScrean.height*0.7;
-    TETX_GAMESTART_COUNT.textAlign = "center";
-
-    TEXT_LINK_ME = new createjs.Text("", gameScrean.width*0.05+"20px Impact", "");
-    TEXT_LINK_ME.x = gameScrean.width*0.5;
-    TEXT_LINK_ME.y = gameScrean.height*0.2;
-    TEXT_LINK_ME.textAlign = "center";
-    TEXT_LINK_ME.text = "いろいろ\rTatsuya Yamamoto\rhttp://sokontokoro-factory/";
-
-    TEXT_LINK_SAN = new createjs.Text("", gameScrean.width*0.05+"20px Impact", "");
-    TEXT_LINK_SAN.x = gameScrean.width*0.5;
-    TEXT_LINK_SAN.y = gameScrean.height*0.4;
-    TEXT_LINK_SAN.textAlign = "center";
-    TEXT_LINK_SAN.text = "イラスト\rさんざし";
+    TEXT_GAME_COUNT = new createjs.Text();
+    setTextProperties(TEXT_GAME_COUNT, gameScrean.width*0.5, gameScrean.height*0.05, gameScrean.width*0.06, "Impact", "left", gameScrean.width*0.04);
 
 
-    TEXT_LINK_1 = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
-    TEXT_LINK_1.x = gameScrean.width*0.5;
-    TEXT_LINK_1.y = gameScrean.height*0.6;
-    TEXT_LINK_1.textAlign = "center";
+    TETX_GAMESTART_COUNT = new createjs.Text();
+    setTextProperties(TETX_GAMESTART_COUNT, gameScrean.width*0.5, gameScrean.height*0.7, gameScrean.width*0.08, "Impact", "center", gameScrean.width*0.04);
+
+
+    TEXT_LINK_ME = new createjs.Text();
+    setTextProperties(TEXT_LINK_ME, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
+    TEXT_LINK_ME.text = "いろいろ：Tatsuya Yamamoto\rhttp://sokontokoro-factory.net";
+
+
+
+    TEXT_LINK_SAN = new createjs.Text();
+    setTextProperties(TEXT_LINK_SAN, gameScrean.width*0.5, gameScrean.height*0.3, gameScrean.width*0.05, "Verdana", "center", gameScrean.width*0.07);
+    TEXT_LINK_SAN.text = "イラスト：さんざし\rhttps://twitter.com/xxsanzashixx";
+
+
+    TEXT_LINK_1 = new createjs.Text();
+    setTextProperties(TEXT_LINK_1, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.05);
     TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/";
 
-    TEXT_LINK_2 = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
-    TEXT_LINK_2.x = gameScrean.width*0.5;
-    TEXT_LINK_2.y = gameScrean.height*0.7;
-    TEXT_LINK_2.textAlign = "center";
+    TEXT_LINK_2 = new createjs.Text();
+    setTextProperties(TEXT_LINK_2, gameScrean.width*0.5, gameScrean.height*0.6, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.05);
     TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/";
 
 
 
-    TEXT_LINK_LOVELIVE = new createjs.Text("", gameScrean.width*0.04+"20px Impact", "");
-    TEXT_LINK_LOVELIVE.x = gameScrean.width*0.5;
-    TEXT_LINK_LOVELIVE.y = gameScrean.height*0.9;
-    TEXT_LINK_LOVELIVE.textAlign = "center";
+    TEXT_LINK_LOVELIVE = new createjs.Text();
+    setTextProperties(TEXT_LINK_LOVELIVE, gameScrean.width*0.5, gameScrean.height*0.7, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.05);
     TEXT_LINK_LOVELIVE.text = "プロジェクトラブライブ！\rhttp://www.lovelive-anime.jp";
 
 }

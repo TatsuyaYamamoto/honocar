@@ -3,7 +3,7 @@ function loadState(){
     screanState = "loadState";
 
 
-    TEXT_LOADING_STATUS = new createjs.Text("","20px Impact", "");
+    TEXT_LOADING_STATUS = new createjs.Text("", gameScrean.width*0.1+"20px Impact", "");
     TEXT_LOADING_STATUS.x = gameScrean.width/2;
     TEXT_LOADING_STATUS.y = gameScrean.height/2;
     TEXT_LOADING_STATUS.textAlign = "center";
@@ -23,8 +23,8 @@ function topState(){
     gameStage.addChild(BUTTON_START);
     gameStage.addChild(BUTTON_HOW_TO);
     gameStage.addChild(BUTTON_CREDIT);
-    gameStage.addChild(BUTTON_TURN_SWITCH);
     gameStage.addChild(BUTTON_TWITTER_TOP);
+    gameStage.addChild(BUTTON_TURN_SWITCH);
     gameStage.update();
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
@@ -70,8 +70,10 @@ function gameState(){
 function gameOverState(){
 
 	screanState = "gameOverState";
-    gameStage.removeAllChildren();
 
+    honoka.img.gotoAndPlay("down");
+
+    gameStage.removeAllChildren();
 
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(honoka.img);
@@ -81,7 +83,10 @@ function gameOverState(){
     gameStage.addChild(TEXT_GAME_COUNT);
     gameStage.addChild(GAMEOVER);
 
-    gameStage.update();
+
+    tickListener = createjs.Ticker.addEventListener("tick", function(){
+        gameStage.update();
+    });
 
 
 }

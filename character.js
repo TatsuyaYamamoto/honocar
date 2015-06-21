@@ -17,16 +17,16 @@ function Honoka(){
             escapeR: {
                 frames:[2,3,4],
                 next: "kihon",
-                speed:0.5
+                speed:0.8
             },
             escapeL: {
                 frames:[4,3,2],
                 next: "kihon",
-                speed:0.5
+                speed:0.8
             },
             down: {
-                frames:[2],
-                next: "down",
+                frames:[5,6],
+                next: true,
                 speed:0.5
             }
         }
@@ -34,7 +34,7 @@ function Honoka(){
 
     //画像初期化
     this.img = new createjs.Sprite(honokaSpriteSheet,"kihon");
-    this.img.y = gameScrean.height * 0.43;
+    this.img.y = gameScrean.height * 0.45;
     this.img.regX = HONOKA_IMG_WIDTH/2;
     this.img.regY = HONOKA_IMG_HEIGHT/2;
     this.img.scaleY = this.img.scaleX = gameScreenScale;
@@ -97,7 +97,7 @@ Car.prototype.init = function(number){
 
     switch(number){
         case 0:
-            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
+            this.img = new createjs.Bitmap(queue.getResult("CAR1_BACK"));
             this.img.x = gameScrean.width/8;
             this.img.y = gameScrean.height + CAR1_IMG_HEIGHT/2;
             this.img.regX = CAR1_IMG_WIDTH/2;
@@ -107,7 +107,7 @@ Car.prototype.init = function(number){
             this.passed = false;
             break;
         case 1:
-            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
+            this.img = new createjs.Bitmap(queue.getResult("CAR1_BACK"));
             this.img.x = (gameScrean.width/8)*3;
             this.img.y = gameScrean.height + CAR1_IMG_HEIGHT/2;
             this.img.regX = CAR1_IMG_WIDTH/2;
@@ -117,7 +117,7 @@ Car.prototype.init = function(number){
             this.passed = false;
             break;
         case 2:
-            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
+            this.img = new createjs.Bitmap(queue.getResult("CAR1_FRONT"));
             this.img.x = (gameScrean.width/8)*5;
             this.img.y = -CAR1_IMG_HEIGHT/2;
             this.img.regX = CAR1_IMG_WIDTH/2;
@@ -127,7 +127,7 @@ Car.prototype.init = function(number){
             this.passed = false;
             break;
         case 3:
-            this.img = new createjs.Bitmap(queue.getResult("CAR1"));
+            this.img = new createjs.Bitmap(queue.getResult("CAR1_FRONT"));
             this.img.x = (gameScrean.width/8)*7;
             this.img.y = -CAR1_IMG_HEIGHT/2;
             this.img.regX = CAR1_IMG_WIDTH/2;

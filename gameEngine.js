@@ -15,7 +15,7 @@ function gameInit(){
 	//ゲーム内タイマーTickイベント
     createjs.Ticker.setFPS(FPS);
 	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
-    createjs.Ticker.addEventListener("tick", gameReady);
+    tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 
 	//ゲーム画面要素をステージに追加
 }
@@ -57,8 +57,8 @@ function gameReady(){
 		    gameStage.removeAllChildren();
 	    	gameStatusReset();
 			drawGameScrean();
-		    createjs.Ticker.removeEventListener("tick", gameReady);
-			createjs.Ticker.addEventListener("tick", processGame);
+		    createjs.Ticker.removeEventListener("tick", tickListener);
+			tickListener = createjs.Ticker.addEventListener("tick", processGame);
 		    SOUND_SUSUME_LOOP.play("late",0,0,-1,0.6,0);
 			break;
 	}
@@ -99,14 +99,6 @@ function drawGameScrean(){
 	gameStage.addChild(BUTTON_RIGHT);
 	gameStage.addChild(TEXT_GAME_COUNT);
     gameStage.addChild(honoka.img);
-
-}
-//process用関数-----------------------------------------
-function processHonoka(){
-
-}
-
-function makeCar(){
 
 }
 
@@ -186,7 +178,7 @@ function leftButtonDisable(){
 function checkDistance(target){
 	var y = honoka.img.y - target.img.y;
 
-	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*0.4 - HONOKA_IMG_HEIGHT*gameScreenScale*0.4
+	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*0.2 - HONOKA_IMG_HEIGHT*gameScreenScale*0.2
 	return length;
 }
 //イベント処理-------------------------------------
@@ -208,8 +200,7 @@ function crash(){
 	SOUND_SUSUME_END.play("late",0,0,0,0.6,0);
 
 	// createjs.Ticker.reset();
-    createjs.Ticker.removeEventListener("tick", processGame);
-	honoka.img.gotoAndPlay("escapeR");
+    createjs.Ticker.removeEventListener("tick", tickListener);
 
 	//stateマシン内、ゲームオーバー状態に遷移
 	gameOverState();
