@@ -19,6 +19,7 @@ function topState(){
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(TITLE_LOGO);
+    gameStage.addChild(TEXT_START);
     gameStage.update();
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){

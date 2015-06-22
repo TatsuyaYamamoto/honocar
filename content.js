@@ -6,8 +6,8 @@ function loadContent(){
     setCoordinates(bitmap, gameScrean.width*0.5, (gameScrean.height*0.5));
     bitmap.scaleY = bitmap.scaleX = gameScreenScale;
     gameStage.addChild(bitmap);
-    createjs.Tween.get(bitmap)
-        .to({rotation:360}, 100);
+    createjs.Tween.get(bitmap, {loop:true})
+        .to({rotation:360}, 1000);
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();
@@ -17,15 +17,15 @@ function loadContent(){
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);
 
-    //ロードするコンテンツ数を数える----------
-    contentsCount = 0;
+    // //ロードするコンテンツ数を数える----------
+    // contentsCount = 0;
 
-    for(var j in imageManifest){
-        contentsCount　++;
-    }
-    for(var j in soundManifest){
-        contentsCount　++;
-    }
+    // for(var j in imageManifest){
+    //     contentsCount　++;
+    // }
+    // for(var j in soundManifest){
+    //     contentsCount　++;
+    // }
 
     //ロードイベント登録------------------------------------------
     // 読み込みの進行状況が変化した
@@ -52,18 +52,16 @@ function handleProgress(event) {
 }
 function handleFileLoadComplete(event) {
     // 読み込んだファイル
-    gameStage.update();
     // loadStatusRatio ++;
     // TEXT_LOADING_STATUS.text = "loading..."+ (loadStatusRatio/contentsCount)*100 + "%";
     // gameStage.update();
 }
 function handleComplete() {
 
-    createjs.Ticker.removeEventListener("tick", tickListener);
-    gameStage.update();
     setImageContent();
     setSoundContent();
     setTextContent();
+    createjs.Ticker.removeEventListener("tick", tickListener);
     addAllEventListener();
     topState();
 }
@@ -200,6 +198,12 @@ function setTextProperties(target, x, y, size, family, align, height){
 
 
 function setTextContent(){
+
+
+    TEXT_START = new createjs.Text();
+    setTextProperties(TEXT_START, gameScrean.width*0.5, gameScrean.height*0.8, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+    TEXT_START.text = "-Please tap on the display!-"
+
 
     TEXT_HOW_TO = new createjs.Text();
     setTextProperties(TEXT_HOW_TO, gameScrean.width*0.05, gameScrean.height*0.6, gameScrean.width*0.04, "Courier", "left", gameScrean.width*0.04);
