@@ -43,6 +43,8 @@ function menuState(){
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(TITLE_LOGO);
+    gameStage.addChild(WHITE_SHEET);
+
     gameStage.addChild(MENU_LOGO);
     gameStage.addChild(BUTTON_START);
     gameStage.addChild(BUTTON_HOW_TO);

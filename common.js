@@ -56,7 +56,7 @@ var TITLE_LOGO;
 var MENU_LOGO;
 var GAMEOVER;
 var GAME_BACKGROUND;
-
+var WHITE_SHEET;
 
 //音声系------------
 

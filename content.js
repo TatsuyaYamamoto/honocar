@@ -3,11 +3,13 @@ function loadContent(){
 
     //ロードアニメーション
     var bitmap = new createjs.Bitmap("./img/LOAD_KOTORI.png");
-    setCoordinates(bitmap, gameScrean.width*0.5, (gameScrean.height*0.5));
     bitmap.scaleY = bitmap.scaleX = gameScreenScale;
-    gameStage.addChild(bitmap);
+    setCoordinates(bitmap, gameScrean.width*0.5, gameScrean.height*0.5);
+ 
     createjs.Tween.get(bitmap, {loop:true})
         .to({rotation:360}, 1000);
+
+    gameStage.addChild(bitmap);
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();
@@ -88,6 +90,9 @@ function setImageContent(){
         setCoordinates(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
         GAMEOVER.scaleY = GAMEOVER.scaleX = gameScreenScale;
 
+        //メニュー用ホワイトシート
+        WHITE_SHEET = new createjs.Bitmap(queue.getResult("WHITE_SHEET"));
+        WHITE_SHEET.scaleY = WHITE_SHEET.scaleX = gameScreenScale;
 
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
@@ -355,6 +360,10 @@ var imageManifest = [
     {
         id : "TWITTER_GAMEOVER",
         src: "img/TWITTER_GAMEOVER.png"
+    },
+    {
+        id : "WHITE_SHEET",
+        src: "img/WHITE_SHEET.png"
     }
 ];
 //音声リスト------------------------------------------
