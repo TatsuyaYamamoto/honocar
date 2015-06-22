@@ -13,25 +13,42 @@ function loadState(){
     loadContent();
 }
 
-
 //TOP画面------------------------------------------
 function topState(){
     screanState = "topState";
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(TITLE_LOGO);
-    gameStage.addChild(BUTTON_START);
-    gameStage.addChild(BUTTON_HOW_TO);
-    gameStage.addChild(BUTTON_CREDIT);
-    gameStage.addChild(BUTTON_TWITTER_TOP);
-    gameStage.addChild(BUTTON_TURN_SWITCH);
     gameStage.update();
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
         SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
 
+    function gotoMenu(){
+        SOUND_OK.play();
+        menuState()
+        GAME_BACKGROUND.removeEventListener("click", gotoMenu);
+    }
 
+    GAME_BACKGROUND.addEventListener("click", gotoMenu);
+
+}
+
+
+//MENU画面------------------------------------------
+function menuState(){
+    screanState = "menuState";
+    gameStage.removeAllChildren();
+    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(TITLE_LOGO);
+    gameStage.addChild(MENU_LOGO);
+    gameStage.addChild(BUTTON_START);
+    gameStage.addChild(BUTTON_HOW_TO);
+    gameStage.addChild(BUTTON_CREDIT);
+    gameStage.addChild(BUTTON_TWITTER_TOP);
+    gameStage.addChild(BUTTON_TURN_SWITCH);
+    gameStage.update();
 
 }
 //操作説明画面------------------------------------------

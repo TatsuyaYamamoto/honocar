@@ -22,10 +22,7 @@ function howToPlayInit(){
 
 	//ゲーム内タイマーTickイベント
 
-	gameTick = createjs.Ticker;
-    gameTick.setFPS(FPS);
-	gameTick.timingMode = createjs.Ticker.RAF_SYNCHED;
-    tickListener = gameTick.addEventListener("tick", processHowToPlay);
+	tickListener = createjs.Ticker.addEventListener("tick", processHowToPlay);
 
 }
 

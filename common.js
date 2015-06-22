@@ -53,6 +53,7 @@ var ctAnchor;
 //画像系--------------
 //背景
 var TITLE_LOGO;
+var MENU_LOGO;
 var GAMEOVER;
 var GAME_BACKGROUND;
 
@@ -144,45 +145,45 @@ function addAllEventListener(){
 
     BUTTON_START.addEventListener("click", function() {
         SOUND_ZENKAI.stop();
-        SOUND_OK.play();
+        SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
     BUTTON_HOW_TO.addEventListener("click", function() {
-        SOUND_OK.play();
+        SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
 
 	BUTTON_CREDIT.addEventListener("click",function(){
-        SOUND_OK.play();
+        SOUND_OK.play("none",0,0,0,1,0);
         creditState();		
 	})
 
     BUTTON_BACK_TOP.addEventListener( 'click', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_BACK.play();
+        SOUND_BACK.play("none",0,0,0,1,0);
         topState();
     });
 
     BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'click', function() {
-        SOUND_BACK.play();
-        gameTick.removeEventListener("tick", tickListener);
-        topState();
+        SOUND_BACK.play("none",0,0,0,1,0);
+        createjs.Ticker.removeEventListener("tick", tickListener);
+        menuState();
 
     } );
 
 	BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'click', function() {
-        SOUND_BACK.play();
-        topState();
+        SOUND_BACK.play("none",0,0,0,1,0);
+        menuState();
     });
 
     BUTTON_RESTART.addEventListener( 'click', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_BACK.play();
+        SOUND_BACK.play("none",0,0,0,1,0);
         gameState();
     });
 
     BUTTON_TURN_SWITCH.addEventListener("click", function(){
-		SOUND_TURN_SWITCH.play();
+		SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
         if(isSoundMute){
             // this.image = "aaa";
             BUTTON_TURN_SWITCH.gotoAndPlay("on");
@@ -196,12 +197,12 @@ function addAllEventListener(){
     });
 
     BUTTON_TWITTER_TOP.addEventListener("click", function(){
-        SOUND_TWEET.play();
+        SOUND_TWEET.play("none",0,0,0,1,0);
         window.open().location.href="https://twitter.com/t28_tatsuya"
     });
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
-        SOUND_TWEET.play();
+        SOUND_TWEET.play("none",0,0,0,1,0);
         window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
     });
     TEXT_LINK_1.addEventListener("click", function(){

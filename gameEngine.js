@@ -12,9 +12,7 @@ function gameInit(){
     leftButtonEnable();
 
 
-	//ゲーム内タイマーTickイベント
-    createjs.Ticker.setFPS(FPS);
-	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+	//タイマーに関数セット
     tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 
 	//ゲーム画面要素をステージに追加
@@ -201,6 +199,7 @@ function crash(){
 
 	// createjs.Ticker.reset();
     createjs.Ticker.removeEventListener("tick", tickListener);
+
 
 	//stateマシン内、ゲームオーバー状態に遷移
 	gameOverState();

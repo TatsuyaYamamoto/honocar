@@ -18,6 +18,11 @@ window.onload = function(){
 	  createjs.Touch.enable(gameStage);
 	}
 
+
+	//ゲーム用タイマーの設定
+    createjs.Ticker.setFPS(FPS);
+	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+
 	//コンテンツのロードステートに移行
 	loadState();
 

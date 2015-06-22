@@ -1,138 +1,21 @@
 function loadContent(){
 
+
+    //ロードアニメーション
+    var bitmap = new createjs.Bitmap("./img/LOAD_KOTORI.png");
+    setCoordinates(bitmap, gameScrean.width*0.5, (gameScrean.height*0.5));
+    bitmap.scaleY = bitmap.scaleX = gameScreenScale;
+    gameStage.addChild(bitmap);
+    createjs.Tween.get(bitmap)
+        .to({rotation:360}, 100);
+
+    tickListener = createjs.Ticker.addEventListener("tick", function(){
+        gameStage.update();
+    });
+
     queue = new createjs.LoadQueue();
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);
-
-    //画像------------------------------------------
-
-
-    var imageManifest = [
-        {
-            id : "BUTTON_START",
-            src: "img/BUTTON_START.png"
-        },
-        {
-            id : "BUTTON_RESTART",
-            src: "img/BUTTON_RESTART.png"
-        },
-        {
-            id : "BUTTON_HOW_TO",
-            src: "img/BUTTON_HOW_TO.png"
-        },
-        {
-            id : "BUTTON_CREDIT",
-            src: "img/BUTTON_CREDIT.png"
-        },
-        {
-            id : "BUTTON_BACK_TOP_FROM_HOW_TO",
-            src: "img/BUTTON_BACK_TOP_FROM_HOW_TO.png"
-        },
-        {
-            id : "BUTTON_BACK_TOP",
-            src: "img/BUTTON_BACK_TOP.png"
-        },
-        {
-            id : "GAME_BACKGROUND",
-            src: "img/GAME_BACKGROUND.png"
-        },
-        {
-            id : "TITLE_LOGO",
-            src: "img/TITLE_LOGO.png"
-        },
-        {
-            id : "GAMEOVER",
-            src: "img/GAMEOVER.png"
-        },
-        {
-            id : "BUTTON_LEFT",
-            src: "img/BUTTON_LEFT.png"
-        },
-        {
-            id : "BUTTON_RIGHT",
-            src: "img/BUTTON_RIGHT.png"
-        },
-        {
-            id : "BUTTON_RADIO",
-            src: "img/BUTTON_RADIO.png"
-        },
-        {
-            id : "HONOKA_SS",
-            src: "img/HONOKA_SS.png"
-        },
-        {
-            id : "CAR1_FRONT",
-            src: "img/CAR1_FRONT.png"
-        },
-        {
-            id : "CAR1_BACK",
-            src: "img/CAR1_BACK.png"
-        },
-        {
-            id : "CHUN",
-            src: "img/CHUN.png"
-        },
-        {
-            id : "TWITTER_TOP",
-            src: "img/TWITTER_TOP.png"
-        },
-        {
-            id : "TWITTER_GAMEOVER",
-            src: "img/TWITTER_GAMEOVER.png"
-        }
-    ];
-    //音声------------------------------------------
-    var soundManifest = [
-        {
-            id : "OK",
-            src: "sound/OK.mp3"
-        },
-        {
-            id : "BACK",
-            src: "sound/BACK.mp3"
-        },
-        {
-            id : "KAIHI",
-            src: "sound/moto_KAIHI.mp3"
-        },
-        {
-            id : "CRASH",
-            src: "sound/CRASH.mp3"
-        },
-        {
-            id : "DOWN",
-            src: "sound/DOWN.mp3"
-        },
-        {
-            id : "TWEET",
-            src: "sound/TWEET.mp3"
-        },
-        {
-            id : "PI1",
-            src: "sound/PI1.mp3"
-        },
-        {
-            id : "PI2",
-            src: "sound/PI2.mp3"
-        },
-        {
-            id : "SUSUME_LOOP",
-            src: "sound/SUSUME_LOOP.mp3"
-        },
-        {
-            id : "SUSUME_END",
-            src: "sound/SUSUME_END.mp3"
-        },
-        {
-            id : "ZENKAI",
-            src: "sound/ZENKAI.mp3"
-        },
-        {
-            id : "TURN_SWITCH",
-            src: "sound/TURN_SWITCH.mp3"
-        }
-    ];
-
 
     //ロードするコンテンツ数を数える----------
     contentsCount = 0;
@@ -144,12 +27,7 @@ function loadContent(){
         contentsCount　++;
     }
 
-
-    //画像、音声マニフェストファイルを読み込む----------     
-    queue.loadManifest(imageManifest);
-    queue.loadManifest(soundManifest);
-
-    //ロードイベント------------------------------------------
+    //ロードイベント登録------------------------------------------
     // 読み込みの進行状況が変化した
     queue.addEventListener("progress", handleProgress);
     // 1つのファイルを読み込み終わったら
@@ -158,27 +36,38 @@ function loadContent(){
     queue.addEventListener("complete", handleComplete);
 
 
-    function handleProgress(event) {
-    // 読み込み率を0.0~1.0で取得
-        var progress = event.progress;
-    }
-    function handleFileLoadComplete(event) {
-        // 読み込んだファイル
-        var result = event.result;
-        loadStatusRatio ++;
-        TEXT_LOADING_STATUS.text = "loading..."+ (loadStatusRatio/contentsCount)*100 + "%";
-        gameStage.update();
-    }
-    function handleComplete() {
-        TEXT_LOADING_STATUS.text = "finish loading!!";
-        gameStage.update();
-        setImageContent();
-        setSoundContent();
-        setTextContent();
-        addAllEventListener();
-        topState();
-    }
+    //画像、音声マニフェストファイルを読み込む----------     
+    queue.loadManifest(imageManifest);
+    queue.loadManifest(soundManifest);
+
+
 }
+
+
+
+//ロードイベント------------------------------------------
+function handleProgress(event) {
+// 読み込み率を0.0~1.0で取得
+    var progress = event.progress;
+}
+function handleFileLoadComplete(event) {
+    // 読み込んだファイル
+    gameStage.update();
+    // loadStatusRatio ++;
+    // TEXT_LOADING_STATUS.text = "loading..."+ (loadStatusRatio/contentsCount)*100 + "%";
+    // gameStage.update();
+}
+function handleComplete() {
+
+    createjs.Ticker.removeEventListener("tick", tickListener);
+    gameStage.update();
+    setImageContent();
+    setSoundContent();
+    setTextContent();
+    addAllEventListener();
+    topState();
+}
+
 //ロードしたコンテンツをセット------------------------------------------
 function setImageContent(){
 
@@ -191,6 +80,11 @@ function setImageContent(){
         setCoordinates(TITLE_LOGO, gameScrean.width*0.5, (gameScrean.height*0.4));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
 
+        //メニューロゴ
+        MENU_LOGO = new createjs.Bitmap(queue.getResult("MENU_LOGO"));
+        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.2));
+        MENU_LOGO.scaleY = MENU_LOGO.scaleX = gameScreenScale;
+
         //GAMEOVERロゴ
         GAMEOVER = new createjs.Bitmap(queue.getResult("GAMEOVER"));
         setCoordinates(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
@@ -199,15 +93,15 @@ function setImageContent(){
 
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
-        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.6);
+        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.4);
         BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale;
 
         BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
-        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.75);
+        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.6);
         BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale;
 
         BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
-        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.9);
+        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.8);
         BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale;
 
         BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
@@ -379,3 +273,135 @@ function soundTurnOn(){
     SOUND_ZENKAI.muted = false;
 
 }
+//画像リスト------------------------------------------
+
+var imageManifest = [
+    {
+        id : "BUTTON_START",
+        src: "img/BUTTON_START.png"
+    },
+    {
+        id : "BUTTON_RESTART",
+        src: "img/BUTTON_RESTART.png"
+    },
+    {
+        id : "BUTTON_HOW_TO",
+        src: "img/BUTTON_HOW_TO.png"
+    },
+    {
+        id : "BUTTON_CREDIT",
+        src: "img/BUTTON_CREDIT.png"
+    },
+    {
+        id : "BUTTON_BACK_TOP_FROM_HOW_TO",
+        src: "img/BUTTON_BACK_TOP_FROM_HOW_TO.png"
+    },
+    {
+        id : "BUTTON_BACK_TOP",
+        src: "img/BUTTON_BACK_TOP.png"
+    },
+    {
+        id : "GAME_BACKGROUND",
+        src: "img/GAME_BACKGROUND.png"
+    },
+    {
+        id : "TITLE_LOGO",
+        src: "img/TITLE_LOGO.png"
+    },
+    {
+        id : "MENU_LOGO",
+        src: "img/MENU_LOGO.png"
+    },
+    {
+        id : "GAMEOVER",
+        src: "img/GAMEOVER.png"
+    },
+    {
+        id : "BUTTON_LEFT",
+        src: "img/BUTTON_LEFT.png"
+    },
+    {
+        id : "BUTTON_RIGHT",
+        src: "img/BUTTON_RIGHT.png"
+    },
+    {
+        id : "BUTTON_RADIO",
+        src: "img/BUTTON_RADIO.png"
+    },
+    {
+        id : "HONOKA_SS",
+        src: "img/HONOKA_SS.png"
+    },
+    {
+        id : "CAR1_FRONT",
+        src: "img/CAR1_FRONT.png"
+    },
+    {
+        id : "CAR1_BACK",
+        src: "img/CAR1_BACK.png"
+    },
+    {
+        id : "CHUN",
+        src: "img/CHUN.png"
+    },
+    {
+        id : "TWITTER_TOP",
+        src: "img/TWITTER_TOP.png"
+    },
+    {
+        id : "TWITTER_GAMEOVER",
+        src: "img/TWITTER_GAMEOVER.png"
+    }
+];
+//音声リスト------------------------------------------
+var soundManifest = [
+    {
+        id : "OK",
+        src: "sound/OK.mp3"
+    },
+    {
+        id : "BACK",
+        src: "sound/BACK.mp3"
+    },
+    {
+        id : "KAIHI",
+        src: "sound/moto_KAIHI.mp3"
+    },
+    {
+        id : "CRASH",
+        src: "sound/CRASH.mp3"
+    },
+    {
+        id : "DOWN",
+        src: "sound/DOWN.mp3"
+    },
+    {
+        id : "TWEET",
+        src: "sound/TWEET.mp3"
+    },
+    {
+        id : "PI1",
+        src: "sound/PI1.mp3"
+    },
+    {
+        id : "PI2",
+        src: "sound/PI2.mp3"
+    },
+    {
+        id : "SUSUME_LOOP",
+        src: "sound/SUSUME_LOOP.mp3"
+    },
+    {
+        id : "SUSUME_END",
+        src: "sound/SUSUME_END.mp3"
+    },
+    {
+        id : "ZENKAI",
+        src: "sound/ZENKAI.mp3"
+    },
+    {
+        id : "TURN_SWITCH",
+        src: "sound/TURN_SWITCH.mp3"
+    }
+];
+
