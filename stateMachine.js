@@ -53,6 +53,11 @@ function menuState(){
     gameStage.addChild(BUTTON_TURN_SWITCH);
     gameStage.update();
 
+    if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
+        SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+    }
+
+
 }
 //操作説明画面------------------------------------------
 function howToPlayState(){  

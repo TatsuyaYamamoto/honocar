@@ -162,7 +162,7 @@ function addAllEventListener(){
     BUTTON_BACK_TOP.addEventListener( 'click', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
-        topState();
+        menuState();
     });
 
     BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'click', function() {
