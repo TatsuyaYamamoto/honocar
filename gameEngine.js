@@ -85,7 +85,6 @@ function processGame(){
     	}
 
 	    if(honoka.lane == target.lane && checkDistance(target) < 0){
-	    	alert(car.length)
 	    	crash();
 	    }
 	});
