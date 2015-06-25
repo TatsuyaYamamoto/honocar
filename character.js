@@ -144,36 +144,42 @@ Car.prototype.init = function(number){
 }
 Car.prototype.move = function(){
 
-    switch(this.lane){
+    var target = this;
+
+
+    switch(target.lane){
         case 0:
-            createjs.Tween.get(this.img)
+            createjs.Tween.get(target.img)
                 .to({y : -CAR1_IMG_HEIGHT}, CAR_SPEED_SLOW)
                     .call(function(){
-                        passCarCount ++;
+                        target.passed = true;
                     });
             break;
         case 1:
-            createjs.Tween.get(this.img)
+            createjs.Tween.get(target.img)
                 .to({y : -CAR1_IMG_HEIGHT}, CAR_SPEED_FAST)
                     .call(function(){
-                        passCarCount ++;
+                        target.passed = true;
                     });
             break;
         case 2:
-        createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_FAST)
-                .call(function(){
-                    passCarCount ++;
-                });
+            createjs.Tween.get(target.img)
+                .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_FAST)
+                    .call(function(){
+                        target.passed = true;
+                    });
             break;
         case 3:
-        createjs.Tween.get(this.img)
-            .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_SLOW)
-                .call(function(){
-                    passCarCount ++;
-                });
+            createjs.Tween.get(target.img)
+                .to({y : gameScrean.height + CAR1_IMG_HEIGHT}, CAR_SPEED_SLOW)
+                    .call(function(){
+                        target.passed = true;
+                    });
             break;
+
+
     }
+
 }
 
 

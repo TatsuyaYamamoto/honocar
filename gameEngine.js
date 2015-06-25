@@ -77,16 +77,18 @@ function processGame(){
 	}
 
 
-    for (i = 0; i < car.length; i++){
+	car.forEach(function(target, index){
 
-    	if(car[i].passed){
+    	if(target.passed){
+    		car.splice(index,1);
             passCarCount ++;
     	}
 
-	    if(checkDistance(car[i]) < 0 && honoka.lane == car[i].lane){
+	    if(honoka.lane == target.lane && checkDistance(target) < 0){
+	    	alert(car.length)
 	    	crash();
 	    }
-    }
+	});
 }
 
 //描画処理-----------------------------------------
