@@ -215,9 +215,11 @@ function addAllEventListener(){
 
 
     window.addEventListener("blur", function(){
-        soundTurnOff(); 
+        soundTurnOff();
+        createjs.Ticker.setPaused(true);
     });
     window.addEventListener("focus", function(){      
         soundTurnOn();
+        createjs.Ticker.setPaused(false);
     });
 }

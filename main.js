@@ -32,15 +32,27 @@ window.onload = function(){
 
 	var ua = navigator.userAgent;
 
-	if(/iPhone/.test(ua)) {
-	    window.addEventListener("click", start);
-
-	    function start(){
+	    var start = function(){
 			loadState();
-	        window.removeEventListener("click", start);
+		    window.removeEventListener("touchstart", start);
 	    }
+
+
+	if(/iPhone/.test(ua)) {
+	    gameStage.removeAllChildren();
+
+	    TEXT = new createjs.Text();
+	    setTextProperties(TEXT, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+	    TEXT.text = "-Please tap on the display!-"
+
+	    gameStage.addChild(TEXT);
+	    gameStage.update();
+
+	    window.addEventListener("touchstart", start);
+
 	}
 	else{
 		loadState();
 	}
+
 }

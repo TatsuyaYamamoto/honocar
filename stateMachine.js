@@ -42,7 +42,6 @@ function menuState(){
     screanState = "menuState";
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(TITLE_LOGO);
     gameStage.addChild(WHITE_SHEET);
 
     gameStage.addChild(MENU_LOGO);

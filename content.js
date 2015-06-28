@@ -19,6 +19,7 @@ function loadAnimation(){
         createjs.Tween.get(bitmap, {loop:true})
             .to({rotation:360}, 1000);
 
+        gameStage.removeAllChildren();
         gameStage.addChild(bitmap);
 
         tickListener = createjs.Ticker.addEventListener("tick", function(){
@@ -103,12 +104,12 @@ function setImageContent(){
 
         //メニューロゴ
         MENU_LOGO = new createjs.Bitmap(queue.getResult("MENU_LOGO"));
-        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.2));
+        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.3));
         MENU_LOGO.scaleY = MENU_LOGO.scaleX = gameScreenScale;
 
         //GAMEOVERロゴ
         GAMEOVER = new createjs.Bitmap(queue.getResult("GAMEOVER"));
-        setCoordinates(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.3);
+        setCoordinates(GAMEOVER, gameScrean.width*0.5, gameScrean.height*0.35);
         GAMEOVER.scaleY = GAMEOVER.scaleX = gameScreenScale;
 
         //メニュー用ホワイトシート
@@ -117,15 +118,15 @@ function setImageContent(){
 
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
-        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.4);
+        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.5);
         BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale;
 
         BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
-        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.6);
+        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.7);
         BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale;
 
         BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
-        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.8);
+        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.9);
         BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale;
 
         BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
@@ -144,14 +145,14 @@ function setImageContent(){
         setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, gameScrean.height*0.8);
         BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
 
-        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
-        setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.1, gameScrean.height*0.1);
+        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_GAMEOVER"));
+        setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.2, gameScrean.height*0.1);
         BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
 
 
         BUTTON_TWITTER_GAMEOVER = new createjs.Bitmap(queue.getResult("TWITTER_GAMEOVER"));
-        setCoordinates(BUTTON_TWITTER_GAMEOVER, gameScrean.width*0.1, gameScrean.height*0.1);
-        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale;
+        setCoordinates(BUTTON_TWITTER_GAMEOVER, gameScrean.width*0.25, gameScrean.height*0.15);
+        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale*1.3;
 
 
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
