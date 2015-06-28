@@ -1,5 +1,10 @@
 window.onload = function(){
 
+
+
+
+
+
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
 
@@ -24,6 +29,18 @@ window.onload = function(){
 	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
 	//コンテンツのロードステートに移行
-	loadState();
 
+	var ua = navigator.userAgent;
+
+	if(/iPhone/.test(ua)) {
+	    window.addEventListener("click", start);
+
+	    function start(){
+			loadState();
+	        window.removeEventListener("click", start);
+	    }
+	}
+	else{
+		loadState();
+	}
 }

@@ -213,4 +213,11 @@ function addAllEventListener(){
         window.open().location.href="http://on-jin.com/";
     });
 
+
+    window.addEventListener("blur", function(){
+        soundTurnOff(); 
+    });
+    window.addEventListener("focus", function(){      
+        soundTurnOn();
+    });
 }

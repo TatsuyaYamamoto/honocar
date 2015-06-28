@@ -81,9 +81,12 @@ function handleComplete() {
     setImageContent();
     setSoundContent();
     setTextContent();
+
     createjs.Ticker.removeEventListener("tick", tickListener);
+
     addAllEventListener();
     topState();
+
 }
 
 //ロードしたコンテンツをセット------------------------------------------
