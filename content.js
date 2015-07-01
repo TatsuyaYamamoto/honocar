@@ -134,11 +134,11 @@ function setImageContent(){
         BUTTON_BACK_TOP.scaleY = BUTTON_BACK_TOP.scaleX = gameScreenScale;
 
         BUTTON_BACK_TOP_FROM_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
-        setCoordinates(BUTTON_BACK_TOP_FROM_CREDIT, gameScrean.width*0.3, (gameScrean.height*0.8));
+        setCoordinates(BUTTON_BACK_TOP_FROM_CREDIT, gameScrean.width*0.5, (gameScrean.height*0.9));
         BUTTON_BACK_TOP_FROM_CREDIT.scaleY = BUTTON_BACK_TOP_FROM_CREDIT.scaleX = gameScreenScale;
 
         BUTTON_BACK_TOP_FROM_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP_FROM_HOW_TO"));
-        setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.2, (gameScrean.height*0.1));
+        setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.5, (gameScrean.height*0.85));
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
         BUTTON_RESTART = new createjs.Bitmap(queue.getResult("BUTTON_RESTART"));
@@ -233,7 +233,7 @@ function setTextContent(){
 
 
     TEXT_HOW_TO = new createjs.Text();
-    setTextProperties(TEXT_HOW_TO, gameScrean.width*0.05, gameScrean.height*0.6, gameScrean.width*0.04, "Courier", "left", gameScrean.width*0.04);
+    setTextProperties(TEXT_HOW_TO, gameScrean.width*0.05, gameScrean.height*0.12, gameScrean.width*0.04, "Courier", "left", gameScrean.width*0.04);
     TEXT_HOW_TO.text = text_how_to;
 
 
@@ -245,9 +245,12 @@ function setTextContent(){
     setTextProperties(TETX_GAMESTART_COUNT, gameScrean.width*0.5, gameScrean.height*0.7, gameScrean.width*0.08, "Impact", "center", gameScrean.width*0.04);
 
 
+
+
+
     TEXT_LINK_ME = new createjs.Text();
     setTextProperties(TEXT_LINK_ME, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
-    TEXT_LINK_ME.text = "いろいろ：Tatsuya Yamamoto\rhttp://sokontokoro-factory.net";
+    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net";
 
 
 

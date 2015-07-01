@@ -101,7 +101,7 @@ var TEXT_LINK_SAN;
 var TEXT_LINK_1;
 var TEXT_LINK_2;
 
-var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が襲う！\rなかなか始まらないススメ→トゥモロウを尻目に\r左右のボタンで穂乃果ちゃんを操作して\r車から助けてあげよう！"
+var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタンを使って\r穂乃果ちゃんを車から助けてあげよう！\r \r「やる！やるったらやる！」"
 var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 

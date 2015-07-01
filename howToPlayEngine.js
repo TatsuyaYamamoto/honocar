@@ -6,10 +6,6 @@ function howToPlayInit(){
     gameStage.addChild(BUTTON_BACK_TOP_FROM_HOW_TO);
     gameStage.addChild(TEXT_HOW_TO);
 
-	gameStage.addChild(BUTTON_LEFT_HOW_TO);
-	gameStage.addChild(BUTTON_RIGHT_HOW_TO);
-    rightButtonEnable();
-    leftButtonEnable();
 
 	//ほのかちゃを作成
 	honoka = new Honoka();
