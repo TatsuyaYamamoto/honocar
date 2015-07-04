@@ -50,11 +50,16 @@ function menuState(){
     gameStage.addChild(BUTTON_CREDIT);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.addChild(BUTTON_TURN_SWITCH);
-    gameStage.update();
+
+
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
         SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
+
+    tickListener = createjs.Ticker.addEventListener("tick", function(){
+        gameStage.update();
+    });
 
 
 }

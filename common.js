@@ -101,7 +101,7 @@ var TEXT_LINK_SAN;
 var TEXT_LINK_1;
 var TEXT_LINK_2;
 
-var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタンを使って\r穂乃果ちゃんを車から助けてあげよう！\r \r「やる！やるったらやる！」"
+var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタンで、かわせ！ホノカチャン！\r \r「私、やっぱりやる！やるったらやる！」"
 var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 
@@ -145,16 +145,19 @@ function addAllEventListener(){
     BUTTON_LEFT.addEventListener("click", clickButtonLeft);
 
     BUTTON_START.addEventListener("click", function() {
+        createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_ZENKAI.stop();
         SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
     BUTTON_HOW_TO.addEventListener("click", function() {
+        createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
 
 	BUTTON_CREDIT.addEventListener("click",function(){
+        createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         creditState();		
 	})

@@ -176,24 +176,26 @@ function setImageContent(){
         BUTTON_RIGHT_HOW_TO.alpha=0.5;
 
 
-        var radioSprite = new createjs.SpriteSheet({
-            images:[queue.getResult("BUTTON_RADIO")],
+        var soundSprite = new createjs.SpriteSheet({
+            images:[queue.getResult("BUTTON_SOUND_SS")],
             frames:{
-                width : 177,
-                height : 139
+                width : 84,
+                height : 78
             },
             animations: {
                 on:{
-                    frames: 0
+                    frames: [1,2,3],
+                    next: true,
+                    speed: 0.12
                 },
                 off: {
-                    frames: 1
+                    frames: 0
                 }
             }
         });
 
-        BUTTON_TURN_SWITCH = new createjs.Sprite(radioSprite, "on");
-        BUTTON_TURN_SWITCH.x = gameScrean.width*0.8;
+        BUTTON_TURN_SWITCH = new createjs.Sprite(soundSprite, "on");
+        BUTTON_TURN_SWITCH.x = gameScrean.width*0.95;
         BUTTON_TURN_SWITCH.y = gameScrean.height*0.1;
         BUTTON_TURN_SWITCH.regX = 177/2;
         BUTTON_TURN_SWITCH.regY = 139/2;
@@ -359,8 +361,8 @@ var imageManifest = [
         src: "img/BUTTON_RIGHT.png"
     },
     {
-        id : "BUTTON_RADIO",
-        src: "img/BUTTON_RADIO.png"
+        id : "BUTTON_SOUND_SS",
+        src: "img/BUTTON_SOUND_SS.png"
     },
     {
         id : "HONOKA_SS",
