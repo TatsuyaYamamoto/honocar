@@ -119,15 +119,15 @@ function setImageContent(){
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
         setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.5);
-        BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale;
+        BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale*0.8;
 
         BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
         setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.7);
-        BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale;
+        BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale*0.8;
 
         BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
         setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.9);
-        BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale;
+        BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale*0.8;
 
         BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
         setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.3, (gameScrean.height*0.8));
