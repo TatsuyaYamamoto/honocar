@@ -99,12 +99,12 @@ function setImageContent(){
 
         //タイトルロゴ
         TITLE_LOGO = new createjs.Bitmap(queue.getResult("TITLE_LOGO"));
-        setCoordinates(TITLE_LOGO, gameScrean.width*0.5, (gameScrean.height*0.4));
+        setCoordinates(TITLE_LOGO, gameScrean.width*0.5, (gameScrean.height*0.5));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
 
         //メニューロゴ
         MENU_LOGO = new createjs.Bitmap(queue.getResult("MENU_LOGO"));
-        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.3));
+        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.32));
         MENU_LOGO.scaleY = MENU_LOGO.scaleX = gameScreenScale;
 
         //GAMEOVERロゴ
@@ -118,7 +118,7 @@ function setImageContent(){
 
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
-        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.5);
+        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.55);
         BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale*0.8;
 
         BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
@@ -126,18 +126,18 @@ function setImageContent(){
         BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale*0.8;
 
         BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
-        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.9);
+        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.85);
         BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale*0.8;
 
-        BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
+        BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
         setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.3, (gameScrean.height*0.8));
         BUTTON_BACK_TOP.scaleY = BUTTON_BACK_TOP.scaleX = gameScreenScale;
 
-        BUTTON_BACK_TOP_FROM_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP"));
+        BUTTON_BACK_TOP_FROM_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
         setCoordinates(BUTTON_BACK_TOP_FROM_CREDIT, gameScrean.width*0.5, (gameScrean.height*0.9));
         BUTTON_BACK_TOP_FROM_CREDIT.scaleY = BUTTON_BACK_TOP_FROM_CREDIT.scaleX = gameScreenScale;
 
-        BUTTON_BACK_TOP_FROM_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_BACK_TOP_FROM_HOW_TO"));
+        BUTTON_BACK_TOP_FROM_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
         setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.5, (gameScrean.height*0.85));
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
@@ -145,7 +145,7 @@ function setImageContent(){
         setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, gameScrean.height*0.8);
         BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
 
-        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_GAMEOVER"));
+        BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
         setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.2, gameScrean.height*0.1);
         BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
 
@@ -179,8 +179,8 @@ function setImageContent(){
         var soundSprite = new createjs.SpriteSheet({
             images:[queue.getResult("BUTTON_SOUND_SS")],
             frames:{
-                width : 84,
-                height : 78
+                width : 126,
+                height : 118
             },
             animations: {
                 on:{
@@ -195,8 +195,8 @@ function setImageContent(){
         });
 
         BUTTON_TURN_SWITCH = new createjs.Sprite(soundSprite, "on");
-        BUTTON_TURN_SWITCH.x = gameScrean.width*0.95;
-        BUTTON_TURN_SWITCH.y = gameScrean.height*0.1;
+        BUTTON_TURN_SWITCH.x = gameScrean.width*0.9;
+        BUTTON_TURN_SWITCH.y = gameScrean.height*0.12;
         BUTTON_TURN_SWITCH.regX = 177/2;
         BUTTON_TURN_SWITCH.regY = 139/2;
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
@@ -207,8 +207,6 @@ function setSoundContent(){
         SOUND_BACK = createjs.Sound.createInstance("BACK");        
         SOUND_KAIHI = createjs.Sound.createInstance("KAIHI");
         SOUND_CRASH = createjs.Sound.createInstance("CRASH");
-        SOUND_DOWN = createjs.Sound.createInstance("DOWN");
-        SOUND_TWEET = createjs.Sound.createInstance("TWEET");
         SOUND_PI1 = createjs.Sound.createInstance("PI1");
         SOUND_PI2 = createjs.Sound.createInstance("PI2");
         SOUND_SUSUME_LOOP = createjs.Sound.createInstance("SUSUME_LOOP");
@@ -230,7 +228,7 @@ function setTextContent(){
 
 
     TEXT_START = new createjs.Text();
-    setTextProperties(TEXT_START, gameScrean.width*0.5, gameScrean.height*0.8, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+    setTextProperties(TEXT_START, gameScrean.width*0.5, gameScrean.height*0.93, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
     TEXT_START.text = "-Please tap on the display!-"
 
 
@@ -284,8 +282,6 @@ function soundTurnOff(){
     SOUND_BACK.muted = true;
     SOUND_KAIHI.muted = true;
     SOUND_CRASH.muted = true;
-    SOUND_DOWN.muted = true;
-    SOUND_TWEET.muted = true;
     SOUND_PI1.muted = true;
     SOUND_PI2.muted = true;
     SOUND_SUSUME_LOOP.muted = true;
@@ -300,8 +296,6 @@ function soundTurnOn(){
     SOUND_BACK.muted = false;
     SOUND_KAIHI.muted = false;
     SOUND_CRASH.muted = false;
-    SOUND_DOWN.muted = false;
-    SOUND_TWEET.muted = false;
     SOUND_PI1.muted = false;
     SOUND_PI2.muted = false;
     SOUND_SUSUME_LOOP.muted = false;
@@ -329,12 +323,8 @@ var imageManifest = [
         src: "img/BUTTON_CREDIT.png"
     },
     {
-        id : "BUTTON_BACK_TOP_FROM_HOW_TO",
-        src: "img/BUTTON_BACK_TOP_FROM_HOW_TO.png"
-    },
-    {
-        id : "BUTTON_BACK_TOP",
-        src: "img/BUTTON_BACK_TOP.png"
+        id : "BUTTON_BACK_MENU",
+        src: "img/BUTTON_BACK_MENU.png"
     },
     {
         id : "GAME_BACKGROUND",
@@ -377,10 +367,6 @@ var imageManifest = [
         src: "img/CAR1_BACK.png"
     },
     {
-        id : "CHUN",
-        src: "img/CHUN.png"
-    },
-    {
         id : "TWITTER_TOP",
         src: "img/TWITTER_TOP.png"
     },
@@ -405,19 +391,11 @@ var soundManifest = [
     },
     {
         id : "KAIHI",
-        src: "sound/moto_KAIHI.mp3"
+        src: "sound/KAIHI.mp3"
     },
     {
         id : "CRASH",
         src: "sound/CRASH.mp3"
-    },
-    {
-        id : "DOWN",
-        src: "sound/DOWN.mp3"
-    },
-    {
-        id : "TWEET",
-        src: "sound/TWEET.mp3"
     },
     {
         id : "PI1",

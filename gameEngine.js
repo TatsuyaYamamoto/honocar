@@ -36,7 +36,7 @@ function gameReady(){
 			break;	
 		case 10:
 		    SOUND_PI1.play();
-	        TETX_GAMESTART_COUNT.text = "-1-";
+	        TETX_GAMESTART_COUNT.text = "-2-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
 		    gameStage.addChild(honoka.img);
@@ -44,7 +44,7 @@ function gameReady(){
 			break;
 		case 30:
 		    SOUND_PI1.play();
-	        TETX_GAMESTART_COUNT.text = "-2-";
+	        TETX_GAMESTART_COUNT.text = "-1-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
 		    gameStage.addChild(honoka.img);

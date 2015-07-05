@@ -201,12 +201,12 @@ function addAllEventListener(){
     });
 
     BUTTON_TWITTER_TOP.addEventListener("click", function(){
-        SOUND_TWEET.play("none",0,0,0,1,0);
+
         window.open().location.href="https://twitter.com/t28_tatsuya"
     });
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
-        SOUND_TWEET.play("none",0,0,0,1,0);
+
         window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://tatsuyayamamoto.github.io/honocar/";
     });
     TEXT_LINK_1.addEventListener("click", function(){
