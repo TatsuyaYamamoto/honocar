@@ -177,7 +177,7 @@ function leftButtonDisable(){
 function checkDistance(target){
 	var y = honoka.img.y - target.img.y;
 
-	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*0.1 - HONOKA_IMG_HEIGHT*gameScreenScale*0.1;
+	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*0.3 - HONOKA_IMG_HEIGHT*gameScreenScale*0.3;
 	return length;
 }
 //イベント処理-------------------------------------
