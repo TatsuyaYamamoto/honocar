@@ -130,7 +130,7 @@ function setImageContent(){
         BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale*0.8;
 
         BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
-        setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.3, (gameScrean.height*0.8));
+        setCoordinates(BUTTON_BACK_TOP, gameScrean.width*0.7, (gameScrean.height*0.8));
         BUTTON_BACK_TOP.scaleY = BUTTON_BACK_TOP.scaleX = gameScreenScale;
 
         BUTTON_BACK_TOP_FROM_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
@@ -142,7 +142,7 @@ function setImageContent(){
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
         BUTTON_RESTART = new createjs.Bitmap(queue.getResult("BUTTON_RESTART"));
-        setCoordinates(BUTTON_RESTART, gameScrean.width*0.7, gameScrean.height*0.8);
+        setCoordinates(BUTTON_RESTART, gameScrean.width*0.3, gameScrean.height*0.8);
         BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
 
         BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
@@ -250,7 +250,7 @@ function setTextContent(){
 
     TEXT_LINK_ME = new createjs.Text();
     setTextProperties(TEXT_LINK_ME, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
-    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net";
+    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net/";
 
 
 
@@ -261,11 +261,11 @@ function setTextContent(){
 
     TEXT_LINK_1 = new createjs.Text();
     setTextProperties(TEXT_LINK_1, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.05);
-    TEXT_LINK_1.text = "効果音ラボ 樣\rhttp://soundeffect-lab.info/";
+    TEXT_LINK_1.text = "効果音：効果音ラボ 樣\rhttp://soundeffect-lab.info/";
 
     TEXT_LINK_2 = new createjs.Text();
     setTextProperties(TEXT_LINK_2, gameScrean.width*0.5, gameScrean.height*0.6, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.05);
-    TEXT_LINK_2.text = "On-Jin ～音人～ 樣\rhttp://on-jin.com/";
+    TEXT_LINK_2.text = "効果音：On-Jin ～音人～ 樣\rhttp://on-jin.com/";
 
 
 
@@ -391,7 +391,7 @@ var soundManifest = [
     },
     {
         id : "KAIHI",
-        src: "sound/KAIHI.mp3"
+        src: "sound/moto_KAIHI.mp3"
     },
     {
         id : "CRASH",
