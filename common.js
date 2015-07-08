@@ -14,8 +14,8 @@ var CAR_SPEED_FAST = 1600;
 var CAR_SPEED_SLOW = 2000;
 
 
-var DIFFICULTY_LENGTH = 0.1;
-alert(DIFFICULTY_LENGTH);
+var DIFFICULTY_LENGTH = 0.3;
+
 //変数宣言----------------------------------------
 var gameStage;
 var gameScrean;

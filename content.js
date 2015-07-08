@@ -250,7 +250,7 @@ function setTextContent(){
 
     TEXT_LINK_ME = new createjs.Text();
     setTextProperties(TEXT_LINK_ME, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
-    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net/";
+    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net";
 
 
 
