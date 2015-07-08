@@ -218,7 +218,7 @@ function setSoundContent(){
 function setTextProperties(target, x, y, size, family, align, height){
     target.x = x;
     target.y = y;
-    target.font = size + " " + family;
+    target.font = size + "px " + family;
     target.textAlign = align;
     target.lineHeight = height;
 }
