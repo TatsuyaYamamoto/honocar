@@ -15,7 +15,18 @@ function gameInit(){
 	//タイマーに関数セット
     tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 
-	//ゲーム画面要素をステージに追加
+	//キーボード用keycodeevent登録
+	window.addEventListener("keydown", function (event) {
+		switch(event.keyCode){
+			case 37:
+				clickButtonLeft();
+				break;
+			case 39:
+				clickButtonRight();
+				break;
+		}
+	});
+
 }
 
 function gameStatusReset(){
@@ -202,6 +213,17 @@ function crash(){
     createjs.Ticker.removeEventListener("tick", tickListener);
 
 
+	//キーボード用keycodeevent削除
+	window.removeEventListener("keydown", function (event) {
+		switch(event.keyCode){
+			case 37:
+				clickButtonLeft();
+				break;
+			case 39:
+				clickButtonRight();
+				break;
+		}
+	});
 	//stateマシン内、ゲームオーバー状態に遷移
 	gameOverState();
 }

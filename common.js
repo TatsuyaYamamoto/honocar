@@ -142,53 +142,53 @@ function initGameScreenScale(){
 function addAllEventListener(){
    //イベントリスナー登録--------------------------------
 
-    BUTTON_RIGHT.addEventListener("click", clickButtonRight);
+    BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 
-    BUTTON_LEFT.addEventListener("click", clickButtonLeft);
+    BUTTON_LEFT.addEventListener("mousedown", clickButtonLeft);
 
-    BUTTON_START.addEventListener("click", function() {
+    BUTTON_START.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_ZENKAI.stop();
         SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
-    BUTTON_HOW_TO.addEventListener("click", function() {
+    BUTTON_HOW_TO.addEventListener("mousedo", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
 
-	BUTTON_CREDIT.addEventListener("click",function(){
+	BUTTON_CREDIT.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         creditState();		
 	})
 
-    BUTTON_BACK_TOP.addEventListener( 'click', function() {
+    BUTTON_BACK_TOP.addEventListener( 'mousedo', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
-    BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'click', function() {
+    BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
         SOUND_BACK.play("none",0,0,0,1,0);
         createjs.Ticker.removeEventListener("tick", tickListener);
         menuState();
 
     } );
 
-	BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'click', function() {
+	BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'mousedown', function() {
         SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
-    BUTTON_RESTART.addEventListener( 'click', function() {
+    BUTTON_RESTART.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
         gameState();
     });
 
-    BUTTON_TURN_SWITCH.addEventListener("click", function(){
+    BUTTON_TURN_SWITCH.addEventListener("mousedown", function(){
 		SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
         if(isSoundMute){
             // this.image = "aaa";
@@ -202,25 +202,25 @@ function addAllEventListener(){
         }
     });
 
-    BUTTON_TWITTER_TOP.addEventListener("click", function(){
+    BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
 
         window.location.href="https://twitter.com/t28_tatsuya"
     });
 
-    BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
+    BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
 
         window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://games.sokontokoro-factory.net/honocar/";
     });
-    TEXT_LINK_1.addEventListener("click", function(){
+    TEXT_LINK_1.addEventListener("mousedown", function(){
         window.location.href="http://soundeffect-lab.info/";
     });
-    TEXT_LINK_2.addEventListener("click", function(){
+    TEXT_LINK_2.addEventListener("mousedown", function(){
         window.location.href="http://on-jin.com/";
     });
-    TEXT_LINK_ME.addEventListener("click", function(){
+    TEXT_LINK_ME.addEventListener("mousedown", function(){
         window.location.href="http://sokontokoro-factory.net";
     });
-    TEXT_LINK_SAN.addEventListener("click", function(){
+    TEXT_LINK_SAN.addEventListener("mousedown", function(){
         window.location.href="https://twitter.com/xxsanzashixx";
     });
 
