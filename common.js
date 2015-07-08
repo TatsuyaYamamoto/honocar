@@ -204,24 +204,24 @@ function addAllEventListener(){
 
     BUTTON_TWITTER_TOP.addEventListener("click", function(){
 
-        window.open().location.href="https://twitter.com/t28_tatsuya"
+        window.location.href="https://twitter.com/t28_tatsuya"
     });
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("click", function(){
 
-        window.open().location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://games.sokontokoro-factory.net/honocar/";
+        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://games.sokontokoro-factory.net/honocar/";
     });
     TEXT_LINK_1.addEventListener("click", function(){
-        window.open().location.href="http://soundeffect-lab.info/";
+        window.location.href="http://soundeffect-lab.info/";
     });
     TEXT_LINK_2.addEventListener("click", function(){
-        window.open().location.href="http://on-jin.com/";
+        window.location.href="http://on-jin.com/";
     });
     TEXT_LINK_ME.addEventListener("click", function(){
-        window.open().location.href="http://sokontokoro-factory.net";
+        window.location.href="http://sokontokoro-factory.net";
     });
     TEXT_LINK_SAN.addEventListener("click", function(){
-        window.open().location.href="https://twitter.com/xxsanzashixx";
+        window.location.href="https://twitter.com/xxsanzashixx";
     });
 
     window.addEventListener("blur", function(){
