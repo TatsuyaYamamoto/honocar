@@ -32,6 +32,7 @@ var gameTimeCount;
 var passCarCount;
 var gameScore;
 var tickListener;
+var keybordEvent;
 
 var isSoundMute;
 

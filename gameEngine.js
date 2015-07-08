@@ -16,16 +16,7 @@ function gameInit(){
     tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 
 	//キーボード用keycodeevent登録
-	window.addEventListener("keydown", function (event) {
-		switch(event.keyCode){
-			case 37:
-				clickButtonLeft();
-				break;
-			case 39:
-				clickButtonRight();
-				break;
-		}
-	});
+	window.addEventListener("keydown", keyDownEvent);
 
 }
 
@@ -33,6 +24,15 @@ function gameStatusReset(){
 	gameFrame = 0;
 	passCarCount = 0;
 	car = [];
+}
+
+function keyDownEvent(){
+	if(event.keyCode == 37 && BUTTON_LEFT.mouseEnabled){
+		clickButtonLeft();
+	}
+	if(event.keyCode == 39 && BUTTON_RIGHT.mouseEnabled){
+		clickButtonRight();			
+	}
 }
 
 //ゲームスタートカウント-----------------------------------------
@@ -214,16 +214,7 @@ function crash(){
 
 
 	//キーボード用keycodeevent削除
-	window.removeEventListener("keydown", function (event) {
-		switch(event.keyCode){
-			case 37:
-				clickButtonLeft();
-				break;
-			case 39:
-				clickButtonRight();
-				break;
-		}
-	});
+	window.removeEventListener("keydown", keyDownEvent);
 	//stateマシン内、ゲームオーバー状態に遷移
 	gameOverState();
 }
