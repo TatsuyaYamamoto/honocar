@@ -193,7 +193,7 @@ function setImageContent(){
 
 
         BUTTON_CHANGE_CHARA = new createjs.Sprite(charaChangeSprite, "honoka");
-        BUTTON_CHANGE_CHARA.x = gameScrean.width*0.98;
+        BUTTON_CHANGE_CHARA.x = gameScrean.width*0.99;
         BUTTON_CHANGE_CHARA.y = gameScrean.height*0.88;
         BUTTON_CHANGE_CHARA.regX = 178/2;
         BUTTON_CHANGE_CHARA.regY = 139/2;

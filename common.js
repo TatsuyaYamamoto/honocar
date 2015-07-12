@@ -38,8 +38,6 @@ var isSoundMute;
 
 var playCharacter = "honoka";//honoka or erichi
 var player;//キャラクターオブジェクトを格納する
-var honoka;
-var erichi;
 
 var car;
 
@@ -219,20 +217,20 @@ function addAllEventListener(){
         switch(playCharacter){
             case "honoka":
                 if(gameScore == 0){
-                    tweet_text = "";
-                }else if(gameScore < 2){
-                    tweet_text = "ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！";
-                }else if(gameScore >= 3){
+                    tweet_text = "穂乃果「いやー、今日もパンがうまいっ！」海未「また運動もせずにそんなものを食べて！」";
+                }else if(gameScore < 100){
+                    tweet_text = "穂乃果「ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！」";
+                }else if(gameScore >= 100){
                     tweet_text = "海未「なにやっていたんですか！！どれだけ避けたと思っているんですか...」穂乃果「"+gameScore+"台！」";
                 }
                 break;
             case "erichi":
                 if(gameScore == 0){
                     tweet_text = "(車なんて避けてないで)エリチカ、おうちにかえる!!!";
-                }else if(gameScore < 5){
-                    tweet_text = "ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！";
-                }else if(gameScore < 50){
-                    tweet_text = "希「"+gameScore+"台やね」";
+                }else if(gameScore < 100){
+                    tweet_text = gameScore+"台よ...なんとか避けなくちゃいけないんだから、しょうがないじゃないチカ！";
+                }else if(gameScore >= 100){
+                    tweet_text = gameScore+"台！ハラショー！";
                 }
                 break;
         }       
