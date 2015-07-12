@@ -18,7 +18,16 @@ function topState(){
     screanState = "topState";
     gameStage.removeAllChildren();
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(TITLE_LOGO);
+
+    switch(playCharacter){
+        case "honoka":
+            gameStage.addChild(TITLE_LOGO);
+            break;
+        case "erichi":
+            gameStage.addChild(TITLE_LOGO_E);
+            break;
+    }
+
     gameStage.addChild(TEXT_START);
     gameStage.update();
 
