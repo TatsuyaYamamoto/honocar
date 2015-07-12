@@ -154,12 +154,6 @@ function setImageContent(){
         setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.2, gameScrean.height*0.1);
         BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
 
-
-        BUTTON_TWITTER_GAMEOVER = new createjs.Bitmap(queue.getResult("TWITTER_GAMEOVER"));
-        setCoordinates(BUTTON_TWITTER_GAMEOVER, gameScrean.width*0.25, gameScrean.height*0.15);
-        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale*1.3;
-
-
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
         setCoordinates(BUTTON_LEFT, (gameScrean.width)*0.2, gameScrean.height*0.9);
         BUTTON_LEFT.scaleY = BUTTON_LEFT.scaleX = gameScreenScale;
@@ -180,6 +174,54 @@ function setImageContent(){
         BUTTON_RIGHT_HOW_TO.scaleY = BUTTON_RIGHT_HOW_TO.scaleX = gameScreenScale;
         BUTTON_RIGHT_HOW_TO.alpha=0.5;
 
+
+        var charaChangeSprite = new createjs.SpriteSheet({
+            images:[queue.getResult("BUTTON_CHANGE_CHARA_SS")],
+            frames:{
+                width : 170,
+                height : 242
+            },
+            animations: {
+                honoka:{
+                    frames: 0
+                },
+                erichi: {
+                    frames: 1
+                }
+            }
+        });
+
+
+        BUTTON_CHANGE_CHARA = new createjs.Sprite(charaChangeSprite, "honoka");
+        BUTTON_CHANGE_CHARA.x = gameScrean.width*0.98;
+        BUTTON_CHANGE_CHARA.y = gameScrean.height*0.88;
+        BUTTON_CHANGE_CHARA.regX = 178/2;
+        BUTTON_CHANGE_CHARA.regY = 139/2;
+        BUTTON_CHANGE_CHARA.scaleY = BUTTON_CHANGE_CHARA.scaleX = gameScreenScale;
+
+
+        var tweetSprite = new createjs.SpriteSheet({
+            images:[queue.getResult("TWITTER_GAMEOVER_SS")],
+            frames:{
+                width : 178,
+                height : 139
+            },
+            animations: {
+                honoka:{
+                    frames: 0
+                },
+                erichi: {
+                    frames: 1
+                }
+            }
+        });
+
+        BUTTON_TWITTER_GAMEOVER = new createjs.Sprite(tweetSprite, "honoka");
+        BUTTON_TWITTER_GAMEOVER.x = gameScrean.width*0.25;
+        BUTTON_TWITTER_GAMEOVER.y = gameScrean.height*0.15;
+        BUTTON_TWITTER_GAMEOVER.regX = 178/2;
+        BUTTON_TWITTER_GAMEOVER.regY = 139/2;
+        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale*1.3;
 
         var soundSprite = new createjs.SpriteSheet({
             images:[queue.getResult("BUTTON_SOUND_SS")],
@@ -206,11 +248,6 @@ function setImageContent(){
         BUTTON_TURN_SWITCH.regY = 139/2;
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
-
-        BUTTON_CHANGE_CHARA = new createjs.Bitmap(queue.getResult("BUTTON_CHANGE_CHARA"));
-        setCoordinates(BUTTON_CHANGE_CHARA, (gameScrean.width)*0.93, gameScrean.height*0.93);
-        BUTTON_CHANGE_CHARA.scaleY = BUTTON_CHANGE_CHARA.scaleX = gameScreenScale;
-        BUTTON_CHANGE_CHARA.rotation = -25
 
 
 }
@@ -247,7 +284,7 @@ function setTextContent(){
 
     TEXT_HOW_TO = new createjs.Text();
     setTextProperties(TEXT_HOW_TO, gameScrean.width*0.05, gameScrean.height*0.12, gameScrean.width*0.04, "Courier", "left", gameScrean.width*0.04);
-    TEXT_HOW_TO.text = text_how_to;
+
 
 
     TEXT_GAME_COUNT = new createjs.Text();
@@ -263,7 +300,7 @@ function setTextContent(){
 
     TEXT_LINK_ME = new createjs.Text();
     setTextProperties(TEXT_LINK_ME, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
-    TEXT_LINK_ME.text = "いろいろ：T28\rhttp://sokontokoro-factory.net";
+    TEXT_LINK_ME.text = "プログラム、音楽、思いつき：T28\rhttp://sokontokoro-factory.net";
 
 
 
@@ -392,16 +429,16 @@ var imageManifest = [
         src: "img/TWITTER_TOP.png"
     },
     {
-        id : "TWITTER_GAMEOVER",
-        src: "img/TWITTER_GAMEOVER.png"
+        id : "TWITTER_GAMEOVER_SS",
+        src: "img/TWITTER_GAMEOVER_SS.png"
     },
     {
         id : "WHITE_SHEET",
         src: "img/WHITE_SHEET.png"
     },
     {
-        id : "BUTTON_CHANGE_CHARA",
-        src: "img/BUTTON_CHANGE_CHARA.png"
+        id : "BUTTON_CHANGE_CHARA_SS",
+        src: "img/BUTTON_CHANGE_CHARA_SS.png"
     }
 ];
 //音声リスト------------------------------------------

@@ -59,7 +59,18 @@ function menuState(){
     gameStage.addChild(BUTTON_CREDIT);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.addChild(BUTTON_TURN_SWITCH);
+
+    switch(playCharacter){
+        case "honoka":
+            BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
+            break;
+        case "erichi":
+            BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
+            break;
+    }
+
     gameStage.addChild(BUTTON_CHANGE_CHARA);
+
 
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
@@ -117,6 +128,18 @@ function gameOverState(){
     gameStage.addChild(player.img);
     gameStage.addChild(BUTTON_BACK_TOP);
     gameStage.addChild(BUTTON_RESTART);
+
+
+    switch(playCharacter){
+        case "honoka":
+            BUTTON_TWITTER_GAMEOVER.gotoAndPlay("honoka");
+            break;
+        case "erichi":
+            BUTTON_TWITTER_GAMEOVER.gotoAndPlay("erichi");
+            break;
+    }
+
+
     gameStage.addChild(BUTTON_TWITTER_GAMEOVER);
     gameStage.addChild(TEXT_GAME_COUNT);
     gameStage.addChild(GAMEOVER);

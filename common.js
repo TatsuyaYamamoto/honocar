@@ -91,7 +91,7 @@ var BUTTON_LEFT_HOW_TO;
 var BUTTON_RIGHT_HOW_TO;
 
 var BUTTON_TWITTER_TOP;
-var BUTTON_TWITTER_GAMEOVER;
+var BUTTON_TWITTER_GAMEOVER_SS;
 
 
 
@@ -108,6 +108,7 @@ var TEXT_LINK_1;
 var TEXT_LINK_2;
 
 var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタン(キーボードの←→でも可！)\rで、かわせ！ホノカチャン！\r \r「私、やっぱりやる！やるったらやる！」"
+var text_how_to_E = "車道ど真ん中の生徒会長を車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\rエリチカを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタン(キーボードの←→でも可！)\rで、かしこく！かわせ！エリーチカ！！(KKE)\r \r「生徒会の許可ぁ？認められないチカ！」"
 var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 
@@ -213,7 +214,31 @@ function addAllEventListener(){
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
 
-        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://games.sokontokoro-factory.net/honocar/";
+        var tweet_text;
+ 
+        switch(playCharacter){
+            case "honoka":
+                if(gameScore == 0){
+                    tweet_text = "";
+                }else if(gameScore < 2){
+                    tweet_text = "ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！";
+                }else if(gameScore >= 3){
+                    tweet_text = "海未「なにやっていたんですか！！どれだけ避けたと思っているんですか...」穂乃果「"+gameScore+"台！」";
+                }
+                break;
+            case "erichi":
+                if(gameScore == 0){
+                    tweet_text = "(車なんて避けてないで)エリチカ、おうちにかえる!!!";
+                }else if(gameScore < 5){
+                    tweet_text = "ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！";
+                }else if(gameScore < 50){
+                    tweet_text = "希「"+gameScore+"台やね」";
+                }
+                break;
+        }       
+
+
+        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+tweet_text+"&url=http://games.sokontokoro-factory.net/honocar/";
     });
     BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
         SOUND_OK.play("none",0,0,0,1,0);

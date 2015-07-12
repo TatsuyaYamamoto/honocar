@@ -4,13 +4,23 @@ function howToPlayInit(){
 	//要素をステージに追加
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(BUTTON_BACK_TOP_FROM_HOW_TO);
+
+
+    switch(playCharacter){
+        case "honoka":
+            TEXT_HOW_TO.text = text_how_to;
+            break;
+        case "erichi":
+            TEXT_HOW_TO.text = text_how_to_E;
+            break;
+    }
     gameStage.addChild(TEXT_HOW_TO);
 
 
 	//ほのかちゃを作成
-	honoka = new Honoka();
-    gameStage.addChild(honoka.img);
-    honoka.howToMove();
+	player = new Player(playCharacter);
+    gameStage.addChild(player.img);
+    player.howToMove();
 
     //フレーム数リセット
 	gameFrame = 0;
