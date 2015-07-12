@@ -1,9 +1,21 @@
 //ほのかちゃ------------------------------------------------
-function Honoka(){
+function Player(playCharacter){
 
     //ほのかちゃんスプライトシート読み込み
-    var honokaSpriteSheet = new createjs.SpriteSheet({
-        images: [ queue.getResult("HONOKA_SS") ],
+
+    var spriteSheetImg;
+    switch(playCharacter){
+        case "honoka":
+            spriteSheetImg = "HONOKA_SS";
+            break;
+        case "erichi":
+            spriteSheetImg = "ERICHI_SS";
+            break;
+    }
+
+
+    var PlayerSpriteSheet = new createjs.SpriteSheet({
+        images: [ queue.getResult(spriteSheetImg) ],
         frames: {
             width:HONOKA_IMG_WIDTH,
             height:HONOKA_IMG_HEIGHT
@@ -33,7 +45,7 @@ function Honoka(){
     });
 
     //画像初期化
-    this.img = new createjs.Sprite(honokaSpriteSheet,"kihon");
+    this.img = new createjs.Sprite(PlayerSpriteSheet,"kihon");
     this.img.y = gameScrean.height * 0.45;
     this.img.regX = HONOKA_IMG_WIDTH/2;
     this.img.regY = HONOKA_IMG_HEIGHT/2;
@@ -44,7 +56,7 @@ function Honoka(){
     this.img.x = this.checkLane();
 
 }
-Honoka.prototype.checkLane = function(){
+Player.prototype.checkLane = function(){
 
     switch(this.lane){
         case 0:
@@ -62,14 +74,14 @@ Honoka.prototype.checkLane = function(){
     }
 }
 
-Honoka.prototype.moveRight = function(){
+Player.prototype.moveRight = function(){
     this.lane ++;
     SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : this.checkLane()}, 100);
 }
-Honoka.prototype.moveLeft = function(){
+Player.prototype.moveLeft = function(){
     this.lane --;
     SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
@@ -77,7 +89,7 @@ Honoka.prototype.moveLeft = function(){
             .to({x : this.checkLane()}, 100);
 }
 
-Honoka.prototype.howToMove =function(){
+Player.prototype.howToMove =function(){
 
     createjs.Tween.get(this.img, {loop:true})
         .call(this.img.gotoAndPlay, ["escapeR"])

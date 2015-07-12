@@ -102,6 +102,11 @@ function setImageContent(){
         setCoordinates(TITLE_LOGO, gameScrean.width*0.5, (gameScrean.height*0.5));
         TITLE_LOGO.scaleY = TITLE_LOGO.scaleX = gameScreenScale;
 
+        //タイトルロゴ(エリチカバージョン)
+        TITLE_LOGO_E = new createjs.Bitmap(queue.getResult("TITLE_LOGO_E"));
+        setCoordinates(TITLE_LOGO_E, gameScrean.width*0.5, (gameScrean.height*0.5));
+        TITLE_LOGO_E.scaleY = TITLE_LOGO_E.scaleX = gameScreenScale;
+
         //メニューロゴ
         MENU_LOGO = new createjs.Bitmap(queue.getResult("MENU_LOGO"));
         setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.32));
@@ -200,6 +205,14 @@ function setImageContent(){
         BUTTON_TURN_SWITCH.regX = 177/2;
         BUTTON_TURN_SWITCH.regY = 139/2;
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
+
+
+        BUTTON_CHANGE_CHARA = new createjs.Bitmap(queue.getResult("BUTTON_CHANGE_CHARA"));
+        setCoordinates(BUTTON_CHANGE_CHARA, (gameScrean.width)*0.93, gameScrean.height*0.93);
+        BUTTON_CHANGE_CHARA.scaleY = BUTTON_CHANGE_CHARA.scaleX = gameScreenScale;
+        BUTTON_CHANGE_CHARA.rotation = -25
+
+
 }
 function setSoundContent(){
 
@@ -335,6 +348,10 @@ var imageManifest = [
         src: "img/TITLE_LOGO.png"
     },
     {
+        id : "TITLE_LOGO_E",
+        src: "img/TITLE_LOGO_E.png"
+    },
+    {
         id : "MENU_LOGO",
         src: "img/MENU_LOGO.png"
     },
@@ -359,6 +376,10 @@ var imageManifest = [
         src: "img/HONOKA_SS.png"
     },
     {
+        id : "ERICHI_SS",
+        src: "img/ERICHI_SS.png"
+    },
+    {
         id : "CAR1_FRONT",
         src: "img/CAR1_FRONT.png"
     },
@@ -377,6 +398,10 @@ var imageManifest = [
     {
         id : "WHITE_SHEET",
         src: "img/WHITE_SHEET.png"
+    },
+    {
+        id : "BUTTON_CHANGE_CHARA",
+        src: "img/BUTTON_CHANGE_CHARA.png"
     }
 ];
 //音声リスト------------------------------------------

@@ -27,7 +27,7 @@ function topState(){
     }
 
     function gotoMenu(){
-        SOUND_OK.play();
+        SOUND_OK.play("none",0,0,0,1,0);
         menuState()
         GAME_BACKGROUND.removeEventListener("click", gotoMenu);
     }
@@ -50,7 +50,7 @@ function menuState(){
     gameStage.addChild(BUTTON_CREDIT);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.addChild(BUTTON_TURN_SWITCH);
-
+    gameStage.addChild(BUTTON_CHANGE_CHARA);
 
 
     if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
@@ -100,12 +100,12 @@ function gameOverState(){
 
 	screanState = "gameOverState";
 
-    honoka.img.gotoAndPlay("down");
+    player.img.gotoAndPlay("down");
 
     gameStage.removeAllChildren();
 
     gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(honoka.img);
+    gameStage.addChild(player.img);
     gameStage.addChild(BUTTON_BACK_TOP);
     gameStage.addChild(BUTTON_RESTART);
     gameStage.addChild(BUTTON_TWITTER_GAMEOVER);

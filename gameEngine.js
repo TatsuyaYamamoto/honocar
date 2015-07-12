@@ -1,8 +1,11 @@
 //ゲーム初期化-----------------------------------------
 function gameInit(){
 
-	//ほのかちゃを作成
-	honoka = new Honoka();
+
+	//honoka or erichiを作成
+	//初期値はplayCharacter==honoka
+	player = new Player(playCharacter);
+
 
     //フレーム数リセット
 	gameStatusReset();
@@ -15,8 +18,7 @@ function gameInit(){
 	//タイマーに関数セット
     tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 
-	//キーボード用keycodeevent登録
-	window.addEventListener("keydown", keyDownEvent);
+
 
 }
 
@@ -42,7 +44,7 @@ function gameReady(){
 	switch(gameFrame){
 		case 1:
 		    gameStage.addChild(GAME_BACKGROUND);
-		    gameStage.addChild(honoka.img);
+		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;	
 		case 10:
@@ -50,7 +52,7 @@ function gameReady(){
 	        TETX_GAMESTART_COUNT.text = "-2-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
-		    gameStage.addChild(honoka.img);
+		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;
 		case 30:
@@ -58,7 +60,7 @@ function gameReady(){
 	        TETX_GAMESTART_COUNT.text = "-1-";
 		    gameStage.addChild(GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
-		    gameStage.addChild(honoka.img);
+		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;
 		case 50:
@@ -67,7 +69,11 @@ function gameReady(){
 	    	gameStatusReset();
 			drawGameScrean();
 		    createjs.Ticker.removeEventListener("tick", tickListener);
+
+		    //ゲーム処理開始
 			tickListener = createjs.Ticker.addEventListener("tick", processGame);
+			//キーボード用keycodeevent登録
+			window.addEventListener("keydown", keyDownEvent);
 		    SOUND_SUSUME_LOOP.play("late",0,0,-1,0.6,0);
 			break;
 	}
@@ -95,7 +101,7 @@ function processGame(){
             passCarCount ++;
     	}
 
-	    if(honoka.lane == target.lane && checkDistance(target) < 0){
+	    if(player.lane == target.lane && checkDistance(target) < 0){
 	    	crash();
 	    }
 	});
@@ -108,7 +114,7 @@ function drawGameScrean(){
 	gameStage.addChild(BUTTON_LEFT);
 	gameStage.addChild(BUTTON_RIGHT);
 	gameStage.addChild(TEXT_GAME_COUNT);
-    gameStage.addChild(honoka.img);
+    gameStage.addChild(player.img);
 
 }
 
@@ -132,7 +138,7 @@ function enemyAppeare(){
 			car.push(new Car(3));
 			break;
 		case 4:
-			car.push(new Car(honoka.lane));
+			car.push(new Car(player.lane));
 			break;
 		case 5:
 			//なにもおきない
@@ -147,16 +153,16 @@ function enemyAppeare(){
 
 //ボタン状態の確認
 function checkButton(){
-    if(honoka.lane == 0){
+    if(player.lane == 0){
         leftButtonDisable();
     };
-	if(honoka.lane == 1){
+	if(player.lane == 1){
         leftButtonEnable();
     }
-    if(honoka.lane == 2){
+    if(player.lane == 2){
         rightButtonEnable();
     }
-    if(honoka.lane == 3){
+    if(player.lane == 3){
         rightButtonDisable();
     }
 }
@@ -186,7 +192,7 @@ function leftButtonDisable(){
 
 //オブジェクト間の距離計算(y軸方向のみ)---------------------
 function checkDistance(target){
-	var y = honoka.img.y - target.img.y;
+	var y = player.img.y - target.img.y;
 
 	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH - HONOKA_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH;
 	return length;
@@ -194,12 +200,12 @@ function checkDistance(target){
 //イベント処理-------------------------------------
 
 function clickButtonRight(){
-	honoka.moveRight();
+	player.moveRight();
 	checkButton();
 }
 
 function clickButtonLeft(){
-	honoka.moveLeft();
+	player.moveLeft();
 	checkButton();
 }
 //クラッシュ関数-------------------------------------

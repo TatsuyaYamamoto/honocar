@@ -36,9 +36,10 @@ var keybordEvent;
 
 var isSoundMute;
 
-var player;
-
+var playCharacter = "honoka";//honoka or erichi
+var player;//キャラクターオブジェクトを格納する
 var honoka;
+var erichi;
 
 var car;
 
@@ -56,6 +57,7 @@ var ctAnchor;
 //画像系--------------
 //背景
 var TITLE_LOGO;
+var TITLE_LOGO_E;
 var MENU_LOGO;
 var GAMEOVER;
 var GAME_BACKGROUND;
@@ -81,6 +83,7 @@ var BUTTON_BACK_TOP_FROM_CREDIT;
 var BUTTON_BACK_TOP_FROM_HOW_TO;
 var BUTTON_RESTART;
 var BUTTON_TURN_SWITCH;
+var BUTTON_CHANGE_CHARA;
 
 var BUTTON_LEFT;
 var BUTTON_RIGHT;
@@ -104,7 +107,7 @@ var TEXT_LINK_SAN;
 var TEXT_LINK_1;
 var TEXT_LINK_2;
 
-var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタンで、かわせ！ホノカチャン！\r \r「私、やっぱりやる！やるったらやる！」"
+var text_how_to = "車道ど真ん中の穂乃果ちゃんを車が容赦なく襲う！\r \rなかなか始まらないススメ→トゥモロウを尻目に\r穂乃果ちゃんを助けてあげなくちゃ！\r \r \r \r \r \r \r \r \r \r \r \r \r \r \rLEFT, RIGHTボタン(キーボードの←→でも可！)\rで、かわせ！ホノカチャン！\r \r「私、やっぱりやる！やるったらやる！」"
 var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 
@@ -153,7 +156,7 @@ function addAllEventListener(){
         SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
-    BUTTON_HOW_TO.addEventListener("mousedo", function() {
+    BUTTON_HOW_TO.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
@@ -165,7 +168,7 @@ function addAllEventListener(){
         creditState();		
 	})
 
-    BUTTON_BACK_TOP.addEventListener( 'mousedo', function() {
+    BUTTON_BACK_TOP.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
@@ -211,6 +214,21 @@ function addAllEventListener(){
     BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
 
         window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text=ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！&url=http://games.sokontokoro-factory.net/honocar/";
+    });
+    BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
+        SOUND_OK.play("none",0,0,0,1,0);
+
+        switch(playCharacter){
+            case "honoka":
+                playCharacter = "erichi";
+                break;
+            case "erichi":
+                playCharacter = "honoka";
+                break;
+        }
+
+        createjs.Ticker.removeEventListener("tick", tickListener);
+        topState();
     });
     TEXT_LINK_1.addEventListener("mousedown", function(){
         window.location.href="http://soundeffect-lab.info/";
