@@ -28,8 +28,8 @@ function gameStatusReset(){
 	car = [];
 }
 
-function keyDownEvent(){
-	if(event.keyCode == 37 && BUTTON_LEFT.mouseEnabled){
+function keyDownEvent(event){
+	if(event.which == 37 && BUTTON_LEFT.mouseEnabled){
 		clickButtonLeft();
 	}
 	if(event.keyCode == 39 && BUTTON_RIGHT.mouseEnabled){
