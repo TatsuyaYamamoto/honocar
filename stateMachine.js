@@ -111,7 +111,7 @@ function menuState(){
             var pic = new createjs.Bitmap(data.profile_image_url);
             setCoordinates(pic, gameScrean.width*0.03, gameScrean.height*0.9);
             pic.scaleY = pic.scaleX = gameScreenScale * 1.6;
-            pic.addEventListener("mousedown", function() {
+            pic.addEventListener("mousedown", function(){
                 createjs.Ticker.removeEventListener("tick", tickListener);
                 SOUND_OK.play("none",0,0,0,1,0);
                 howToPlayState();
@@ -125,7 +125,7 @@ function menuState(){
                     xhrFields: {
                         withCredentials: true
                     }
-                }).done(function(data){
+                }).done(function(){
                     alert("ログアウトしました。リロードします。");                 
                     window.location.href=config.api.origin;
                 }).fail(function(){
