@@ -6,6 +6,7 @@ var config = {
     api:{
         origin: "http://diary.sokontokoro-factory.net/honocar/",
         login: "https://lit-taiga-3631.herokuapp.com/oauth/login",
+        logout: "https://lit-taiga-3631.herokuapp.com/oauth/logout",
         check: "https://lit-taiga-3631.herokuapp.com/oauth/check"
     },
     link: {

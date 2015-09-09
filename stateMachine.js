@@ -111,6 +111,27 @@ function menuState(){
             var pic = new createjs.Bitmap(data.profile_image_url);
             setCoordinates(pic, gameScrean.width*0.03, gameScrean.height*0.9);
             pic.scaleY = pic.scaleX = gameScreenScale * 1.6;
+            pic.addEventListener("mousedown", function() {
+                createjs.Ticker.removeEventListener("tick", tickListener);
+                SOUND_OK.play("none",0,0,0,1,0);
+                howToPlayState();
+                $.ajax({
+                    type: "GET",
+                    url: config.api.logout,
+                    dataType: 'json',
+                    headers: {
+                        'Origin': config.api.origin
+                    },
+                    xhrFields: {
+                        withCredentials: true
+                    }
+                }).done(function(data){
+                    alert("ログアウトしました。リロードします。");                 
+                    window.location.href=config.api.origin;
+                }).fail(function(){
+                    alert("アクセスに失敗しました");
+                });
+            };
 
             var screen_name = new createjs.Text();
             setTextProperties(screen_name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
