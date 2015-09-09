@@ -112,9 +112,7 @@ function menuState(){
             setCoordinates(pic, gameScrean.width*0.03, gameScrean.height*0.9);
             pic.scaleY = pic.scaleX = gameScreenScale * 1.6;
             pic.addEventListener("mousedown", function(){
-                createjs.Ticker.removeEventListener("tick", tickListener);
                 SOUND_OK.play("none",0,0,0,1,0);
-                howToPlayState();
                 $.ajax({
                     type: "GET",
                     url: config.api.logout,
