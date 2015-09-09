@@ -163,7 +163,7 @@ function checkLogin(){
         }
     }).done(function(data){
         isLogin = true;
-        alert(isLogin);
+        alert(data.id);
     }).fail(function(){
         alert("アクセスに失敗しました");
     });
