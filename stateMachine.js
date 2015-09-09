@@ -55,10 +55,6 @@ function menuState(){
 
 
 
-
-
-
-
     gameStage.addChild(BUTTON_START);
     gameStage.addChild(BUTTON_HOW_TO);
     gameStage.addChild(BUTTON_RANKING);
@@ -94,7 +90,27 @@ function menuState(){
     shape.x = 0;
     shape.y = gameScrean.height-height;
     gameStage.addChild(shape);
-    gameStage.addChild(BUTTON_TWITTER_LOGIN);
+
+
+    if(!isLogin){
+        gameStage.addChild(BUTTON_TWITTER_LOGIN);
+    }else{
+        $.ajax({
+            type: "GET",
+            url: config.api.check,
+            dataType: 'json',
+            headers: {
+                'Origin': config.api.origin
+            },
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function(data){
+            gameStage.addChild(data.profile_image_url);
+        }).fail(function(){
+            alert("アクセスに失敗しました");
+        });
+    }
 
 
     switch(playCharacter){
