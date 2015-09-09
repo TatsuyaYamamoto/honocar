@@ -95,6 +95,7 @@ function menuState(){
     if(!isLogin){
         gameStage.addChild(BUTTON_TWITTER_LOGIN);
     }else{
+
         $.ajax({
             type: "GET",
             url: config.api.check,
@@ -106,7 +107,10 @@ function menuState(){
                 withCredentials: true
             }
         }).done(function(data){
-            gameStage.addChild(data.profile_image_url);
+            var pic = new createjs.Bitmap(data.profile_image_url);
+            setCoordinates(pic, (gameScrean.width)*0.1, gameScrean.height*0.9);
+            pic.scaleY = pic.scaleX = gameScreenScale;
+            gameStage.addChild(pic);
         }).fail(function(){
             alert("アクセスに失敗しました");
         });
