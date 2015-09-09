@@ -112,12 +112,12 @@ function menuState(){
             pic.scaleY = pic.scaleX = gameScreenScale * 1.8;
 
             screen_name = new createjs.Text();
-            setTextProperties(screen_name, gameScrean.width*0.1, gameScrean.height*0.9, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+            setTextProperties(screen_name, gameScrean.width*0.2, gameScrean.height*0.9, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
             screen_name.text = "@"+data.screen_name
 
             gameStage.addChild(screen_name);
             gameStage.addChild(pic);
-            
+
         }).fail(function(){
             alert("アクセスに失敗しました");
         });
