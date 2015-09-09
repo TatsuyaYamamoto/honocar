@@ -47,6 +47,9 @@ var ctStatus = false;
 var ctCount = 0;
 var ctAnchor;
 
+
+
+var isLogin = false;
 //初期化----------------------------------------
 //ゲームプレイヤーの操作座標(これいらんな)
 //player = new setCoordinates();
@@ -75,10 +78,12 @@ var SOUND_SUSUME_END;
 //ボタン
 var BUTTON_START;
 var BUTTON_HOW_TO;
+var BUTTON_RANKING;
 var BUTTON_CREDIT;
 var BUTTON_BACK_TOP;
 var BUTTON_BACK_TOP_FROM_CREDIT;
 var BUTTON_BACK_TOP_FROM_HOW_TO;
+var BUTTON_BACK_TOP_FROM_RANKING;
 var BUTTON_RESTART;
 var BUTTON_TURN_SWITCH;
 var BUTTON_CHANGE_CHARA;
@@ -90,7 +95,7 @@ var BUTTON_RIGHT_HOW_TO;
 
 var BUTTON_TWITTER_TOP;
 var BUTTON_TWITTER_GAMEOVER_SS;
-
+var BUTTON_TWITTER_LOGIN;
 
 
 //テキスト
@@ -98,6 +103,8 @@ var BUTTON_TWITTER_GAMEOVER_SS;
 var TEXT_HOW_TO;
 var TEXT_GAME_COUNT;
 var TEXT_START;
+
+var TEXT_RANKING;
 
 var TEXT_LINK_LOVELIVE;
 var TEXT_LINK_ME;
@@ -126,8 +133,6 @@ function Lane(num){
 }
 
 
-
-
 //ゲームスクリーンサイズ初期化用-----------------------
 function initGameScreenScale(){
 
@@ -141,6 +146,33 @@ function initGameScreenScale(){
 	gameScrean.width = GAMESCREAN_WIDTH*gameScreenScale;
 
 }
+
+// ログイン確認用-------------
+
+function checkLogin(){
+
+ var isLogin = false;
+
+ $.ajax({
+     type: "GET",
+     url: "https://lit-taiga-3631.herokuapp.com/oauth/check",
+     dataType: 'json',
+     headers: {
+         'Origin': 'http://localhost'
+     },
+     xhrFields: {
+         withCredentials: true
+     }
+ }).done(function(data){
+     isLogin = true;
+ }).fail(function(){
+     isLogin = false;
+     alert(isLogin);
+ });
+
+ return isLogin;
+}
+
 
 function addAllEventListener(){
    //イベントリスナー登録--------------------------------
@@ -160,6 +192,11 @@ function addAllEventListener(){
         SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
+    BUTTON_RANKING.addEventListener("mousedown",function(){
+        createjs.Ticker.removeEventListener("tick", tickListener);
+        SOUND_OK.play("none",0,0,0,1,0);
+        rankingState();      
+    })
 
 	BUTTON_CREDIT.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
@@ -185,6 +222,12 @@ function addAllEventListener(){
         menuState();
     });
 
+    BUTTON_BACK_TOP_FROM_RANKING.addEventListener( 'mousedown', function() {
+        SOUND_BACK.play("none",0,0,0,1,0);
+        $("#rankingName").hide();
+        menuState();
+    });
+
     BUTTON_RESTART.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
@@ -201,13 +244,17 @@ function addAllEventListener(){
         }else{
             BUTTON_TURN_SWITCH.gotoAndPlay("off");
             gameStage.update();
-            soundTurnOff();            
+            soundTurnOff(); 
         }
+    });
+
+    BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
+        window.location.href=config.api.login;
     });
 
     BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
 
-        window.location.href="https://twitter.com/t28_tatsuya"
+        window.location.href=config.link.t28_twitter;
     });
 
     BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
@@ -237,6 +284,7 @@ function addAllEventListener(){
 
 
         window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+tweet_text+"&url=http://games.sokontokoro-factory.net/honocar/";
+
     });
     BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
         SOUND_OK.play("none",0,0,0,1,0);
@@ -254,18 +302,17 @@ function addAllEventListener(){
         topState();
     });
     TEXT_LINK_1.addEventListener("mousedown", function(){
-        window.location.href="http://soundeffect-lab.info/";
+        window.location.href = config.link.soundeffect;
     });
     TEXT_LINK_2.addEventListener("mousedown", function(){
-        window.location.href="http://on-jin.com/";
+        window.location.href = config.link.on_jin;
     });
     TEXT_LINK_ME.addEventListener("mousedown", function(){
-        window.location.href="http://sokontokoro-factory.net";
+        window.location.href = config.link.sokontokoro;
     });
     TEXT_LINK_SAN.addEventListener("mousedown", function(){
-        window.location.href="https://twitter.com/xxsanzashixx";
+        window.location.href = config.link.sanzashi;
     });
-
     window.addEventListener("blur", function(){
         soundTurnOff();
         createjs.Ticker.setPaused(true);
@@ -275,3 +322,4 @@ function addAllEventListener(){
         createjs.Ticker.setPaused(false);
     });
 }
+

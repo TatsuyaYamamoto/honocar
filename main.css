@@ -10,3 +10,11 @@ body{
 	text-align: center;
 }
 
+#rankingName{
+	font-size:20px;
+width: 10%;
+height: 10%;
+top: 50%;
+left: 50%;
+	position:absolute;
+}

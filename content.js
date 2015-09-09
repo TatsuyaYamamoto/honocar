@@ -109,7 +109,7 @@ function setImageContent(){
 
         //メニューロゴ
         MENU_LOGO = new createjs.Bitmap(queue.getResult("MENU_LOGO"));
-        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.32));
+        setCoordinates(MENU_LOGO, gameScrean.width*0.5, (gameScrean.height*0.25));
         MENU_LOGO.scaleY = MENU_LOGO.scaleX = gameScreenScale;
 
         //GAMEOVERロゴ
@@ -123,15 +123,21 @@ function setImageContent(){
 
         //ボタン
         BUTTON_START = new createjs.Bitmap(queue.getResult("BUTTON_START"));
-        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.55);
+        setCoordinates(BUTTON_START, gameScrean.width*0.5, gameScrean.height*0.4);
         BUTTON_START.scaleY = BUTTON_START.scaleX = gameScreenScale*0.8;
 
+        // ランキングボタン
         BUTTON_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_HOW_TO"));
-        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.7);
+        setCoordinates(BUTTON_HOW_TO, gameScrean.width*0.5, gameScrean.height*0.54);
         BUTTON_HOW_TO.scaleY = BUTTON_HOW_TO.scaleX = gameScreenScale*0.8;
 
+        BUTTON_RANKING = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
+        setCoordinates(BUTTON_RANKING, gameScrean.width*0.5, gameScrean.height*0.68);
+        BUTTON_RANKING.scaleY = BUTTON_RANKING.scaleX = gameScreenScale*0.8;
+
+
         BUTTON_CREDIT = new createjs.Bitmap(queue.getResult("BUTTON_CREDIT"));
-        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.85);
+        setCoordinates(BUTTON_CREDIT, gameScrean.width*0.5, gameScrean.height*0.82);
         BUTTON_CREDIT.scaleY = BUTTON_CREDIT.scaleX = gameScreenScale*0.8;
 
         BUTTON_BACK_TOP = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
@@ -146,6 +152,11 @@ function setImageContent(){
         setCoordinates(BUTTON_BACK_TOP_FROM_HOW_TO, gameScrean.width*0.5, (gameScrean.height*0.85));
         BUTTON_BACK_TOP_FROM_HOW_TO.scaleY = BUTTON_BACK_TOP_FROM_HOW_TO.scaleX = gameScreenScale;
 
+        BUTTON_BACK_TOP_FROM_RANKING = new createjs.Bitmap(queue.getResult("BUTTON_BACK_MENU"));
+        setCoordinates(BUTTON_BACK_TOP_FROM_RANKING, gameScrean.width*0.5, (gameScrean.height*0.85));
+        BUTTON_BACK_TOP_FROM_RANKING.scaleY = BUTTON_BACK_TOP_FROM_RANKING.scaleX = gameScreenScale;
+
+
         BUTTON_RESTART = new createjs.Bitmap(queue.getResult("BUTTON_RESTART"));
         setCoordinates(BUTTON_RESTART, gameScrean.width*0.3, gameScrean.height*0.8);
         BUTTON_RESTART.scaleY = BUTTON_RESTART.scaleX = gameScreenScale;
@@ -153,6 +164,11 @@ function setImageContent(){
         BUTTON_TWITTER_TOP = new createjs.Bitmap(queue.getResult("TWITTER_TOP"));
         setCoordinates(BUTTON_TWITTER_TOP, gameScrean.width*0.2, gameScrean.height*0.1);
         BUTTON_TWITTER_TOP.scaleY = BUTTON_TWITTER_TOP.scaleX = gameScreenScale;
+
+        BUTTON_TWITTER_LOGIN = new createjs.Bitmap(queue.getResult("BUTTON_TWITTER_LOGIN"));
+        setCoordinates(BUTTON_TWITTER_LOGIN, gameScrean.width*0.25, gameScrean.height*0.95);
+        BUTTON_TWITTER_LOGIN.scaleY = BUTTON_TWITTER_LOGIN.scaleX = gameScreenScale*0.5;
+
 
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
         setCoordinates(BUTTON_LEFT, (gameScrean.width)*0.2, gameScrean.height*0.9);
@@ -294,6 +310,9 @@ function setTextContent(){
     TETX_GAMESTART_COUNT = new createjs.Text();
     setTextProperties(TETX_GAMESTART_COUNT, gameScrean.width*0.5, gameScrean.height*0.7, gameScrean.width*0.08, "Impact", "center", gameScrean.width*0.04);
 
+    TEXT_RANKING = new createjs.Text();
+    setTextProperties(TEXT_RANKING, gameScrean.width*0.5, gameScrean.height*0.15, gameScrean.width*0.05, "Arial", "center", gameScrean.width*0.07);
+    TEXT_RANKING.text = "ランキング機能(仮画面)\rだよー";
 
 
 
@@ -431,6 +450,10 @@ var imageManifest = [
     {
         id : "TWITTER_GAMEOVER_SS",
         src: "img/TWITTER_GAMEOVER_SS.png"
+    },
+    {
+        id : "BUTTON_TWITTER_LOGIN",
+        src: "img/BUTTON_TWITTER_LOGIN.png"
     },
     {
         id : "WHITE_SHEET",

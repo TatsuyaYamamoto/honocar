@@ -53,12 +53,49 @@ function menuState(){
     gameStage.addChild(GAME_BACKGROUND);
     gameStage.addChild(WHITE_SHEET);
 
-    gameStage.addChild(MENU_LOGO);
+
+
+
+
+
+
     gameStage.addChild(BUTTON_START);
     gameStage.addChild(BUTTON_HOW_TO);
+    gameStage.addChild(BUTTON_RANKING);
     gameStage.addChild(BUTTON_CREDIT);
     gameStage.addChild(BUTTON_TWITTER_TOP);
     gameStage.addChild(BUTTON_TURN_SWITCH);
+    gameStage.addChild(MENU_LOGO);
+
+
+    // Graphicsのインスタンスを作成します。
+    var graphics = new createjs.Graphics();
+
+    // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
+    graphics.beginStroke("#55acee");
+    graphics.beginFill("#55acee");
+
+    // 図形の描画を行う（ここのバリエーションを後述します）
+
+    var height = gameScrean.height*0.1;
+    var width = gameScrean.width*0.5;
+
+
+
+    graphics
+         .moveTo(0,0)
+         .lineTo(width,0)
+         .lineTo(width,height)
+         .lineTo(0,height)
+         .closePath();
+
+    // Shapeとして、Stageに追加します。
+    var shape = new createjs.Shape(graphics);
+    shape.x = 0;
+    shape.y = gameScrean.height-height;
+    gameStage.addChild(shape);
+    gameStage.addChild(BUTTON_TWITTER_LOGIN);
+
 
     switch(playCharacter){
         case "honoka":
@@ -107,6 +144,21 @@ function creditState(){
 
     gameStage.update();
 }
+//ランキング画面------------------------------------------
+function rankingState(){
+    screanState = "creditState";
+    gameStage.removeAllChildren();
+    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(BUTTON_BACK_TOP_FROM_RANKING);
+    gameStage.addChild(TEXT_RANKING);
+
+    //テキストボックスを表示する
+    $("#rankingName").show();
+
+
+    gameStage.update();
+}
+
 //ゲーム画面------------------------------------------
 function gameState(){
 	screanState = "gameState";
