@@ -113,7 +113,7 @@ function menuState(){
             pic.scaleY = pic.scaleX = gameScreenScale * 1.6;
 
             var screen_name = new createjs.Text();
-            setTextProperties(screen_name, gameScrean.width*0.4, gameScrean.height*0.95, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
+            setTextProperties(screen_name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
             screen_name.text = "@"+data.screen_name
 
             gameStage.addChild(screen_name);
