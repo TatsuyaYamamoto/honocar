@@ -131,7 +131,7 @@ function menuState(){
                 }).fail(function(){
                     alert("アクセスに失敗しました");
                 });
-            };
+            });
 
             var screen_name = new createjs.Text();
             setTextProperties(screen_name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
