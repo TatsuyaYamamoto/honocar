@@ -165,10 +165,9 @@ function checkLogin(){
         isLogin = true;
     }).fail(function(){
         isLogin = false;
-        alert(isLogin);
     });
+    alert(isLogin);
 
-    return isLogin;
 }
 
 
