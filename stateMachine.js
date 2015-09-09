@@ -108,8 +108,8 @@ function menuState(){
             }
         }).done(function(data){
             var pic = new createjs.Bitmap(data.profile_image_url);
-            setCoordinates(pic, (gameScrean.width)*0.1, gameScrean.height*0.9);
-            pic.scaleY = pic.scaleX = gameScreenScale;
+            setCoordinates(pic, (gameScrean.width)*0.05, gameScrean.height*0.92);
+            pic.scaleY = pic.scaleX = gameScreenScale*1.5;
             gameStage.addChild(pic);
         }).fail(function(){
             alert("アクセスに失敗しました");
