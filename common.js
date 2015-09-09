@@ -151,26 +151,24 @@ function initGameScreenScale(){
 
 function checkLogin(){
 
- var isLogin = false;
+    $.ajax({
+        type: "GET",
+        url: config.api.check,
+        dataType: 'json',
+        headers: {
+            'Origin': config.api.origin
+        },
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data){
+        isLogin = true;
+    }).fail(function(){
+        isLogin = false;
+        alert(isLogin);
+    });
 
- $.ajax({
-     type: "GET",
-     url: "https://lit-taiga-3631.herokuapp.com/oauth/check",
-     dataType: 'json',
-     headers: {
-         'Origin': 'http://localhost'
-     },
-     xhrFields: {
-         withCredentials: true
-     }
- }).done(function(data){
-     isLogin = true;
- }).fail(function(){
-     isLogin = false;
-     alert(isLogin);
- });
-
- return isLogin;
+    return isLogin;
 }
 
 

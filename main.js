@@ -25,7 +25,8 @@ window.onload = function(){
 	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
 
-
+	// ログイン中チェック
+	checkLogin();
 
 
 	//コンテンツのロードステートに移行
@@ -53,6 +54,7 @@ window.onload = function(){
 	else{
 		loadState();
 	}
+
 
 }
 
