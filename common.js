@@ -98,6 +98,10 @@ var BUTTON_TWITTER_GAMEOVER_SS;
 var BUTTON_TWITTER_LOGIN;
 var BUTTON_TWITTER_LOGOUT;
 
+
+var PROFILE_IMAGE;
+var profile_img_url;
+var screen_name;
 //テキスト
 
 var TEXT_HOW_TO;
@@ -150,7 +154,7 @@ function initGameScreenScale(){
 // ログイン確認用-------------
 
 function checkLogin(){
-
+    isLogin = false;
     $.ajax({
         type: "GET",
         url: config.api.check,
@@ -161,14 +165,40 @@ function checkLogin(){
         xhrFields: {
             withCredentials: true
         }
-    }).done(function(data){
-        isLogin = true;
+    }).done(function(data, status, xhr) {
+        if (xhr.status === 200) {
+            isLogin = true;
+            screen_name = data.screen_name;
+            profile_img_url = data.profile_image_url
+        }
     });
 }
 
 
 function addAllEventListener(){
    //イベントリスナー登録--------------------------------
+
+    if (isLogin) {
+
+        PROFILE_IMAGE.addEventListener("mousedown", function(){
+            SOUND_OK.play("none",0,0,0,1,0);
+            $.ajax({
+                type: "GET",
+                url: config.api.logout,
+                headers: {
+                    'Origin': config.api.origin
+                },
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).done(function(){
+                alert("ログアウトしました。リロードします。");                 
+                window.location.href=config.api.origin;
+            }).fail(function(){
+                alert("アクセスに失敗しました");
+            });
+        });
+    };
 
     BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 

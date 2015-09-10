@@ -95,52 +95,14 @@ function menuState(){
     if(!isLogin){
         gameStage.addChild(BUTTON_TWITTER_LOGIN);
     }else{
+        var name = new createjs.Text();
+        setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
+        name.text = "@"+screen_name
 
-        $.ajax({
-            type: "GET",
-            url: config.api.check,
-            dataType: 'json',
-            headers: {
-                'Origin': config.api.origin
-            },
-            xhrFields: {
-                withCredentials: true
-            }
-        }).done(function(data){
+        gameStage.addChild(BUTTON_TWITTER_LOGOUT);
+        gameStage.addChild(name);
+        gameStage.addChild(PROFILE_IMAGE);
 
-            var pic = new createjs.Bitmap(data.profile_image_url);
-            setCoordinates(pic, gameScrean.width*0.03, gameScrean.height*0.9);
-            pic.scaleY = pic.scaleX = gameScreenScale * 1.6;
-            pic.addEventListener("mousedown", function(){
-                SOUND_OK.play("none",0,0,0,1,0);
-                $.ajax({
-                    type: "GET",
-                    url: config.api.logout,
-                    headers: {
-                        'Origin': config.api.origin
-                    },
-                    xhrFields: {
-                        withCredentials: true
-                    }
-                }).done(function(){
-                    alert("ログアウトしました。リロードします。");                 
-                    window.location.href=config.api.origin;
-                }).fail(function(){
-                    alert("アクセスに失敗しました");
-                });
-            });
-
-            var screen_name = new createjs.Text();
-            setTextProperties(screen_name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
-            screen_name.text = "@"+data.screen_name
-
-            gameStage.addChild(BUTTON_TWITTER_LOGOUT);
-            gameStage.addChild(screen_name);
-            gameStage.addChild(pic);
-
-        }).fail(function(){
-            alert("アクセスに失敗しました");
-        });
     }
 
 

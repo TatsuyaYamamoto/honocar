@@ -24,9 +24,6 @@ window.onload = function(){
     createjs.Ticker.setFPS(FPS);
 	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
-	// TODO createjsにcross originの画像を読み込まない
-	createjs.DisplayObject.suppressCrossDomainErrors = true;
-
 
 	// ログイン中チェック
 	checkLogin();
