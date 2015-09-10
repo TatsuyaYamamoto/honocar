@@ -153,7 +153,7 @@ function initGameScreenScale(){
 
 // ログイン確認用-------------
 
-function checkLogin(){
+function checkLogin(callback){
     isLogin = false;
     $.ajax({
         type: "GET",
@@ -171,6 +171,7 @@ function checkLogin(){
             screen_name = data.screen_name;
             profile_img_url = data.profile_image_url
         }
+        callback();
     });
 }
 

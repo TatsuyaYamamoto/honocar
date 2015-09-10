@@ -28,16 +28,16 @@ window.onload = function(){
 	createjs.DisplayObject.suppressCrossDomainErrors = true;
 
 
-	// ログイン中チェック
-	checkLogin();
+
 
 
 	//コンテンツのロードステートに移行
 
 	var ua = navigator.userAgent;
 	var start = function(){
-		loadState();
 	    window.removeEventListener("touchstart", start);
+	checkLogin(loadState());
+
     }
 
 
@@ -55,7 +55,8 @@ window.onload = function(){
 
 	}
 	else{
-		loadState();
+			// ログイン中チェック
+	checkLogin(loadState());
 	}
 
 
