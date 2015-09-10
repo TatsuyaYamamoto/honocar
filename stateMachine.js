@@ -116,7 +116,6 @@ function menuState(){
                 $.ajax({
                     type: "GET",
                     url: config.api.logout,
-                    dataType: 'json',
                     headers: {
                         'Origin': config.api.origin
                     },

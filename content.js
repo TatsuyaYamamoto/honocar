@@ -169,6 +169,11 @@ function setImageContent(){
         setCoordinates(BUTTON_TWITTER_LOGIN, gameScrean.width*0.25, gameScrean.height*0.95);
         BUTTON_TWITTER_LOGIN.scaleY = BUTTON_TWITTER_LOGIN.scaleX = gameScreenScale*0.5;
 
+        BUTTON_TWITTER_LOGOUT = new createjs.Bitmap(queue.getResult("BUTTON_TWITTER_LOGOUT"));
+        setCoordinates(BUTTON_TWITTER_LOGOUT, gameScrean.width*0.75, gameScrean.height*0.95);
+        BUTTON_TWITTER_LOGOUT.scaleY = BUTTON_TWITTER_LOGOUT.scaleX = gameScreenScale*0.5;
+
+
 
         BUTTON_LEFT = new createjs.Bitmap(queue.getResult("BUTTON_LEFT"));
         setCoordinates(BUTTON_LEFT, (gameScrean.width)*0.2, gameScrean.height*0.9);
@@ -454,6 +459,10 @@ var imageManifest = [
     {
         id : "BUTTON_TWITTER_LOGIN",
         src: "img/BUTTON_TWITTER_LOGIN.png"
+    },
+    {
+        id : "BUTTON_TWITTER_LOGOUT",
+        src: "img/BUTTON_TWITTER_LOGOUT.png"
     },
     {
         id : "WHITE_SHEET",

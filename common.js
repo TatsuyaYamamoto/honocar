@@ -96,7 +96,7 @@ var BUTTON_RIGHT_HOW_TO;
 var BUTTON_TWITTER_TOP;
 var BUTTON_TWITTER_GAMEOVER_SS;
 var BUTTON_TWITTER_LOGIN;
-
+var BUTTON_TWITTER_LOGOUT;
 
 //テキスト
 
@@ -163,9 +163,6 @@ function checkLogin(){
         }
     }).done(function(data){
         isLogin = true;
-        alert(data.id);
-    }).fail(function(){
-        alert("アクセスに失敗しました");
     });
 }
 
@@ -245,7 +242,15 @@ function addAllEventListener(){
     });
 
     BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
-        window.location.href=config.api.login;
+        if(confirm("ログイン認証のためにTwitterページへ移動します。認証後ゲームページへ再アクセスします。")){
+            window.location.href=config.api.login;
+        }
+    });
+
+    BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
+        if(confirm("ログアウトします。ランキング登録はログイン中のみ有効です。")){
+            window.location.href=config.api.logout;
+        }
     });
 
     BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
