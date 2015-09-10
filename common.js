@@ -171,7 +171,7 @@ function checkLogin(callback){
             screen_name = data.screen_name;
             profile_img_url = data.profile_image_url
         }
-        callback();
+        callback;
     });
 }
 
