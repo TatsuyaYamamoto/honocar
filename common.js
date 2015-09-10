@@ -179,27 +179,6 @@ function checkLogin(callback){
 function addAllEventListener(){
    //イベントリスナー登録--------------------------------
 
-    if (isLogin) {
-
-        PROFILE_IMAGE.addEventListener("mousedown", function(){
-            SOUND_OK.play("none",0,0,0,1,0);
-            $.ajax({
-                type: "GET",
-                url: config.api.logout,
-                headers: {
-                    'Origin': config.api.origin
-                },
-                xhrFields: {
-                    withCredentials: true
-                }
-            }).done(function(){
-                alert("ログアウトしました。リロードします。");                 
-                window.location.href=config.api.origin;
-            }).fail(function(){
-                alert("アクセスに失敗しました");
-            });
-        });
-    };
 
     BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 
@@ -353,5 +332,28 @@ function addAllEventListener(){
         soundTurnOn();
         createjs.Ticker.setPaused(false);
     });
+
+    
+    if (isLogin) {
+
+        PROFILE_IMAGE.addEventListener("mousedown", function(){
+            SOUND_OK.play("none",0,0,0,1,0);
+            $.ajax({
+                type: "GET",
+                url: config.api.logout,
+                headers: {
+                    'Origin': config.api.origin
+                },
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).done(function(){
+                alert("ログアウトしました。リロードします。");                 
+                window.location.href=config.api.origin;
+            }).fail(function(){
+                alert("アクセスに失敗しました");
+            });
+        });
+    };
 }
 
