@@ -134,6 +134,7 @@ function menuState(){
             setTextProperties(screen_name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
             screen_name.text = "@"+data.screen_name
 
+            gameStage.addChild(BUTTON_TWITTER_LOGOUT);
             gameStage.addChild(screen_name);
             gameStage.addChild(pic);
 
