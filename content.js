@@ -270,7 +270,7 @@ function setImageContent(){
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
         if(isLogin){
-            PROFILE_IMAGE = new createjs.Bitmap(profile_image_url);
+            PROFILE_IMAGE = new createjs.Bitmap(profile_img_url);
             setCoordinates(PROFILE_IMAGE, gameScrean.width*0.03, gameScrean.height*0.9);
             PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
         }
