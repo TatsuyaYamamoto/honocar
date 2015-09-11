@@ -38,14 +38,14 @@ Player.prototype.checkLane = function(){
 
 Player.prototype.moveRight = function(){
     this.lane ++;
-    SOUND_KAIHI.play("none",0,0,0,1,0);
+    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : this.checkLane()}, 100);
 }
 Player.prototype.moveLeft = function(){
     this.lane --;
-    SOUND_KAIHI.play("none",0,0,0,1,0);
+    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeL"])
             .to({x : this.checkLane()}, 100);

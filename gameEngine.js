@@ -1,11 +1,9 @@
 //ゲーム初期化-----------------------------------------
 function gameInit(){
 
-
 	//honoka or erichiを作成
 	//初期値はplayCharacter==honoka
 	player = new Player(playCharacter);
-
 
     //フレーム数リセット
 	gameStatusReset();
@@ -14,11 +12,8 @@ function gameInit(){
     rightButtonEnable();
     leftButtonEnable();
 
-
 	//タイマーに関数セット
     tickListener = createjs.Ticker.addEventListener("tick", gameReady);
-
-
 
 }
 
@@ -29,15 +24,15 @@ function gameStatusReset(){
 }
 
 function keyDownEvent(event){
-	if(event.which == 37 && BUTTON_LEFT.mouseEnabled){
+	if(event.which == 37 && imageObj.BUTTON_LEFT.mouseEnabled){
 		clickButtonLeft();
 	}
-	if(event.keyCode == 39 && BUTTON_RIGHT.mouseEnabled){
+	if(event.keyCode == 39 && imageObj.BUTTON_RIGHT.mouseEnabled){
 		clickButtonRight();			
 	}
 }
 
-//ゲームスタートカウント-----------------------------------------
+// ゲームスタートカウント-----------------------------------------
 function gameReady(){
 	gameFrame ++;
 
@@ -48,23 +43,23 @@ function gameReady(){
 			gameStage.update();
 			break;	
 		case 10:
-		    SOUND_PI1.play();
-	        TETX_GAMESTART_COUNT.text = "-2-";
+		    soundObj.SOUND_PI1.play();
+	        textObj.TETX_GAMESTART_COUNT.text = "-2-";
 		    gameStage.addChild(imageObj.GAME_BACKGROUND);
-		    gameStage.addChild(TETX_GAMESTART_COUNT);
+		    gameStage.addChild(textObj.TETX_GAMESTART_COUNT);
 		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;
 		case 30:
-		    SOUND_PI1.play();
-	        TETX_GAMESTART_COUNT.text = "-1-";
+		    soundObj.SOUND_PI1.play();
+	        textObj.TETX_GAMESTART_COUNT.text = "-1-";
 		    gameStage.addChild(imageObj.GAME_BACKGROUND);
-		    gameStage.addChild(TETX_GAMESTART_COUNT);
+		    gameStage.addChild(textObj.TETX_GAMESTART_COUNT);
 		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;
 		case 50:
-		    SOUND_PI2.play();
+		    soundObj.SOUND_PI2.play();
 		    gameStage.removeAllChildren();
 	    	gameStatusReset();
 			drawGameScrean();
@@ -74,18 +69,18 @@ function gameReady(){
 			tickListener = createjs.Ticker.addEventListener("tick", processGame);
 			//キーボード用keycodeevent登録
 			window.addEventListener("keydown", keyDownEvent);
-		    SOUND_SUSUME_LOOP.play("late",0,0,-1,0.6,0);
+		    soundObj.SOUND_SUSUME_LOOP.play("late",0,0,-1,0.6,0);
 			break;
 	}
 }
 
 
-//ゲーム処理-----------------------------------------
+// ゲーム処理-----------------------------------------
 function processGame(){
 
 	gameFrame ++;
 
-	TEXT_GAME_COUNT.text = text_game_count_L + passCarCount + text_game_count_R;
+	textObj.TEXT_GAME_COUNT.text = textObj.text_game_count_L + passCarCount + textObj.text_game_count_R;
 	gameStage.update();
 
 
@@ -107,19 +102,19 @@ function processGame(){
 	});
 }
 
-//描画処理-----------------------------------------
+// 描画処理-----------------------------------------
 function drawGameScrean(){
 
 	gameStage.addChild(imageObj.GAME_BACKGROUND);
 	gameStage.addChild(imageObj.BUTTON_LEFT);
 	gameStage.addChild(imageObj.BUTTON_RIGHT);
-	gameStage.addChild(TEXT_GAME_COUNT);
+	gameStage.addChild(textObj.TEXT_GAME_COUNT);
     gameStage.addChild(player.img);
 
 }
 
 
-//敵出現---------------------------------------
+// 敵出現---------------------------------------
 function enemyAppeare(){
 
 	var enemyNumber = Math.floor(Math.random() * 5);
@@ -141,7 +136,7 @@ function enemyAppeare(){
 			car.push(new Car(player.lane));
 			break;
 		case 5:
-			//なにもおきない
+			// なにもおきない
 			break;
 	}
 }
@@ -149,9 +144,9 @@ function enemyAppeare(){
 
 
 
-//操作ボタンの状態操作系---------------------------
+// 操作ボタンの状態操作系---------------------------
 
-//ボタン状態の確認
+// ボタン状態の確認
 function checkButton(){
     if(player.lane == 0){
         leftButtonDisable();
@@ -168,36 +163,36 @@ function checkButton(){
 }
 
 
-//有効化
+// 有効化
 function rightButtonEnable(){
-	BUTTON_RIGHT.mouseEnabled = true;
-    BUTTON_RIGHT.alpha=0.5;
+	imageObj.BUTTON_RIGHT.mouseEnabled = true;
+   	imageObj.BUTTON_RIGHT.alpha=0.5;
 }
 function leftButtonEnable(){
-	BUTTON_LEFT.mouseEnabled = true;
-    BUTTON_LEFT.alpha=0.5;
+	imageObj.BUTTON_LEFT.mouseEnabled = true;
+ 	imageObj.BUTTON_LEFT.alpha=0.5;
 }
 
-//無効化
+// 無効化
 function rightButtonDisable(){
-	BUTTON_RIGHT.mouseEnabled = false;
-    BUTTON_RIGHT.alpha=0.2;
+	imageObj.BUTTON_RIGHT.mouseEnabled = false;
+	imageObj.BUTTON_RIGHT.alpha=0.2;
 }
 function leftButtonDisable(){
-	BUTTON_LEFT.mouseEnabled = false;
-    BUTTON_LEFT.alpha=0.2;
+	imageObj.BUTTON_LEFT.mouseEnabled = false;
+	imageObj.BUTTON_LEFT.alpha=0.2;
 }
 
 
 
-//オブジェクト間の距離計算(y軸方向のみ)---------------------
+// オブジェクト間の距離計算(y軸方向のみ)---------------------
 function checkDistance(target){
 	var y = player.img.y - target.img.y;
 
 	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH - HONOKA_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH;
 	return length;
 }
-//イベント処理-------------------------------------
+// イベント処理-------------------------------------
 
 function clickButtonRight(){
 	player.moveRight();
@@ -208,12 +203,12 @@ function clickButtonLeft(){
 	player.moveLeft();
 	checkButton();
 }
-//クラッシュ関数-------------------------------------
+// クラッシュ関数-------------------------------------
 function crash(){
 	gameScore = passCarCount;
-    SOUND_SUSUME_LOOP.stop();
-    SOUND_CRASH.play();
-	SOUND_SUSUME_END.play("late",0,0,0,0.6,0);
+    soundObj.SOUND_SUSUME_LOOP.stop();
+    soundObj.SOUND_CRASH.play();
+	soundObj.SOUND_SUSUME_END.play("late",0,0,0,0.6,0);
 
 	// createjs.Ticker.reset();
     createjs.Ticker.removeEventListener("tick", tickListener);

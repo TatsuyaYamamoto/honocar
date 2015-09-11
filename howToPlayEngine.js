@@ -2,19 +2,19 @@
 function howToPlayInit(){
 
 	//要素をステージに追加
-    gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_BACK_TOP_FROM_HOW_TO);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_HOW_TO);
 
 
     switch(playCharacter){
         case "honoka":
-            TEXT_HOW_TO.text = text_how_to;
+            textObj.TEXT_HOW_TO.text = text_how_to;
             break;
         case "erichi":
-            TEXT_HOW_TO.text = text_how_to_E;
+            textObj.TEXT_HOW_TO.text = text_how_to_E;
             break;
     }
-    gameStage.addChild(TEXT_HOW_TO);
+    gameStage.addChild(textObj.TEXT_HOW_TO);
 
 
 	//ほのかちゃを作成

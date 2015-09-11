@@ -1,19 +1,18 @@
-//ロード画面------------------------------------------
+// ロード画面------------------------------------------
 function loadState(){
     screanState = "loadState";
 
+    textObj.TEXT_LOADING_STATUS = new createjs.Text("", gameScrean.width*0.1+"20px Impact", "");
+    textObj.TEXT_LOADING_STATUS.x = gameScrean.width/2;
+    textObj.TEXT_LOADING_STATUS.y = gameScrean.height/2;
+    textObj.TEXT_LOADING_STATUS.textAlign = "center";
 
-    TEXT_LOADING_STATUS = new createjs.Text("", gameScrean.width*0.1+"20px Impact", "");
-    TEXT_LOADING_STATUS.x = gameScrean.width/2;
-    TEXT_LOADING_STATUS.y = gameScrean.height/2;
-    TEXT_LOADING_STATUS.textAlign = "center";
-
-    gameStage.addChild(TEXT_LOADING_STATUS);
+    gameStage.addChild(textObj.TEXT_LOADING_STATUS);
 
     loadContent();
 }
 
-//TOP画面------------------------------------------
+// TOP画面------------------------------------------
 function topState(){
     screanState = "topState";
     gameStage.removeAllChildren();
@@ -28,32 +27,30 @@ function topState(){
             break;
     }
 
-    gameStage.addChild(TEXT_START);
+    gameStage.addChild(textObj.TEXT_START);
     gameStage.update();
 
-    if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
-        SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+    if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
+        soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
 
     function gotoMenu(){
-        SOUND_OK.play("none",0,0,0,1,0);
-        menuState()
-        GAME_BACKGROUND.removeEventListener("click", gotoMenu);
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
+        menuState();
+        imageObj.GAME_BACKGROUND.removeEventListener("click", gotoMenu);
     }
 
-    GAME_BACKGROUND.addEventListener("click", gotoMenu);
+    imageObj.GAME_BACKGROUND.addEventListener("click", gotoMenu);
 
 }
 
 
-//MENU画面------------------------------------------
+// MENU画面------------------------------------------
 function menuState(){
     screanState = "menuState";
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.WHITE_SHEET);
-
-
 
     gameStage.addChild(imageObj.BUTTON_START);
     gameStage.addChild(imageObj.BUTTON_HOW_TO);
@@ -62,7 +59,6 @@ function menuState(){
     gameStage.addChild(imageObj.BUTTON_TWITTER_TOP);
     gameStage.addChild(ssObj.BUTTON_TURN_SWITCH);
     gameStage.addChild(imageObj.MENU_LOGO);
-
 
     // Graphicsのインスタンスを作成します。
     var graphics = new createjs.Graphics();
@@ -75,8 +71,6 @@ function menuState(){
 
     var height = gameScrean.height*0.1;
     var width = gameScrean.width*0.5;
-
-
 
     graphics
          .moveTo(0,0)
@@ -119,8 +113,8 @@ function menuState(){
 
 
 
-    if(SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
-        SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+    if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
+        soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
@@ -143,23 +137,23 @@ function creditState(){
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_CREDIT);
-    gameStage.addChild(TEXT_LINK_ME);
-    gameStage.addChild(TEXT_LINK_SAN);
-    gameStage.addChild(TEXT_LINK_LOVELIVE);
-    gameStage.addChild(TEXT_LINK_1);
-    gameStage.addChild(TEXT_LINK_2);
+    gameStage.addChild(textObj.TEXT_LINK_ME);
+    gameStage.addChild(textObj.TEXT_LINK_SAN);
+    gameStage.addChild(textObj.TEXT_LINK_LOVELIVE);
+    gameStage.addChild(textObj.TEXT_LINK_1);
+    gameStage.addChild(textObj.TEXT_LINK_2);
 
 
 
     gameStage.update();
 }
-//ランキング画面------------------------------------------
+// ランキング画面------------------------------------------
 function rankingState(){
     screanState = "creditState";
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_RANKING);
-    gameStage.addChild(TEXT_RANKING);
+    gameStage.addChild(textObj.TEXT_RANKING);
 
     //テキストボックスを表示する
     $("#rankingName").show();
@@ -168,7 +162,7 @@ function rankingState(){
     gameStage.update();
 }
 
-//ゲーム画面------------------------------------------
+// ゲーム画面------------------------------------------
 function gameState(){
 	screanState = "gameState";
     gameStage.removeAllChildren();
@@ -176,7 +170,7 @@ function gameState(){
     gameInit();
 
 }
-//GAMEOVER画面------------------------------------------
+// GAMEOVER画面------------------------------------------
 function gameOverState(){
 
 	screanState = "gameOverState";
@@ -193,16 +187,16 @@ function gameOverState(){
 
     switch(playCharacter){
         case "honoka":
-            ssObj.BUTTON_TWITTER_GAMEOVER.gotoAndPlay("honoka");
+            ssObj.BUTTON_TWITTER_GAMEOVER_SS.gotoAndPlay("honoka");
             break;
         case "erichi":
-            ssObj.BUTTON_TWITTER_GAMEOVER.gotoAndPlay("erichi");
+            ssObj.BUTTON_TWITTER_GAMEOVER_SS.gotoAndPlay("erichi");
             break;
     }
 
 
-    gameStage.addChild(ssObj.BUTTON_TWITTER_GAMEOVER);
-    gameStage.addChild(TEXT_GAME_COUNT);
+    gameStage.addChild(ssObj.BUTTON_TWITTER_GAMEOVER_SS);
+    gameStage.addChild(textObj.TEXT_GAME_COUNT);
     gameStage.addChild(imageObj.GAMEOVER);
 
 

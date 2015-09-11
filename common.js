@@ -3,7 +3,6 @@ var FPS = 30;
 var GAMESCREAN_WIDTH = 640 ;
 var GAMESCREAN_HEIGHT = 896;
 
-
 var HONOKA_IMG_WIDTH = 186;
 var HONOKA_IMG_HEIGHT = 266;
 
@@ -36,8 +35,10 @@ var keybordEvent;
 
 var isSoundMute;
 
-var playCharacter = "honoka";//honoka or erichi
-var player;//キャラクターオブジェクトを格納する
+var playCharacter = "honoka";
+//honoka or erichi
+var player;
+//キャラクターオブジェクトを格納する
 
 var car;
 
@@ -47,7 +48,10 @@ var ctStatus = false;
 var ctCount = 0;
 var ctAnchor;
 
-
+var imageObj = {};
+var ssObj = {};
+var soundObj = {};
+var textObj = {};
 
 var isLogin = false;
 //初期化----------------------------------------
@@ -177,8 +181,8 @@ function checkLogin(callback){
 
 
 function addAllEventListener(){
-   //イベントリスナー登録--------------------------------
 
+    //イベントリスナー登録--------------------------------
 
     imageObj.BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 
@@ -186,59 +190,59 @@ function addAllEventListener(){
 
     imageObj.BUTTON_START.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_ZENKAI.stop();
-        SOUND_OK.play("none",0,0,0,1,0);
+        soundObj.SOUND_ZENKAI.stop();
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
     imageObj.BUTTON_HOW_TO.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_OK.play("none",0,0,0,1,0);
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
     imageObj.BUTTON_RANKING.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_OK.play("none",0,0,0,1,0);
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
         rankingState();      
     })
 
 	imageObj.BUTTON_CREDIT.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_OK.play("none",0,0,0,1,0);
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
         creditState();		
 	})
 
     imageObj.BUTTON_BACK_TOP.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_BACK.play("none",0,0,0,1,0);
+        soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
     imageObj.BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
-        SOUND_BACK.play("none",0,0,0,1,0);
+        soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         createjs.Ticker.removeEventListener("tick", tickListener);
         menuState();
 
     } );
 
 	imageObj.BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'mousedown', function() {
-        SOUND_BACK.play("none",0,0,0,1,0);
+        soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
     imageObj.BUTTON_BACK_TOP_FROM_RANKING.addEventListener( 'mousedown', function() {
-        SOUND_BACK.play("none",0,0,0,1,0);
+        soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         $("#rankingName").hide();
         menuState();
     });
 
     imageObj.BUTTON_RESTART.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
-        SOUND_BACK.play("none",0,0,0,1,0);
+        soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         gameState();
     });
 
     ssObj.BUTTON_TURN_SWITCH.addEventListener("mousedown", function(){
-		SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
+		soundObj.SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
         if(isSoundMute){
             // this.image = "aaa";
             BUTTON_TURN_SWITCH.gotoAndPlay("on");
@@ -268,7 +272,7 @@ function addAllEventListener(){
         window.location.href=config.link.t28_twitter;
     });
 
-    ssObj.BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
+    ssObj.BUTTON_TWITTER_GAMEOVER_SS.addEventListener("mousedown", function(){
 
         var tweet_text;
  
@@ -298,7 +302,7 @@ function addAllEventListener(){
 
     });
     ssObj.BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
-        SOUND_OK.play("none",0,0,0,1,0);
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
 
         switch(playCharacter){
             case "honoka":
@@ -312,16 +316,16 @@ function addAllEventListener(){
         createjs.Ticker.removeEventListener("tick", tickListener);
         topState();
     });
-    TEXT_LINK_1.addEventListener("mousedown", function(){
+    textObj.TEXT_LINK_1.addEventListener("mousedown", function(){
         window.location.href = config.link.soundeffect;
     });
-    TEXT_LINK_2.addEventListener("mousedown", function(){
+    textObj.TEXT_LINK_2.addEventListener("mousedown", function(){
         window.location.href = config.link.on_jin;
     });
-    TEXT_LINK_ME.addEventListener("mousedown", function(){
+    textObj.TEXT_LINK_ME.addEventListener("mousedown", function(){
         window.location.href = config.link.sokontokoro;
     });
-    TEXT_LINK_SAN.addEventListener("mousedown", function(){
+    textObj.TEXT_LINK_SAN.addEventListener("mousedown", function(){
         window.location.href = config.link.sanzashi;
     });
     window.addEventListener("blur", function(){

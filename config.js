@@ -183,18 +183,46 @@ var properties = {
             ratioX: 0.25,
             ratioY: 0.15,
             scale: 1,
-            alpha: 1
+            alpha: 1,
+            frames:{
+                width : 178,
+                height : 139
+            },
+            animations: {
+                honoka:{
+                    frames: 0
+                },
+                erichi: {
+                    frames: 1
+                }
+            },
+            firstAnimation: "honoka"
         },
         BUTTON_TURN_SWITCH: {
             id : "BUTTON_SOUND_SS",
             ratioX: 0.9,
             ratioY: 0.12,
             scale: 1,
-            alpha: 1
+            alpha: 1,
+            frames:{
+                width : 126,
+                height : 118
+            },
+            animations: {
+                on:{
+                    frames: [1,2,3],
+                    next: true,
+                    speed: 0.12
+                },
+                off: {
+                    frames: 0
+                }
+            },
+            firstAnimation: "on"
         },
         BUTTON_CHANGE_CHARA: {
             id : "BUTTON_CHANGE_CHARA_SS",
-            ratioX: 0.99,
+            ratioX: 0.978,
             ratioY: 0.88,
             scale: 1,
             alpha: 1,
@@ -279,6 +307,120 @@ var properties = {
                 }
             },
             firstAnimation: "kihon"
+        }
+    },
+    sound: {
+        SOUND_OK: {
+            id: "OK"
+        },
+        SOUND_BACK: {
+            id: "BACK"
+        },
+        SOUND_KAIHI: {
+            id: "KAIHI"
+        },
+        SOUND_CRASH: {
+            id: "CRASH"
+        },
+        SOUND_PI1: {
+            id: "PI1"
+        },
+        SOUND_PI2: {
+            id: "PI2"
+        },
+        SOUND_SUSUME_LOOP: {
+            id: "SUSUME_LOOP"
+        },
+        SOUND_SUSUME_END: {
+            id: "SUSUME_END"
+        },
+        SOUND_ZENKAI: {
+            id: "ZENKAI"
+        },
+        SOUND_TURN_SWITCH: {
+            id: "TURN_SWITCH"
+        }
+    },
+    text: {
+        TEXT_START: {
+            ratioX: 0.5,
+            ratioY: 0.93,
+            size: 0.05,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.04
+        },
+        TEXT_HOW_TO: {
+            ratioX: 0.05,
+            ratioY: 0.12,
+            size: 0.04,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.04
+        },
+        TEXT_GAME_COUNT: {
+            ratioX: 0.5,
+            ratioY: 0.05,
+            size: 0.06,
+            family: "Impact",
+            align: "left",
+            lineHeight: 0.04
+        },
+        TETX_GAMESTART_COUNT: {
+            ratioX: 0.5,
+            ratioY: 0.7,
+            size: 0.08,
+            family: "Impact",
+            align: "center",
+            lineHeight: 0.07
+        },
+        TEXT_RANKING: {
+            ratioX: 0.5,
+            ratioY: 0.15,
+            size: 0.05,
+            family: "Arial",
+            align: "center",
+            lineHeight: 0.07
+        },
+        TEXT_LINK_ME: {
+            ratioX: 0.5,
+            ratioY: 0.15,
+            size: 0.05,
+            family: "Arial",
+            align: "center",
+            lineHeight: 0.07
+        },
+        TEXT_LINK_SAN: {
+            ratioX: 0.5,
+            ratioY: 0.3,
+            size: 0.05,
+            family: "Verdana",
+            align: "center",
+            lineHeight: 0.07
+        },
+        TEXT_LINK_1: {
+            ratioX: 0.5,
+            ratioY: 0.5,
+            size: 0.04,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.05
+        },
+        TEXT_LINK_2: {
+            ratioX: 0.5,
+            ratioY: 0.6,
+            size: 0.04,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.05
+        },
+        TEXT_LINK_LOVELIVE: {
+            ratioX: 0.5,
+            ratioY: 0.7,
+            size: 0.04,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.05
         }
     }
 }
