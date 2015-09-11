@@ -45,7 +45,7 @@ window.onload = function(){
 
 	}
 	else{
-		// ログイン中チェック
+		// ログイン確認後ロード画面へ遷移
 		checkLogin().done(function(){
 			loadState();
 		})
@@ -54,6 +54,7 @@ window.onload = function(){
 
 function start(){
     window.removeEventListener("touchstart", start);
+	// ログイン確認後ロード画面へ遷移
 	checkLogin().done(function(){
 		loadState();
 	})
