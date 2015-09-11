@@ -99,7 +99,6 @@ function menuState(){
 
     }
 
-
     switch(playCharacter){
         case "honoka":
             ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
@@ -110,8 +109,6 @@ function menuState(){
     }
 
     gameStage.addChild(ssObj.BUTTON_CHANGE_CHARA);
-
-
 
     if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
         soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);

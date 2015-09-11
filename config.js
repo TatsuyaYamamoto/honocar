@@ -351,7 +351,7 @@ var properties = {
             lineHeight: 0.04
         },
         TEXT_HOW_TO: {
-            ratioX: 0.05,
+            ratioX: 0.5,
             ratioY: 0.12,
             size: 0.04,
             family: "Courier",

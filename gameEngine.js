@@ -80,7 +80,7 @@ function processGame(){
 
 	gameFrame ++;
 
-	textObj.TEXT_GAME_COUNT.text = textObj.text_game_count_L + passCarCount + textObj.text_game_count_R;
+	textObj.TEXT_GAME_COUNT.text = text_game_count_L + passCarCount + text_game_count_R;
 	gameStage.update();
 
 
