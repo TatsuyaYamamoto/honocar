@@ -100,8 +100,8 @@ function setImageContent(){
         imageObj.key = new createjs.Bitmap(queue.getResult(key.id));
         imageObj.key.x = gameScrean.width * key.ratioX;
         imageObj.key.y = gameScrean.height * key.ratioY;
-        imageObj.key.regX = imageObj.key.image.width/2;
-        imageObj.key.regY = imageObj.key.image.height/2;
+        imageObj.key.regX = imageObj.key.width/2;
+        imageObj.key.regY = imageObj.key.height/2;
         imageObj.key.scaleY = imageObj.key.scaleX = gameScreenScale * key.scale;
         imageObj.key.alpha = key.alpha;
     }
