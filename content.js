@@ -59,6 +59,7 @@ function loadContent(){
 
     //画像、音声マニフェストファイルを読み込む----------     
     queue.loadManifest(manifest.image);
+    queue.loadManifest(manifest.spriteImage);
     queue.loadManifest(manifest.sound);
     if(isLogin){
         queue.loadManifest(apiManifest);
