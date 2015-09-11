@@ -180,64 +180,64 @@ function addAllEventListener(){
    //イベントリスナー登録--------------------------------
 
 
-    BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
+    imageObj.BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 
-    BUTTON_LEFT.addEventListener("mousedown", clickButtonLeft);
+    imageObj.BUTTON_LEFT.addEventListener("mousedown", clickButtonLeft);
 
-    BUTTON_START.addEventListener("mousedown", function() {
+    imageObj.BUTTON_START.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_ZENKAI.stop();
         SOUND_OK.play("none",0,0,0,1,0);
         gameState();
     } );
-    BUTTON_HOW_TO.addEventListener("mousedown", function() {
+    imageObj.BUTTON_HOW_TO.addEventListener("mousedown", function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         howToPlayState();
     } );
-    BUTTON_RANKING.addEventListener("mousedown",function(){
+    imageObj.BUTTON_RANKING.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         rankingState();      
     })
 
-	BUTTON_CREDIT.addEventListener("mousedown",function(){
+	imageObj.BUTTON_CREDIT.addEventListener("mousedown",function(){
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_OK.play("none",0,0,0,1,0);
         creditState();		
 	})
 
-    BUTTON_BACK_TOP.addEventListener( 'mousedown', function() {
+    imageObj.BUTTON_BACK_TOP.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
-    BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
+    imageObj.BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
         SOUND_BACK.play("none",0,0,0,1,0);
         createjs.Ticker.removeEventListener("tick", tickListener);
         menuState();
 
     } );
 
-	BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'mousedown', function() {
+	imageObj.BUTTON_BACK_TOP_FROM_CREDIT.addEventListener( 'mousedown', function() {
         SOUND_BACK.play("none",0,0,0,1,0);
         menuState();
     });
 
-    BUTTON_BACK_TOP_FROM_RANKING.addEventListener( 'mousedown', function() {
+    imageObj.BUTTON_BACK_TOP_FROM_RANKING.addEventListener( 'mousedown', function() {
         SOUND_BACK.play("none",0,0,0,1,0);
         $("#rankingName").hide();
         menuState();
     });
 
-    BUTTON_RESTART.addEventListener( 'mousedown', function() {
+    imageObj.BUTTON_RESTART.addEventListener( 'mousedown', function() {
         createjs.Ticker.removeEventListener("tick", tickListener);
         SOUND_BACK.play("none",0,0,0,1,0);
         gameState();
     });
 
-    BUTTON_TURN_SWITCH.addEventListener("mousedown", function(){
+    ssObj.BUTTON_TURN_SWITCH.addEventListener("mousedown", function(){
 		SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
         if(isSoundMute){
             // this.image = "aaa";
@@ -251,24 +251,24 @@ function addAllEventListener(){
         }
     });
 
-    BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
+    imageObj.BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
         if(confirm("ログイン認証のためにTwitterページへ移動します。認証後ゲームページへ再アクセスします。")){
             window.location.href=config.api.login;
         }
     });
 
-    BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
+    imageObj.BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
         if(confirm("ログアウトします。ランキング登録はログイン中のみ有効です。")){
             window.location.href=config.api.logout;
         }
     });
 
-    BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
+    imageObj.BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
 
         window.location.href=config.link.t28_twitter;
     });
 
-    BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
+    ssObj.BUTTON_TWITTER_GAMEOVER.addEventListener("mousedown", function(){
 
         var tweet_text;
  
@@ -297,7 +297,7 @@ function addAllEventListener(){
         window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+tweet_text+"&url=http://games.sokontokoro-factory.net/honocar/";
 
     });
-    BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
+    ssObj.BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
         SOUND_OK.play("none",0,0,0,1,0);
 
         switch(playCharacter){

@@ -43,14 +43,14 @@ function gameReady(){
 
 	switch(gameFrame){
 		case 1:
-		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(imageObj.GAME_BACKGROUND);
 		    gameStage.addChild(player.img);
 			gameStage.update();
 			break;	
 		case 10:
 		    SOUND_PI1.play();
 	        TETX_GAMESTART_COUNT.text = "-2-";
-		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(imageObj.GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
 		    gameStage.addChild(player.img);
 			gameStage.update();
@@ -58,7 +58,7 @@ function gameReady(){
 		case 30:
 		    SOUND_PI1.play();
 	        TETX_GAMESTART_COUNT.text = "-1-";
-		    gameStage.addChild(GAME_BACKGROUND);
+		    gameStage.addChild(imageObj.GAME_BACKGROUND);
 		    gameStage.addChild(TETX_GAMESTART_COUNT);
 		    gameStage.addChild(player.img);
 			gameStage.update();
@@ -110,9 +110,9 @@ function processGame(){
 //描画処理-----------------------------------------
 function drawGameScrean(){
 
-	gameStage.addChild(GAME_BACKGROUND);
-	gameStage.addChild(BUTTON_LEFT);
-	gameStage.addChild(BUTTON_RIGHT);
+	gameStage.addChild(imageObj.GAME_BACKGROUND);
+	gameStage.addChild(imageObj.BUTTON_LEFT);
+	gameStage.addChild(imageObj.BUTTON_RIGHT);
 	gameStage.addChild(TEXT_GAME_COUNT);
     gameStage.addChild(player.img);
 

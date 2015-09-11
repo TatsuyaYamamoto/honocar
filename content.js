@@ -58,8 +58,8 @@ function loadContent(){
 
 
     //画像、音声マニフェストファイルを読み込む----------     
-    queue.loadManifest(imageManifest);
-    queue.loadManifest(soundManifest);
+    queue.loadManifest(manifest.image);
+    queue.loadManifest(manifest.sound);
     if(isLogin){
         queue.loadManifest(apiManifest);
     }
@@ -92,12 +92,44 @@ function handleComplete() {
 
 }
 
+
+var imageObj = {};
 //ロードしたコンテンツをセット------------------------------------------
 function setImageContent(){
+    for(key in properties.image){
+        imageObj.key = new createjs.Bitmap(queue.getResult(key.id));
+        imageObj.key.x = gameScrean.width * key.ratioX;
+        imageObj.key.y = gameScrean.height * key.ratioY;
+        imageObj.key.regX = imageObj.key.image.width/2;
+        imageObj.key.regY = imageObj.key.image.height/2;
+        imageObj.key.scaleY = imageObj.key.scaleX = gameScreenScale * key.scale;
+        imageObj.key.alpha = key.alpha;
+    }
+}
+var ssObj = {};
+function setSpriteSheetContents(){
+
+    for(key in properties.ss){
+        var spriteSheet = new createjs.SpriteSheet({
+            images:[queue.getResult(key.id)],
+            frames: key.frames,
+            animations: key.animations
+        });
+
+        ssObj = new createjs.Sprite(spriteSheet, key.firstAnimation);
+        ssObj.x = gameScrean.width*key.ratioX;
+        ssObj.y = gameScrean.height*key.ratioY;
+        ssObj.regX = key.frames.width/2;
+        ssObj.regY = key.frames.height/2;
+        ssObj.scaleY = ssObj.scaleX = gameScreenScale;
+    }
+}
+
+function setImageContent_old(){
 
         //背景
         GAME_BACKGROUND = new createjs.Bitmap(queue.getResult("GAME_BACKGROUND"));
-        GAME_BACKGROUND.scaleY = GAME_BACKGROUND.scaleX = gameScreenScale;
+        setImageProperties(GAME_BACKGROUND, properties.image.GAME_BACKGROUND)
 
         //タイトルロゴ
         TITLE_LOGO = new createjs.Bitmap(queue.getResult("TITLE_LOGO"));
@@ -192,84 +224,11 @@ function setImageContent(){
         BUTTON_LEFT_HOW_TO.scaleY = BUTTON_LEFT_HOW_TO.scaleX = gameScreenScale;
         BUTTON_LEFT_HOW_TO.alpha=0.5;
 
+
         BUTTON_RIGHT_HOW_TO = new createjs.Bitmap(queue.getResult("BUTTON_RIGHT"));
         setCoordinates(BUTTON_RIGHT_HOW_TO, (gameScrean.width)*0.8, gameScrean.height*0.9);
         BUTTON_RIGHT_HOW_TO.scaleY = BUTTON_RIGHT_HOW_TO.scaleX = gameScreenScale;
         BUTTON_RIGHT_HOW_TO.alpha=0.5;
-
-
-        var charaChangeSprite = new createjs.SpriteSheet({
-            images:[queue.getResult("BUTTON_CHANGE_CHARA_SS")],
-            frames:{
-                width : 170,
-                height : 242
-            },
-            animations: {
-                honoka:{
-                    frames: 0
-                },
-                erichi: {
-                    frames: 1
-                }
-            }
-        });
-
-
-        BUTTON_CHANGE_CHARA = new createjs.Sprite(charaChangeSprite, "honoka");
-        BUTTON_CHANGE_CHARA.x = gameScrean.width*0.99;
-        BUTTON_CHANGE_CHARA.y = gameScrean.height*0.88;
-        BUTTON_CHANGE_CHARA.regX = 178/2;
-        BUTTON_CHANGE_CHARA.regY = 139/2;
-        BUTTON_CHANGE_CHARA.scaleY = BUTTON_CHANGE_CHARA.scaleX = gameScreenScale;
-
-
-        var tweetSprite = new createjs.SpriteSheet({
-            images:[queue.getResult("TWITTER_GAMEOVER_SS")],
-            frames:{
-                width : 178,
-                height : 139
-            },
-            animations: {
-                honoka:{
-                    frames: 0
-                },
-                erichi: {
-                    frames: 1
-                }
-            }
-        });
-
-        BUTTON_TWITTER_GAMEOVER = new createjs.Sprite(tweetSprite, "honoka");
-        BUTTON_TWITTER_GAMEOVER.x = gameScrean.width*0.25;
-        BUTTON_TWITTER_GAMEOVER.y = gameScrean.height*0.15;
-        BUTTON_TWITTER_GAMEOVER.regX = 178/2;
-        BUTTON_TWITTER_GAMEOVER.regY = 139/2;
-        BUTTON_TWITTER_GAMEOVER.scaleY = BUTTON_TWITTER_GAMEOVER.scaleX = gameScreenScale*1.3;
-
-        var soundSprite = new createjs.SpriteSheet({
-            images:[queue.getResult("BUTTON_SOUND_SS")],
-            frames:{
-                width : 126,
-                height : 118
-            },
-            animations: {
-                on:{
-                    frames: [1,2,3],
-                    next: true,
-                    speed: 0.12
-                },
-                off: {
-                    frames: 0
-                }
-            }
-        });
-
-        BUTTON_TURN_SWITCH = new createjs.Sprite(soundSprite, "on");
-        BUTTON_TURN_SWITCH.x = gameScrean.width*0.9;
-        BUTTON_TURN_SWITCH.y = gameScrean.height*0.12;
-        BUTTON_TURN_SWITCH.regX = 177/2;
-        BUTTON_TURN_SWITCH.regY = 139/2;
-        BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
         if(isLogin){
             PROFILE_IMAGE = new createjs.Bitmap("PROFILE_IMAGE");
@@ -277,8 +236,18 @@ function setImageContent(){
             PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
         }
 
-
 }
+
+
+function setImageProperties(target, properties){
+    target.x = gameScrean.width * properties.ratioX;
+    target.y = gameScrean.height * properties.ratioY;
+    target.regX = target.image.width/2;
+    target.regY = target.image.height/2;
+    target.scaleY = tartget.scaleX = gameScreenScale * properties.scale;
+    target.alpha = properties.alpha;
+}
+
 function setSoundContent(){
 
         SOUND_OK = createjs.Sound.createInstance("OK");
@@ -384,145 +353,8 @@ function soundTurnOn(){
     SOUND_ZENKAI.muted = false;
 
 }
-//画像リスト------------------------------------------
 
-var imageManifest = [
-    {
-        id : "BUTTON_START",
-        src: "img/BUTTON_START.png"
-    },
-    {
-        id : "BUTTON_RESTART",
-        src: "img/BUTTON_RESTART.png"
-    },
-    {
-        id : "BUTTON_HOW_TO",
-        src: "img/BUTTON_HOW_TO.png"
-    },
-    {
-        id : "BUTTON_CREDIT",
-        src: "img/BUTTON_CREDIT.png"
-    },
-    {
-        id : "BUTTON_BACK_MENU",
-        src: "img/BUTTON_BACK_MENU.png"
-    },
-    {
-        id : "GAME_BACKGROUND",
-        src: "img/GAME_BACKGROUND.png"
-    },
-    {
-        id : "TITLE_LOGO",
-        src: "img/TITLE_LOGO.png"
-    },
-    {
-        id : "TITLE_LOGO_E",
-        src: "img/TITLE_LOGO_E.png"
-    },
-    {
-        id : "MENU_LOGO",
-        src: "img/MENU_LOGO.png"
-    },
-    {
-        id : "GAMEOVER",
-        src: "img/GAMEOVER.png"
-    },
-    {
-        id : "BUTTON_LEFT",
-        src: "img/BUTTON_LEFT.png"
-    },
-    {
-        id : "BUTTON_RIGHT",
-        src: "img/BUTTON_RIGHT.png"
-    },
-    {
-        id : "BUTTON_SOUND_SS",
-        src: "img/BUTTON_SOUND_SS.png"
-    },
-    {
-        id : "HONOKA_SS",
-        src: "img/HONOKA_SS.png"
-    },
-    {
-        id : "ERICHI_SS",
-        src: "img/ERICHI_SS.png"
-    },
-    {
-        id : "CAR1_FRONT",
-        src: "img/CAR1_FRONT.png"
-    },
-    {
-        id : "CAR1_BACK",
-        src: "img/CAR1_BACK.png"
-    },
-    {
-        id : "TWITTER_TOP",
-        src: "img/TWITTER_TOP.png"
-    },
-    {
-        id : "TWITTER_GAMEOVER_SS",
-        src: "img/TWITTER_GAMEOVER_SS.png"
-    },
-    {
-        id : "BUTTON_TWITTER_LOGIN",
-        src: "img/BUTTON_TWITTER_LOGIN.png"
-    },
-    {
-        id : "BUTTON_TWITTER_LOGOUT",
-        src: "img/BUTTON_TWITTER_LOGOUT.png"
-    },
-    {
-        id : "WHITE_SHEET",
-        src: "img/WHITE_SHEET.png"
-    },
-    {
-        id : "BUTTON_CHANGE_CHARA_SS",
-        src: "img/BUTTON_CHANGE_CHARA_SS.png"
-    }
-];
-//音声リスト------------------------------------------
-var soundManifest = [
-    {
-        id : "OK",
-        src: "sound/OK.mp3"
-    },
-    {
-        id : "BACK",
-        src: "sound/BACK.mp3"
-    },
-    {
-        id : "KAIHI",
-        src: "sound/moto_KAIHI.mp3"
-    },
-    {
-        id : "CRASH",
-        src: "sound/CRASH.mp3"
-    },
-    {
-        id : "PI1",
-        src: "sound/PI1.mp3"
-    },
-    {
-        id : "PI2",
-        src: "sound/PI2.mp3"
-    },
-    {
-        id : "SUSUME_LOOP",
-        src: "sound/SUSUME_LOOP.mp3"
-    },
-    {
-        id : "SUSUME_END",
-        src: "sound/SUSUME_END.mp3"
-    },
-    {
-        id : "ZENKAI",
-        src: "sound/ZENKAI.mp3"
-    },
-    {
-        id : "TURN_SWITCH",
-        src: "sound/TURN_SWITCH.mp3"
-    }
-];
+
 
 
 //apiコンテンツリスト------------------------------------------

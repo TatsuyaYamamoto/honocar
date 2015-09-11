@@ -1,55 +1,17 @@
 //ほのかちゃ------------------------------------------------
 function Player(playCharacter){
 
-    //ほのかちゃんスプライトシート読み込み
 
-    var spriteSheetImg;
     switch(playCharacter){
         case "honoka":
-            spriteSheetImg = "HONOKA_SS";
+            this.img = ssObj.PLAYER_HONOKA_SS;
             break;
         case "erichi":
-            spriteSheetImg = "ERICHI_SS";
+            this.img = ssObj.PLAYER_ERICHI_SS;
             break;
     }
 
-
-    var PlayerSpriteSheet = new createjs.SpriteSheet({
-        images: [ queue.getResult(spriteSheetImg) ],
-        frames: {
-            width:HONOKA_IMG_WIDTH,
-            height:HONOKA_IMG_HEIGHT
-        },
-        animations: {
-            kihon: {
-                frames: [0,1],
-                next: true,
-                speed: 0.3
-            },
-            escapeR: {
-                frames:[2,3,4],
-                next: "kihon",
-                speed:0.8
-            },
-            escapeL: {
-                frames:[4,3,2],
-                next: "kihon",
-                speed:0.8
-            },
-            down: {
-                frames:[5,6],
-                next: true,
-                speed:0.5
-            }
-        }
-    });
-
-    //画像初期化
-    this.img = new createjs.Sprite(PlayerSpriteSheet,"kihon");
-    this.img.y = gameScrean.height * 0.45;
-    this.img.regX = HONOKA_IMG_WIDTH/2;
-    this.img.regY = HONOKA_IMG_HEIGHT/2;
-    this.img.scaleY = this.img.scaleX = gameScreenScale;
+    this.img = ssObj.PLAYER_HONOKA_SS;
 
     //レーンナンバー
     this.lane = 1;

@@ -17,14 +17,14 @@ function loadState(){
 function topState(){
     screanState = "topState";
     gameStage.removeAllChildren();
-    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
 
     switch(playCharacter){
         case "honoka":
-            gameStage.addChild(TITLE_LOGO);
+            gameStage.addChild(imageObj.TITLE_LOGO);
             break;
         case "erichi":
-            gameStage.addChild(TITLE_LOGO_E);
+            gameStage.addChild(imageObj.TITLE_LOGO_E);
             break;
     }
 
@@ -50,18 +50,18 @@ function topState(){
 function menuState(){
     screanState = "menuState";
     gameStage.removeAllChildren();
-    gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(WHITE_SHEET);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(imageObj.WHITE_SHEET);
 
 
 
-    gameStage.addChild(BUTTON_START);
-    gameStage.addChild(BUTTON_HOW_TO);
-    gameStage.addChild(BUTTON_RANKING);
-    gameStage.addChild(BUTTON_CREDIT);
-    gameStage.addChild(BUTTON_TWITTER_TOP);
-    gameStage.addChild(BUTTON_TURN_SWITCH);
-    gameStage.addChild(MENU_LOGO);
+    gameStage.addChild(imageObj.BUTTON_START);
+    gameStage.addChild(imageObj.BUTTON_HOW_TO);
+    gameStage.addChild(imageObj.BUTTON_RANKING);
+    gameStage.addChild(imageObj.BUTTON_CREDIT);
+    gameStage.addChild(imageObj.BUTTON_TWITTER_TOP);
+    gameStage.addChild(ssObj.BUTTON_TURN_SWITCH);
+    gameStage.addChild(imageObj.MENU_LOGO);
 
 
     // Graphicsのインスタンスを作成します。
@@ -93,13 +93,13 @@ function menuState(){
 
 
     if(!isLogin){
-        gameStage.addChild(BUTTON_TWITTER_LOGIN);
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
         var name = new createjs.Text();
         setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
         name.text = "@"+screen_name
 
-        gameStage.addChild(BUTTON_TWITTER_LOGOUT);
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
         gameStage.addChild(name);
         gameStage.addChild(PROFILE_IMAGE);
 
@@ -108,14 +108,14 @@ function menuState(){
 
     switch(playCharacter){
         case "honoka":
-            BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
+            ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
             break;
         case "erichi":
-            BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
+            ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
             break;
     }
 
-    gameStage.addChild(BUTTON_CHANGE_CHARA);
+    gameStage.addChild(ssObj.BUTTON_CHANGE_CHARA);
 
 
 
@@ -141,8 +141,8 @@ function howToPlayState(){
 function creditState(){
 	screanState = "creditState";
     gameStage.removeAllChildren();
-    gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_BACK_TOP_FROM_CREDIT);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_CREDIT);
     gameStage.addChild(TEXT_LINK_ME);
     gameStage.addChild(TEXT_LINK_SAN);
     gameStage.addChild(TEXT_LINK_LOVELIVE);
@@ -157,8 +157,8 @@ function creditState(){
 function rankingState(){
     screanState = "creditState";
     gameStage.removeAllChildren();
-    gameStage.addChild(GAME_BACKGROUND);
-    gameStage.addChild(BUTTON_BACK_TOP_FROM_RANKING);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_RANKING);
     gameStage.addChild(TEXT_RANKING);
 
     //テキストボックスを表示する
@@ -185,25 +185,25 @@ function gameOverState(){
 
     gameStage.removeAllChildren();
 
-    gameStage.addChild(GAME_BACKGROUND);
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(player.img);
-    gameStage.addChild(BUTTON_BACK_TOP);
-    gameStage.addChild(BUTTON_RESTART);
+    gameStage.addChild(imageObj.BUTTON_BACK_TOP);
+    gameStage.addChild(imageObj.BUTTON_RESTART);
 
 
     switch(playCharacter){
         case "honoka":
-            BUTTON_TWITTER_GAMEOVER.gotoAndPlay("honoka");
+            ssObj.BUTTON_TWITTER_GAMEOVER.gotoAndPlay("honoka");
             break;
         case "erichi":
-            BUTTON_TWITTER_GAMEOVER.gotoAndPlay("erichi");
+            ssObj.BUTTON_TWITTER_GAMEOVER.gotoAndPlay("erichi");
             break;
     }
 
 
-    gameStage.addChild(BUTTON_TWITTER_GAMEOVER);
+    gameStage.addChild(ssObj.BUTTON_TWITTER_GAMEOVER);
     gameStage.addChild(TEXT_GAME_COUNT);
-    gameStage.addChild(GAMEOVER);
+    gameStage.addChild(imageObj.GAMEOVER);
 
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
