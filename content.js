@@ -60,7 +60,9 @@ function loadContent(){
     //画像、音声マニフェストファイルを読み込む----------     
     queue.loadManifest(imageManifest);
     queue.loadManifest(soundManifest);
-
+    if(isLogin){
+        queue.loadManifest(apiManifest);
+    }
 
 }
 
@@ -270,7 +272,7 @@ function setImageContent(){
         BUTTON_TURN_SWITCH.scaleY = BUTTON_TURN_SWITCH.scaleX = gameScreenScale;
 
         if(isLogin){
-            PROFILE_IMAGE = new createjs.Bitmap(profile_img_url);
+            PROFILE_IMAGE = new createjs.Bitmap("PROFILE_IMAGE");
             setCoordinates(PROFILE_IMAGE, gameScrean.width*0.03, gameScrean.height*0.9);
             PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
         }
@@ -521,4 +523,14 @@ var soundManifest = [
         src: "sound/TURN_SWITCH.mp3"
     }
 ];
+
+
+//apiコンテンツリスト------------------------------------------
+var apiManifest = [
+    {
+        id : "PROFILE_IMAGE",
+        src: profile_img_url
+    }
+];
+
 
