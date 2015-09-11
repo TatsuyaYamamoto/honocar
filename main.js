@@ -28,33 +28,34 @@ window.onload = function(){
 	createjs.DisplayObject.suppressCrossDomainErrors = true;
 
 
-	// //コンテンツのロードステートに移行
-	// var ua = navigator.userAgent;
-	// var start = function(){
-	//     window.removeEventListener("touchstart", start);
-	// 	checkLogin(loadState());
-	// }
+	//コンテンツのロードステートに移行
+	var ua = navigator.userAgent;
 
+	if(/iPhone/.test(ua)) {
+	    gameStage.removeAllChildren();
 
-	// if(/iPhone/.test(ua)) {
-	//     gameStage.removeAllChildren();
+	    TEXT = new createjs.Text();
+	    setTextProperties(TEXT, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+	    TEXT.text = "-Please tap on the display!-"
 
-	//     TEXT = new createjs.Text();
-	//     setTextProperties(TEXT, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
-	//     TEXT.text = "-Please tap on the display!-"
+	    gameStage.addChild(TEXT);
+	    gameStage.update();
 
-	//     gameStage.addChild(TEXT);
-	//     gameStage.update();
+	    window.addEventListener("touchstart", start);
 
-	//     window.addEventListener("touchstart", start);
+	}
+	else{
+		// ログイン中チェック
+		checkLogin().done(function(){
+			loadState();
+		})
+	}
+}
 
-	// }
-	// else{
-	// 	// ログイン中チェック
-	// 	checkLogin(loadState());
-	// }
-
-	loadState();
-
+function start(){
+    window.removeEventListener("touchstart", start);
+	checkLogin().done(function(){
+		loadState();
+	})
 }
 

@@ -11,8 +11,6 @@ function Player(playCharacter){
             break;
     }
 
-    this.img = ssObj.PLAYER_HONOKA_SS;
-
     //レーンナンバー
     this.lane = 1;
     this.img.x = this.checkLane();
