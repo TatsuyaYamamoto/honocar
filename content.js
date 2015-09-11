@@ -63,6 +63,9 @@ function handleComplete() {
     setSpriteSheetContents();
     setSoundContent();
     setTextContent();
+    if(isLogin){
+        setAPIContents();
+    }
 
     createjs.Ticker.removeEventListener("tick", tickListener);
 
@@ -187,4 +190,10 @@ var apiManifest = [
     }
 ];
 
+
+function setAPIContents(){
+    PROFILE_IMAGE = new createjs.Bitmap("PROFILE_IMAGE");
+    setCoordinates(PROFILE_IMAGE, gameScrean.width*0.03, gameScrean.height*0.9);
+    PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
+}
 
