@@ -82,6 +82,7 @@ function handleFileLoadComplete(event) {
 function handleComplete() {
 
     setImageContent();
+    setSpriteSheetContents();
     setSoundContent();
     setTextContent();
 
