@@ -30,7 +30,6 @@ window.onload = function(){
 
 	//コンテンツのロードステートに移行
 	var ua = navigator.userAgent;
-<<<<<<< HEAD
 
 	if(/iPhone/.test(ua)) {
 	    gameStage.removeAllChildren();
@@ -52,31 +51,7 @@ window.onload = function(){
 		})
 	}
 }
-=======
-	var start = function(){
-	    window.removeEventListener("touchstart", start);
-		checkLogin(loadState());
-	}
 
-
-	if(/iPhone/.test(ua)) {
-	    gameStage.removeAllChildren();
-
-	    TEXT = new createjs.Text();
-	    setTextProperties(TEXT, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
-	    TEXT.text = "-Please tap on the display!-"
-
-	    gameStage.addChild(TEXT);
-	    gameStage.update();
-
-	    window.addEventListener("touchstart", start);
-
-	}
-	else{
-		// ログイン中チェック
-		checkLogin(loadState());
-	}
->>>>>>> 965db1d3b8c10bee3d4e750791cd0736e9716a41
 
 function start(){
     window.removeEventListener("touchstart", start);
