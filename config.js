@@ -573,9 +573,10 @@ var manifest = {
         }
     ],
     api: [
+
         {
             id : "TWITTER_ICON",
-            src: TWITTER_ICON_URL
+            src: ""
         }
     ]
 }

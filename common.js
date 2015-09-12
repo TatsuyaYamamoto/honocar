@@ -174,9 +174,8 @@ function checkLogin(){
         if (xhr.status === 200) {
             isLogin = true;
             screen_name = data.screen_name;
-            TWITTER_ICON_URL = data.profile_image_url
+            manifest.api.src = data.profile_image_url;
         }
-
     }).always(function(){
         d.resolve();
     });
