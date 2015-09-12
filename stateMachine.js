@@ -28,6 +28,8 @@ function topState(){
     }
 
     gameStage.addChild(textObj.TEXT_START);
+
+
     gameStage.update();
 
     if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
@@ -113,6 +115,11 @@ function menuState(){
     if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
         soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
+
+
+    // テスト用設置
+    gameStage.addChild(imageObj.BUTTON_REGUSTRATION_RANKING);
+    
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();

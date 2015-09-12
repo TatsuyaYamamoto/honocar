@@ -175,6 +175,13 @@ var properties = {
             ratioY: 0.95,
             scale: 0.5,
             alpha: 1
+        },
+        BUTTON_REGUSTRATION_RANKING: {
+            id : "BUTTON_TWITTER_LOGIN",
+            ratioX: 0.75,
+            ratioY: 0.2,
+            scale: 0.5,
+            alpha: 1
         }
     },
     ss: {

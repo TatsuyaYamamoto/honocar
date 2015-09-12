@@ -340,5 +340,32 @@ function addAllEventListener(){
         createjs.Ticker.setPaused(false);
     });
 
+
+    // ランキング登録
+    imageObj.BUTTON_REGUSTRATION_RANKING.addEventListener("mousedown", function(){      
+
+        if(!isLogin){
+            alert("ランキング登録はTwitterアカウントでの認証済みの方のみとなっています。");
+        }else{
+            alert("ランキング登録します！（大嘘");
+
+            $.ajax({
+                type: "GET",
+                url: config.api.check,
+                dataType: 'json',
+                headers: {
+                    'Origin': config.api.origin
+                },
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).done(function(data, status, xhr) {
+                if (xhr.status === 200) {
+
+                }
+            });
+        }
+    });
+
 }
 
