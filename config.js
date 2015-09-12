@@ -175,6 +175,13 @@ var properties = {
             ratioY: 0.95,
             scale: 0.5,
             alpha: 1
+        },
+        TWITTER_ICON: {
+            id : "BUTTON_TWITTER_LOGOUT",
+            ratioX: 0.03,
+            ratioY: 0.9,
+            scale: 1.6,
+            alpha: 1          
         }
     },
     ss: {

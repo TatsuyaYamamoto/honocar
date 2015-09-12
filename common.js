@@ -103,8 +103,8 @@ var BUTTON_TWITTER_LOGIN;
 var BUTTON_TWITTER_LOGOUT;
 
 
-var PROFILE_IMAGE;
-var profile_img_url;
+
+var TWITTER_ICON_URL;
 var screen_name;
 //テキスト
 
@@ -174,7 +174,7 @@ function checkLogin(){
         if (xhr.status === 200) {
             isLogin = true;
             screen_name = data.screen_name;
-            profile_img_url = data.profile_image_url
+            TWITTER_ICON_URL = data.profile_image_url
         }
 
     }).always(function(){

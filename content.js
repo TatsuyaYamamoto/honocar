@@ -87,6 +87,15 @@ function setImageContent(){
         imageObj[key].scaleY = imageObj[key].scaleX = gameScreenScale * properties.image[key].scale;
         imageObj[key].alpha = properties.image[key].alpha;
     }
+    if(isLogin){
+        imageObj.TWITTER_ICON = new createjs.Bitmap("TWITTER_ICON");
+        imageObj.TWITTER_ICON.x = gameScrean.width * properties.image.TWITTER_ICON.ratioX;
+        imageObj.TWITTER_ICON.y = gameScrean.height * properties.image.TWITTER_ICON.ratioY;
+        imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
+        imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
+        imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.image.TWITTER_ICON.scale;
+        imageObj[key].alpha = properties.image.TWITTER_ICON.alpha;
+    }
 }
 
 function setSpriteSheetContents(){
@@ -110,11 +119,7 @@ function setSpriteSheetContents(){
 
 function setImageContent_old(){
 
-    if(isLogin){
-        PROFILE_IMAGE = new createjs.Bitmap("PROFILE_IMAGE");
-        setCoordinates(PROFILE_IMAGE, gameScrean.width*0.03, gameScrean.height*0.9);
-        PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
-    }
+
 }
 
 
@@ -185,8 +190,8 @@ function setTextContent(){
 //apiコンテンツリスト------------------------------------------
 var apiManifest = [
     {
-        id : "PROFILE_IMAGE",
-        src: profile_img_url
+        id : "TWITTER_ICON",
+        src: TWITTER_ICON_URL
     }
 ];
 
