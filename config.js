@@ -177,7 +177,7 @@ var properties = {
             alpha: 1
         },
         TWITTER_ICON: {
-            id : "BUTTON_TWITTER_LOGOUT",
+            id : "TWITTER_ICON",
             ratioX: 0.03,
             ratioY: 0.9,
             scale: 1.6,

@@ -85,7 +85,7 @@ function setImageContent(){
         imageObj[key].alpha = properties.image[key].alpha;
     }
     if(isLogin){
-        imageObj.TWITTER_ICON = new createjs.Bitmap("TWITTER_ICON");
+        imageObj.TWITTER_ICON = new createjs.Bitmap(queue.getResult("TWITTER_ICON"));
         imageObj.TWITTER_ICON.x = gameScrean.width * properties.image.TWITTER_ICON.ratioX;
         imageObj.TWITTER_ICON.y = gameScrean.height * properties.image.TWITTER_ICON.ratioY;
         imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
