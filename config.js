@@ -175,13 +175,6 @@ var properties = {
             ratioY: 0.95,
             scale: 0.5,
             alpha: 1
-        },
-        TWITTER_ICON: {
-            id : "TWITTER_ICON",
-            ratioX: 0.03,
-            ratioY: 0.9,
-            scale: 1.6,
-            alpha: 1          
         }
     },
     ss: {
@@ -429,7 +422,15 @@ var properties = {
             align: "center",
             lineHeight: 0.05
         }
-    }
+    },
+    api: {
+        TWITTER_ICON: {
+            id : "TWITTER_ICON",
+            ratioX: 0.03,
+            ratioY: 0.9,
+            scale: 1.6,
+            alpha: 1          
+        }
 }
 
 // 画像、音声ファイル---------------------------------
