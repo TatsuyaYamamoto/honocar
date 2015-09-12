@@ -63,9 +63,6 @@ function handleComplete() {
     setSpriteSheetContents();
     setSoundContent();
     setTextContent();
-    if(isLogin){
-        setAPIContents();
-    }
 
     createjs.Ticker.removeEventListener("tick", tickListener);
 
