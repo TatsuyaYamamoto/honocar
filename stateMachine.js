@@ -95,7 +95,7 @@ function menuState(){
 
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
         gameStage.addChild(name);
-        gameStage.addChild(PROFILE_IMAGE);
+        gameStage.addChild(imageObj.TWITTER_ICON);
 
     }
 

@@ -48,7 +48,7 @@ function loadContent(){
     queue.loadManifest(manifest.sound);
 
     if(isLogin){
-        queue.loadManifest(apiManifest);
+        queue.loadManifest(manifest.api);
     }
 
 }
@@ -117,11 +117,6 @@ function setSpriteSheetContents(){
     }
 }
 
-function setImageContent_old(){
-
-
-}
-
 
 function setSoundContent(){
 
@@ -187,18 +182,4 @@ function setTextContent(){
 }
 
 
-//apiコンテンツリスト------------------------------------------
-var apiManifest = [
-    {
-        id : "TWITTER_ICON",
-        src: TWITTER_ICON_URL
-    }
-];
-
-
-function setAPIContents(){
-    PROFILE_IMAGE = new createjs.Bitmap("PROFILE_IMAGE");
-    setCoordinates(PROFILE_IMAGE, gameScrean.width*0.03, gameScrean.height*0.9);
-    PROFILE_IMAGE.scaleY = PROFILE_IMAGE.scaleX = gameScreenScale * 1.6;
-}
 
