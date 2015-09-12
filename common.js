@@ -176,6 +176,9 @@ function checkLogin(){
             screen_name = data.screen_name;
             profile_img_url = data.profile_image_url
         }
+
+    }).always(function(){
+        d.resolve();
     });
     return d.promise();
 }
