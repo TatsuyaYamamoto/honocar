@@ -426,9 +426,9 @@ var properties = {
     api: {
         TWITTER_ICON: {
             id : "TWITTER_ICON",
-            ratioX: 0.03,
+            ratioX: 0.1,
             ratioY: 0.9,
-            scale: 1.6,
+            scale: 0.5,
             alpha: 1          
         }
     }

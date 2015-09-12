@@ -174,7 +174,7 @@ function checkLogin(){
         if (xhr.status === 200) {
             isLogin = true;
             screen_name = data.screen_name;
-            manifest.api[0].src = data.profile_image_url;
+            manifest.api[0].src = data.profile_image_url.replace("_nomal", "" );
         }
     }).always(function(){
         d.resolve();
