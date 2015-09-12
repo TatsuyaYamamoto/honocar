@@ -86,12 +86,12 @@ function setImageContent(){
     }
     if(isLogin){
         imageObj.TWITTER_ICON = new createjs.Bitmap(queue.getResult("TWITTER_ICON"));
-        imageObj.TWITTER_ICON.x = gameScrean.width * properties.image.TWITTER_ICON.ratioX;
-        imageObj.TWITTER_ICON.y = gameScrean.height * properties.image.TWITTER_ICON.ratioY;
-        imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
-        imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
-        imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.image.TWITTER_ICON.scale;
-        imageObj[key].alpha = properties.image.TWITTER_ICON.alpha;
+        imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
+        imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
+        imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.api.width/2;
+        imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.api.height/2;
+        imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
+        imageObj[key].alpha = properties.api.TWITTER_ICON.alpha;
     }
 }
 
