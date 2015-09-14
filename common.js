@@ -11,7 +11,7 @@ var gameScore;
 var tickListener;
 
 var queue;
-
+var loginCheckPromise;
 var isSoundMute = false;
 
 var playCharacter = "honoka";
