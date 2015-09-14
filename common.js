@@ -18,7 +18,7 @@ var playCharacter = "honoka";
 //honoka or erichi
 var player;
 //キャラクターオブジェクトを格納する
-
+var loopTween;
 var car;
 
 var imageObj = {};
@@ -151,7 +151,7 @@ function addAllEventListener(){
     });
 
     imageObj.BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
-        createjs.Tween.removeTweens(player);
+        createjs.Tween.removeTweens(player.img);
         soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         createjs.Ticker.removeEventListener("tick", tickListener);
         menuState();
@@ -270,7 +270,7 @@ function addAllEventListener(){
 
 
     // ランキング登録
-    imageObj.BUTTON_REGUSTRATION_RANKING.addEventListener("mousedown", function(){      
+    imageObj.BUTTON_REGISTRATION_RANKING.addEventListener("mousedown", function(){      
 
         if(!isLogin){
             alert("ランキング登録はTwitterアカウントでの認証済みの方のみとなっています。");

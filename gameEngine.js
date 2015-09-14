@@ -189,7 +189,7 @@ function leftButtonDisable(){
 function checkDistance(target){
 	var y = player.img.y - target.img.y;
 
-	var length = Math.abs(y) - CAR1_IMG_HEIGHT * gameScreenScale * config.system.difficultyLength - HONOKA_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH;
+	var length = Math.abs(y) - config.system.car.height * gameScreenScale * config.system.difficultyLength - properties.ss.PLAYER_HONOKA_SS.frames.height * gameScreenScale*config.system.difficultyLength;
 	return length;
 }
 // イベント処理-------------------------------------
@@ -202,8 +202,8 @@ function clickButtonRight(){
 }
 
 function clickButtonLeft(){
-	player.moveLeft();
 	player.lane --;
+	player.moveLeft();
     soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
 	checkButton();
 }

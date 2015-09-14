@@ -1,5 +1,6 @@
 window.onload = function(){
 
+	var promise = checkLogin()
 
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
@@ -33,30 +34,30 @@ window.onload = function(){
 
 	if(/iPhone/.test(ua)) {
 	    gameStage.removeAllChildren();
+alert("12")
+	    var text = new createjs.Text();
+	    setTextProperties(text, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
+	    text.text = "-Please tap on the display!-"
 
-	    TEXT = new createjs.Text();
-	    setTextProperties(TEXT, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.05, "Courier", "center", gameScrean.width*0.04);
-	    TEXT.text = "-Please tap on the display!-"
-
-	    gameStage.addChild(TEXT);
+	    gameStage.addChild(text);
 	    gameStage.update();
 
-	    window.addEventListener("touchstart", start);
+	    window.addEventListener("touchstart", start(promise));
 
 	}
 	else{
 		// ログイン確認後ロード画面へ遷移
-		checkLogin().done(function(){
+		promise.done(function(){
 			loadState();
 		})
 	}
 }
 
 
-function start(){
+function start(promise){
     window.removeEventListener("touchstart", start);
 	// ログイン確認後ロード画面へ遷移
-	checkLogin().done(function(){
+	promise.done(function(){
 		loadState();
 	})
 }

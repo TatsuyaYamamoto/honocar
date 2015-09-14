@@ -92,7 +92,7 @@ var properties = {
             alpha: 1
         },
         BUTTON_RANKING: {
-            id : "BUTTON_CREDIT",
+            id : "BUTTON_RANKING",
             ratioX: 0.5,
             ratioY: 0.68,
             scale: 0.8,
@@ -189,8 +189,8 @@ var properties = {
             scale: 0.5,
             alpha: 1
         },
-        BUTTON_REGUSTRATION_RANKING: {
-            id : "BUTTON_TWITTER_LOGIN",
+        BUTTON_REGISTRATION_RANKING: {
+            id : "BUTTON_REGISTRATION_RANKING",
             ratioX: 0.75,
             ratioY: 0.2,
             scale: 0.5,
@@ -484,8 +484,16 @@ var manifest = {
             src: "img/BUTTON_CREDIT.png"
         },
         {
+            id : "BUTTON_RANKING",
+            src: "img/BUTTON_RANKING.png"
+        },
+        {
             id : "BUTTON_BACK_MENU",
             src: "img/BUTTON_BACK_MENU.png"
+        },
+        {
+            id : "BUTTON_REGISTRATION_RANKING",
+            src: "img/BUTTON_REGISTRATION_RANKING.png"
         },
         {
             id : "GAME_BACKGROUND",
