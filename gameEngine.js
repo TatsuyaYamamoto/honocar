@@ -2,7 +2,7 @@
 function gameInit(){
 
 	//honoka or erichiを作成
-	//初期値はplayCharacter==honoka
+	//初期値はplayCharacter=honoka
 	player = new Player(playCharacter);
 
     //フレーム数リセット
@@ -189,18 +189,22 @@ function leftButtonDisable(){
 function checkDistance(target){
 	var y = player.img.y - target.img.y;
 
-	var length = Math.abs(y) - CAR1_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH - HONOKA_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH;
+	var length = Math.abs(y) - CAR1_IMG_HEIGHT * gameScreenScale * config.system.difficultyLength - HONOKA_IMG_HEIGHT*gameScreenScale*DIFFICULTY_LENGTH;
 	return length;
 }
 // イベント処理-------------------------------------
 
 function clickButtonRight(){
+	player.lane ++;
+    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
 	player.moveRight();
 	checkButton();
 }
 
 function clickButtonLeft(){
 	player.moveLeft();
+	player.lane --;
+    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
 	checkButton();
 }
 // クラッシュ関数-------------------------------------

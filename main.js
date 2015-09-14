@@ -21,7 +21,7 @@ window.onload = function(){
 
 
 	//ゲーム用タイマーの設定
-    createjs.Ticker.setFPS(FPS);
+    createjs.Ticker.setFPS(config.system.FPS);
 	createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
 	// TODO createjsにcross originの画像を読み込まない

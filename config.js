@@ -2,7 +2,18 @@
 
 var config = {
     system: {
-        FPS: 30
+        FPS: 30,
+        gamescrean: {
+            width: 640,
+            height: 896
+        },
+        car: {
+            width: 135,
+            height: 169,
+            fasterSpeed: 1600,
+            slowerSpeed: 2000
+        },
+        difficultyLength: 0.3
     },
     api:{
         origin: "http://diary.sokontokoro-factory.net/honocar/",
@@ -19,6 +30,8 @@ var config = {
     }
 }
 
+
+//定数----------------------------------------
 
 var properties = {
     image: {
@@ -205,7 +218,7 @@ var properties = {
             },
             firstAnimation: "honoka"
         },
-        BUTTON_TURN_SWITCH: {
+        BUTTON_SOUND_SS: {
             id : "BUTTON_SOUND_SS",
             ratioX: 0.9,
             ratioY: 0.12,
@@ -318,34 +331,44 @@ var properties = {
     },
     sound: {
         SOUND_OK: {
-            id: "OK"
+            id: "OK",
+            canMute: true
         },
         SOUND_BACK: {
-            id: "BACK"
+            id: "BACK",
+            canMute: true
         },
         SOUND_KAIHI: {
-            id: "KAIHI"
+            id: "KAIHI",
+            canMute: true
         },
         SOUND_CRASH: {
-            id: "CRASH"
+            id: "CRASH",
+            canMute: true
         },
         SOUND_PI1: {
-            id: "PI1"
+            id: "PI1",
+            canMute: true
         },
         SOUND_PI2: {
-            id: "PI2"
+            id: "PI2",
+            canMute: true
         },
         SOUND_SUSUME_LOOP: {
-            id: "SUSUME_LOOP"
+            id: "SUSUME_LOOP",
+            canMute: true
         },
         SOUND_SUSUME_END: {
-            id: "SUSUME_END"
+            id: "SUSUME_END",
+            canMute: true
         },
         SOUND_ZENKAI: {
-            id: "ZENKAI"
+            id: "ZENKAI",
+            canMute: true
         },
         SOUND_TURN_SWITCH: {
-            id: "TURN_SWITCH"
+            id: "TURN_SWITCH",
+            canMute: false
         }
     },
     text: {

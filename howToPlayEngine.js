@@ -22,12 +22,8 @@ function howToPlayInit(){
     gameStage.addChild(player.img);
     player.howToMove();
 
-    //フレーム数リセット
-	gameFrame = 0;
-
 
 	//ゲーム内タイマーTickイベント
-
 	tickListener = createjs.Ticker.addEventListener("tick", processHowToPlay);
 
 }

@@ -59,7 +59,7 @@ function menuState(){
     gameStage.addChild(imageObj.BUTTON_RANKING);
     gameStage.addChild(imageObj.BUTTON_CREDIT);
     gameStage.addChild(imageObj.BUTTON_TWITTER_TOP);
-    gameStage.addChild(ssObj.BUTTON_TURN_SWITCH);
+    gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
     // Graphicsのインスタンスを作成します。

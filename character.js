@@ -14,6 +14,7 @@ function Player(playCharacter){
     //レーンナンバー
     this.lane = 1;
     this.img.x = this.checkLane();
+    this.img.gotoAndPlay("kihon");
 
 }
 Player.prototype.checkLane = function(){
@@ -35,15 +36,13 @@ Player.prototype.checkLane = function(){
 }
 
 Player.prototype.moveRight = function(){
-    this.lane ++;
-    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
+
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : this.checkLane()}, 100);
 }
 Player.prototype.moveLeft = function(){
-    this.lane --;
-    soundObj.SOUND_KAIHI.play("none",0,0,0,1,0);
+
     createjs.Tween.get(this.img)
         .call(this.img.gotoAndPlay, ["escapeL"])
             .to({x : this.checkLane()}, 100);
@@ -51,7 +50,7 @@ Player.prototype.moveLeft = function(){
 
 Player.prototype.howToMove =function(){
 
-    createjs.Tween.get(this.img, {loop:true})
+    createjs.Tween.get(this.img, {loop:false})
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : (gameScrean.width/8)*5}, 100)
                 .wait(500)

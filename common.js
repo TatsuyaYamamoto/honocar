@@ -1,39 +1,18 @@
-//定数----------------------------------------
-var FPS = 30;
-var GAMESCREAN_WIDTH = 640 ;
-var GAMESCREAN_HEIGHT = 896;
-
-var HONOKA_IMG_WIDTH = 186;
-var HONOKA_IMG_HEIGHT = 266;
-
-var CAR1_IMG_WIDTH = 135;
-var CAR1_IMG_HEIGHT = 169;
-
-var CAR_SPEED_FAST = 1600;
-var CAR_SPEED_SLOW = 2000;
-
-
-var DIFFICULTY_LENGTH = 0.3;
-
 //変数宣言----------------------------------------
 var gameStage;
 var gameScrean;
 var gameScreenScale;
 
-var queue;
-var loadStatusRatio = 0;
-var contentsCount;
-
 
 var screanState;
 var gameFrame;
-var gameTimeCount;
 var passCarCount;
 var gameScore;
 var tickListener;
-var keybordEvent;
 
-var isSoundMute;
+var queue;
+
+var isSoundMute = false;
 
 var playCharacter = "honoka";
 //honoka or erichi
@@ -41,12 +20,6 @@ var player;
 //キャラクターオブジェクトを格納する
 
 var car;
-
-var frameCount;
-
-var ctStatus = false;
-var ctCount = 0;
-var ctAnchor;
 
 var imageObj = {};
 var ssObj = {};
@@ -57,50 +30,6 @@ var isLogin = false;
 //初期化----------------------------------------
 //ゲームプレイヤーの操作座標(これいらんな)
 //player = new setCoordinates();
-
-
-//画像系--------------
-//背景
-var TITLE_LOGO;
-var TITLE_LOGO_E;
-var MENU_LOGO;
-var GAMEOVER;
-var GAME_BACKGROUND;
-var WHITE_SHEET;
-
-//音声系------------
-
-var SOUND_OK;
-var SOUND_BACK;
-var SOUND_KAIHI;
-var SOUND_TWITTER;
-var SOUND_CRASH;
-var SOUND_PI1;
-var SOUND_PI2;
-var SOUND_SUSUME_LOOP;
-var SOUND_SUSUME_END;
-//ボタン
-var BUTTON_START;
-var BUTTON_HOW_TO;
-var BUTTON_RANKING;
-var BUTTON_CREDIT;
-var BUTTON_BACK_TOP;
-var BUTTON_BACK_TOP_FROM_CREDIT;
-var BUTTON_BACK_TOP_FROM_HOW_TO;
-var BUTTON_BACK_TOP_FROM_RANKING;
-var BUTTON_RESTART;
-var BUTTON_TURN_SWITCH;
-var BUTTON_CHANGE_CHARA;
-
-var BUTTON_LEFT;
-var BUTTON_RIGHT;
-var BUTTON_LEFT_HOW_TO;
-var BUTTON_RIGHT_HOW_TO;
-
-var BUTTON_TWITTER_TOP;
-var BUTTON_TWITTER_GAMEOVER_SS;
-var BUTTON_TWITTER_LOGIN;
-var BUTTON_TWITTER_LOGOUT;
 
 
 
@@ -144,16 +73,17 @@ function Lane(num){
 //ゲームスクリーンサイズ初期化用-----------------------
 function initGameScreenScale(){
 
-	if(window.innerHeight/window.innerWidth < GAMESCREAN_HEIGHT/GAMESCREAN_WIDTH){
-		gameScreenScale = window.innerHeight/GAMESCREAN_HEIGHT;
+	if(window.innerHeight/window.innerWidth < config.system.gamescrean.height　/　config.system.gamescrean.width){
+		gameScreenScale = window.innerHeight/config.system.gamescrean.height;
 	}else{
-		gameScreenScale = window.innerWidth/GAMESCREAN_WIDTH;
+		gameScreenScale = window.innerWidth/config.system.gamescrean.width;
 	}
 
-	gameScrean.height = GAMESCREAN_HEIGHT*gameScreenScale;
-	gameScrean.width = GAMESCREAN_WIDTH*gameScreenScale;
+	gameScrean.height = config.system.gamescrean.height * gameScreenScale;
+	gameScrean.width = config.system.gamescrean.width * gameScreenScale;
 
 }
+
 
 // ログイン確認用-------------
 
@@ -221,6 +151,7 @@ function addAllEventListener(){
     });
 
     imageObj.BUTTON_BACK_TOP_FROM_HOW_TO.addEventListener( 'mousedown', function() {
+        createjs.Tween.removeTweens(player);
         soundObj.SOUND_BACK.play("none",0,0,0,1,0);
         createjs.Ticker.removeEventListener("tick", tickListener);
         menuState();
@@ -244,16 +175,13 @@ function addAllEventListener(){
         gameState();
     });
 
-    ssObj.BUTTON_TURN_SWITCH.addEventListener("mousedown", function(){
+    ssObj.BUTTON_SOUND_SS.addEventListener("mousedown", function(){
 		soundObj.SOUND_TURN_SWITCH.play("none",0,0,0,1,0);
         if(isSoundMute){
-            // this.image = "aaa";
-            BUTTON_TURN_SWITCH.gotoAndPlay("on");
-            gameStage.update();
+            ssObj.BUTTON_SOUND_SS.gotoAndPlay("on");
             soundTurnOn();
         }else{
-            BUTTON_TURN_SWITCH.gotoAndPlay("off");
-            gameStage.update();
+            ssObj.BUTTON_SOUND_SS.gotoAndPlay("off");
             soundTurnOff(); 
         }
     });

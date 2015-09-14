@@ -46,7 +46,6 @@ function loadContent(){
     queue.loadManifest(manifest.image);
     queue.loadManifest(manifest.spriteImage);
     queue.loadManifest(manifest.sound);
-
     if(isLogin){
         queue.loadManifest(manifest.api);
     }
@@ -74,7 +73,7 @@ function handleComplete() {
 //ロードしたコンテンツをセット------------------------------------------
 function setImageContent(){
 
-    for(key in properties.image){
+    for(var key in properties.image){
 
         imageObj[key] = new createjs.Bitmap(queue.getResult(properties.image[key].id));
         imageObj[key].x = gameScrean.width * properties.image[key].ratioX;
@@ -97,7 +96,7 @@ function setImageContent(){
 
 function setSpriteSheetContents(){
 
-    for(key in properties.ss){
+    for(var key in properties.ss){
 
         var spriteSheet = new createjs.SpriteSheet({
             images:[queue.getResult(properties.ss[key].id)],
@@ -110,32 +109,34 @@ function setSpriteSheetContents(){
         ssObj[key].y = gameScrean.height * properties.ss[key].ratioY;
         ssObj[key].regX = properties.ss[key].frames.width/2;
         ssObj[key].regY = properties.ss[key].frames.height/2;
-        ssObj[key].scaleY = ssObj.scaleX = gameScreenScale;
+        ssObj[key].scaleY = ssObj[key].scaleX = gameScreenScale;
     }
 }
 
 
 function setSoundContent(){
 
-    for(key in properties.sound){
+    for(var key in properties.sound){
         soundObj[key] = createjs.Sound.createInstance(properties.sound[key].id);
     }
 }
 
 function soundTurnOff(){
     isSoundMute = true;
-
-    for(key in properties.sound){
-        soundObj[key].muted = true;
+    for(var key in soundObj){
+        if(properties.sound[key].canMute){
+            soundObj[key].muted = true;
+        }
     }
 }
 
 function soundTurnOn(){
 
     isSoundMute = false;
-
-    for(key in properties.sound){
-        soundObj[key].muted = false;
+    for(var key in soundObj){
+        if(properties.sound[key].canMute){
+            soundObj[key].muted = false;
+        }
     }
 
 }
@@ -152,7 +153,7 @@ function setTextProperties(target, x, y, size, family, align, height){
 
 function setTextContent(){
 
-    for(key in properties.text){
+    for(var key in properties.text){
         textObj[key] = new createjs.Text();
         textObj[key].x = gameScrean.width * properties.text[key].ratioX;
         textObj[key].y = gameScrean.height * properties.text[key].ratioY;
