@@ -19,7 +19,7 @@ var config = {
         origin: "http://diary.sokontokoro-factory.net/honocar/",
         login: "https://lit-taiga-3631.herokuapp.com/oauth/login",
         logout: "https://lit-taiga-3631.herokuapp.com/oauth/logout",
-        check: "https://lit-taiga-3631.herokuapp.com/oauth/check"
+        check: "https://lit-taiga-3631.herokuapp.com/users/check"
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",
