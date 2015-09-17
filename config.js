@@ -16,7 +16,7 @@ var config = {
         difficultyLength: 0.3
     },
     api:{
-        origin: "http://diary.sokontokoro-factory.net/",
+        clientOrigin: "http://diary.sokontokoro-factory.net/",
         login: "https://lit-taiga-3631.herokuapp.com/oauth/login",
         logout: "https://lit-taiga-3631.herokuapp.com/oauth/logout",
         check: "https://lit-taiga-3631.herokuapp.com/users/me"
