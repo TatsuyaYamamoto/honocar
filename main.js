@@ -11,11 +11,11 @@ window.onload = function(){
 	initGameScreenScale();
 
 		var loading = new createjs.Text();
-        setTextProperties(loading, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
+        setTextProperties(loading, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
         loading.text = "loading..."
         gameStage.addChild(loading);
     gameStage.update();
-    
+
 	//canvas要素内でのスマホでのスライドスクロール禁止
 	$(gameScrean).on('touchmove.noScroll', function(e) {
 	e.preventDefault();
