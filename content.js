@@ -34,7 +34,7 @@ function loadContent(){
     //ロードアニメーション
     loadAnimation();
 
-    queue = new createjs.LoadQueue(false, "", "Anonymous")
+    queue = new createjs.LoadQueue(false)
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);
 
