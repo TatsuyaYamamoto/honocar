@@ -95,7 +95,7 @@ function checkLogin(){
         url: config.api.check,
         dataType: 'json',
         headers: {
-            'Origin': config.api.origin
+            'Origin': config.api.corigin
         },
         xhrFields: {
             withCredentials: true
