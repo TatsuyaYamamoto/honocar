@@ -62,33 +62,33 @@ function menuState(){
     gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
-    // Graphicsのインスタンスを作成します。
-    var graphics = new createjs.Graphics();
-
-    // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
-    graphics.beginStroke("#55acee");
-    graphics.beginFill("#55acee");
-
-    // 図形の描画を行う（ここのバリエーションを後述します）
-
-    var height = gameScrean.height*0.1;
-    var width = gameScrean.width*0.5;
-
-    graphics
-         .moveTo(0,0)
-         .lineTo(width,0)
-         .lineTo(width,height)
-         .lineTo(0,height)
-         .closePath();
-
-    // Shapeとして、Stageに追加します。
-    var shape = new createjs.Shape(graphics);
-    shape.x = 0;
-    shape.y = gameScrean.height-height;
-    gameStage.addChild(shape);
-
-
     if(!isLogin){
+
+        // Graphicsのインスタンスを作成します。
+        var graphics = new createjs.Graphics();
+
+        // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
+        graphics.beginStroke("#55acee");
+        graphics.beginFill("#55acee");
+
+        // 図形の描画を行う（ここのバリエーションを後述します）
+
+        var height = gameScrean.height*0.1;
+        var width = gameScrean.width*0.5;
+
+        graphics
+             .moveTo(0,0)
+             .lineTo(width,0)
+             .lineTo(width,height)
+             .lineTo(0,height)
+             .closePath();
+
+        // Shapeとして、Stageに追加します。
+        var shape = new createjs.Shape(graphics);
+        shape.x = 0;
+        shape.y = gameScrean.height-height;
+        gameStage.addChild(shape);
+
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
         var name = new createjs.Text();
