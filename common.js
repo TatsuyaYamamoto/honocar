@@ -285,7 +285,7 @@ function addAllEventListener(){
                 },
                 xhrFields: {
                     withCredentials: true
-                }
+                },
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {
