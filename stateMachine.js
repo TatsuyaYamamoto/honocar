@@ -63,7 +63,8 @@ function menuState(){
     gameStage.addChild(imageObj.MENU_LOGO);
 
     if(!isLogin){
-
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
+    }else{
         // Graphicsのインスタンスを作成します。
         var graphics = new createjs.Graphics();
 
@@ -89,8 +90,6 @@ function menuState(){
         shape.y = gameScrean.height-height;
         gameStage.addChild(shape);
 
-        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
-    }else{
         var name = new createjs.Text();
         setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
         name.text = "@"+screen_name
@@ -99,7 +98,9 @@ function menuState(){
         gameStage.addChild(name);
         gameStage.addChild(imageObj.TWITTER_ICON);
 
+
     }
+            gameStage.addChild(imageObj.BUTTON_REGISTRATION_RANKING);
 
     switch(playCharacter){
         case "honoka":

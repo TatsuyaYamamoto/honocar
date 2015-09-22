@@ -15,11 +15,16 @@ var config = {
         },
         difficultyLength: 0.3
     },
+    clientOrigin: "http://diary.sokontokoro-factory.net",
     api:{
-        clientOrigin: "http://diary.sokontokoro-factory.net/",
-        login: "https://lit-taiga-3631.herokuapp.com/oauth/login",
-        logout: "https://lit-taiga-3631.herokuapp.com/oauth/logout",
-        check: "https://lit-taiga-3631.herokuapp.com/users/me"
+        hostname: "ec2-user@ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com", 
+        path: {
+            login: "/twitter/oauth/login",
+            logout: "/twitter/oauth/logout",
+            check: "/twitter/users/me",
+            registration_post: "/game/scores/honocar",
+            scores_get: "/game/scores/honocar"
+        }
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",
