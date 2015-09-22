@@ -285,9 +285,8 @@ function addAllEventListener(){
                 },
                 xhrFields: {
                     withCredentials: true
-                },
+                }
                 dataType: 'json',
-                contentType: 'application/x-www-form-urlencoded',
                 data: {
                     game_name: "honocar",
                     category: "hogehoge",
