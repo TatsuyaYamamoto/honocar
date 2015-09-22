@@ -188,7 +188,7 @@ function addAllEventListener(){
 
     imageObj.BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
         if(confirm("ログイン認証のためにTwitterページへ移動します。認証後ゲームページへ再アクセスします。")){
-            window.location.href = config.api.origin + config.api.login + "?game=honocar";
+            window.location.href = config.api.origin + config.api.path.login + "?game=honocar";
         }
     });
 
