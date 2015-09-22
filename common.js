@@ -279,7 +279,7 @@ function addAllEventListener(){
 
             $.ajax({
                 type: "POST",
-                url: "config.api.origin + config.api.path.registration_post",
+                url: config.api.origin + config.api.path.registration_post,
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {
