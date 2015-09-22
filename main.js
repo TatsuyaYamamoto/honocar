@@ -10,10 +10,10 @@ window.onload = function(){
 	//拡大縮小率の計算
 	initGameScreenScale();
 
-		var loading = new createjs.Text();
-        setTextProperties(loading, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
-        loading.text = "loading..."
-        gameStage.addChild(loading);
+	var loading = new createjs.Text();
+    setTextProperties(loading, gameScrean.width*0.5, gameScrean.height*0.5, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
+    loading.text = "loading..."
+    gameStage.addChild(loading);
     gameStage.update();
 
 	//canvas要素内でのスマホでのスライドスクロール禁止

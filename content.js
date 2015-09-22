@@ -70,7 +70,6 @@ function handleComplete() {
 function setImageContent(){
 
     for(var key in properties.image){
-
         imageObj[key] = new createjs.Bitmap(queue.getResult(properties.image[key].id));
         imageObj[key].x = gameScrean.width * properties.image[key].ratioX;
         imageObj[key].y = gameScrean.height * properties.image[key].ratioY;
