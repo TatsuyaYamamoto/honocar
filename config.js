@@ -17,7 +17,7 @@ var config = {
     },
     clientOrigin: "http://diary.sokontokoro-factory.net",
     api:{
-        origin: "http://ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com", 
+        origin: "http://ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com:8080", 
         path: {
             login: "/twitter/oauth/login",
             logout: "/twitter/oauth/logout",
