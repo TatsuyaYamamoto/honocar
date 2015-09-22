@@ -1,13 +1,13 @@
 function loadAnimation(){
     
 
-    var q = new createjs.LoadQueue();
+    var q = new createjs.LoadQueue(false);
     q.setMaxConnections(6);
 
     q.loadManifest([
         {
             id : "LOAD_KOTORI",
-            src: "img/LOAD_KOTORI.png"
+            src: config.bucket_origin + "/honocar/img/LOAD_KOTORI.png"
         }
     ]);
 
@@ -33,16 +33,14 @@ function loadContent(){
 
     //ロードアニメーション
     loadAnimation();
-
+    createjs.Sound.registerPlugins([createjs.HTMLAudioPlugin]);
     queue = new createjs.LoadQueue(false)
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);
-
-    // 全てのファイルを読み込み終わったら
     queue.addEventListener("complete", handleComplete);
 
 
-    //画像、音声マニフェストファイルを読み込む----------     
+    //マニフェストファイルを読み込む----------     
     queue.loadManifest(manifest.image);
     queue.loadManifest(manifest.spriteImage);
     queue.loadManifest(manifest.sound);
@@ -51,8 +49,6 @@ function loadContent(){
     }
 
 }
-
-
 
 // ロードイベント -----------------------------------
 

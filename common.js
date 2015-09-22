@@ -92,14 +92,8 @@ function checkLogin(){
     isLogin = false;
     $.ajax({
         type: "GET",
-        url: config.api.origin + config.api.path.check,
-        dataType: 'json',
-        headers: {
-            'Origin': config.clientOrigin
-        },
-        xhrFields: {
-            withCredentials: true
-        }
+        url: config.api.check,
+        dataType: 'json'
     }).done(function(data, status, xhr) {
         if (xhr.status === 200) {
             isLogin = true;
@@ -188,13 +182,13 @@ function addAllEventListener(){
 
     imageObj.BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
         if(confirm("ログイン認証のためにTwitterページへ移動します。認証後ゲームページへ再アクセスします。")){
-            window.location.href = config.api.origin + config.api.path.login + "?game=honocar";
+            window.location.href = config.api.login + "?game=honocar";
         }
     });
 
     imageObj.BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
         if(confirm("ログアウトします。ランキング登録はログイン中のみ有効です。")){
-            window.location.href = config.api.origin + config.api.path.logout;
+            window.location.href = config.api.logout;
         }
     });
 
@@ -279,7 +273,7 @@ function addAllEventListener(){
 
             $.ajax({
                 type: "POST",
-                url: config.api.origin + config.api.path.registration_post,
+                url: config.api.registration_post,
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {
@@ -287,12 +281,6 @@ function addAllEventListener(){
                     category: "hogehoge",
                     user_id: 112233,
                     point: 123
-                },
-                headers: {
-                    'Origin': config.clientOrigin
-                },
-                xhrFields: {
-                    withCredentials: true
                 }
             }).done(function(data, status, xhr) {
                 if (xhr.status === 200) {
@@ -301,6 +289,5 @@ function addAllEventListener(){
             });
         // }
     });
-
 }
 
