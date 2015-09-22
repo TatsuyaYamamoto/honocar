@@ -92,8 +92,14 @@ function checkLogin(){
     isLogin = false;
     $.ajax({
         type: "GET",
-        url: config.api.check,
-        dataType: 'json'
+        url: config.api.origin + config.api.path.check,
+        dataType: 'json',
+        headers: {
+            'Origin': config.clientOrigin
+        },
+        xhrFields: {
+            withCredentials: true
+        }
     }).done(function(data, status, xhr) {
         if (xhr.status === 200) {
             isLogin = true;
@@ -273,7 +279,13 @@ function addAllEventListener(){
 
             $.ajax({
                 type: "POST",
-                url: config.api.registration_post,
+                url: config.api.origin + config.api.path.registration_post,
+                headers: {
+                    'Origin': config.clientOrigin
+                },
+                xhrFields: {
+                    withCredentials: true
+                }
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {

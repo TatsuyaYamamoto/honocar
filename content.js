@@ -1,13 +1,13 @@
 function loadAnimation(){
     
 
-    var q = new createjs.LoadQueue(false);
+    var q = new createjs.LoadQueue();
     q.setMaxConnections(6);
 
     q.loadManifest([
         {
             id : "LOAD_KOTORI",
-            src: config.bucket_origin + "/honocar/img/LOAD_KOTORI.png"
+            src: "img/LOAD_KOTORI.png"
         }
     ]);
 
@@ -33,7 +33,6 @@ function loadContent(){
 
     //ロードアニメーション
     loadAnimation();
-    createjs.Sound.registerPlugins([createjs.HTMLAudioPlugin]);
     queue = new createjs.LoadQueue(false)
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);

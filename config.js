@@ -15,13 +15,15 @@ var config = {
         },
         difficultyLength: 0.3
     },
-    bucket_origin: "http://bucket.sokontokoro-factory.net",
     api:{
-        login: "/twitter/oauth/login",
-        logout: "/twitter/oauth/logout",
-        check: "/twitter/users/me",
-        registration_post: "/game/scores/honocar",
-        scores_get: "/game/scores/honocar"
+        origin: "http://ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com:8080", 
+        path: {
+            login: "/twitter/oauth/login",
+            logout: "/twitter/oauth/logout",
+            check: "/twitter/users/me",
+            registration_post: "/game/scores/honocar",
+            scores_get: "/game/scores/honocar"
+        }
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",
@@ -471,147 +473,147 @@ var manifest = {
     image: [
         {
             id : "BUTTON_START",
-            src: config.bucket_origin + "/honocar/img/BUTTON_START.png"
+            src: "img/BUTTON_START.png"
         },
         {
             id : "BUTTON_RESTART",
-            src: config.bucket_origin + "/honocar/img/BUTTON_RESTART.png"
+            src: "img/BUTTON_RESTART.png"
         },
         {
             id : "BUTTON_HOW_TO",
-            src: config.bucket_origin + "/honocar/img/BUTTON_HOW_TO.png"
+            src: "img/BUTTON_HOW_TO.png"
         },
         {
             id : "BUTTON_CREDIT",
-            src: config.bucket_origin + "/honocar/img/BUTTON_CREDIT.png"
+            src: "img/BUTTON_CREDIT.png"
         },
         {
             id : "BUTTON_RANKING",
-            src: config.bucket_origin + "/honocar/img/BUTTON_RANKING.png"
+            src: "img/BUTTON_RANKING.png"
         },
         {
             id : "BUTTON_BACK_MENU",
-            src: config.bucket_origin + "/honocar/img/BUTTON_BACK_MENU.png"
+            src: "img/BUTTON_BACK_MENU.png"
         },
         {
             id : "BUTTON_REGISTRATION_RANKING",
-            src: config.bucket_origin + "/honocar/img/BUTTON_REGISTRATION_RANKING.png"
+            src: "img/BUTTON_REGISTRATION_RANKING.png"
         },
         {
             id : "GAME_BACKGROUND",
-            src: config.bucket_origin + "/honocar/img/GAME_BACKGROUND.png"
+            src: "img/GAME_BACKGROUND.png"
         },
         {
             id : "TITLE_LOGO",
-            src: config.bucket_origin + "/honocar/img/TITLE_LOGO.png"
+            src: "img/TITLE_LOGO.png"
         },
         {
             id : "TITLE_LOGO_E",
-            src: config.bucket_origin + "/honocar/img/TITLE_LOGO_E.png"
+            src: "img/TITLE_LOGO_E.png"
         },
         {
             id : "MENU_LOGO",
-            src: config.bucket_origin + "/honocar/img/MENU_LOGO.png"
+            src: "img/MENU_LOGO.png"
         },
         {
             id : "GAMEOVER",
-            src: config.bucket_origin + "/honocar/img/GAMEOVER.png"
+            src: "img/GAMEOVER.png"
         },
         {
             id : "BUTTON_LEFT",
-            src: config.bucket_origin + "/honocar/img/BUTTON_LEFT.png"
+            src: "img/BUTTON_LEFT.png"
         },
         {
             id : "BUTTON_RIGHT",
-            src: config.bucket_origin + "/honocar/img/BUTTON_RIGHT.png"
+            src: "img/BUTTON_RIGHT.png"
         },
         {
             id : "CAR1_FRONT",
-            src: config.bucket_origin + "/honocar/img/CAR1_FRONT.png"
+            src: "img/CAR1_FRONT.png"
         },
         {
             id : "CAR1_BACK",
-            src: config.bucket_origin + "/honocar/img/CAR1_BACK.png"
+            src: "img/CAR1_BACK.png"
         },
         {
             id : "TWITTER_TOP",
-            src: config.bucket_origin + "/honocar/img/TWITTER_TOP.png"
+            src: "img/TWITTER_TOP.png"
         },
         {
             id : "BUTTON_TWITTER_LOGIN",
-            src: config.bucket_origin + "/honocar/img/BUTTON_TWITTER_LOGIN.png"
+            src: "img/BUTTON_TWITTER_LOGIN.png"
         },
         {
             id : "BUTTON_TWITTER_LOGOUT",
-            src: config.bucket_origin + "/honocar/img/BUTTON_TWITTER_LOGOUT.png"
+            src: "img/BUTTON_TWITTER_LOGOUT.png"
         },
         {
             id : "WHITE_SHEET",
-            src: config.bucket_origin + "/honocar/img/WHITE_SHEET.png"
+            src: "img/WHITE_SHEET.png"
         }
     ],
     spriteImage:[
         {
             id : "BUTTON_SOUND_SS",
-            src: config.bucket_origin + "/honocar/img/BUTTON_SOUND_SS.png"
+            src: "img/BUTTON_SOUND_SS.png"
         },
         {
             id : "HONOKA_SS",
-            src: config.bucket_origin + "/honocar/img/HONOKA_SS.png"
+            src: "img/HONOKA_SS.png"
         },
         {
             id : "ERICHI_SS",
-            src: config.bucket_origin + "/honocar/img/ERICHI_SS.png"
+            src: "img/ERICHI_SS.png"
         },
         {
             id : "BUTTON_CHANGE_CHARA_SS",
-            src: config.bucket_origin + "/honocar/img/BUTTON_CHANGE_CHARA_SS.png"
+            src: "img/BUTTON_CHANGE_CHARA_SS.png"
         },
         {
             id : "TWITTER_GAMEOVER_SS",
-            src: config.bucket_origin + "/honocar/img/TWITTER_GAMEOVER_SS.png"
+            src: "img/TWITTER_GAMEOVER_SS.png"
         }
     ],
     sound: [
         {
             id : "OK",
-            src: config.bucket_origin + "/honocar/sound/OK.mp3"
+            src: "sound/OK.mp3"
         },
         {
             id : "BACK",
-            src: config.bucket_origin + "/honocar/sound/BACK.mp3"
+            src: "sound/BACK.mp3"
         },
         {
             id : "KAIHI",
-            src: config.bucket_origin + "/honocar/sound/moto_KAIHI.mp3"
+            src: "sound/moto_KAIHI.mp3"
         },
         {
             id : "CRASH",
-            src: config.bucket_origin + "/honocar/sound/CRASH.mp3"
+            src: "sound/CRASH.mp3"
         },
         {
             id : "PI1",
-            src: config.bucket_origin + "/honocar/sound/PI1.mp3"
+            src: "sound/PI1.mp3"
         },
         {
             id : "PI2",
-            src: config.bucket_origin + "/honocar/sound/PI2.mp3"
+            src: "sound/PI2.mp3"
         },
         {
             id : "SUSUME_LOOP",
-            src: config.bucket_origin + "/honocar/sound/SUSUME_LOOP.mp3"
+            src: "sound/SUSUME_LOOP.mp3"
         },
         {
             id : "SUSUME_END",
-            src: config.bucket_origin + "/honocar/sound/SUSUME_END.mp3"
+            src: "sound/SUSUME_END.mp3"
         },
         {
             id : "ZENKAI",
-            src: config.bucket_origin + "/honocar/sound/ZENKAI.mp3"
+            src: "sound/ZENKAI.mp3"
         },
         {
             id : "TURN_SWITCH",
-            src: config.bucket_origin + "/honocar/sound/TURN_SWITCH.mp3"
+            src: "sound/TURN_SWITCH.mp3"
         }
     ],
     api: [
