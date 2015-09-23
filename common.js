@@ -285,12 +285,12 @@ function addAllEventListener(){
                 },
                 dataType: 'json',
                 contentType: 'application/json',
-                data: {
+                data: JSON.stringify({
                     game_name: "honocar",
                     category: "hogehoge",
                     user_id: 112233,
                     point: 123
-                }
+                })
             }).done(function(data, status, xhr) {
                 if (xhr.status === 200) {
 
