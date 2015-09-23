@@ -280,9 +280,6 @@ function addAllEventListener(){
             $.ajax({
                 type: "POST",
                 url: config.api.origin + config.api.path.registration_post,
-                headers: {
-                    'Origin': config.clientOrigin
-                },
                 xhrFields: {
                     withCredentials: true
                 },
