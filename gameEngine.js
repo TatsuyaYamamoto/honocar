@@ -210,6 +210,7 @@ function clickButtonLeft(){
 // クラッシュ関数-------------------------------------
 function crash(){
 	gameScore = passCarCount;
+	textObj.TEXT_GAME_COUNT.text = text_game_count_L + gameScore + text_game_count_R;
     soundObj.SOUND_SUSUME_LOOP.stop();
     soundObj.SOUND_CRASH.play();
 	soundObj.SOUND_SUSUME_END.play("late",0,0,0,0.6,0);

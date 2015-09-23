@@ -100,7 +100,7 @@ function menuState(){
 
 
     }
-            gameStage.addChild(imageObj.BUTTON_REGISTRATION_RANKING);
+
 
     switch(playCharacter){
         case "honoka":
@@ -204,6 +204,9 @@ function gameOverState(){
     gameStage.addChild(textObj.TEXT_GAME_COUNT);
     gameStage.addChild(imageObj.GAMEOVER);
 
+    if(isLogin){
+        gameStage.addChild(imageObj.BUTTON_REGISTRATION_RANKING);
+    }
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();

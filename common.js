@@ -85,6 +85,34 @@ function initGameScreenScale(){
 }
 
 
+// tweet文言----------------
+function getTweetText(){
+    var tweet_text;
+ 
+    switch(playCharacter){
+        case "honoka":
+            if(gameScore == 0){
+                tweet_text = "穂乃果「いやー、今日もパンがうまいっ！」海未「また運動もせずにそんなものを食べて！」";
+            }else if(gameScore < 100){
+                tweet_text = "穂乃果「ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！」";
+            }else if(gameScore >= 100){
+                tweet_text = "海未「なにやっていたんですか！！どれだけ避けたと思っているんですか...」穂乃果「"+gameScore+"台！」";
+            }
+            break;
+        case "erichi":
+            if(gameScore == 0){
+                tweet_text = "(車なんて避けてないで)エリチカ、おうちにかえる!!!";
+            }else if(gameScore < 100){
+                tweet_text = gameScore+"台よ...なんとか避けなくちゃいけないんだから、しょうがないじゃないチカ！";
+            }else if(gameScore >= 100){
+                tweet_text = gameScore+"台！ハラショー！";
+            }
+            break;
+    }
+    return tweet_text;
+}
+
+
 // ログイン確認用-------------
 
 function checkLogin(){
@@ -94,9 +122,6 @@ function checkLogin(){
         type: "GET",
         url: config.api.origin + config.api.path.check,
         dataType: 'json',
-        headers: {
-            'Origin': config.clientOrigin
-        },
         xhrFields: {
             withCredentials: true
         }
@@ -207,31 +232,7 @@ function addAllEventListener(){
 
     ssObj.BUTTON_TWITTER_GAMEOVER_SS.addEventListener("mousedown", function(){
 
-        var tweet_text;
- 
-        switch(playCharacter){
-            case "honoka":
-                if(gameScore == 0){
-                    tweet_text = "穂乃果「いやー、今日もパンがうまいっ！」海未「また運動もせずにそんなものを食べて！」";
-                }else if(gameScore < 100){
-                    tweet_text = "穂乃果「ことりちゃーん！穂乃果、"+gameScore+"台も車を避けたのに、海未ちゃんちっとも褒めてくれないよー！」";
-                }else if(gameScore >= 100){
-                    tweet_text = "海未「なにやっていたんですか！！どれだけ避けたと思っているんですか...」穂乃果「"+gameScore+"台！」";
-                }
-                break;
-            case "erichi":
-                if(gameScore == 0){
-                    tweet_text = "(車なんて避けてないで)エリチカ、おうちにかえる!!!";
-                }else if(gameScore < 100){
-                    tweet_text = gameScore+"台よ...なんとか避けなくちゃいけないんだから、しょうがないじゃないチカ！";
-                }else if(gameScore >= 100){
-                    tweet_text = gameScore+"台！ハラショー！";
-                }
-                break;
-        }       
-
-
-        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+tweet_text+"&url=http://games.sokontokoro-factory.net/honocar/";
+        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+getTweetText()+"&url=http://games.sokontokoro-factory.net/honocar/";
 
     });
     ssObj.BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
@@ -288,10 +289,8 @@ function addAllEventListener(){
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    game_name: "honocar",
-                    category: "hogehoge",
-                    user_id: 112233,
-                    point: 123
+                    category: ,
+                    point: gameScore
                 })
             }).done(function(data, status, xhr) {
                 if (xhr.status === 200) {
