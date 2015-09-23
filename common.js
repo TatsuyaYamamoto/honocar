@@ -278,8 +278,8 @@ function addAllEventListener(){
             alert("ランキング登録します！（大嘘");
 
             $.ajax({
-                type: "GET",
-                url: config.api.origin + "/game/scores/",
+                type: "POST",
+                url: config.api.origin + config.api.path.registration_post,
                 headers: {
                     'Origin': config.clientOrigin
                 },
