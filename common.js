@@ -275,7 +275,7 @@ function addAllEventListener(){
         // if(!isLogin){
         //     alert("ランキング登録はTwitterアカウントでの認証済みの方のみとなっています。");
         // }else{
-            alert("ランキング登録します！（大嘘");
+            alert("ランキング登録します！");
 
             $.ajax({
                 type: "POST",
