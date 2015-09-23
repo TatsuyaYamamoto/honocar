@@ -18,11 +18,11 @@ var config = {
     api:{
         origin: "http://ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com:8080", 
         path: {
-            login: "/twitter/oauth/login",
-            logout: "/twitter/oauth/logout",
-            check: "/twitter/users/me",
-            registration_post: "/game/scores/honocar",
-            scores_get: "/game/scores/honocar"
+            login: "/api/oauth/login",
+            logout: "/api/oauth/logout",
+            check: "/api/users/me",
+            registration_post: "/api/scores/honocar",
+            scores_get: "/api/scores/honocar"
         }
     },
     link: {
