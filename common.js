@@ -289,7 +289,7 @@ function addAllEventListener(){
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    category: ,
+                    category: "",
                     point: gameScore
                 })
             }).done(function(data, status, xhr) {
