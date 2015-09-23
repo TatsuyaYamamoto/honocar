@@ -101,7 +101,9 @@ function checkLogin(){
             withCredentials: true
         }
     }).done(function(data, status, xhr) {
-        if (xhr.status === 200) {
+        if (date.errors !== undefined) {
+            alert("you're not loging");
+        }else{
             isLogin = true;
             screen_name = data.screen_name;
             manifest.api[0].src = data.profile_image_url.replace("_normal", "" );
