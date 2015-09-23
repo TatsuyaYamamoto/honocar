@@ -101,7 +101,7 @@ function checkLogin(){
             withCredentials: true
         }
     }).done(function(data, status, xhr) {
-        if (date.errors !== undefined) {
+        if (data.errors !== undefined) {
             alert("you're not loging");
         }else{
             isLogin = true;
