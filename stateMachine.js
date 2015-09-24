@@ -1,6 +1,6 @@
 // ロード画面------------------------------------------
 function loadState(){
-    screanState = "loadState";
+
 
     textObj.TEXT_LOADING_STATUS = new createjs.Text("", gameScrean.width*0.1+"20px Impact", "");
     textObj.TEXT_LOADING_STATUS.x = gameScrean.width/2;
@@ -14,7 +14,7 @@ function loadState(){
 
 // TOP画面------------------------------------------
 function topState(){
-    screanState = "topState";
+
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
 
@@ -49,7 +49,7 @@ function topState(){
 
 // MENU画面------------------------------------------
 function menuState(){
-    screanState = "menuState";
+
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.WHITE_SHEET);
@@ -130,7 +130,7 @@ function menuState(){
 }
 //操作説明画面------------------------------------------
 function howToPlayState(){  
-	screanState = "howToPlayState";
+
     gameStage.removeAllChildren();
 
     howToPlayInit();
@@ -138,7 +138,7 @@ function howToPlayState(){
 }
 //クレジット画面------------------------------------------
 function creditState(){
-	screanState = "creditState";
+
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_CREDIT);
@@ -154,7 +154,7 @@ function creditState(){
 }
 // ランキング画面------------------------------------------
 function rankingState(){
-    screanState = "creditState";
+
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_RANKING);
@@ -169,7 +169,7 @@ function rankingState(){
 
 // ゲーム画面------------------------------------------
 function gameState(){
-	screanState = "gameState";
+
     gameStage.removeAllChildren();
 
     gameInit();
@@ -178,17 +178,9 @@ function gameState(){
 // GAMEOVER画面------------------------------------------
 function gameOverState(){
 
-	screanState = "gameOverState";
-
     player.img.gotoAndPlay("down");
 
     gameStage.removeAllChildren();
-
-    gameStage.addChild(imageObj.GAME_BACKGROUND);
-    gameStage.addChild(player.img);
-    gameStage.addChild(imageObj.BUTTON_BACK_TOP);
-    gameStage.addChild(imageObj.BUTTON_RESTART);
-
 
     switch(playCharacter){
         case "honoka":
@@ -199,13 +191,17 @@ function gameOverState(){
             break;
     }
 
-
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(player.img);
+    gameStage.addChild(imageObj.BUTTON_BACK_TOP);
+    gameStage.addChild(imageObj.BUTTON_RESTART);
     gameStage.addChild(ssObj.BUTTON_TWITTER_GAMEOVER_SS);
     gameStage.addChild(textObj.TEXT_GAME_COUNT);
     gameStage.addChild(imageObj.GAMEOVER);
 
+    // ランキング登録
     if(isLogin){
-        gameStage.addChild(imageObj.BUTTON_REGISTRATION_RANKING);
+        registration();
     }
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){

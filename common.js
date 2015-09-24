@@ -3,8 +3,6 @@ var gameStage;
 var gameScrean;
 var gameScreenScale;
 
-
-var screanState;
 var gameFrame;
 var passCarCount;
 var gameScore;
@@ -28,10 +26,6 @@ var textObj = {};
 
 var isLogin = false;
 //初期化----------------------------------------
-//ゲームプレイヤーの操作座標(これいらんな)
-//player = new setCoordinates();
-
-
 
 var TWITTER_ICON_URL;
 var screen_name;
@@ -65,9 +59,9 @@ function setCoordinates(target, x, y){
 
 //ゲーム内レーン管理クラス---------------------------
 
-function Lane(num){
-	this.number = num;
-}
+// function Lane(num){
+// 	this.number = num;
+// }
 
 
 //ゲームスクリーンサイズ初期化用-----------------------
@@ -112,6 +106,30 @@ function getTweetText(){
     return tweet_text;
 }
 
+// ランキング登録-------------
+function registration(){
+
+    $.ajax({
+        type: "POST",
+        url: config.api.origin + config.api.path.registration_post,
+        xhrFields: {
+            withCredentials: true
+        },
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            category: "",
+            point: gameScore
+        })
+    }).done(function(data, status, xhr) {
+        if (xhr.status === 200) {
+
+        }
+        if (xhr.status === 401) {
+            alert("ログインセッションが切れています。メニュー画面からログインボタンを操作しなおしてください。");
+        }
+    });
+}
 
 // ログイン確認用-------------
 
@@ -160,9 +178,7 @@ function addAllEventListener(){
         howToPlayState();
     } );
     imageObj.BUTTON_RANKING.addEventListener("mousedown",function(){
-        createjs.Ticker.removeEventListener("tick", tickListener);
-        soundObj.SOUND_OK.play("none",0,0,0,1,0);
-        rankingState();      
+        window.location.href = "http://games.sokontokoro-factory.net/ranking/?game_name=honocar"
     })
 
 	imageObj.BUTTON_CREDIT.addEventListener("mousedown",function(){
@@ -271,33 +287,5 @@ function addAllEventListener(){
         createjs.Ticker.setPaused(false);
     });
 
-
-    // ランキング登録
-    imageObj.BUTTON_REGISTRATION_RANKING.addEventListener("mousedown", function(){      
-
-        // if(!isLogin){
-        //     alert("ランキング登録はTwitterアカウントでの認証済みの方のみとなっています。");
-        // }else{
-            alert("ランキング登録します！");
-
-            $.ajax({
-                type: "POST",
-                url: config.api.origin + config.api.path.registration_post,
-                xhrFields: {
-                    withCredentials: true
-                },
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    category: "",
-                    point: gameScore
-                })
-            }).done(function(data, status, xhr) {
-                if (xhr.status === 200) {
-
-                }
-            });
-        // }
-    });
 }
 
