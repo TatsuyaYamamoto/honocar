@@ -126,8 +126,8 @@ function checkLogin(){
             withCredentials: true
         }
     }).done(function(data, status, xhr) {
-        if (data.errors !== undefined) {
-            alert("you're not loging");
+        if (data.errors != undefined) {
+            alert(data.errors);
         }else{
             isLogin = true;
             screen_name = data.screen_name;
