@@ -126,8 +126,8 @@ function checkLogin(){
             withCredentials: true
         }
     }).done(function(data, status, xhr) {
-        if (data.errors != undefined) {
-            alert(data.errors);
+        if (data.errors !== undefined) {
+            alert("you're not loging");
         }else{
             isLogin = true;
             screen_name = data.screen_name;
@@ -288,14 +288,10 @@ function addAllEventListener(){
                 },
                 dataType: 'json',
                 contentType: 'application/json',
-                // data: JSON.stringify({
-                //     category: "",
-                //     point: gameScore
-                // })
-                data: {
+                data: JSON.stringify({
                     category: "",
                     point: gameScore
-                }
+                })
             }).done(function(data, status, xhr) {
                 if (xhr.status === 200) {
 
