@@ -24,7 +24,6 @@ var ssObj = {};
 var soundObj = {};
 var textObj = {};
 
-var isLogin = false;
 //初期化----------------------------------------
 
 var TWITTER_ICON_URL;
