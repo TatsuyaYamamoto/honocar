@@ -133,30 +133,43 @@ function registration(){
 
 // ログイン確認用-------------
 
-function checkLogin(){
-    var d = new $.Deferred;
-    isLogin = false;
+function checkIsLogin(){
+
     $.ajax({
         type: "GET",
-        url: config.api.origin + config.api.path.check,
+        url: config.api.origin + "/api/oauth/check",
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data, status, xhr) {
+        if (xhr.status === 200) {
+            return true;
+        }
+    });
+    return false;
+}
+
+
+// アイコン画像取得-------------
+
+function getTwitterIconURL(){
+
+    var url = "";
+
+    $.ajax({
+        type: "GET",
+        url: config.api.origin + "/api/users/me",
         dataType: 'json',
         xhrFields: {
             withCredentials: true
         }
     }).done(function(data, status, xhr) {
-        if (data.errors !== undefined) {
-            alert("you're not loging");
-        }else{
-            isLogin = true;
-            screen_name = data.screen_name;
-            manifest.api[0].src = data.profile_image_url.replace("_normal", "" );
+        if (xhr.status === 200) {
+            url = data.profile_image_url.replace("_normal", "" );
         }
-    }).always(function(){
-        d.resolve();
     });
-    return d.promise();
+    return url;
 }
-
 
 function addAllEventListener(){
 

@@ -62,42 +62,55 @@ function menuState(){
     gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
-    if(!isLogin){
+    if(!checkIsLogin()){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
-        // Graphicsのインスタンスを作成します。
-        var graphics = new createjs.Graphics();
 
-        // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
-        graphics.beginStroke("#55acee");
-        graphics.beginFill("#55acee");
+        var url = getTwitterIconURL();
 
-        // 図形の描画を行う（ここのバリエーションを後述します）
+        if(url === ""){
+            imageObj.TWITTER_ICON = new createjs.Bitmap(url);
+            imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
+            imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
+            imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
+            imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
+            imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
+            imageObj[key].alpha = properties.api.TWITTER_ICON.alpha;
 
-        var height = gameScrean.height*0.1;
-        var width = gameScrean.width*0.5;
 
-        graphics
-             .moveTo(0,0)
-             .lineTo(width,0)
-             .lineTo(width,height)
-             .lineTo(0,height)
-             .closePath();
+            // // Graphicsのインスタンスを作成します。
+            // var graphics = new createjs.Graphics();
 
-        // Shapeとして、Stageに追加します。
-        var shape = new createjs.Shape(graphics);
-        shape.x = 0;
-        shape.y = gameScrean.height-height;
-        gameStage.addChild(shape);
+            // // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
+            // graphics.beginStroke("#55acee");
+            // graphics.beginFill("#55acee");
 
-        var name = new createjs.Text();
-        setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
-        name.text = "@"+screen_name
+            // // 図形の描画を行う（ここのバリエーションを後述します）
 
-        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
-        gameStage.addChild(name);
-        gameStage.addChild(imageObj.TWITTER_ICON);
+            // var height = gameScrean.height*0.1;
+            // var width = gameScrean.width*0.5;
 
+            // graphics
+            //      .moveTo(0,0)
+            //      .lineTo(width,0)
+            //      .lineTo(width,height)
+            //      .lineTo(0,height)
+            //      .closePath();
+
+            // // Shapeとして、Stageに追加します。
+            // var shape = new createjs.Shape(graphics);
+            // shape.x = 0;
+            // shape.y = gameScrean.height-height;
+            // gameStage.addChild(shape);
+
+            // var name = new createjs.Text();
+            // setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
+            // name.text = "@"+screen_name
+
+            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
+            // gameStage.addChild(name);
+            gameStage.addChild(imageObj.TWITTER_ICON);
+        }
 
     }
 

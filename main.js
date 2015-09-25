@@ -1,7 +1,5 @@
 window.onload = function(){
 
-	// ログインチェック
-	loginCheckPromise = checkLogin();
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
 
@@ -52,17 +50,13 @@ window.onload = function(){
 	}
 	else{
 		// ログイン確認後ロード画面へ遷移
-		loginCheckPromise.done(function(){
-			loadState();
-		})
+		loadState();
 	}
 }
 
 
 function start(){
     window.removeEventListener("touchstart", start);
-	loginCheckPromise.done(function(){
-		loadState();
-	})
+	loadState();
 }
 

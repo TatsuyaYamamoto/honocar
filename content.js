@@ -43,10 +43,6 @@ function loadContent(){
     queue.loadManifest(manifest.image);
     queue.loadManifest(manifest.spriteImage);
     queue.loadManifest(manifest.sound);
-    if(isLogin){
-        queue.loadManifest(manifest.api);
-    }
-
 }
 
 // ロードイベント -----------------------------------
@@ -76,15 +72,6 @@ function setImageContent(){
         imageObj[key].regY = imageObj[key].image.height/2;
         imageObj[key].scaleY = imageObj[key].scaleX = gameScreenScale * properties.image[key].scale;
         imageObj[key].alpha = properties.image[key].alpha;
-    }
-    if(isLogin){
-        imageObj.TWITTER_ICON = new createjs.Bitmap(queue.getResult("TWITTER_ICON"));
-        imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
-        imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
-        imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
-        imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
-        imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
-        imageObj[key].alpha = properties.api.TWITTER_ICON.alpha;
     }
 }
 

@@ -183,7 +183,7 @@ var properties = {
             id : "BUTTON_TWITTER_LOGIN",
             ratioX: 0.25,
             ratioY: 0.95,
-            scale: 0.5,
+            scale: 1,
             alpha: 1
         },
         BUTTON_TWITTER_LOGOUT: {
@@ -614,13 +614,6 @@ var manifest = {
         {
             id : "TURN_SWITCH",
             src: "sound/TURN_SWITCH.mp3"
-        }
-    ],
-    api: [
-
-        {
-            id : "TWITTER_ICON",
-            src: ""
         }
     ]
 }
