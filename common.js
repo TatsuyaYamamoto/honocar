@@ -145,7 +145,7 @@ function checkIsLogin(){
         }
     }).al(function(data, status, xhr) {
         if (xhr.status === 200) {
-            isLogin true;
+            isLogin = true;
         }
     });
     return isLogin;
