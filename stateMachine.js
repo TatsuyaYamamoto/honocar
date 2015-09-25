@@ -62,7 +62,7 @@ function menuState(){
     gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
-    if(!checkIsLogin()){
+    if(!true){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
 
@@ -75,7 +75,7 @@ function menuState(){
             imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
             imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
             imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
-            imageObj[key].alpha = properties.api.TWITTER_ICON.alpha;
+            imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
 
 
             // // Graphicsのインスタンスを作成します。
