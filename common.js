@@ -143,7 +143,7 @@ function checkIsLogin(){
         xhrFields: {
             withCredentials: true
         }
-    }).al(function(data, status, xhr) {
+    }).done(function(data, status, xhr) {
         if (xhr.status === 200) {
             isLogin = true;
         }
