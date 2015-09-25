@@ -135,18 +135,20 @@ function registration(){
 
 function checkIsLogin(){
 
+    var isLogin = false;
+
     $.ajax({
         type: "GET",
         url: config.api.origin + "/api/oauth/check",
         xhrFields: {
             withCredentials: true
         }
-    }).done(function(data, status, xhr) {
+    }).al(function(data, status, xhr) {
         if (xhr.status === 200) {
-            return true;
+            isLogin true;
         }
     });
-    return false;
+    return isLogin;
 }
 
 
