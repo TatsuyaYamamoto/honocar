@@ -62,13 +62,10 @@ function menuState(){
         }
     }).done(function(data, status, xhr){
 
-        if (xhr.status === 200) {
-            var url = data.profile_image_url.replace("_normal", "" );
-            setTwitterIconToImageObj(url);
-            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
-            gameStage.addChild(imageObj.TWITTER_ICON);
-
-        }
+        var url = data.profile_image_url.replace("_normal", "" );
+        setTwitterIconToImageObj(url);
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
+        gameStage.addChild(imageObj.TWITTER_ICON);
 
     }).fail(function(){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
@@ -216,9 +213,7 @@ function gameOverState(){
     gameStage.addChild(imageObj.GAMEOVER);
 
     // ランキング登録
-    if(isLogin){
-        registration();
-    }
+    registration();
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();

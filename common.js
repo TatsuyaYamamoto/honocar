@@ -115,7 +115,7 @@ function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON.regY = 200;
     imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
     imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
-    
+
 }
 
 // ランキング登録-------------
@@ -123,7 +123,7 @@ function registration(){
 
     $.ajax({
         type: "POST",
-        url: config.api.origin + config.api.path.registration_post,
+        url: config.api.origin + "/api/scores/honocar",
         xhrFields: {
             withCredentials: true
         },
@@ -134,12 +134,33 @@ function registration(){
             point: gameScore
         })
     }).done(function(data, status, xhr) {
-        if (xhr.status === 200) {
+        // Graphicsのインスタンスを作成します。
+        var graphics = new createjs.Graphics();
 
-        }
-        if (xhr.status === 401) {
-            alert("ログインセッションが切れています。メニュー画面からログインボタンを操作しなおしてください。");
-        }
+        // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
+        graphics.beginStroke("#55acee");
+        graphics.beginFill("#55acee");
+
+        // 図形の描画を行う（ここのバリエーションを後述します）
+
+        var height = gameScrean.height*0.1;
+        var width = gameScrean.width*0.5;
+
+        graphics
+             .moveTo(0,0)
+             .lineTo(width,0)
+             .lineTo(width,height)
+             .lineTo(0,height)
+             .closePath();
+
+        // Shapeとして、Stageに追加します。
+        var shape = new createjs.Shape(graphics);
+        shape.x = 0;
+        shape.y = gameScrean.height-height;
+        gameStage.addChild(shape);
+
+    }).fail(function(){
+
     });
 }
 
@@ -147,15 +168,13 @@ function registration(){
 
 function checkIsLogin(){
 
-
-
-    return $.ajax({
-                type: "GET",
-                url: config.api.origin + "/api/users/me",
-                xhrFields: {
-                    withCredentials: true
-                }
-            });
+    $.ajax({
+        type: "GET",
+        url: config.api.origin + "/api/users/me",
+        xhrFields: {
+            withCredentials: true
+        }
+    });
 }
 
 
