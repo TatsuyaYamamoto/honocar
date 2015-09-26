@@ -50,7 +50,10 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
-
+    gameStage.removeAllChildren();
+    gameStage.addChild(imageObj.GAME_BACKGROUND);
+    gameStage.addChild(imageObj.WHITE_SHEET);
+        
     $.ajax({
         type: "GET",
         url: config.api.origin + "/api/users/me",
@@ -69,10 +72,6 @@ function menuState(){
         alert("?")
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }).always(function(){
-
-        gameStage.removeAllChildren();
-        gameStage.addChild(imageObj.GAME_BACKGROUND);
-        gameStage.addChild(imageObj.WHITE_SHEET);
 
         gameStage.addChild(imageObj.BUTTON_START);
         gameStage.addChild(imageObj.BUTTON_HOW_TO);
