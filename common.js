@@ -156,11 +156,7 @@ function registration(){
 
         // Shapeとして、Stageに追加します。
         var shape = new createjs.Shape(graphics);
-        alert(textObj.TEXT_REGISTRATION.regX)
-        alert(textObj.TEXT_REGISTRATION.regY)
-        alert(textObj.TEXT_REGISTRATION.x)
-        alert(textObj.TEXT_REGISTRATION.y)
-        shape.regX = TEXT_REGISTRATION.getMeasuredWidth()/2;
+        shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
         shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
 
         shape.x = textObj.TEXT_REGISTRATION.x;
