@@ -188,7 +188,7 @@ var properties = {
         },
         BUTTON_TWITTER_LOGOUT: {
             id : "BUTTON_TWITTER_LOGOUT",
-            ratioX: 0.75,
+            ratioX: 0.4,
             ratioY: 0.95,
             scale: 1,
             alpha: 1
