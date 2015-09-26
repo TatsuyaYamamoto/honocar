@@ -75,7 +75,7 @@ function menuState(){
             },
             contentType: 'application/json',
             data: JSON.stringify({
-                user_id: data.screen_name
+                user_name: data.screen_name
             })
         })
 
