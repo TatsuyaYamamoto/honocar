@@ -159,6 +159,7 @@ function registration(){
         shape.x = 0;
         shape.y = gameScrean.height-textObj.TEXT_REGISTRATION.y;
         gameStage.addChild(shape);
+        gameStage.addChild(textObj.TEXT_REGISTRATION);
     });
 }
 
