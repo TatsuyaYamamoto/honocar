@@ -60,6 +60,7 @@ function menuState(){
         gameStage.addChild(imageObj.BUTTON_HOW_TO);
         gameStage.addChild(imageObj.BUTTON_RANKING);
         gameStage.addChild(imageObj.BUTTON_CREDIT);
+        gameStage.addChild(imageObj.BUTTON_REGUSTRATION_RANKING);
         gameStage.addChild(imageObj.BUTTON_TWITTER_TOP);
         gameStage.addChild(ssObj.BUTTON_SOUND_SS);
         gameStage.addChild(imageObj.MENU_LOGO);
@@ -73,6 +74,7 @@ function menuState(){
         }else{
             gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
         }
+            alert("1");
     })
 
 
@@ -142,11 +144,6 @@ function menuState(){
     if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
         soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
     }
-
-
-    // テスト用設置
-    gameStage.addChild(imageObj.BUTTON_REGUSTRATION_RANKING);
-    
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();
