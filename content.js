@@ -138,7 +138,8 @@ function setTextContent(){
         textObj[key] = new createjs.Text();
         textObj[key].x = gameScrean.width * properties.text[key].ratioX;
         textObj[key].y = gameScrean.height * properties.text[key].ratioY;
-        textObj[key].font = gameScrean.width * properties.text[key].size + "px " + properties.text[key].family + " " + properties.text[key].color;
+        textObj[key].font = gameScrean.width * properties.text[key].size + "px " + properties.text[key].family;
+        textObj[key].color = properties.text[key].color;
         textObj[key].textAlign = properties.text[key].align;
         textObj[key].lineHeight = gameScrean.width * properties.text[key].lineHeight;
     }
