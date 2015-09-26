@@ -156,8 +156,10 @@ function registration(){
 
         // Shapeとして、Stageに追加します。
         var shape = new createjs.Shape(graphics);
-        shape.x = 0;
-        shape.y = gameScrean.height-textObj.TEXT_REGISTRATION.y;
+        shape.x = textObj.TEXT_REGISTRATION.x;
+        shape.y = textObj.TEXT_REGISTRATION.y;
+        shape.regX = textObj.TEXT_REGISTRATION.regX;
+        shape.regY = textObj.TEXT_REGISTRATION.regY;
         gameStage.addChild(shape);
         gameStage.addChild(textObj.TEXT_REGISTRATION);
     });
