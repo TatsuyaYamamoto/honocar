@@ -73,6 +73,7 @@ function menuState(){
             xhrFields: {
                 withCredentials: true
             },
+            contentType: 'application/json',
             data: JSON.stringify({
                 user_id: data.screen_name
             })
@@ -103,54 +104,6 @@ function menuState(){
             gameStage.update();
         });
     })
-
-
-    // if(!isLogin){
-    //     gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
-    // }else{
-
-    //     var url = getTwitterIconURL();
-
-    //     if(url === ""){
-
-    //         setTwitterIconToImageObj(url);
-    //         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
-    //         gameStage.addChild(imageObj.TWITTER_ICON);
-
-    //         // // Graphicsのインスタンスを作成します。
-    //         // var graphics = new createjs.Graphics();
-
-    //         // // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
-    //         // graphics.beginStroke("#55acee");
-    //         // graphics.beginFill("#55acee");
-
-    //         // // 図形の描画を行う（ここのバリエーションを後述します）
-
-    //         // var height = gameScrean.height*0.1;
-    //         // var width = gameScrean.width*0.5;
-
-    //         // graphics
-    //         //      .moveTo(0,0)
-    //         //      .lineTo(width,0)
-    //         //      .lineTo(width,height)
-    //         //      .lineTo(0,height)
-    //         //      .closePath();
-
-    //         // // Shapeとして、Stageに追加します。
-    //         // var shape = new createjs.Shape(graphics);
-    //         // shape.x = 0;
-    //         // shape.y = gameScrean.height-height;
-    //         // gameStage.addChild(shape);
-
-    //         // var name = new createjs.Text();
-    //         // setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
-    //         // name.text = "@"+screen_name
-
-    //         // gameStage.addChild(name);
-
-    //     }
-
-    // }
 
 }
 //操作説明画面------------------------------------------
