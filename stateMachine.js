@@ -50,18 +50,14 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
-var d;
 
     $.ajax({
-                type: "GET",
-                url: config.api.origin + "/api/users/me",
-                xhrFields: {
-                    withCredentials: true
-                }
-            }).done(function(data, status, xhr){
-        d = data
-        alert(d)
-
+        type: "GET",
+        url: config.api.origin + "/api/users/me",
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data, status, xhr){
         gameStage.removeAllChildren();
         gameStage.addChild(imageObj.GAME_BACKGROUND);
         gameStage.addChild(imageObj.WHITE_SHEET);
@@ -85,7 +81,7 @@ var d;
             gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
         }
 
-        alert("1");
+
         
         switch(playCharacter){
             case "honoka":
@@ -106,10 +102,6 @@ var d;
             gameStage.update();
         });
     })
-
-
-
-    alert(d)
 
 
     // if(!isLogin){

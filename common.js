@@ -146,7 +146,7 @@ function registration(){
 
 function checkIsLogin(){
 
-    alert("2")
+
 
     return $.ajax({
                 type: "GET",
