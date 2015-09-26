@@ -125,7 +125,7 @@ function menuState(){
 
     //     }
 
-    }
+    // }
 
 
     switch(playCharacter){
