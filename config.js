@@ -462,6 +462,7 @@ var properties = {
             size: 0.04,
             family: "Courier",
             align: "center",
+            color: "#ffffff",
             lineHeight: 0.1
         }
     },
