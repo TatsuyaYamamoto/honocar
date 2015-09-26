@@ -69,7 +69,7 @@ function menuState(){
 
         $.ajax({
             type: "POST",
-            url: config.api.origin + "/api/game/users/" + data.user_id,
+            url: config.api.origin + "/api/game/users/" + data.id,
             xhrFields: {
                 withCredentials: true
             },
