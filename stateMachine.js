@@ -58,6 +58,18 @@ function menuState(){
             withCredentials: true
         }
     }).done(function(data, status, xhr){
+
+        if (xhr.status === 200) {
+            var url = data.profile_image_url.replace("_normal", "" );
+            setTwitterIconToImageObj(url);
+
+        }
+
+    }).fail(function(){
+        alert("?")
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
+    }).always(function(){
+
         gameStage.removeAllChildren();
         gameStage.addChild(imageObj.GAME_BACKGROUND);
         gameStage.addChild(imageObj.WHITE_SHEET);
@@ -71,28 +83,11 @@ function menuState(){
         gameStage.addChild(ssObj.BUTTON_SOUND_SS);
         gameStage.addChild(imageObj.MENU_LOGO);
 
-
-        if (xhr.status === 200) {
-            var url = data.profile_image_url.replace("_normal", "" );
-            setTwitterIconToImageObj(url);
-            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
-            gameStage.addChild(imageObj.TWITTER_ICON);
-        }else{
-            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
-        }
-
-
-        
-        switch(playCharacter){
-            case "honoka":
-                ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
-                break;
-            case "erichi":
-                ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
-                break;
-        }
-
+        ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay(playCharacter);
         gameStage.addChild(ssObj.BUTTON_CHANGE_CHARA);
+
+        gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
+        gameStage.addChild(imageObj.TWITTER_ICON);
 
         if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
             soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
