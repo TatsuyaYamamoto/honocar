@@ -50,7 +50,7 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
-
+    alert(checkIsLogin);
     var isLogin = checkIsLogin();
 
     gameStage.removeAllChildren();
@@ -65,7 +65,7 @@ function menuState(){
     gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
-    alert(isLogin)
+
     if(!isLogin){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
