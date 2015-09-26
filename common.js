@@ -187,7 +187,7 @@ function getTwitterIconURL(){
 
                 url = data.profile_image_url.replace("_normal", "" );
             }
-        });
+        })
     ).done({
         return url;
     })
