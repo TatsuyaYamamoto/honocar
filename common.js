@@ -133,6 +133,8 @@ function registration(){
             point: gameScore
         })
     }).done(function(data, status, xhr) {
+
+
         // Graphicsのインスタンスを作成します。
         var graphics = new createjs.Graphics();
 
@@ -142,8 +144,8 @@ function registration(){
 
         // 図形の描画を行う（ここのバリエーションを後述します）
 
-        var height = gameScrean.height*0.1;
-        var width = gameScrean.width*0.5;
+        var height = textObj.TEXT_REGISTRATION.getMeasuredWidth();
+        var width = textObj.TEXT_REGISTRATION.getMeasuredWidth();
 
         graphics
              .moveTo(0,0)
@@ -155,7 +157,7 @@ function registration(){
         // Shapeとして、Stageに追加します。
         var shape = new createjs.Shape(graphics);
         shape.x = 0;
-        shape.y = gameScrean.height-height;
+        shape.y = gameScrean.height-textObj.TEXT_REGISTRATION.y;
         gameStage.addChild(shape);
     });
 }

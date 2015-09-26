@@ -158,6 +158,8 @@ function setTextContent(){
 
     textObj.TEXT_LINK_LOVELIVE.text = "プロジェクトラブライブ！\rhttp://www.lovelive-anime.jp";
 
+    textObj.TEXT_REGISTRATION.text = "ランニング登録　通信完了！"
+
 }
 
 

@@ -455,6 +455,14 @@ var properties = {
             family: "Courier",
             align: "center",
             lineHeight: 0.05
+        },
+        TEXT_REGISTRATION: {
+            ratioX: 0.8,
+            ratioY: 0.2,
+            size: 0.04,
+            family: "Courier",
+            align: "center",
+            lineHeight: 0.05
         }
     },
     api: {
