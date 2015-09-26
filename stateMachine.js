@@ -50,9 +50,11 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
-    checkIsLogin().done(function(result){
+var d;
 
-        alert(result)
+    checkIsLogin().done(function(data, status, xhr){
+        d = data
+        alert(d)
 
         gameStage.removeAllChildren();
         gameStage.addChild(imageObj.GAME_BACKGROUND);
@@ -101,7 +103,7 @@ function menuState(){
 
 
 
-
+    alert(d)
 
 
     // if(!isLogin){
