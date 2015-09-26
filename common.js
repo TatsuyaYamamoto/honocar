@@ -159,7 +159,7 @@ function checkIsLogin(){
             if (xhr.status === 200) {
                 isLogin = true;
             }
-        });
+        })
     ).done(function(){
         return isLogin;
     });
