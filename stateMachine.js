@@ -65,12 +65,12 @@ function menuState(){
         if (xhr.status === 200) {
             var url = data.profile_image_url.replace("_normal", "" );
             setTwitterIconToImageObj(url);
+            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
             gameStage.addChild(imageObj.TWITTER_ICON);
 
         }
 
     }).fail(function(){
-        alert("?")
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }).always(function(){
 
