@@ -52,7 +52,13 @@ function menuState(){
 
 var d;
 
-    checkIsLogin().done(function(data, status, xhr){
+    $.ajax({
+                type: "GET",
+                url: config.api.origin + "/api/users/me",
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).done(function(data, status, xhr){
         d = data
         alert(d)
 
