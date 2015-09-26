@@ -158,7 +158,7 @@ function registration(){
         shape.x = 0;
         shape.y = gameScrean.height-height;
         gameStage.addChild(shape);
-
+        console("test")
     }).fail(function(){
 
     });
