@@ -161,8 +161,11 @@ function checkIsLogin(){
             }
         })
     ).done(function(){
+        alert("1"+isLogin);
         return isLogin;
+            alert("2"+ isLogin)
     });
+                alert("3"+ isLogin)
 }
 
 

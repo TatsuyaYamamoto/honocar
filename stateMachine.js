@@ -50,7 +50,7 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
-    alert(checkIsLogin());
+    alert("4" +checkIsLogin());
     var isLogin = checkIsLogin();
 
     gameStage.removeAllChildren();
