@@ -161,6 +161,7 @@ function checkIsLogin(){
             }
         })
     ).done(function(){
+        alert(isLogin)
         return isLogin;
     });
 }
@@ -172,19 +173,24 @@ function getTwitterIconURL(){
 
     var url = "";
 
-    $.ajax({
-        type: "GET",
-        url: config.api.origin + "/api/users/me",
-        dataType: 'json',
-        xhrFields: {
-            withCredentials: true
-        }
-    }).done(function(data, status, xhr) {
-        if (xhr.status === 200) {
-            url = data.profile_image_url.replace("_normal", "" );
-        }
-    });
-    return url;
+
+    $.when(
+        $.ajax({
+            type: "GET",
+            url: config.api.origin + "/api/users/me",
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function(data, status, xhr) {
+            if (xhr.status === 200) {
+
+                url = data.profile_image_url.replace("_normal", "" );
+            }
+        });
+    ).done({
+        return url;
+    })
 }
 
 function addAllEventListener(){
