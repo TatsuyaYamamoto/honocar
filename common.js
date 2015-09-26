@@ -106,7 +106,7 @@ function getTweetText(){
 }
 
 
-// ランキング登録-------------
+// Twitterアイコン設定-------------
 function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON = new createjs.Bitmap(url);
     imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
@@ -115,7 +115,7 @@ function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON.regY = 200;
     imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
     imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
-    imageObj.BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
+    imageObj.TWITTER_ICON.addEventListener("mousedown", function(){
         if(confirm("ログアウトします。ランキング登録はログイン中のみ有効です。")){
             window.location.href = config.api.origin + config.api.path.logout + "?game_name=honocar";
         }
