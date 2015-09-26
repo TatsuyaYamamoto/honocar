@@ -190,7 +190,7 @@ var properties = {
             id : "BUTTON_TWITTER_LOGOUT",
             ratioX: 0.75,
             ratioY: 0.95,
-            scale: 0.5,
+            scale: 1,
             alpha: 1
         },
         BUTTON_REGISTRATION_RANKING: {
@@ -460,8 +460,8 @@ var properties = {
     api: {
         TWITTER_ICON: {
             id : "TWITTER_ICON",
-            ratioX: 0.08,
-            ratioY: 0.95,
+            ratioX: 0.05,
+            ratioY: 0.9,
             scale: 0.5,
             alpha: 1          
         }
