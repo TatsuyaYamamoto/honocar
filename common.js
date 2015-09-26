@@ -157,9 +157,6 @@ function registration(){
         shape.x = 0;
         shape.y = gameScrean.height-height;
         gameStage.addChild(shape);
-        alert("aa")
-    }).fail(function(xhr, status, errorThrown){
-        alert(status)
     });
 }
 
