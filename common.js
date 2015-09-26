@@ -127,6 +127,7 @@ function registration(){
         xhrFields: {
             withCredentials: true
         },
+        contentType: 'application/json',
         data: JSON.stringify({
             category: "",
             point: gameScore
