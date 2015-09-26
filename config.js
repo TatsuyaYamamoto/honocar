@@ -462,7 +462,7 @@ var properties = {
             size: 0.04,
             family: "Courier",
             align: "center",
-            lineHeight: 0
+            lineHeight: 1
         }
     },
     api: {
