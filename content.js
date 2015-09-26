@@ -70,6 +70,7 @@ function setImageContent(){
         imageObj[key].y = gameScrean.height * properties.image[key].ratioY;
         imageObj[key].regX = imageObj[key].image.width/2;
         imageObj[key].regY = imageObj[key].image.height/2;
+        alert(imageObj[key].image.height/2)
         imageObj[key].scaleY = imageObj[key].scaleX = gameScreenScale * properties.image[key].scale;
         imageObj[key].alpha = properties.image[key].alpha;
     }
