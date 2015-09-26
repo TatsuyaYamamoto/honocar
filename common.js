@@ -145,7 +145,7 @@ function registration(){
         // 図形の描画を行う（ここのバリエーションを後述します）
 
         var height = textObj.TEXT_REGISTRATION.getMeasuredHeight();
-        var width = textObj.TEXT_REGISTRATION.getMeasuredWidth();
+        var width = textObj.TEXT_REGISTRATION.getMeasuredWidth()*1.5;
 
         graphics
              .moveTo(0,0)
@@ -159,7 +159,7 @@ function registration(){
         shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
         shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
 
-        shape.x = textObj.TEXT_REGISTRATION.x;
+        shape.x = textObj.TEXT_REGISTRATION.x*0.8;
         shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
 
         gameStage.addChild(shape);
