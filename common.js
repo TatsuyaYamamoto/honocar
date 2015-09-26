@@ -146,6 +146,14 @@ function registration(){
 
 function checkIsLogin(){
 
+    alert($.ajax({
+            type: "GET",
+            url: config.api.origin + "/api/oauth/check",
+            xhrFields: {
+                withCredentials: true
+            }
+        }))
+
     var isLogin = false;
 
     $.when(
@@ -161,11 +169,8 @@ function checkIsLogin(){
             }
         })
     ).done(function(){
-        alert("1"+isLogin);
         return isLogin;
-            alert("2"+ isLogin)
     });
-                alert("3"+ isLogin)
 }
 
 
