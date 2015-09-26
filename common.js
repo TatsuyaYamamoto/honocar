@@ -161,7 +161,6 @@ function checkIsLogin(){
             }
         })
     ).done(function(){
-        alert(isLogin)
         return isLogin;
     });
 }
