@@ -76,7 +76,27 @@ function menuState(){
         }else{
             gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
         }
-            alert("1");
+
+        alert("1");
+        
+        switch(playCharacter){
+            case "honoka":
+                ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
+                break;
+            case "erichi":
+                ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
+                break;
+        }
+
+        gameStage.addChild(ssObj.BUTTON_CHANGE_CHARA);
+
+        if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
+            soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
+        }
+
+        tickListener = createjs.Ticker.addEventListener("tick", function(){
+            gameStage.update();
+        });
     })
 
 
@@ -130,27 +150,6 @@ function menuState(){
     //     }
 
     // }
-
-
-    switch(playCharacter){
-        case "honoka":
-            ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("honoka");
-            break;
-        case "erichi":
-            ssObj.BUTTON_CHANGE_CHARA.gotoAndPlay("erichi");
-            break;
-    }
-
-    gameStage.addChild(ssObj.BUTTON_CHANGE_CHARA);
-
-    if(soundObj.SOUND_ZENKAI.playState != createjs.Sound.PLAY_SUCCEEDED){
-        soundObj.SOUND_ZENKAI.play("none",0,0,-1,0.4,0);
-    }
-
-    tickListener = createjs.Ticker.addEventListener("tick", function(){
-        gameStage.update();
-    });
-
 
 }
 //操作説明画面------------------------------------------
