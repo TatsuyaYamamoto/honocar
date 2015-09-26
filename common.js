@@ -146,9 +146,11 @@ function registration(){
 
 function checkIsLogin(){
 
+    alert("2")
+
     return $.ajax({
                 type: "GET",
-                url: config.api.origin + "/api/oauth/check",
+                url: config.api.origin + "/api/users/me",
                 xhrFields: {
                     withCredentials: true
                 }

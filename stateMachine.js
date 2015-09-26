@@ -52,6 +52,8 @@ function menuState(){
 
     checkIsLogin().done(function(data, status, xhr){
 
+        alert("3")
+
         gameStage.removeAllChildren();
         gameStage.addChild(imageObj.GAME_BACKGROUND);
         gameStage.addChild(imageObj.WHITE_SHEET);
