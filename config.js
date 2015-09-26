@@ -112,7 +112,7 @@ var properties = {
         BUTTON_BACK_TOP: {
             id : "BUTTON_BACK_MENU",
             ratioX: 0.7,
-            ratioY: 0.7,
+            ratioY: 0.75,
             scale: 1,
             alpha: 1
         },
@@ -140,7 +140,7 @@ var properties = {
         BUTTON_RESTART: {
             id : "BUTTON_RESTART",
             ratioX: 0.3,
-            ratioY: 0.7,
+            ratioY: 0.75,
             scale: 1,
             alpha: 1
         },
@@ -457,7 +457,7 @@ var properties = {
             lineHeight: 0.05
         },
         TEXT_REGISTRATION: {
-            ratioX: 0.3,
+            ratioX: 0.4,
             ratioY: 0.9,
             size: 0.04,
             family: "Courier",

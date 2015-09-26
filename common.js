@@ -159,7 +159,7 @@ function registration(){
         shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
         shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
 
-        shape.x = textObj.TEXT_REGISTRATION.x*0.8;
+        shape.x = textObj.TEXT_REGISTRATION.x*0.5;
         shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
 
         gameStage.addChild(shape);
