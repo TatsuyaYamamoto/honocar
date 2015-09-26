@@ -56,7 +56,7 @@ function menuState(){
 
     $.ajax({
         type: "GET",
-        url: config.api.origin + "/api/users/me",
+        url: config.api.origin + "/api/twitter/users/me",
         xhrFields: {
             withCredentials: true
         }
@@ -66,6 +66,18 @@ function menuState(){
         setTwitterIconToImageObj(url);
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
         gameStage.addChild(imageObj.TWITTER_ICON);
+
+        $.ajax({
+            type: "POST",
+            url: config.api.origin + "/api/game/users/" + data.user_id,
+            xhrFields: {
+                withCredentials: true
+            },
+            data: JSON.stringify({
+                user_id: data.screen_name
+            })
+        })
+
 
     }).fail(function(){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);

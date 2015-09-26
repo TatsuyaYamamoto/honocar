@@ -123,7 +123,7 @@ function registration(){
 
     $.ajax({
         type: "POST",
-        url: config.api.origin + "/api/scores/honocar",
+        url: config.api.origin + "/api/game/scores/honocar",
         xhrFields: {
             withCredentials: true
         },
@@ -173,7 +173,7 @@ function checkIsLogin(){
 
     $.ajax({
         type: "GET",
-        url: config.api.origin + "/api/users/me",
+        url: config.api.origin + "/api/twitter/users/me",
         xhrFields: {
             withCredentials: true
         }
@@ -181,31 +181,31 @@ function checkIsLogin(){
 }
 
 
-// アイコン画像取得-------------
+// // アイコン画像取得-------------
 
-function getTwitterIconURL(){
+// function getTwitterIconURL(){
 
-    var url = "";
+//     var url = "";
 
 
-    $.when(
-        $.ajax({
-            type: "GET",
-            url: config.api.origin + "/api/users/me",
-            dataType: 'json',
-            xhrFields: {
-                withCredentials: true
-            }
-        }).done(function(data, status, xhr) {
-            if (xhr.status === 200) {
+//     $.when(
+//         $.ajax({
+//             type: "GET",
+//             url: config.api.origin + "/api/twitter/users/me",
+//             dataType: 'json',
+//             xhrFields: {
+//                 withCredentials: true
+//             }
+//         }).done(function(data, status, xhr) {
+//             if (xhr.status === 200) {
 
-                url = data.profile_image_url.replace("_normal", "" );
-            }
-        })
-    ).done(function(){
-        return url;
-    })
-}
+//                 url = data.profile_image_url.replace("_normal", "" );
+//             }
+//         })
+//     ).done(function(){
+//         return url;
+//     })
+// }
 
 function addAllEventListener(){
 
