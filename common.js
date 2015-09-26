@@ -160,8 +160,8 @@ function registration(){
         alert(textObj.TEXT_REGISTRATION.regY)
         alert(textObj.TEXT_REGISTRATION.x)
         alert(textObj.TEXT_REGISTRATION.y)
-        shape.regX = textObj.TEXT_REGISTRATION.regX;
-        shape.regY = textObj.TEXT_REGISTRATION.regY;
+        shape.regX = TEXT_REGISTRATION.getMeasuredWidth()/2;
+        shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
 
         shape.x = textObj.TEXT_REGISTRATION.x;
         shape.y = textObj.TEXT_REGISTRATION.y;
