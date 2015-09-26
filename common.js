@@ -105,6 +105,18 @@ function getTweetText(){
     return tweet_text;
 }
 
+
+// ランキング登録-------------
+function setTwitterIconToImageObj(url){
+    imageObj.TWITTER_ICON = new createjs.Bitmap(url);
+    imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
+    imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
+    imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
+    imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
+    imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
+    imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
+}
+
 // ランキング登録-------------
 function registration(){
 
@@ -136,18 +148,21 @@ function checkIsLogin(){
 
     var isLogin = false;
 
-    $.ajax({
-        type: "GET",
-        url: config.api.origin + "/api/oauth/check",
-        xhrFields: {
-            withCredentials: true
-        }
-    }).done(function(data, status, xhr) {
-        if (xhr.status === 200) {
-            isLogin = true;
-        }
+    $.when(
+        $.ajax({
+            type: "GET",
+            url: config.api.origin + "/api/oauth/check",
+            xhrFields: {
+                withCredentials: true
+            }
+        }).done(function(data, status, xhr) {
+            if (xhr.status === 200) {
+                isLogin = true;
+            }
+        });
+    ).done(function(){
+        return isLogin;
     });
-    return isLogin;
 }
 
 

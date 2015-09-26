@@ -50,6 +50,9 @@ function topState(){
 // MENU画面------------------------------------------
 function menuState(){
 
+
+    var isLogin = checkIsLogin();
+
     gameStage.removeAllChildren();
     gameStage.addChild(imageObj.GAME_BACKGROUND);
     gameStage.addChild(imageObj.WHITE_SHEET);
@@ -62,21 +65,17 @@ function menuState(){
     gameStage.addChild(ssObj.BUTTON_SOUND_SS);
     gameStage.addChild(imageObj.MENU_LOGO);
 
-    if(!true){
+    if(!isLogin){
         gameStage.addChild(imageObj.BUTTON_TWITTER_LOGIN);
     }else{
 
         var url = getTwitterIconURL();
 
         if(url === ""){
-            imageObj.TWITTER_ICON = new createjs.Bitmap(url);
-            imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
-            imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
-            imageObj.TWITTER_ICON.regX = imageObj.TWITTER_ICON.image.width/2;
-            imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height/2;
-            imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
-            imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
 
+            setTwitterIconToImageObj(url);
+            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
+            gameStage.addChild(imageObj.TWITTER_ICON);
 
             // // Graphicsのインスタンスを作成します。
             // var graphics = new createjs.Graphics();
@@ -107,9 +106,8 @@ function menuState(){
             // setTextProperties(name, gameScrean.width*0.3, gameScrean.height*0.92, gameScrean.width*0.04, "Courier", "center", gameScrean.width*0.04);
             // name.text = "@"+screen_name
 
-            gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
             // gameStage.addChild(name);
-            gameStage.addChild(imageObj.TWITTER_ICON);
+
         }
 
     }
