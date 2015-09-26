@@ -65,6 +65,9 @@ function menuState(){
         if (xhr.status === 200) {
             var url = data.profile_image_url.replace("_normal", "" );
             setTwitterIconToImageObj(url);
+            imageObj.TWITTER_ICON.regX = 0;
+            imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height;
+
             gameStage.addChild(imageObj.BUTTON_TWITTER_LOGOUT);
             gameStage.addChild(imageObj.TWITTER_ICON);
 

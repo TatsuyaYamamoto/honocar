@@ -460,8 +460,8 @@ var properties = {
     api: {
         TWITTER_ICON: {
             id : "TWITTER_ICON",
-            ratioX: 0.02,
-            ratioY: 0.85,
+            ratioX: 0,
+            ratioY: 1,
             scale: 0.5,
             alpha: 1          
         }
