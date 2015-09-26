@@ -144,7 +144,7 @@ function registration(){
 
         // 図形の描画を行う（ここのバリエーションを後述します）
 
-        var height = textObj.TEXT_REGISTRATION.getMeasuredWidth();
+        var height = textObj.TEXT_REGISTRATION.getMeasuredHeight();
         var width = textObj.TEXT_REGISTRATION.getMeasuredWidth();
 
         graphics

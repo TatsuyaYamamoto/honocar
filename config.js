@@ -457,8 +457,8 @@ var properties = {
             lineHeight: 0.05
         },
         TEXT_REGISTRATION: {
-            ratioX: 0.8,
-            ratioY: 0.2,
+            ratioX: 0.3,
+            ratioY: 0.9,
             size: 0.04,
             family: "Courier",
             align: "center",
