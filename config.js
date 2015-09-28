@@ -624,5 +624,11 @@ var manifest = {
             id : "TURN_SWITCH",
             src: "sound/TURN_SWITCH.mp3"
         }
+    ],
+    api: [
+        {
+            id : "TWITTER_ICON",
+            src: ""
+        }
     ]
 }

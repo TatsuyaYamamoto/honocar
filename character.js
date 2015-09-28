@@ -50,7 +50,7 @@ Player.prototype.moveLeft = function(){
 
 Player.prototype.howToMove =function(){
 
-    loopTween = createjs.Tween.get(this.img, {loop:true})
+    createjs.Tween.get(this.img, {loop:true})
         .call(this.img.gotoAndPlay, ["escapeR"])
             .to({x : (gameScrean.width/8)*5}, 100)
                 .wait(500)

@@ -16,14 +16,19 @@ var playCharacter = "honoka";
 //honoka or erichi
 var player;
 //キャラクターオブジェクトを格納する
-var loopTween;
 var car;
 
+
+var isLogin = false;
 var imageObj = {};
 var ssObj = {};
 var soundObj = {};
 var textObj = {};
-
+var user = {
+    id: "",
+    name: "",
+    iconURL: ""
+}
 //初期化----------------------------------------
 
 var TWITTER_ICON_URL;
@@ -173,43 +178,54 @@ function checkIsLogin(){
 
     $.ajax({
         type: "GET",
-        url: config.api.origin + "/api/twitter/users/me",
+        url: config.api.origin + "/api/game/users/me",
         xhrFields: {
             withCredentials: true
         }
+    }).done(function(data, status, xhr){
+        isLogin = true;
+        user.id = data.user_id;
+        user.name = data.user_name;
+    }).error(function(){
+        isLogin = false;
     });
 }
 
 
-// // アイコン画像取得-------------
+// アイコン画像URL取得-------------
 
-// function getTwitterIconURL(){
+function setUserInfo(){
 
-//     var url = "";
+    $.ajax({
+        type: "GET",
+        url: config.api.origin + "/api/game/users/me",
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data, status, xhr){
+        user.id = data.user_id;
+        user.name = data.user_name;
+    }).error(function(){
+        alert("セッション情報が切れています");
+    });
 
+    $.ajax({
+        type: "GET",
+        url: config.api.origin + "/api/twitter/users/me",
+        dataType: 'json',
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data, status, xhr) {
+        user.iconURL = data.profile_image_url.replace("_normal", "" );
+    }).error(function(){
+        alert("セッション情報が切れています");
+    });
+}
 
-//     $.when(
-//         $.ajax({
-//             type: "GET",
-//             url: config.api.origin + "/api/twitter/users/me",
-//             dataType: 'json',
-//             xhrFields: {
-//                 withCredentials: true
-//             }
-//         }).done(function(data, status, xhr) {
-//             if (xhr.status === 200) {
-
-//                 url = data.profile_image_url.replace("_normal", "" );
-//             }
-//         })
-//     ).done(function(){
-//         return url;
-//     })
-// }
+//イベントリスナー登録--------------------------------
 
 function addAllEventListener(){
-
-    //イベントリスナー登録--------------------------------
 
     imageObj.BUTTON_RIGHT.addEventListener("mousedown", clickButtonRight);
 
