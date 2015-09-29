@@ -223,9 +223,10 @@ function setUserInfo(){
     });
 
     $.when(dfd1, dfd2).done(function(data,data1){
-        alert(data, data1)
+        alert(data);
+        alert(data1);
     })
-
+    return d.promise();
 
 
 
@@ -255,7 +256,7 @@ function setUserInfo(){
     //     alert("セッション情報が切れています");
     // });
 
-    return d.promise();
+
 }
 
 //イベントリスナー登録--------------------------------
