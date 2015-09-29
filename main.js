@@ -6,10 +6,10 @@ window.onload = function(){
 	deferredCheckLogin = $.Deferred();
 	setUserInfo().done(function(){
 		isLogin = true;
-		deferredCcheckLogin.resolve();
+		deferredCheckLogin.resolve();
 	}).fail(function(){
 		isLogin = false;
-		deferredCcheckLogin.reject();
+		deferredCheckLogin.reject();
 	});
 	deferredCheckLogin.promise();
 
