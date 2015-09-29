@@ -122,7 +122,9 @@ function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
     imageObj.TWITTER_ICON.regX = 0;
     imageObj.TWITTER_ICON.regY = 200;
+    alert(imageObj.TWITTER_ICON.width);
     imageObj.TWITTER_ICON.width = imageObj.TWITTER_ICON.height = gameScreenScale * properties.api.TWITTER_ICON.size;
+    alert(imageObj.TWITTER_ICON.width);
     imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
 
 }
