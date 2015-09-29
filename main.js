@@ -3,7 +3,6 @@ window.onload = function(){
 
 	checkIsLogin().done(function(){
 		deferredSetUserInfo = UserInfo();
-    })
 
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
@@ -57,6 +56,9 @@ window.onload = function(){
 		// ログイン確認後ロード画面へ遷移
 		loadState();
 	}
+    })
+
+
 }
 
 
