@@ -178,27 +178,27 @@ function registration(){
     });
 }
 
-// ログイン確認用-------------
+// // ログイン確認用-------------
 
-function checkIsLogin(){
+// function checkIsLogin(){
 
-    var d = $.Deferred();
+//     var d = $.Deferred();
 
-    $.ajax({
-        type: "GET",
-        url: config.api.origin + "/api/game/users/me",
-        xhrFields: {
-            withCredentials: true
-        }
-    }).done(function(data, status, xhr){
-        isLogin = true;
-        d.resolve();
-    }).fail(function(){
-        isLogin = false;
-        d.reject();
-    });
-    return d.promise();
-}
+//     $.ajax({
+//         type: "GET",
+//         url: config.api.origin + "/api/game/users/me",
+//         xhrFields: {
+//             withCredentials: true
+//         }
+//     }).done(function(data, status, xhr){
+//         isLogin = true;
+//         d.resolve();
+//     }).fail(function(){
+//         isLogin = false;
+//         d.reject();
+//     });
+//     return d.promise();
+// }
 
 
 // アイコン画像URL取得-------------
@@ -231,7 +231,6 @@ function setUserInfo(){
 
         d.resolve();
     }).fail(function(){
-        alert("ログインセッションが無効になっています。再ログインしてください");
         d.reject();
     });
     return d.promise();
