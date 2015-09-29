@@ -1,8 +1,18 @@
 window.onload = function(){
 
 
-	checkIsLogin().always(function(){
-		deferredSetUserInfo = setUserInfo();
+	// ログインチェック
+	// 完了後にコンテンツオブジェクトのセットアップを開始する
+	deferredCheckLogin = $.Deferred();
+	setUserInfo().done(function(){
+		isLogin = true;
+		deferredCcheckLogin.resolve();
+	}).fail(function(){
+		isLogin = false;
+		deferredCcheckLogin.reject();
+	});
+	deferredCheckLogin.promise();
+
 
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
@@ -56,7 +66,7 @@ window.onload = function(){
 		// ログイン確認後ロード画面へ遷移
 		loadState();
 	}
-    })
+
 
 
 }

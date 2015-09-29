@@ -49,7 +49,7 @@ function loadContent(){
 // ロードイベント -----------------------------------
 
 function handleComplete() {
-    deferredSetUserInfo.always(function(){
+    deferredCheckLogin.always(function(){
         setImageContent();
         setSpriteSheetContents();
         setSoundContent();
