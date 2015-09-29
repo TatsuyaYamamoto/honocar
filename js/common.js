@@ -171,8 +171,13 @@ function registration(){
         shape.x = textObj.TEXT_REGISTRATION.x*0.5;
         shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
 
+        shape.alpha = 0;
+        textObj.TEXT_REGISTRATION.alpha = 0;
         gameStage.addChild(shape);
         gameStage.addChild(textObj.TEXT_REGISTRATION);
+        createjs.Tween.get(shape).to({alpha:1}, 3000);
+        createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, 3000);
+
     }).fail(function(){
         alert("ログインセッションが無効になっています。再ログインしてください");
     });
