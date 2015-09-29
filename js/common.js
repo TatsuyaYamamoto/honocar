@@ -142,45 +142,43 @@ function registration(){
             point: gameScore
         })
     }).done(function(data, status, xhr) {
-
-
-        // Graphicsのインスタンスを作成します。
-        var graphics = new createjs.Graphics();
-
-        // 色の指定（線と塗りつぶしとそれぞれ色を指定する）
-        graphics.beginStroke("#55acee");
-        graphics.beginFill("#55acee");
-
-        // 図形の描画を行う（ここのバリエーションを後述します）
-
-        var height = textObj.TEXT_REGISTRATION.getMeasuredHeight();
-        var width = textObj.TEXT_REGISTRATION.getMeasuredWidth()*1.5;
-
-        graphics
-             .moveTo(0,0)
-             .lineTo(width,0)
-             .lineTo(width,height)
-             .lineTo(0,height)
-             .closePath();
-
-        // Shapeとして、Stageに追加します。
-        var shape = new createjs.Shape(graphics);
-        shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
-        shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
-
-        shape.x = textObj.TEXT_REGISTRATION.x*0.5;
-        shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
-
-        shape.alpha = 0;
-        textObj.TEXT_REGISTRATION.alpha = 0;
-        gameStage.addChild(shape);
-        gameStage.addChild(textObj.TEXT_REGISTRATION);
-        createjs.Tween.get(shape).to({alpha:1}, 3000);
-        createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, 3000);
-
+        drowRegistrationInfo();
     }).fail(function(){
         alert("ログインセッションが無効になっています。再ログインしてください");
     });
+}
+
+
+function drowRegistrationInfo(){
+    // Graphicsのインスタンスを作成します。
+    var graphics = new createjs.Graphics();
+    graphics.beginFill("#55acee");
+
+    var height = textObj.TEXT_REGISTRATION.getMeasuredHeight();
+    var width = textObj.TEXT_REGISTRATION.getMeasuredWidth()*1.5;
+
+    graphics
+         .moveTo(0,0)
+         .lineTo(width,0)
+         .lineTo(width,height)
+         .lineTo(0,height)
+         .closePath();
+
+    var shape = new createjs.Shape(graphics);
+    shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
+    shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
+    shape.x = textObj.TEXT_REGISTRATION.x * 0.5;
+    shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
+
+    shape.alpha = 0;
+    textObj.TEXT_REGISTRATION.alpha = 0;
+
+    gameStage.addChild(shape);
+    gameStage.addChild(textObj.TEXT_REGISTRATION);
+
+    // フェードインアニメーション
+    createjs.Tween.get(shape).to({alpha:1}, 1000);
+    createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, 1000);
 }
 
 // // ログイン確認用-------------
