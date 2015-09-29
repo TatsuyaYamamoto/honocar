@@ -225,7 +225,10 @@ function setUserInfo(){
     $.when(dfd1, dfd2).done(function(data,data1){
         alert(data);
         alert(data1);
-    })
+        d.resolve();
+    }).error(function(){
+        d.reject();
+    });
     return d.promise();
 
 
