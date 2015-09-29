@@ -192,7 +192,7 @@ function checkIsLogin(){
     }).done(function(data, status, xhr){
         isLogin = true;
         d.resolve();
-    }).error(function(){
+    }).fail(function(){
         isLogin = false;
         d.reject();
     });
@@ -222,11 +222,11 @@ function setUserInfo(){
         }
     });
 
-    $.when(dfd1, dfd2).done(function(data,data1){
-        alert(data);
-        alert(data1);
+    $.when(dfd1, dfd2).done(function(data1,data2){
+        alert(data1[0]);
+        alert(data2[0]);
         d.resolve();
-    }).error(function(){
+    }).fail(function(){
         d.reject();
     });
     return d.promise();
