@@ -1,7 +1,7 @@
 window.onload = function(){
 
 
-	checkIsLogin().done(function(){
+	checkIsLogin().always(function(){
 		deferredSetUserInfo = setUserInfo();
 
 	//ゲーム画面の初期
