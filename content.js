@@ -33,11 +33,16 @@ function loadContent(){
 
     //ロードアニメーション
     loadAnimation();
+
     queue = new createjs.LoadQueue(false)
     queue.installPlugin(createjs.Sound);
     queue.setMaxConnections(6);
     queue.addEventListener("complete", handleComplete);
 
+
+    deferredCheckLogin.done(function(){
+        
+    })
 
     //マニフェストファイルを読み込む----------     
     queue.loadManifest(manifest.image);
@@ -49,7 +54,7 @@ function loadContent(){
 
 function handleComplete() {
 
-    deferredCheckLogin.always(function(){
+    deferredSetUserInfo.always(function(){
 
         setImageContent();
         setSpriteSheetContents();

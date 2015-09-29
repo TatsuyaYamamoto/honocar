@@ -1,8 +1,10 @@
 window.onload = function(){
 
 
-	deferredCheckLogin = checkIsLogin();
-	setUserInfo();
+	checkIsLogin().done(function(){
+		deferredSetUserInfo = UserInfo();
+    })
+
 	//ゲーム画面の初期
 	gameStage = new createjs.Stage("gameScrean");
 
