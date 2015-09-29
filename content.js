@@ -49,9 +49,7 @@ function loadContent(){
 // ロードイベント -----------------------------------
 
 function handleComplete() {
-    alert("1")
     deferredSetUserInfo.always(function(){
-        alert("2")
         setImageContent();
         setSpriteSheetContents();
         setSoundContent();

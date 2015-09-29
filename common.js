@@ -174,6 +174,8 @@ function registration(){
 
         gameStage.addChild(shape);
         gameStage.addChild(textObj.TEXT_REGISTRATION);
+    }).fail(function(){
+        alert("ログインセッションが無効になっています。再ログインしてください");
     });
 }
 
@@ -228,7 +230,7 @@ function setUserInfo(){
         user.iconURL = data2[0].profile_image_url.replace("_normal", "" );
         d.resolve();
     }).fail(function(){
-        alert("ログインセッションが無効になっています。");
+        alert("ログインセッションが無効になっています。再ログインしてください");
         d.reject();
     });
     return d.promise();
