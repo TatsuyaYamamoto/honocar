@@ -13,6 +13,9 @@ var config = {
             fasterSpeed: 1600,
             slowerSpeed: 2000
         },
+        anime: {
+            registrationFeedTime: 500
+        },
         difficultyLength: 0.3
     },
     api:{

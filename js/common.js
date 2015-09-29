@@ -177,8 +177,8 @@ function drowRegistrationInfo(){
     gameStage.addChild(textObj.TEXT_REGISTRATION);
 
     // フェードインアニメーション
-    createjs.Tween.get(shape).to({alpha:1}, 1000);
-    createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, 1000);
+    createjs.Tween.get(shape).to({alpha:1}, config.system.anime.registrationFeedTime);
+    createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, config.system.anime.registrationFeedTime);
 }
 
 // // ログイン確認用-------------
