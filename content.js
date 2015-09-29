@@ -49,15 +49,20 @@ function loadContent(){
 
 function handleComplete() {
 
-    setImageContent();
-    setSpriteSheetContents();
-    setSoundContent();
-    setTextContent();
+    deferredCheckLogin.done(function(){
 
-    createjs.Ticker.removeEventListener("tick", tickListener);
+        setImageContent();
+        setSpriteSheetContents();
+        setSoundContent();
+        setTextContent();
 
-    addAllEventListener();
-    topState();
+        createjs.Ticker.removeEventListener("tick", tickListener);
+
+        addAllEventListener();
+        topState();
+
+    })
+
 }
 
 

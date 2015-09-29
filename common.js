@@ -29,6 +29,11 @@ var user = {
     name: "",
     iconURL: ""
 }
+
+
+var deferredCheckLogin;
+var deferredSetUserInfo;
+
 //初期化----------------------------------------
 
 var TWITTER_ICON_URL;
@@ -176,6 +181,8 @@ function registration(){
 
 function checkIsLogin(){
 
+    var d = $.Deferred();
+
     $.ajax({
         type: "GET",
         url: config.api.origin + "/api/game/users/me",
@@ -184,11 +191,12 @@ function checkIsLogin(){
         }
     }).done(function(data, status, xhr){
         isLogin = true;
-        user.id = data.user_id;
-        user.name = data.user_name;
+        d.resolve();
     }).error(function(){
         isLogin = false;
+        d.reject();
     });
+    return d.promise();
 }
 
 
@@ -196,31 +204,58 @@ function checkIsLogin(){
 
 function setUserInfo(){
 
-    $.ajax({
+    var d = $.Deferred();
+
+    var dfd1 = $.ajax({
         type: "GET",
         url: config.api.origin + "/api/game/users/me",
         xhrFields: {
             withCredentials: true
         }
-    }).done(function(data, status, xhr){
-        user.id = data.user_id;
-        user.name = data.user_name;
-    }).error(function(){
-        alert("セッション情報が切れています");
     });
-
-    $.ajax({
+    var dfd2 = $.ajax({
         type: "GET",
         url: config.api.origin + "/api/twitter/users/me",
         dataType: 'json',
         xhrFields: {
             withCredentials: true
         }
-    }).done(function(data, status, xhr) {
-        user.iconURL = data.profile_image_url.replace("_normal", "" );
-    }).error(function(){
-        alert("セッション情報が切れています");
     });
+
+    $.when(dfd1, dfd2).done(function(data){
+        alert(data)
+    })
+
+
+
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: config.api.origin + "/api/game/users/me",
+    //     xhrFields: {
+    //         withCredentials: true
+    //     }
+    // }).done(function(data, status, xhr){
+    //     user.id = data.user_id;
+    //     user.name = data.user_name;
+    // }).error(function(){
+    //     alert("セッション情報が切れています");
+    // });
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: config.api.origin + "/api/twitter/users/me",
+    //     dataType: 'json',
+    //     xhrFields: {
+    //         withCredentials: true
+    //     }
+    // }).done(function(data, status, xhr) {
+    //     user.iconURL = data.profile_image_url.replace("_normal", "" );
+    // }).error(function(){
+    //     alert("セッション情報が切れています");
+    // });
+
+    return d.promise();
 }
 
 //イベントリスナー登録--------------------------------
