@@ -173,10 +173,8 @@ function registration(){
 
         shape.alpha = 0;
         textObj.TEXT_REGISTRATION.alpha = 0;
-
         gameStage.addChild(shape);
         gameStage.addChild(textObj.TEXT_REGISTRATION);
-
         createjs.Tween.get(shape).to({alpha:1}, 3000);
         createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, 3000);
 
