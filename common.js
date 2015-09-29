@@ -223,43 +223,15 @@ function setUserInfo(){
     });
 
     $.when(dfd1, dfd2).done(function(data1,data2){
-        alert(data1[0]);
-        alert(data2[0]);
+        user.id = data1[0].user_id;
+        user.name = data1[0].user_name;
+        user.iconURL = data2[0].profile_image_url.replace("_normal", "" );
         d.resolve();
     }).fail(function(){
+        alert("ログインセッションが無効になっています。");
         d.reject();
     });
     return d.promise();
-
-
-
-    // $.ajax({
-    //     type: "GET",
-    //     url: config.api.origin + "/api/game/users/me",
-    //     xhrFields: {
-    //         withCredentials: true
-    //     }
-    // }).done(function(data, status, xhr){
-    //     user.id = data.user_id;
-    //     user.name = data.user_name;
-    // }).error(function(){
-    //     alert("セッション情報が切れています");
-    // });
-
-    // $.ajax({
-    //     type: "GET",
-    //     url: config.api.origin + "/api/twitter/users/me",
-    //     dataType: 'json',
-    //     xhrFields: {
-    //         withCredentials: true
-    //     }
-    // }).done(function(data, status, xhr) {
-    //     user.iconURL = data.profile_image_url.replace("_normal", "" );
-    // }).error(function(){
-    //     alert("セッション情報が切れています");
-    // });
-
-
 }
 
 //イベントリスナー登録--------------------------------
