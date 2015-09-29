@@ -49,7 +49,7 @@ function loadContent(){
 
 function handleComplete() {
 
-    deferredCheckLogin.done(function(){
+    deferredCheckLogin.always(function(){
 
         setImageContent();
         setSpriteSheetContents();
