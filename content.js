@@ -40,10 +40,6 @@ function loadContent(){
     queue.addEventListener("complete", handleComplete);
 
 
-    deferredCheckLogin.done(function(){
-        
-    })
-
     //マニフェストファイルを読み込む----------     
     queue.loadManifest(manifest.image);
     queue.loadManifest(manifest.spriteImage);

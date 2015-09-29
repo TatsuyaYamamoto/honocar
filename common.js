@@ -222,8 +222,8 @@ function setUserInfo(){
         }
     });
 
-    $.when(dfd1, dfd2).done(function(data,data){
-        alert(data)
+    $.when(dfd1, dfd2).done(function(data,data1){
+        alert(data, data1)
     })
 
 
