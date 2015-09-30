@@ -119,12 +119,10 @@ function getTweetText(){
 function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON = new createjs.Bitmap(url);
     imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
-    imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
+    imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY - 73 * gameScreenScale * properties.api.TWITTER_ICON.scale;
     imageObj.TWITTER_ICON.regX = 0;
-    imageObj.TWITTER_ICON.regY = 73 * gameScreenScale * properties.api.TWITTER_ICON.scale;
+    imageObj.TWITTER_ICON.regY = 0;
     imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
-    imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
-
 }
 
 // ランキング登録-------------
