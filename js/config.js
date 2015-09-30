@@ -474,7 +474,8 @@ var properties = {
             id : "TWITTER_ICON",
             ratioX: 0,
             ratioY: 1,
-            scale: 1.3      
+            scale: 1.3,
+            alpha: 1          
         }
     }
 }
