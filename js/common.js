@@ -121,10 +121,8 @@ function setTwitterIconToImageObj(url){
     imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
     imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
     imageObj.TWITTER_ICON.regX = 0;
-    imageObj.TWITTER_ICON.regY = 200;
-    alert(imageObj.TWITTER_ICON.width);
-    imageObj.TWITTER_ICON.width = imageObj.TWITTER_ICON.height = gameScreenScale * properties.api.TWITTER_ICON.size;
-    alert(imageObj.TWITTER_ICON.width);
+    imageObj.TWITTER_ICON.regY = 73;
+    imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
     imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
 
 }
@@ -232,7 +230,7 @@ function setUserInfo(){
 
         user.id = data1[0].user_id;
         user.name = data1[0].user_name;
-        user.iconURL = data2[0].profile_image_url.replace("_normal", "" );
+        user.iconURL = data2[0].profile_image_url.replace("_normal", "_bigger");
 
         d.resolve();
     }).fail(function(){
