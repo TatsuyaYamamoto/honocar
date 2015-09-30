@@ -83,7 +83,7 @@ function setImageContent(){
         imageObj.TWITTER_ICON.x = gameScrean.width * properties.api.TWITTER_ICON.ratioX;
         imageObj.TWITTER_ICON.y = gameScrean.height * properties.api.TWITTER_ICON.ratioY;
         imageObj.TWITTER_ICON.regX = 0;
-        imageObj.TWITTER_ICON.regY = 200;
+        imageObj.TWITTER_ICON.regY = imageObj.TWITTER_ICON.image.height;
         imageObj.TWITTER_ICON.scaleY = imageObj.TWITTER_ICON.scaleX = gameScreenScale * properties.api.TWITTER_ICON.scale;
         imageObj.TWITTER_ICON.alpha = properties.api.TWITTER_ICON.alpha;
     }
