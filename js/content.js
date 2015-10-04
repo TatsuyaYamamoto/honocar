@@ -14,7 +14,11 @@ function loadAnimation(){
     q.addEventListener("complete", function(){
         var bitmap = new createjs.Bitmap(q.getResult("LOAD_KOTORI"));
         bitmap.scaleY = bitmap.scaleX = gameScreenScale;
-        setCoordinates(bitmap, gameScrean.width*0.5, gameScrean.height*0.5);
+
+        bitmap.x = gameScrean.width*0.5;
+        bitmap.y = gameScrean.height*0.5;
+        bitmap.regX = bitmap.image.width/2;
+        bitmap.regY = bitmap.image.height/2;
      
         createjs.Tween.get(bitmap, {loop:true})
             .to({rotation:360}, 1000);

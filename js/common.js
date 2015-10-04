@@ -56,21 +56,6 @@ var text_how_to_E = "車道ど真ん中の生徒会長を車が容赦なく襲�
 var text_game_count_L = "よけたー : "
 var text_game_count_R = "台"
 
-//座標管理用-----------------------
-
-function setCoordinates(target, x, y){
-	target.x = x;
-	target.y = y;
-	target.regX = target.image.width/2;
-	target.regY = target.image.height/2;
-}
-
-//ゲーム内レーン管理クラス---------------------------
-
-// function Lane(num){
-// 	this.number = num;
-// }
-
 
 //ゲームスクリーンサイズ初期化用-----------------------
 function initGameScreenScale(){
