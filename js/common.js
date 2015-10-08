@@ -113,7 +113,6 @@ function registration(){
         },
         contentType: 'application/json',
         data: JSON.stringify({
-            category: "",
             point: gameScore
         })
     }).done(function(data, status, xhr) {
