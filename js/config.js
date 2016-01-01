@@ -18,15 +18,12 @@ var config = {
         },
         difficultyLength: 0.3
     },
-    api:{
-        origin: "http://ec2-54-65-78-59.ap-northeast-1.compute.amazonaws.com:8080", 
-        path: {
-            login: "/api/twitter/oauth/login",
-            logout: "/api/twitter/oauth/logout",
-            check: "/api/twitter/users/me",
-            registration_post: "/api/game/scores/honocar",
-            scores_get: "/api/game/scores/honocar"
-        }
+    api: {
+        login:  "http://api.sokontokoro-factory.net/v1/auth/twitter/login?redirect=honocar",
+        logout: "http://api.sokontokoro-factory.net/v1/auth/twitter/logout?redirect=honocar",
+        score:  "http://api.sokontokoro-factory.net/v1/game/scores/honocar/me/",
+        user:   "http://api.sokontokoro-factory.net/v1/game/users/me/",
+        token:  "http://api.sokontokoro-factory.net/v1/game/token/"
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",
@@ -185,14 +182,14 @@ var properties = {
         BUTTON_TWITTER_LOGIN: {
             id : "BUTTON_TWITTER_LOGIN",
             ratioX: 0.25,
-            ratioY: 0.95,
+            ratioY: 0.94,
             scale: 1,
             alpha: 1
         },
         BUTTON_TWITTER_LOGOUT: {
             id : "BUTTON_TWITTER_LOGOUT",
             ratioX: 0.4,
-            ratioY: 0.95,
+            ratioY: 0.94,
             scale: 1,
             alpha: 1
         },
@@ -469,11 +466,11 @@ var properties = {
             lineHeight: 0.1
         }
     },
-    api: {
+    asyncImage: {
         TWITTER_ICON: {
-            id : "TWITTER_ICON",
-            ratioX: 0,
-            ratioY: 1,
+            url : "",
+            ratioX: 0.04,
+            ratioY: 0.91,
             scale: 1.3,
             alpha: 1          
         }

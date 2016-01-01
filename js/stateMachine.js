@@ -1,15 +1,6 @@
 // ロード画面------------------------------------------
 function loadState(){
-
-
-    textObj.TEXT_LOADING_STATUS = new createjs.Text("", gameScrean.width*0.1+"20px Impact", "");
-    textObj.TEXT_LOADING_STATUS.x = gameScrean.width/2;
-    textObj.TEXT_LOADING_STATUS.y = gameScrean.height/2;
-    textObj.TEXT_LOADING_STATUS.textAlign = "center";
-
-    gameStage.addChild(textObj.TEXT_LOADING_STATUS);
-
-    loadContent();
+    loadContent(topState);
 }
 
 // TOP画面------------------------------------------

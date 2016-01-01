@@ -1,17 +1,9 @@
 window.onload = function(){
 
 
-	// ログインチェック
+	/*---------- ログインチェック ----------*/
 	// 完了後にコンテンツオブジェクトのセットアップを開始する
-	deferredCheckLogin = $.Deferred();
-	setUserInfo().done(function(){
-		isLogin = true;
-		deferredCheckLogin.resolve();
-	}).fail(function(){
-		isLogin = false;
-		deferredCheckLogin.reject();
-	});
-	deferredCheckLogin.promise();
+	deferredCheckLogin = deferredLoginSystem()
 
 
 	//ゲーム画面の初期

@@ -18,8 +18,9 @@ var player;
 //キャラクターオブジェクトを格納する
 var car;
 
-
+var deferredCheckLogin;
 var isLogin = false;
+
 var imageObj = {};
 var ssObj = {};
 var soundObj = {};
@@ -29,8 +30,7 @@ var user = {
     name: "",
     iconURL: ""
 }
-
-
+var skntkrToken;
 var deferredCheckLogin;
 
 //初期化----------------------------------------
@@ -60,7 +60,7 @@ var text_game_count_R = "台"
 //ゲームスクリーンサイズ初期化用-----------------------
 function initGameScreenScale(){
 
-	if(window.innerHeight/window.innerWidth < config.system.gamescrean.height　/　config.system.gamescrean.width){
+	if(window.innerHeight/window.innerWidth < (config.system.gamescrean.height / config.system.gamescrean.width)){
 		gameScreenScale = window.innerHeight/config.system.gamescrean.height;
 	}else{
 		gameScreenScale = window.innerWidth/config.system.gamescrean.width;
@@ -100,119 +100,79 @@ function getTweetText(){
 }
 
 
+// ランキング登録用token取得
+function getSkntkrToken_deferred(){
+    var deferred = $.Deferred();
 
+    $.ajax({
+        type: "GET",
+        url: config.api.token,
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function(data, status, xhr) {
+        skntkrToken = data;
+        deferred.resolve();
+    }).fail(function(){
+        alertify.log("ランキングシステムへの接続に失敗しました", "error", 3000);
+        deferred.reject();
+    });
+    return deferred.promise()
+}
 
 // ランキング登録-------------
 function registration(){
 
     $.ajax({
         type: "POST",
-        url: config.api.origin + "/api/game/scores/honocar",
+        url: config.api.score,
         xhrFields: {
             withCredentials: true
         },
-        contentType: 'application/json',
+        headers: {
+            // 'Authorization': authorization,
+            'Content-Type': 'application/json'
+        },
         data: JSON.stringify({
-            point: gameScore
+            'point': gameScore,
+            'skntkt_token': skntkrToken
         })
     }).done(function(data, status, xhr) {
-        drowRegistrationInfo();
+        alertify.log("ランキングシステム　通信完了！", "success", 3000);
     }).fail(function(){
-        if(confirm("ログインセッションが無効になっています。再ログインします。")){
-            window.location.href = config.api.origin + config.api.path.login + "?game_name=honocar";
-        }
+        alertify.log("ランキングシステムへの接続に失敗しました", "error", 3000);
     });
 }
 
+// システムへログイン-------------
 
-function drowRegistrationInfo(){
-    // Graphicsのインスタンスを作成します。
-    var graphics = new createjs.Graphics();
-    graphics.beginFill("#55acee");
+function deferredLoginSystem(){
 
-    var height = textObj.TEXT_REGISTRATION.getMeasuredHeight();
-    var width = textObj.TEXT_REGISTRATION.getMeasuredWidth()*1.5;
+    var deferred = $.Deferred();
 
-    graphics
-         .moveTo(0,0)
-         .lineTo(width,0)
-         .lineTo(width,height)
-         .lineTo(0,height)
-         .closePath();
-
-    var shape = new createjs.Shape(graphics);
-    shape.regX = textObj.TEXT_REGISTRATION.getMeasuredWidth()/2;
-    shape.regY = textObj.TEXT_REGISTRATION.getMeasuredHeight()/2;
-    shape.x = textObj.TEXT_REGISTRATION.x * 0.5;
-    shape.y = textObj.TEXT_REGISTRATION.y + textObj.TEXT_REGISTRATION.getMeasuredHeight()/4;
-
-    shape.alpha = 0;
-    textObj.TEXT_REGISTRATION.alpha = 0;
-
-    gameStage.addChild(shape);
-    gameStage.addChild(textObj.TEXT_REGISTRATION);
-
-    // フェードインアニメーション
-    createjs.Tween.get(shape).to({alpha:1}, config.system.anime.registrationFeedTime);
-    createjs.Tween.get(textObj.TEXT_REGISTRATION).to({alpha:1}, config.system.anime.registrationFeedTime);
-}
-
-// // ログイン確認用-------------
-
-// function checkIsLogin(){
-
-//     var d = $.Deferred();
-
-//     $.ajax({
-//         type: "GET",
-//         url: config.api.origin + "/api/game/users/me",
-//         xhrFields: {
-//             withCredentials: true
-//         }
-//     }).done(function(data, status, xhr){
-//         isLogin = true;
-//         d.resolve();
-//     }).fail(function(){
-//         isLogin = false;
-//         d.reject();
-//     });
-//     return d.promise();
-// }
-
-
-// アイコン画像URL取得-------------
-
-function setUserInfo(){
-
-    var d = $.Deferred();
-
-    var dfd1 = $.ajax({
+    var ajax = $.ajax({
         type: "GET",
-        url: config.api.origin + "/api/game/users/me",
-        xhrFields: {
-            withCredentials: true
-        }
-    });
-    var dfd2 = $.ajax({
-        type: "GET",
-        url: config.api.origin + "/api/twitter/users/me",
-        dataType: 'json',
+        url: config.api.user,
         xhrFields: {
             withCredentials: true
         }
     });
 
-    $.when(dfd1, dfd2).done(function(data1,data2){
+    $.when(ajax).done(function(data){
+        alertify.log("ランキングシステム ログイン中！", "success", 3000);
+        user.id = data.user_id;
+        user.name = data.user_name;
+        properties.asyncImage.TWITTER_ICON.url = user.iconURL = data.icon_url;
 
-        user.id = data1[0].user_id;
-        user.name = data1[0].user_name;
-        user.iconURL = data2[0].profile_image_url.replace("_normal", "_bigger");
-
-        d.resolve();
+        isLogin = true;
+        deferred.resolve();
     }).fail(function(){
-        d.reject();
+        // 未ログインの場合は通知なし
+        isLogin = false;
+        deferred.reject();
     });
-    return d.promise();
+
+    return deferred.promise()
 }
 
 //イベントリスナー登録--------------------------------
@@ -235,7 +195,7 @@ function addAllEventListener(){
         howToPlayState();
     } );
     imageObj.BUTTON_RANKING.addEventListener("mousedown",function(){
-        window.location.href = "http://games.sokontokoro-factory.net/ranking/?game_name=honocar"
+        window.location.href = "http://games.sokontokoro-factory.net/ranking/?game=honocar"
     })
 
 	imageObj.BUTTON_CREDIT.addEventListener("mousedown",function(){
@@ -287,13 +247,18 @@ function addAllEventListener(){
     });
 
     imageObj.BUTTON_TWITTER_LOGIN.addEventListener("mousedown", function(){
-        window.location.href = config.api.origin + config.api.path.login + "?game_name=honocar";
+        window.location.href = config.api.login;
     });
-
     imageObj.BUTTON_TWITTER_LOGOUT.addEventListener("mousedown", function(){
-        if(confirm("ログアウトします。ランキング登録はログイン中のみ有効です。")){
-            window.location.href = config.api.origin + config.api.path.logout + "?game_name=honocar";
-        }
+        soundObj.SOUND_OK.play("none",0,0,0,1,0);
+        alertify.confirm("ログアウトします。ランキング登録はログイン中のみ有効です。", function(result){
+            if(result){
+                soundObj.SOUND_OK.play("none",0,0,0,1,0);
+                window.location.href = config.api.logout + "?redirect=honocar";
+            }else{
+                soundObj.SOUND_BACK.play("none",0,0,0,1,0);
+            }
+        })
     });
 
     imageObj.BUTTON_TWITTER_TOP.addEventListener("mousedown", function(){
