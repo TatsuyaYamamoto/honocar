@@ -1,4 +1,5 @@
 // 設定ファイル---------------------------------
+var apiServerOrigin = "http://localhost:25252";
 
 var config = {
     system: {
@@ -19,11 +20,10 @@ var config = {
         difficultyLength: 0.3
     },
     api: {
-        login:  "http://api.sokontokoro-factory.net/v1/auth/twitter/login?redirect=honocar",
-        logout: "http://api.sokontokoro-factory.net/v1/auth/twitter/logout?redirect=honocar",
-        score:  "http://api.sokontokoro-factory.net/v1/game/scores/honocar/me/",
-        user:   "http://api.sokontokoro-factory.net/v1/game/users/me/",
-        token:  "http://api.sokontokoro-factory.net/v1/game/token/"
+        login:  apiServerOrigin + "/lovelive/auth/twitter/login?redirect=honocar",
+        logout: apiServerOrigin + "/lovelive/auth/twitter/logout/",
+        score:  apiServerOrigin + "/lovelive/scores/honocar/me/",
+        user:   apiServerOrigin + "/lovelive/users/me/"
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",

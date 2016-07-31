@@ -27,10 +27,9 @@ var soundObj = {};
 var textObj = {};
 var user = {
     id: "",
-    name: "",
-    iconURL: ""
+    name: ""
 }
-var skntkrToken;
+
 var deferredCheckLogin;
 
 //初期化----------------------------------------
@@ -99,27 +98,6 @@ function getTweetText(){
     return tweet_text;
 }
 
-
-// ランキング登録用token取得
-function getSkntkrToken_deferred(){
-    var deferred = $.Deferred();
-
-    $.ajax({
-        type: "GET",
-        url: config.api.token,
-        xhrFields: {
-            withCredentials: true
-        }
-    }).done(function(data, status, xhr) {
-        skntkrToken = data;
-        deferred.resolve();
-    }).fail(function(){
-        alertify.log("ランキングシステムへの接続に失敗しました", "error", 3000);
-        deferred.reject();
-    });
-    return deferred.promise()
-}
-
 // ランキング登録-------------
 function registration(){
 
@@ -129,24 +107,24 @@ function registration(){
         xhrFields: {
             withCredentials: true
         },
-        headers: {
-            // 'Authorization': authorization,
-            'Content-Type': 'application/json'
-        },
+        contentType:'application/json',
         data: JSON.stringify({
-            'point': gameScore,
-            'skntkt_token': skntkrToken
+            'point': gameScore
         })
     }).done(function(data, status, xhr) {
         alertify.log("ランキングシステム　通信完了！", "success", 3000);
     }).fail(function(){
-        alertify.log("ランキングシステムへの接続に失敗しました", "error", 3000);
+        if(textStatus == 401){
+            alertify.log("ログインセッションが切れてしまいました...再ログインして下さい。", "error", 3000);
+        }else{
+            alertify.log("ランキングシステムへの接続に失敗しました...", "error", 3000);
+        }
     });
 }
 
 // システムへログイン-------------
 
-function deferredLoginSystem(){
+function requestCheckingLogging(){
 
     var deferred = $.Deferred();
 
@@ -160,9 +138,10 @@ function deferredLoginSystem(){
 
     $.when(ajax).done(function(data){
         alertify.log("ランキングシステム ログイン中！", "success", 3000);
+
         user.id = data.user_id;
         user.name = data.user_name;
-        properties.asyncImage.TWITTER_ICON.url = user.iconURL = data.icon_url;
+        properties.asyncImage.TWITTER_ICON.url = data.icon_url;
 
         isLogin = true;
         deferred.resolve();

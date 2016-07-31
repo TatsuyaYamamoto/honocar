@@ -3,7 +3,7 @@ window.onload = function(){
 
 	/*---------- ログインチェック ----------*/
 	// 完了後にコンテンツオブジェクトのセットアップを開始する
-	deferredCheckLogin = deferredLoginSystem()
+	deferredCheckLogin = requestCheckingLogging()
 
 
 	//ゲーム画面の初期

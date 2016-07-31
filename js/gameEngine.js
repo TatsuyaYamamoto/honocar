@@ -12,18 +12,8 @@ function gameInit(){
     rightButtonEnable();
     leftButtonEnable();
 
-    // ランキング登録用トークン取得
-    if(isLogin){
-        skntkrToken = getSkntkrToken_deferred()
-
-    	//タイマーに関数セット
-		skntkrToken.done(function(){
-		    tickListener = createjs.Ticker.addEventListener("tick", gameReady);
-		})
-    }else{
-		//タイマーに関数セット
-	    tickListener = createjs.Ticker.addEventListener("tick", gameReady);	
-    }
+	//タイマーに関数セット
+	tickListener = createjs.Ticker.addEventListener("tick", gameReady);
 }
 
 function gameStatusReset(){
