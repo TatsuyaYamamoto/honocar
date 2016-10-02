@@ -263,7 +263,10 @@ function addAllEventListener(){
 
     ssObj.BUTTON_TWITTER_GAMEOVER_SS.addEventListener("mousedown", function(){
 
-        window.location.href="https://twitter.com/intent/tweet?hashtags=ほのCar!&text="+getTweetText()+"&url=http://games.sokontokoro-factory.net/honocar/";
+        window.location.href="https://twitter.com/intent/tweet" +
+            "?hashtags=ほのCar!+%23そこんところ工房" +
+            "&text=" + getTweetText() +
+            "&url=http://games.sokontokoro-factory.net/honocar/";
 
     });
     ssObj.BUTTON_CHANGE_CHARA.addEventListener("mousedown", function(){
