@@ -124,6 +124,10 @@ function gameState(){
 }
 // GAMEOVER画面------------------------------------------
 function gameOverState(){
+    if(isLogin){
+        registration();
+    }
+    postPlayLog();
 
     player.img.gotoAndPlay("down");
 
@@ -145,11 +149,6 @@ function gameOverState(){
     gameStage.addChild(ssObj.BUTTON_TWITTER_GAMEOVER_SS);
     gameStage.addChild(textObj.TEXT_GAME_COUNT);
     gameStage.addChild(imageObj.GAMEOVER);
-
-    if(isLogin){
-        // ランキング登録
-        registration();
-    }
 
     tickListener = createjs.Ticker.addEventListener("tick", function(){
         gameStage.update();

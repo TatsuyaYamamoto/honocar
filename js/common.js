@@ -122,6 +122,22 @@ function registration(){
     });
 }
 
+// プレイログ登録-------------
+function postPlayLog(){
+
+    $.ajax({
+        type: "POST",
+        url: config.api.playlog,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType:'application/json',
+        data: JSON.stringify({
+            'point': gameScore
+        })
+    }).done(function(data, status, xhr) {});
+}
+
 // システムへログイン-------------
 
 function requestCheckingLogging(){

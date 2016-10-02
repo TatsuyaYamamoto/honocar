@@ -1,5 +1,6 @@
 // 設定ファイル---------------------------------
-var apiServerOrigin = "http://localhost:25252";
+var apiServerOrigin = "http://api.sokontokoro-factory.net";
+var contextPath = "/lovelive";
 
 var config = {
     system: {
@@ -20,10 +21,11 @@ var config = {
         difficultyLength: 0.3
     },
     api: {
-        login:  apiServerOrigin + "/lovelive/auth/twitter/login?redirect=honocar",
-        logout: apiServerOrigin + "/lovelive/auth/twitter/logout/",
-        score:  apiServerOrigin + "/lovelive/scores/honocar/me/",
-        user:   apiServerOrigin + "/lovelive/users/me/"
+        login:      apiServerOrigin + contextPath + "/auth/twitter/login?redirect=honocar",
+        logout:     apiServerOrigin + contextPath + "/auth/twitter/logout/",
+        score:      apiServerOrigin + contextPath + "/scores/honocar/me/",
+        playlog:    apiServerOrigin + contextPath + "/scores/honocar/playlog/",
+        user:       apiServerOrigin + contextPath + "/users/me/"
     },
     link: {
         t28_twitter: "https://twitter.com/t28_tatsuya",
@@ -32,7 +34,7 @@ var config = {
         soundeffect: "http://soundeffect-lab.info/",
         on_jin: "http://on-jin.com/"
     }
-}
+};
 
 
 //定数----------------------------------------
@@ -631,4 +633,4 @@ var manifest = {
             src: ""
         }
     ]
-}
+};
