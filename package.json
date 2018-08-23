@@ -1,0 +1,9 @@
+{
+  "name": "honocar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/TatsuyaYamamoto/honocar.git",
+  "author": "TatsuyaYamamoto <yamamoto.tatsuya@fujixerox.co.jp>",
+  "license": "MIT",
+  "private": true
+}
