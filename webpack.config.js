@@ -21,7 +21,7 @@ isProduction && Object.assign(htmlParams, {
 const plugins = [
   new HtmlWebpackPlugin({
     templateParameters: htmlParams,
-    template: 'index.ejs',
+    template: 'app/index.ejs',
     hash: true,
   }),
   new ConcatPlugin({
@@ -31,22 +31,22 @@ const plugins = [
     fileName: '[name].[hash:8].js',
     filesToConcat: [
       'jquery',
-      ['./js/*.js', '!./js/main.js'],
+      ['./app/js/*.js', '!./app/js/main.js'],
     ],
     attributes: {
       async: true,
     },
   }),
   new CopyWebpackPlugin([
-    {context: 'img', from: '**/*', to: 'img'},
-    {context: 'sound', from: '**/*', to: 'sound'},
+    {context: 'app/img', from: '**/*', to: 'img'},
+    {context: 'app/sound', from: '**/*', to: 'sound'},
   ]),
 ];
 
 const config = {
   mode: isProduction ? 'production' : 'development',
 
-  entry: resolve(__dirname, 'js/main.js'),
+  entry: resolve(__dirname, 'app/js/main.js'),
 
   output: {
     path: resolve(__dirname, 'dist/'),
