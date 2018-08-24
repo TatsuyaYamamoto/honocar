@@ -1,4 +1,10 @@
-window.onload = function(){
+import 'alertify/lib/alertify';
+import 'alertify/themes/alertify.core.css';
+import 'alertify/themes/alertify.default.css';
+import '../main.css';
+
+
+window.onload = function() {
 
 
 	/*---------- ログインチェック ----------*/

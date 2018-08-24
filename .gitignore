@@ -2,3 +2,6 @@
 main.min.js
 *.iml
 .idea/
+dist/
+node_modules/
+

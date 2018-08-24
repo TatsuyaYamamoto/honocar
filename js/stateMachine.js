@@ -99,20 +99,6 @@ function creditState(){
 
     gameStage.update();
 }
-// ランキング画面------------------------------------------
-function rankingState(){
-
-    gameStage.removeAllChildren();
-    gameStage.addChild(imageObj.GAME_BACKGROUND);
-    gameStage.addChild(imageObj.BUTTON_BACK_TOP_FROM_RANKING);
-    gameStage.addChild(textObj.TEXT_RANKING);
-
-    //テキストボックスを表示する
-    $("#rankingName").show();
-
-
-    gameStage.update();
-}
 
 // ゲーム画面------------------------------------------
 function gameState(){
